@@ -53,6 +53,13 @@ export default function App() {
   const [activeEmergencyCard, setActiveEmergencyCard] = useState<EmergencyCardData | null>(null);
   const [isVoiceModalOpen, setIsVoiceModalOpen] = useState(false);
   const [isTeacherAdminOpen, setIsTeacherAdminOpen] = useState(false);
+  const [isTeacherAuthed, setIsTeacherAuthed] = useState<boolean>(() => {
+    try {
+      return sessionStorage.getItem('haebol_teacher_authed') === '1';
+    } catch {
+      return false;
+    }
+  });
   const [isStickmanModalOpen, setIsStickmanModalOpen] = useState(false);
   const [isMenuCollapsed, setIsMenuCollapsed] = useState(false);
   const [savedWords, setSavedWords] = useState<string[]>(() => {
@@ -189,6 +196,7 @@ export default function App() {
               activeMethod={activeMethod}
               onSelectMethod={setActiveMethod}
               isMenuCollapsed={isMenuCollapsed}
+              isTeacherAuthed={isTeacherAuthed}
             />
           )}
 
@@ -254,6 +262,7 @@ export default function App() {
       <TeacherAdminStudioModal
         isOpen={isTeacherAdminOpen}
         onClose={() => setIsTeacherAdminOpen(false)}
+        onAuthChange={setIsTeacherAuthed}
       />
 
       {/* Stickman Hangeul Simulation Bonus Modal */}

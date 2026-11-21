@@ -57,6 +57,7 @@ import { AdminYoutubeStudioTab } from './AdminYoutubeStudioTab';
 interface TeacherAdminStudioModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onAuthChange?: (authed: boolean) => void;
 }
 
 type StudioTab = 'print' | 'reference' | 'blog' | 'youtube' | 'backup' | 'covers';
@@ -77,6 +78,7 @@ const VARIABLE_TOKENS = [
 export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = ({
   isOpen,
   onClose,
+  onAuthChange,
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
     try {
@@ -160,6 +162,7 @@ export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = (
           // ignore
         }
         setIsAuthenticated(true);
+        onAuthChange?.(true);
         setPasswordInput('');
       } else {
         setAuthError(data?.error || '비밀번호가 일치하지 않습니다.');
@@ -178,6 +181,7 @@ export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = (
       // ignore
     }
     setIsAuthenticated(false);
+    onAuthChange?.(false);
     setPasswordInput('');
     setAuthError(null);
   };

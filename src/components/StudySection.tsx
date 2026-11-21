@@ -6,7 +6,8 @@ import {
   Printer,
   Layers,
   ArrowUp,
-  BookOpen
+  BookOpen,
+  Lock
 } from 'lucide-react';
 import {
   VocabularyItem,
@@ -110,6 +111,7 @@ interface StudySectionProps {
   activeMethod?: LearningMethod;
   onSelectMethod?: (method: LearningMethod) => void;
   isMenuCollapsed?: boolean;
+  isTeacherAuthed?: boolean;
 }
 
 const HANGEUL_GROUP_TO_SHEET: Record<
@@ -411,7 +413,19 @@ export const StudySection: React.FC<StudySectionProps> = ({
   activeMethod = 'worksheet',
   onSelectMethod,
   isMenuCollapsed = false,
+  isTeacherAuthed = false,
 }) => {
+  const isExamPlayLocked = !isTeacherAuthed;
+  const isLockedMode = (mode: StudyMode): boolean =>
+    mode === 'hangeulExam' ||
+    mode === 'jollaPlay' ||
+    mode === 'verbExam' ||
+    mode === 'verbPlay' ||
+    mode === 'particleExam' ||
+    mode === 'particlePlay' ||
+    mode === 'classroomExam' ||
+    mode === 'classroomPlay';
+
   const [studyMode, setStudyMode] = useState<StudyMode>(
     sectionType === 'hangeul'
       ? 'jamo'
@@ -502,6 +516,16 @@ export const StudySection: React.FC<StudySectionProps> = ({
       }
     }
   }, [sectionType]);
+
+  // If teacher admin locks again while viewing an exam/play draft, fall back to the main worksheet
+  useEffect(() => {
+    if (isExamPlayLocked && isLockedMode(studyMode)) {
+      if (sectionType === 'hangeul') setStudyMode('jamo');
+      else if (sectionType === 'verb') setStudyMode('words');
+      else if (sectionType === 'particle') setStudyMode('particle');
+      else setStudyMode('cards');
+    }
+  }, [isExamPlayLocked, sectionType, studyMode]);
 
   // 1~3개 다국어 커스텀 선택 상태 (그림카드, 쓰기학습지, 테스트지 공통 - 기본 영어, 베트남어 2개 선택)
   const [customSelectedLangs, setCustomSelectedLangs] = useState<SupportedLanguage[]>(['en', 'vi']);
@@ -1135,26 +1159,32 @@ export const StudySection: React.FC<StudySectionProps> = ({
       {sectionType === 'hangeul' && (
         <div className="flex items-center gap-1 mr-1">
           {[
-            { id: 'jamo' as StudyMode, label: tabUi.studyTabs.jamo },
-            { id: 'basic' as StudyMode, label: tabUi.studyTabs.basic },
-            { id: 'batchim' as StudyMode, label: tabUi.studyTabs.batchim },
-            { id: 'hangeulExam' as StudyMode, label: '시험' },
-            { id: 'jollaPlay' as StudyMode, label: '놀이' },
+            { id: 'jamo' as StudyMode, label: tabUi.studyTabs.jamo, locked: false },
+            { id: 'basic' as StudyMode, label: tabUi.studyTabs.basic, locked: false },
+            { id: 'batchim' as StudyMode, label: tabUi.studyTabs.batchim, locked: false },
+            { id: 'hangeulExam' as StudyMode, label: '시험', locked: isExamPlayLocked },
+            { id: 'jollaPlay' as StudyMode, label: '놀이', locked: isExamPlayLocked },
           ].map((item) => (
             <button
               key={item.id}
               type="button"
+              disabled={item.locked}
+              title={item.locked ? '준비 중입니다 (곧 공개 예정)' : undefined}
               onClick={() => {
+                if (item.locked) return;
                 playCutePop();
                 setStudyMode(item.id);
               }}
-              className={`h-8 px-2 text-xs whitespace-nowrap cursor-pointer border-b-2 transition-colors ${
-                studyMode === item.id
-                  ? 'border-amber-500 text-amber-950 font-black'
-                  : 'border-transparent text-slate-600 hover:text-amber-900 font-semibold'
+              className={`h-8 px-2 text-xs whitespace-nowrap border-b-2 transition-colors inline-flex items-center gap-1 ${
+                item.locked
+                  ? 'border-transparent text-slate-400 opacity-60 cursor-not-allowed font-semibold'
+                  : studyMode === item.id
+                  ? 'border-amber-500 text-amber-950 font-black cursor-pointer'
+                  : 'border-transparent text-slate-600 hover:text-amber-900 font-semibold cursor-pointer'
               }`}
             >
-              {item.label}
+              {item.locked && <Lock className="w-2.5 h-2.5 shrink-0" />}
+              <span>{item.label}</span>
             </button>
           ))}
         </div>
@@ -1178,31 +1208,43 @@ export const StudySection: React.FC<StudySectionProps> = ({
           </button>
           <button
             type="button"
+            disabled={isExamPlayLocked}
+            title={isExamPlayLocked ? '준비 중입니다 (곧 공개 예정)' : undefined}
             onClick={() => {
+              if (isExamPlayLocked) return;
               playCutePop();
               setStudyMode('verbExam');
             }}
-            className={`h-8 px-2 text-xs whitespace-nowrap cursor-pointer border-b-2 transition-colors ${
-              studyMode === 'verbExam'
-                ? 'border-[#7E22CE] text-purple-950 font-black'
-                : 'border-transparent text-slate-600 hover:text-purple-900 font-semibold'
+            className={`h-8 px-2 text-xs whitespace-nowrap border-b-2 transition-colors inline-flex items-center gap-1 ${
+              isExamPlayLocked
+                ? 'border-transparent text-slate-400 opacity-60 cursor-not-allowed font-semibold'
+                : studyMode === 'verbExam'
+                ? 'border-[#7E22CE] text-purple-950 font-black cursor-pointer'
+                : 'border-transparent text-slate-600 hover:text-purple-900 font-semibold cursor-pointer'
             }`}
           >
-            시험
+            {isExamPlayLocked && <Lock className="w-2.5 h-2.5 shrink-0" />}
+            <span>시험</span>
           </button>
           <button
             type="button"
+            disabled={isExamPlayLocked}
+            title={isExamPlayLocked ? '준비 중입니다 (곧 공개 예정)' : undefined}
             onClick={() => {
+              if (isExamPlayLocked) return;
               playCutePop();
               setStudyMode('verbPlay');
             }}
-            className={`h-8 px-2 text-xs whitespace-nowrap cursor-pointer border-b-2 transition-colors ${
-              studyMode === 'verbPlay'
-                ? 'border-[#7E22CE] text-purple-950 font-black'
-                : 'border-transparent text-slate-600 hover:text-purple-900 font-semibold'
+            className={`h-8 px-2 text-xs whitespace-nowrap border-b-2 transition-colors inline-flex items-center gap-1 ${
+              isExamPlayLocked
+                ? 'border-transparent text-slate-400 opacity-60 cursor-not-allowed font-semibold'
+                : studyMode === 'verbPlay'
+                ? 'border-[#7E22CE] text-purple-950 font-black cursor-pointer'
+                : 'border-transparent text-slate-600 hover:text-purple-900 font-semibold cursor-pointer'
             }`}
           >
-            놀이
+            {isExamPlayLocked && <Lock className="w-2.5 h-2.5 shrink-0" />}
+            <span>놀이</span>
           </button>
         </div>
       )}
@@ -1247,31 +1289,43 @@ export const StudySection: React.FC<StudySectionProps> = ({
           </button>
           <button
             type="button"
+            disabled={isExamPlayLocked}
+            title={isExamPlayLocked ? '준비 중입니다 (곧 공개 예정)' : undefined}
             onClick={() => {
+              if (isExamPlayLocked) return;
               playCutePop();
               setStudyMode('particleExam');
             }}
-            className={`h-8 px-2 text-xs whitespace-nowrap cursor-pointer border-b-2 transition-colors ${
-              studyMode === 'particleExam'
-                ? 'border-emerald-600 text-emerald-950 font-black'
-                : 'border-transparent text-slate-600 hover:text-emerald-950 font-semibold'
+            className={`h-8 px-2 text-xs whitespace-nowrap border-b-2 transition-colors inline-flex items-center gap-1 ${
+              isExamPlayLocked
+                ? 'border-transparent text-slate-400 opacity-60 cursor-not-allowed font-semibold'
+                : studyMode === 'particleExam'
+                ? 'border-emerald-600 text-emerald-950 font-black cursor-pointer'
+                : 'border-transparent text-slate-600 hover:text-emerald-950 font-semibold cursor-pointer'
             }`}
           >
-            시험
+            {isExamPlayLocked && <Lock className="w-2.5 h-2.5 shrink-0" />}
+            <span>시험</span>
           </button>
           <button
             type="button"
+            disabled={isExamPlayLocked}
+            title={isExamPlayLocked ? '준비 중입니다 (곧 공개 예정)' : undefined}
             onClick={() => {
+              if (isExamPlayLocked) return;
               playCutePop();
               setStudyMode('particlePlay');
             }}
-            className={`h-8 px-2 text-xs whitespace-nowrap cursor-pointer border-b-2 transition-colors ${
-              studyMode === 'particlePlay'
-                ? 'border-emerald-600 text-emerald-950 font-black'
-                : 'border-transparent text-slate-600 hover:text-emerald-950 font-semibold'
+            className={`h-8 px-2 text-xs whitespace-nowrap border-b-2 transition-colors inline-flex items-center gap-1 ${
+              isExamPlayLocked
+                ? 'border-transparent text-slate-400 opacity-60 cursor-not-allowed font-semibold'
+                : studyMode === 'particlePlay'
+                ? 'border-emerald-600 text-emerald-950 font-black cursor-pointer'
+                : 'border-transparent text-slate-600 hover:text-emerald-950 font-semibold cursor-pointer'
             }`}
           >
-            놀이
+            {isExamPlayLocked && <Lock className="w-2.5 h-2.5 shrink-0" />}
+            <span>놀이</span>
           </button>
         </div>
       )}
@@ -1279,26 +1333,32 @@ export const StudySection: React.FC<StudySectionProps> = ({
       {sectionType === 'classroom' && (
         <div className="flex items-center gap-1 mr-1">
           {[
-            { id: 'cards' as StudyMode, label: tabUi.studyTabs.flashcards },
-            { id: 'writing' as StudyMode, label: tabUi.studyTabs.writing },
-            { id: 'quiz' as StudyMode, label: tabUi.studyTabs.quiz },
-            { id: 'classroomExam' as StudyMode, label: '시험' },
-            { id: 'classroomPlay' as StudyMode, label: '놀이' },
+            { id: 'cards' as StudyMode, label: tabUi.studyTabs.flashcards, locked: false },
+            { id: 'writing' as StudyMode, label: tabUi.studyTabs.writing, locked: false },
+            { id: 'quiz' as StudyMode, label: tabUi.studyTabs.quiz, locked: false },
+            { id: 'classroomExam' as StudyMode, label: '시험', locked: isExamPlayLocked },
+            { id: 'classroomPlay' as StudyMode, label: '놀이', locked: isExamPlayLocked },
           ].map((item) => (
             <button
               key={item.id}
               type="button"
+              disabled={item.locked}
+              title={item.locked ? '준비 중입니다 (곧 공개 예정)' : undefined}
               onClick={() => {
+                if (item.locked) return;
                 playCutePop();
                 setStudyMode(item.id);
               }}
-              className={`h-8 px-2 text-xs whitespace-nowrap cursor-pointer border-b-2 transition-colors ${
-                studyMode === item.id
-                  ? 'border-[#D94A6B] text-rose-950 font-black'
-                  : 'border-transparent text-slate-600 hover:text-rose-900 font-semibold'
+              className={`h-8 px-2 text-xs whitespace-nowrap border-b-2 transition-colors inline-flex items-center gap-1 ${
+                item.locked
+                  ? 'border-transparent text-slate-400 opacity-60 cursor-not-allowed font-semibold'
+                  : studyMode === item.id
+                  ? 'border-[#D94A6B] text-rose-950 font-black cursor-pointer'
+                  : 'border-transparent text-slate-600 hover:text-rose-900 font-semibold cursor-pointer'
               }`}
             >
-              {item.label}
+              {item.locked && <Lock className="w-2.5 h-2.5 shrink-0" />}
+              <span>{item.label}</span>
             </button>
           ))}
         </div>
@@ -2868,33 +2928,43 @@ export const StudySection: React.FC<StudySectionProps> = ({
 
                   <button
                     type="button"
+                    disabled={isExamPlayLocked}
                     onClick={() => {
+                      if (isExamPlayLocked) return;
                       playCutePop();
                       setStudyMode('hangeulExam');
                     }}
-                    className={`relative py-1.5 px-1 bg-transparent border-0 cursor-pointer flex items-center gap-1 whitespace-nowrap text-[13px] sm:text-[14.5px] transition-colors ${
-                      studyMode === 'hangeulExam'
-                        ? "text-amber-950 font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-amber-400"
-                        : 'text-slate-500 hover:text-amber-900 font-semibold'
+                    className={`relative py-1.5 px-1 bg-transparent border-0 flex items-center gap-1 whitespace-nowrap text-[13px] sm:text-[14.5px] transition-colors ${
+                      isExamPlayLocked
+                        ? 'text-slate-400 opacity-60 cursor-not-allowed font-semibold'
+                        : studyMode === 'hangeulExam'
+                        ? "text-amber-950 font-black cursor-pointer after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-amber-400"
+                        : 'text-slate-500 hover:text-amber-900 font-semibold cursor-pointer'
                     }`}
-                    title="한글 시험 (20강)"
+                    title={isExamPlayLocked ? '준비 중입니다 (곧 공개 예정)' : '한글 시험 (20강)'}
                   >
+                    {isExamPlayLocked && <Lock className="w-3 h-3 shrink-0" />}
                     <span>시험</span>
                   </button>
 
                   <button
                     type="button"
+                    disabled={isExamPlayLocked}
                     onClick={() => {
+                      if (isExamPlayLocked) return;
                       playCutePop();
                       setStudyMode('jollaPlay');
                     }}
-                    className={`relative py-1.5 px-1 bg-transparent border-0 cursor-pointer flex items-center gap-1 whitespace-nowrap text-[13px] sm:text-[14.5px] transition-colors ${
-                      studyMode === 'jollaPlay'
-                        ? "text-amber-950 font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-amber-400"
-                        : 'text-slate-500 hover:text-amber-900 font-semibold'
+                    className={`relative py-1.5 px-1 bg-transparent border-0 flex items-center gap-1 whitespace-nowrap text-[13px] sm:text-[14.5px] transition-colors ${
+                      isExamPlayLocked
+                        ? 'text-slate-400 opacity-60 cursor-not-allowed font-semibold'
+                        : studyMode === 'jollaPlay'
+                        ? "text-amber-950 font-black cursor-pointer after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-amber-400"
+                        : 'text-slate-500 hover:text-amber-900 font-semibold cursor-pointer'
                     }`}
-                    title="졸라 놀이 학습지 (10종)"
+                    title={isExamPlayLocked ? '준비 중입니다 (곧 공개 예정)' : '졸라 놀이 학습지 (10종)'}
                   >
+                    {isExamPlayLocked && <Lock className="w-3 h-3 shrink-0" />}
                     <span>놀이</span>
                   </button>
                 </div>
@@ -2923,32 +2993,42 @@ export const StudySection: React.FC<StudySectionProps> = ({
                   </button>
                   <button
                     type="button"
+                    disabled={isExamPlayLocked}
                     onClick={() => {
+                      if (isExamPlayLocked) return;
                       playCutePop();
                       setStudyMode('verbExam');
                     }}
-                    className={`relative py-1.5 px-1 bg-transparent border-0 cursor-pointer flex items-center gap-1 whitespace-nowrap text-[13px] sm:text-[14.5px] transition-colors ${
-                      studyMode === 'verbExam'
-                        ? "text-purple-950 font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-[#7E22CE]"
-                        : 'text-slate-500 hover:text-purple-900 font-semibold'
+                    className={`relative py-1.5 px-1 bg-transparent border-0 flex items-center gap-1 whitespace-nowrap text-[13px] sm:text-[14.5px] transition-colors ${
+                      isExamPlayLocked
+                        ? 'text-slate-400 opacity-60 cursor-not-allowed font-semibold'
+                        : studyMode === 'verbExam'
+                        ? "text-purple-950 font-black cursor-pointer after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-[#7E22CE]"
+                        : 'text-slate-500 hover:text-purple-900 font-semibold cursor-pointer'
                     }`}
-                    title="용언 종합 시험 6강"
+                    title={isExamPlayLocked ? '준비 중입니다 (곧 공개 예정)' : '용언 종합 시험 6강'}
                   >
+                    {isExamPlayLocked && <Lock className="w-3 h-3 shrink-0" />}
                     <span>시험</span>
                   </button>
                   <button
                     type="button"
+                    disabled={isExamPlayLocked}
                     onClick={() => {
+                      if (isExamPlayLocked) return;
                       playCutePop();
                       setStudyMode('verbPlay');
                     }}
-                    className={`relative py-1.5 px-1 bg-transparent border-0 cursor-pointer flex items-center gap-1 whitespace-nowrap text-[13px] sm:text-[14.5px] transition-colors ${
-                      studyMode === 'verbPlay'
-                        ? "text-purple-950 font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-[#7E22CE]"
-                        : 'text-slate-500 hover:text-purple-900 font-semibold'
+                    className={`relative py-1.5 px-1 bg-transparent border-0 flex items-center gap-1 whitespace-nowrap text-[13px] sm:text-[14.5px] transition-colors ${
+                      isExamPlayLocked
+                        ? 'text-slate-400 opacity-60 cursor-not-allowed font-semibold'
+                        : studyMode === 'verbPlay'
+                        ? "text-purple-950 font-black cursor-pointer after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-[#7E22CE]"
+                        : 'text-slate-500 hover:text-purple-900 font-semibold cursor-pointer'
                     }`}
-                    title="용언 놀이 학습지 초안 5종 (1강)"
+                    title={isExamPlayLocked ? '준비 중입니다 (곧 공개 예정)' : '용언 놀이 학습지 초안 5종 (1강)'}
                   >
+                    {isExamPlayLocked && <Lock className="w-3 h-3 shrink-0" />}
                     <span>놀이</span>
                   </button>
                 </div>
@@ -3000,32 +3080,42 @@ export const StudySection: React.FC<StudySectionProps> = ({
                   </button>
                   <button
                     type="button"
+                    disabled={isExamPlayLocked}
                     onClick={() => {
+                      if (isExamPlayLocked) return;
                       playCutePop();
                       setStudyMode('particleExam');
                     }}
-                    className={`relative py-1.5 px-1 bg-transparent border-0 cursor-pointer flex items-center gap-1 whitespace-nowrap text-[13px] sm:text-[14.5px] transition-colors ${
-                      studyMode === 'particleExam'
-                        ? "text-emerald-950 font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-emerald-600"
-                        : 'text-slate-500 hover:text-emerald-950 font-bold'
+                    className={`relative py-1.5 px-1 bg-transparent border-0 flex items-center gap-1 whitespace-nowrap text-[13px] sm:text-[14.5px] transition-colors ${
+                      isExamPlayLocked
+                        ? 'text-slate-400 opacity-60 cursor-not-allowed font-semibold'
+                        : studyMode === 'particleExam'
+                        ? "text-emerald-950 font-black cursor-pointer after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-emerald-600"
+                        : 'text-slate-500 hover:text-emerald-950 font-bold cursor-pointer'
                     }`}
-                    title="조사 종합 시험 6강"
+                    title={isExamPlayLocked ? '준비 중입니다 (곧 공개 예정)' : '조사 종합 시험 6강'}
                   >
+                    {isExamPlayLocked && <Lock className="w-3 h-3 shrink-0" />}
                     <span>시험</span>
                   </button>
                   <button
                     type="button"
+                    disabled={isExamPlayLocked}
                     onClick={() => {
+                      if (isExamPlayLocked) return;
                       playCutePop();
                       setStudyMode('particlePlay');
                     }}
-                    className={`relative py-1.5 px-1 bg-transparent border-0 cursor-pointer flex items-center gap-1 whitespace-nowrap text-[13px] sm:text-[14.5px] transition-colors ${
-                      studyMode === 'particlePlay'
-                        ? "text-emerald-950 font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-emerald-600"
-                        : 'text-slate-500 hover:text-emerald-950 font-bold'
+                    className={`relative py-1.5 px-1 bg-transparent border-0 flex items-center gap-1 whitespace-nowrap text-[13px] sm:text-[14.5px] transition-colors ${
+                      isExamPlayLocked
+                        ? 'text-slate-400 opacity-60 cursor-not-allowed font-semibold'
+                        : studyMode === 'particlePlay'
+                        ? "text-emerald-950 font-black cursor-pointer after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-emerald-600"
+                        : 'text-slate-500 hover:text-emerald-950 font-bold cursor-pointer'
                     }`}
-                    title="조사 놀이 학습지 초안 5종 (1강)"
+                    title={isExamPlayLocked ? '준비 중입니다 (곧 공개 예정)' : '조사 놀이 학습지 초안 5종 (1강)'}
                   >
+                    {isExamPlayLocked && <Lock className="w-3 h-3 shrink-0" />}
                     <span>놀이</span>
                   </button>
                 </div>
@@ -3092,33 +3182,43 @@ export const StudySection: React.FC<StudySectionProps> = ({
 
                 <button
                   type="button"
+                  disabled={isExamPlayLocked}
                   onClick={() => {
+                    if (isExamPlayLocked) return;
                     playCutePop();
                     setStudyMode('classroomExam');
                   }}
-                  className={`relative py-1.5 px-0.5 sm:px-1 bg-transparent border-0 cursor-pointer flex items-center gap-1 whitespace-nowrap text-[11px] xs:text-[12.5px] sm:text-[14.5px] transition-colors ${
-                    studyMode === 'classroomExam'
-                      ? "text-rose-950 font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-[#D94A6B]"
-                      : 'text-slate-500 hover:text-rose-900 font-semibold'
+                  className={`relative py-1.5 px-0.5 sm:px-1 bg-transparent border-0 flex items-center gap-1 whitespace-nowrap text-[11px] xs:text-[12.5px] sm:text-[14.5px] transition-colors ${
+                    isExamPlayLocked
+                      ? 'text-slate-400 opacity-60 cursor-not-allowed font-semibold'
+                      : studyMode === 'classroomExam'
+                      ? "text-rose-950 font-black cursor-pointer after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-[#D94A6B]"
+                      : 'text-slate-500 hover:text-rose-900 font-semibold cursor-pointer'
                   }`}
-                  title="교실 한국어 종합 시험 6강"
+                  title={isExamPlayLocked ? '준비 중입니다 (곧 공개 예정)' : '교실 한국어 종합 시험 6강'}
                 >
+                  {isExamPlayLocked && <Lock className="w-3 h-3 shrink-0" />}
                   <span>시험</span>
                 </button>
 
                 <button
                   type="button"
+                  disabled={isExamPlayLocked}
                   onClick={() => {
+                    if (isExamPlayLocked) return;
                     playCutePop();
                     setStudyMode('classroomPlay');
                   }}
-                  className={`relative py-1.5 px-0.5 sm:px-1 bg-transparent border-0 cursor-pointer flex items-center gap-1 whitespace-nowrap text-[11px] xs:text-[12.5px] sm:text-[14.5px] transition-colors ${
-                    studyMode === 'classroomPlay'
-                      ? "text-rose-950 font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-[#D94A6B]"
-                      : 'text-slate-500 hover:text-rose-900 font-semibold'
+                  className={`relative py-1.5 px-0.5 sm:px-1 bg-transparent border-0 flex items-center gap-1 whitespace-nowrap text-[11px] xs:text-[12.5px] sm:text-[14.5px] transition-colors ${
+                    isExamPlayLocked
+                      ? 'text-slate-400 opacity-60 cursor-not-allowed font-semibold'
+                      : studyMode === 'classroomPlay'
+                      ? "text-rose-950 font-black cursor-pointer after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-[#D94A6B]"
+                      : 'text-slate-500 hover:text-rose-900 font-semibold cursor-pointer'
                   }`}
-                  title="교실 한국어 놀이 학습지 초안 5종 (1강)"
+                  title={isExamPlayLocked ? '준비 중입니다 (곧 공개 예정)' : '교실 한국어 놀이 학습지 초안 5종 (1강)'}
                 >
+                  {isExamPlayLocked && <Lock className="w-3 h-3 shrink-0" />}
                   <span>놀이</span>
                 </button>
               </div>
