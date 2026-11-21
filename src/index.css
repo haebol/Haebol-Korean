@@ -1,0 +1,341 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body {
+    overflow-x: clip;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  body {
+    font-family: 'Hakgyoansim Bareondotum', '학교안심 바른돋움', 'NanumBarunGothic', 'Noto Sans Bengali', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans', 'Meiryo', 'Noto Sans KR', 'Apple SD Gothic Neo', system-ui, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1, h2, h3, h4, h5, h6, button, input, select, textarea {
+    font-family: 'Hakgyoansim Bareondotum', '학교안심 바른돋움', 'NanumBarunGothic', 'Noto Sans Bengali', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans', 'Meiryo', 'Noto Sans KR', 'Apple SD Gothic Neo', system-ui, sans-serif;
+  }
+}
+
+/* 1. 초등 공교육 표준 바른돋움 (학교안심 바른돋움 - 전역 기본 폰트) */
+@font-face {
+  font-family: 'Hakgyoansim Bareondotum';
+  src: local('Hakgyoansim Bareondotum Regular'),
+       local('Hakgyoansim Bareondotum'),
+       local('학교안심 바른돋움 R'),
+       local('학교안심 바른돋움'),
+       url('/fonts/HakgyoansimBareondotum-Regular.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimBareondotum/HakgyoansimBareondotum-Regular.woff2') format('woff2');
+  font-weight: 100 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hakgyoansim Bareondotum';
+  src: local('Hakgyoansim Bareondotum Bold'),
+       local('학교안심 바른돋움 B'),
+       url('/fonts/HakgyoansimBareondotum-Bold.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimBareondotum/HakgyoansimBareondotum-Bold.woff2') format('woff2');
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: '학교안심 바른돋움';
+  src: local('Hakgyoansim Bareondotum Regular'),
+       local('Hakgyoansim Bareondotum'),
+       local('학교안심 바른돋움 R'),
+       local('학교안심 바른돋움'),
+       url('/fonts/HakgyoansimBareondotum-Regular.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimBareondotum/HakgyoansimBareondotum-Regular.woff2') format('woff2');
+  font-weight: 100 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: '학교안심 바른돋움';
+  src: local('Hakgyoansim Bareondotum Bold'),
+       local('학교안심 바른돋움 B'),
+       url('/fonts/HakgyoansimBareondotum-Bold.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimBareondotum/HakgyoansimBareondotum-Bold.woff2') format('woff2');
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 2. 초등 공교육 표준 받아쓰기체 (학교안심 받아쓰기 - 2획 ㅈ, 3획 ㅊ 정통 획순 교육용 손글씨) */
+@font-face {
+  font-family: 'Hakgyoansim Badasseugi';
+  src: local('Hakgyoansim Badasseugi Light'),
+       local('Hakgyoansim Badasseugi TTF L'),
+       local('Hakgyoansim Badasseugi'),
+       local('HakgyoansimBadasseugiTTF-L'),
+       local('학교안심 받아쓰기 L'),
+       local('학교안심 받아쓰기 TTF L'),
+       local('학교안심 받아쓰기'),
+       url('/fonts/HakgyoansimBadasseugi-L.woff2') format('woff2'),
+       url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: '학교안심 받아쓰기';
+  src: local('Hakgyoansim Badasseugi Light'),
+       local('Hakgyoansim Badasseugi TTF L'),
+       local('Hakgyoansim Badasseugi'),
+       local('HakgyoansimBadasseugiTTF-L'),
+       local('학교안심 받아쓰기 L'),
+       local('학교안심 받아쓰기 TTF L'),
+       local('학교안심 받아쓰기'),
+       url('/fonts/HakgyoansimBadasseugi-L.woff2') format('woff2'),
+       url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: '학교안심받아쓰기';
+  src: local('Hakgyoansim Badasseugi Light'),
+       local('Hakgyoansim Badasseugi TTF L'),
+       local('Hakgyoansim Badasseugi'),
+       local('HakgyoansimBadasseugiTTF-L'),
+       local('학교안심 받아쓰기 L'),
+       local('학교안심 받아쓰기 TTF L'),
+       local('학교안심 받아쓰기'),
+       url('/fonts/HakgyoansimBadasseugi-L.woff2') format('woff2'),
+       url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HakgyoansimBadasseugiTTF-L';
+  src: local('Hakgyoansim Badasseugi Light'),
+       local('Hakgyoansim Badasseugi TTF L'),
+       local('Hakgyoansim Badasseugi'),
+       local('HakgyoansimBadasseugiTTF-L'),
+       local('학교안심 받아쓰기 L'),
+       local('학교안심 받아쓰기 TTF L'),
+       local('학교안심 받아쓰기'),
+       url('/fonts/HakgyoansimBadasseugi-L.woff2') format('woff2'),
+       url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hakgyoansim Badasseugi TTF L';
+  src: local('Hakgyoansim Badasseugi Light'),
+       local('Hakgyoansim Badasseugi TTF L'),
+       local('Hakgyoansim Badasseugi'),
+       local('HakgyoansimBadasseugiTTF-L'),
+       local('학교안심 받아쓰기 L'),
+       local('학교안심 받아쓰기 TTF L'),
+       local('학교안심 받아쓰기'),
+       url('/fonts/HakgyoansimBadasseugi-L.woff2') format('woff2'),
+       url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: '학교알림받아쓰기';
+  src: local('Hakgyoansim Badasseugi Light'),
+       local('Hakgyoansim Badasseugi TTF L'),
+       local('Hakgyoansim Badasseugi'),
+       local('HakgyoansimBadasseugiTTF-L'),
+       local('학교안심 받아쓰기 L'),
+       local('학교안심 받아쓰기 TTF L'),
+       local('학교안심 받아쓰기'),
+       url('/fonts/HakgyoansimBadasseugi-L.woff2') format('woff2'),
+       url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 3. 레거시 및 보조 폰트 (나눔바른고딕 & 교보손글씨) */
+@font-face {
+  font-family: 'NanumBarunGothic';
+  src: local('NanumBarunGothic'),
+       local('나눔바른고딕'),
+       url('/fonts/NanumBarunGothic.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/NanumBarunGothicSubset.woff2') format('woff2');
+  font-weight: 100 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NanumBarunGothic';
+  src: local('NanumBarunGothic Bold'),
+       local('나눔바른고딕 Bold'),
+       url('/fonts/NanumBarunGothicBold.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/NanumBarunGothicBoldSubset.woff2') format('woff2');
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans Bengali';
+  src: url('/fonts/NotoSansBengali-Medium.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/fontsource/fonts/noto-sans-bengali@latest/bengali-500-normal.woff2') format('woff2');
+  font-weight: 100 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0-1CF7, U+200C-200D, U+20B9, U+25CC;
+}
+
+@font-face {
+  font-family: 'Noto Sans Bengali';
+  src: url('/fonts/NotoSansBengali-Bold.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/fontsource/fonts/noto-sans-bengali@latest/bengali-700-normal.woff2') format('woff2');
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0-1CF7, U+200C-200D, U+20B9, U+25CC;
+}
+
+@font-face {
+  font-family: 'KyoboHand';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/KyoboHand.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 4. 유틸리티 클래스 (letter-spacing: 0 유지로 벵골어 등 복합문자 결합/상단바 깨짐 방지) */
+.font-school-base,
+.font-korean-gothic {
+  font-family: 'Hakgyoansim Bareondotum', '학교안심 바른돋움', 'NanumBarunGothic', 'Noto Sans Bengali', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans', 'Meiryo', 'Noto Sans KR', system-ui, sans-serif !important;
+  letter-spacing: 0;
+}
+
+.font-nanum-barun-gothic,
+.font-nanum-gothic {
+  font-family: 'NanumBarunGothic', '나눔바른고딕', 'NanumBarunGothicBold', 'Noto Sans Bengali', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans', 'Meiryo', 'Noto Sans KR', system-ui, sans-serif !important;
+  letter-spacing: 0;
+}
+
+/* 인쇄/PNG/PDF 시트에서 브라우저 임의 합성 볼드(가로 늘어남) 및 자간 깨짐 차단 */
+.print-sheet,
+.printable-a4-page,
+.verb-worksheet-page {
+  font-synthesis: none;
+  font-feature-settings: "kern" 1, "liga" 1, "clig" 1;
+}
+
+.font-school-hand,
+.font-badasseugi,
+.font-kyobo,
+.font-kyobo-hand {
+  font-family: 'Hakgyoansim Badasseugi', '학교안심 받아쓰기', '학교안심받아쓰기', 'HakgyoansimBadasseugiTTF-L', 'Hakgyoansim Badasseugi TTF L', '학교알림받아쓰기', 'KyoboHand', cursive, sans-serif !important;
+  letter-spacing: -0.01em;
+}
+
+.font-maru-buri {
+  font-family: 'Maru Buri', serif, -apple-system, sans-serif !important;
+}
+
+.romaja-badge {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-weight: 800 !important;
+  color: #1e3a8a !important; /* navy */
+}
+
+/* Custom scrollbar for chapter pills */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #ffe4e6;
+  border-radius: 9999px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #f472b6;
+  border-radius: 9999px;
+}
+
+/* Hide scrollbar for clean 1-row scrollable chips */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+@keyframes cardPopWiggle {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.12) rotate(-3.5deg); }
+  50% { transform: scale(1.14) rotate(3deg); }
+  75% { transform: scale(1.08) rotate(-1.5deg); }
+  100% { transform: scale(1.06) rotate(0deg); }
+}
+
+.animate-card-pop {
+  animation: cardPopWiggle 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes stickmanArmWave {
+  0%, 100% { transform: rotate(-125deg); }
+  50% { transform: rotate(-155deg); }
+}
+
+.stickman-arm-wave {
+  transform-origin: 0px 0px;
+  animation: stickmanArmWave 1.15s ease-in-out infinite;
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 6mm 8mm;
+  }
+
+  html, body {
+    overflow: visible !important;
+    overflow-x: visible !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .verb-worksheet-page {
+    border: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 194mm !important;
+    max-height: 194mm !important;
+    min-height: 194mm !important;
+    padding: 1.5mm 3mm !important;
+    margin: 0 auto !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+  }
+}

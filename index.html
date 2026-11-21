@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>해볼 한국어 (Haebol-Korean)</title>
+    <meta name="description" content="다문화 및 이주배경 초등학생을 위한 인터랙티브 한국어 학습 및 실시간 비상 소통 웹 앱" />
+    <meta property="og:title" content="해볼 한국어 (Haebol-Korean)" />
+    <meta property="og:description" content="다문화 및 이주배경 초등학생을 위한 인터랙티브 한국어 학습 및 실시간 비상 소통 웹 앱" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&family=Jua&family=Gowun+Dodum&display=swap" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Maru+Buri:wght@400;600;700&display=swap" crossorigin="anonymous">
+    <style>
+      @font-face {
+        font-family: 'Hakgyoansim Bareondotum';
+        src: local('Hakgyoansim Bareondotum Regular'),
+             local('Hakgyoansim Bareondotum'),
+             local('학교안심 바른돋움 R'),
+             local('학교안심 바른돋움'),
+             url('/fonts/HakgyoansimBareondotum-Regular.woff2') format('woff2'),
+             url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimBareondotum/HakgyoansimBareondotum-Regular.woff2') format('woff2');
+        font-weight: 100 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Hakgyoansim Bareondotum';
+        src: local('Hakgyoansim Bareondotum Bold'),
+             local('학교안심 바른돋움 B'),
+             url('/fonts/HakgyoansimBareondotum-Bold.woff2') format('woff2'),
+             url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimBareondotum/HakgyoansimBareondotum-Bold.woff2') format('woff2');
+        font-weight: 700 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: '학교안심 바른돋움';
+        src: local('Hakgyoansim Bareondotum Regular'),
+             local('Hakgyoansim Bareondotum'),
+             local('학교안심 바른돋움 R'),
+             local('학교안심 바른돋움'),
+             url('/fonts/HakgyoansimBareondotum-Regular.woff2') format('woff2'),
+             url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimBareondotum/HakgyoansimBareondotum-Regular.woff2') format('woff2');
+        font-weight: 100 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: '학교안심 바른돋움';
+        src: local('Hakgyoansim Bareondotum Bold'),
+             local('학교안심 바른돋움 B'),
+             url('/fonts/HakgyoansimBareondotum-Bold.woff2') format('woff2'),
+             url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimBareondotum/HakgyoansimBareondotum-Bold.woff2') format('woff2');
+        font-weight: 700 900;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Hakgyoansim Badasseugi';
+        src: local('Hakgyoansim Badasseugi Light'),
+             local('Hakgyoansim Badasseugi TTF L'),
+             local('Hakgyoansim Badasseugi'),
+             local('HakgyoansimBadasseugiTTF-L'),
+             local('학교안심 받아쓰기 L'),
+             local('학교안심 받아쓰기 TTF L'),
+             local('학교안심 받아쓰기'),
+             url('/fonts/HakgyoansimBadasseugi-L.woff2') format('woff2'),
+             url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2'),
+             url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2');
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: '학교안심 받아쓰기';
+        src: local('Hakgyoansim Badasseugi Light'),
+             local('Hakgyoansim Badasseugi TTF L'),
+             local('Hakgyoansim Badasseugi'),
+             local('HakgyoansimBadasseugiTTF-L'),
+             local('학교안심 받아쓰기 L'),
+             local('학교안심 받아쓰기 TTF L'),
+             local('학교안심 받아쓰기'),
+             url('/fonts/HakgyoansimBadasseugi-L.woff2') format('woff2'),
+             url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2'),
+             url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2');
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: '학교안심받아쓰기';
+        src: local('Hakgyoansim Badasseugi Light'),
+             local('Hakgyoansim Badasseugi TTF L'),
+             local('Hakgyoansim Badasseugi'),
+             local('HakgyoansimBadasseugiTTF-L'),
+             local('학교안심 받아쓰기 L'),
+             local('학교안심 받아쓰기 TTF L'),
+             local('학교안심 받아쓰기'),
+             url('/fonts/HakgyoansimBadasseugi-L.woff2') format('woff2'),
+             url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2'),
+             url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2');
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'HakgyoansimBadasseugiTTF-L';
+        src: local('Hakgyoansim Badasseugi Light'),
+             local('Hakgyoansim Badasseugi TTF L'),
+             local('Hakgyoansim Badasseugi'),
+             local('HakgyoansimBadasseugiTTF-L'),
+             local('학교안심 받아쓰기 L'),
+             local('학교안심 받아쓰기 TTF L'),
+             local('학교안심 받아쓰기'),
+             url('/fonts/HakgyoansimBadasseugi-L.woff2') format('woff2'),
+             url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2'),
+             url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2');
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Hakgyoansim Badasseugi TTF L';
+        src: local('Hakgyoansim Badasseugi Light'),
+             local('Hakgyoansim Badasseugi TTF L'),
+             local('Hakgyoansim Badasseugi'),
+             local('HakgyoansimBadasseugiTTF-L'),
+             local('학교안심 받아쓰기 L'),
+             local('학교안심 받아쓰기 TTF L'),
+             local('학교안심 받아쓰기'),
+             url('/fonts/HakgyoansimBadasseugi-L.woff2') format('woff2'),
+             url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2'),
+             url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2');
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: '학교알림받아쓰기';
+        src: local('Hakgyoansim Badasseugi Light'),
+             local('Hakgyoansim Badasseugi TTF L'),
+             local('Hakgyoansim Badasseugi'),
+             local('HakgyoansimBadasseugiTTF-L'),
+             local('학교안심 받아쓰기 L'),
+             local('학교안심 받아쓰기 TTF L'),
+             local('학교안심 받아쓰기'),
+             url('/fonts/HakgyoansimBadasseugi-L.woff2') format('woff2'),
+             url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2'),
+             url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2');
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'NanumBarunGothic';
+        src: local('NanumBarunGothic'),
+             local('나눔바른고딕'),
+             url('/fonts/NanumBarunGothic.woff2') format('woff2'),
+             url('https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/NanumBarunGothicSubset.woff2') format('woff2');
+        font-weight: 100 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'NanumBarunGothic';
+        src: local('NanumBarunGothic Bold'),
+             local('나눔바른고딕 Bold'),
+             url('/fonts/NanumBarunGothicBold.woff2') format('woff2'),
+             url('https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/NanumBarunGothicBoldSubset.woff2') format('woff2');
+        font-weight: 700 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Noto Sans Bengali';
+        src: url('/fonts/NotoSansBengali-Medium.woff2') format('woff2'),
+             url('https://cdn.jsdelivr.net/fontsource/fonts/noto-sans-bengali@latest/bengali-500-normal.woff2') format('woff2');
+        font-weight: 100 600;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0-1CF7, U+200C-200D, U+20B9, U+25CC;
+      }
+      @font-face {
+        font-family: 'Noto Sans Bengali';
+        src: url('/fonts/NotoSansBengali-Bold.woff2') format('woff2'),
+             url('https://cdn.jsdelivr.net/fontsource/fonts/noto-sans-bengali@latest/bengali-700-normal.woff2') format('woff2');
+        font-weight: 700 900;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0-1CF7, U+200C-200D, U+20B9, U+25CC;
+      }
+      @font-face {
+        font-family: 'KyoboHand';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/KyoboHand.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+  </head>
+  <body class="bg-[#FFF5F8] text-slate-800 antialiased select-none font-sans">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

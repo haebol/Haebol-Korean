@@ -1,0 +1,6 @@
+{
+  "name": "해볼 한국어 (Haebol-Korean)",
+  "description": "다문화 및 이주배경 초등학생을 위한 인터랙티브 한국어 학습 및 실시간 비상 소통 웹 앱",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

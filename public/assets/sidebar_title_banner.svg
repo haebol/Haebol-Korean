@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 94" width="100%" height="auto">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF1F5"/>
+      <stop offset="50%" stop-color="#FFE4ED"/>
+      <stop offset="100%" stop-color="#FFD7E4"/>
+    </linearGradient>
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF2E93"/>
+      <stop offset="100%" stop-color="#E11D48"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="125%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#BE185D" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Card Background -->
+  <rect x="2" y="2" width="316" height="90" rx="14" fill="url(#bgGrad)" stroke="#F472B6" stroke-width="1.5" filter="url(#cardShadow)"/>
+
+  <!-- Left Icon Illustration Container -->
+  <g transform="translate(14, 16)">
+    <!-- Rounded Icon Box -->
+    <rect width="48" height="60" rx="12" fill="#FFFFFF" stroke="#FBCFE8" stroke-width="1.5"/>
+    <!-- Pencil & Book Graphic -->
+    <path d="M14 42 C14 36 34 36 34 42" stroke="#E11D48" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <rect x="18" y="14" width="12" height="20" rx="2" fill="#FFE4E6" stroke="#E11D48" stroke-width="1.5"/>
+    <polygon points="18,14 24,8 30,14" fill="#FF2E93"/>
+    <!-- Cute sparkle -->
+    <path d="M38 12 L39.5 15.5 L43 17 L39.5 18.5 L38 22 L36.5 18.5 L33 17 L36.5 15.5 Z" fill="#F59E0B"/>
+    <circle cx="24" cy="48" r="2.5" fill="#E11D48"/>
+  </g>
+
+  <!-- Right Text Area -->
+  <!-- Top Category Tag -->
+  <g transform="translate(72, 14)">
+    <rect width="102" height="18" rx="9" fill="url(#badgeGrad)"/>
+    <text x="51" y="12.5" text-anchor="middle" fill="#FFFFFF" font-family="'Hakgyoansim Bareondotum', 'Apple SD Gothic Neo', 'NanumBarunGothic', sans-serif" font-size="9.5" font-weight="800" letter-spacing="-0.3">
+      🏫 25개 단원 필수
+    </text>
+  </g>
+
+  <!-- Main Korean Title: 교실 생존 필수 한국어 -->
+  <text x="72" y="52" fill="#881337" font-family="'Hakgyoansim Bareondotum', 'Apple SD Gothic Neo', 'NanumBarunGothic', sans-serif" font-size="17" font-weight="900" letter-spacing="-0.6">
+    교실 생존 필수 한국어
+  </text>
+
+  <!-- English Subtitle: Essential Korean for Your Classroom -->
+  <text x="72" y="71" fill="#BE185D" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" letter-spacing="-0.2">
+    Essential Korean for Your Classroom
+  </text>
+
+  <!-- Decorative Sparkles -->
+  <path d="M296 22 L297.5 25.5 L301 27 L297.5 28.5 L296 32 L294.5 28.5 L291 27 L294.5 25.5 Z" fill="#F472B6" opacity="0.8"/>
+  <circle cx="282" cy="66" r="2" fill="#FB7185" opacity="0.6"/>
+  <circle cx="298" cy="56" r="3" fill="#F43F5E" opacity="0.4"/>
+</svg>
