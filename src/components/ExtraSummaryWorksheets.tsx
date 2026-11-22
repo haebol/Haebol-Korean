@@ -89,7 +89,7 @@ export const DEFAULT_VERB_SUMMARY_COPY: VerbSummaryCopy = {
   ],
   irregularRefNote:
     "※ 참고: 학교 문법의 '우(푸다→퍼)·여(하다→하여)·러(이르다→이르러)·거라/너라' 불규칙은 외국인 초·중급 교육에서는 개별 단어 암기나 기본 문형(-해요)으로 처리하며, 위 7대 불규칙을 표준 체계로 학습합니다.",
-  footerLeft: '해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구',
+  footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
   footerRight: '카드를 누르면 대표 활용형 소리가 재생됩니다 · ★ 불규칙 주의 단원',
 };
 
@@ -462,7 +462,7 @@ export const DEFAULT_PARTICLE_SUMMARY_COPY: ParticleSummaryCopy = {
       audio: '하나밖에 없어요, 할머니께서 주셨어요',
     },
   ],
-  footerLeft: '해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구',
+  footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
   footerRight: '카드를 누르면 조사 결합 예시 소리가 재생됩니다 · ★ 변신·예외 주의 단원',
 };
 
@@ -852,7 +852,7 @@ const CLASSROOM_SUMMARY_UI_COPY: Record<ClassroomUiLang, ClassroomSummaryUiCopy>
     wordsCountText: '50단어',
     gradeLabel: '학년',
     nameLabel: '이름',
-    footerLeft: '해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: (p, t) => `단어를 누르면 한국어 발음이 재생됩니다 · 30단원 300어휘 총정리 (${p}/${t}쪽)`,
   },
   en: {
@@ -861,7 +861,7 @@ const CLASSROOM_SUMMARY_UI_COPY: Record<ClassroomUiLang, ClassroomSummaryUiCopy>
     wordsCountText: '50 Words',
     gradeLabel: 'Grade',
     nameLabel: 'Name',
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Korean Learning Charts for Multicultural & Elementary Learners',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: (p, t) => `Tap any word for Korean audio · 30 Units 300 Words (${p}/${t})`,
   },
   vi: {
@@ -870,7 +870,7 @@ const CLASSROOM_SUMMARY_UI_COPY: Record<ClassroomUiLang, ClassroomSummaryUiCopy>
     wordsCountText: '50 từ',
     gradeLabel: 'Lớp',
     nameLabel: 'Tên',
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Học liệu tiếng Hàn cho học sinh đa văn hóa & tiểu học',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: (p, t) => `Chạm từ để nghe phát âm · Tổng hợp 300 từ vựng (${p}/${t})`,
   },
   bn: {
@@ -879,7 +879,7 @@ const CLASSROOM_SUMMARY_UI_COPY: Record<ClassroomUiLang, ClassroomSummaryUiCopy>
     wordsCountText: '৫০ শব্দ',
     gradeLabel: 'শ্রেণি',
     nameLabel: 'নাম',
-    footerLeft: 'হেবল কোরিয়ান (hbkorean.ai.studio) | বহুসাংস্কৃতিক ও প্রাথমিক শিক্ষার্থীর জন্য শিক্ষণীয় চার্ট',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: (p, t) => `উচ্চারণ শুনতে শব্দে ট্যাপ করুন · ৩০০ শব্দ চার্ট (${p}/${t})`,
   },
   zh: {
@@ -888,7 +888,7 @@ const CLASSROOM_SUMMARY_UI_COPY: Record<ClassroomUiLang, ClassroomSummaryUiCopy>
     wordsCountText: '50词',
     gradeLabel: '年级',
     nameLabel: '姓名',
-    footerLeft: 'Haebol 韩语 (hbkorean.ai.studio) | 多元文化与小学韩语定制学习教具',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: (p, t) => `点击单词可听韩语发音 · 30单元300词总整理 (${p}/${t}页)`,
   },
   ru: {
@@ -897,7 +897,7 @@ const CLASSROOM_SUMMARY_UI_COPY: Record<ClassroomUiLang, ClassroomSummaryUiCopy>
     wordsCountText: '50 слов',
     gradeLabel: 'Класс',
     nameLabel: 'Имя',
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Учебные материалы по корейскому языку',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: (p, t) => `Нажмите на слово для звука · 30 тем 300 слов (${p}/${t})`,
   },
   ja: {
@@ -906,7 +906,7 @@ const CLASSROOM_SUMMARY_UI_COPY: Record<ClassroomUiLang, ClassroomSummaryUiCopy>
     wordsCountText: '50語',
     gradeLabel: '学年',
     nameLabel: '名前',
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | 多文化・初等韓国語カスタム教材',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: (p, t) => `単語をタップして発音再生 · 全30課300語まとめ (${p}/${t})`,
   },
   mn: {
@@ -915,7 +915,7 @@ const CLASSROOM_SUMMARY_UI_COPY: Record<ClassroomUiLang, ClassroomSummaryUiCopy>
     wordsCountText: '50 үг',
     gradeLabel: 'Анги',
     nameLabel: 'Нэр',
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Олон соёлт ба бага ангийн сургалтын хэрэглэгдэхүүн',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: (p, t) => `Үг дээр дарж сонсоно уу · 30 хичээл 300 үг (${p}/${t})`,
   },
 };

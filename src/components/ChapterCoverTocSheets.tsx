@@ -560,6 +560,10 @@ export const ChapterCoverSheet: React.FC<ChapterSheetProps> = ({
             </tr>
           </tbody>
         </table>
+
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        </div>
       </div>
     </div>
   );
@@ -880,6 +884,10 @@ export const ChapterTocSheet: React.FC<ChapterSheetProps> = ({
               다 끝낸 날: ___월 ___일 · 참 잘했어요 ○
             </span>
           </div>
+        </div>
+
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
         </div>
       </div>
     </div>

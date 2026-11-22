@@ -63,7 +63,7 @@ export const CONSONANTS_SUMMARY_COPIES: Record<AdminSummaryLang, ConsonantsSumma
       'ㄱ[g/k] · ㄷ[d/t] · ㅂ[b/p] · ㄹ[r/l]: Slightly shift sound between initial and final positions.',
       'ㄸ · ㅃ · ㅉ: Rarely used as final consonants — just master initial sounds [tt], [pp], [jj].',
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Korean Learning Charts for Multicultural & Elementary Learners',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Card format: No. · Consonant · Korean Name · Pronunciation [Initial / Final]',
   },
   vi: {
@@ -88,7 +88,7 @@ export const CONSONANTS_SUMMARY_COPIES: Record<AdminSummaryLang, ConsonantsSumma
       'ㄱ[g/k] · ㄷ[d/t] · ㅂ[b/p] · ㄹ[r/l]: Phát âm hơi khác nhau giữa vị trí đầu và cuối.',
       'ㄸ · ㅃ · ㅉ: Hầu như không làm phụ âm cuối — chỉ cần nhớ âm đầu [tt], [pp], [jj].',
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Học liệu tiếng Hàn cho học sinh đa văn hóa & tiểu học',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Cấu trúc thẻ: Số · Chữ · Tên tiếng Hàn · Phiên âm [Đầu / Cuối]',
   },
   bn: {
@@ -113,7 +113,7 @@ export const CONSONANTS_SUMMARY_COPIES: Record<AdminSummaryLang, ConsonantsSumma
       'ㄱ[g/k] · ㄷ[d/t] · ㅂ[b/p] · ㄹ[r/l]: শুরু ও শেষ অবস্থানে উচ্চারণ কিছুটা বদলায়।',
       'ㄸ · ㅃ · ㅉ: বাচ্চিম হিসেবে প্রায় ব্যবহৃত হয় না — শুধু শুরুর ধ্বনি [tt], [pp], [jj] শিখুন।',
     ],
-    footerLeft: 'হেবল কোরিয়ান (hbkorean.ai.studio) | বহুসাংস্কৃতিক ও প্রাথমিক শিক্ষার্থীর জন্য কোরিয়ান শিক্ষণীয় চার্ট',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'কার্ড তথ্য: ক্রম · বর্ণ · কোরিয়ান নাম · উচ্চারণ [শুরু / শেষ]',
   },
   zh: {
@@ -138,7 +138,7 @@ export const CONSONANTS_SUMMARY_COPIES: Record<AdminSummaryLang, ConsonantsSumma
       'ㄱ[g/k] · ㄷ[d/t] · ㅂ[b/p] · ㄹ[r/l]：作首音和收音时音值略有不同。',
       'ㄸ · ㅃ · ㅉ：极少作收音使用，只需重点掌握首音 [tt]、[pp]、[jj] 即可。',
     ],
-    footerLeft: 'Haebol 韩语 (hbkorean.ai.studio) | 多元文化与小学韩语定制学习教具',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: '卡片标注：序号 · 辅音字母 · 韩语名称 · 罗马音 [前 / 后]',
   },
   ru: {
@@ -163,7 +163,7 @@ export const CONSONANTS_SUMMARY_COPIES: Record<AdminSummaryLang, ConsonantsSumma
       'ㄱ[g/k] · ㄷ[d/t] · ㅂ[b/p] · ㄹ[r/l]: Звучание слегка меняется в начале и конце.',
       'ㄸ · ㅃ · ㅉ: Почти не бывают в патчиме — достаточно знать начальные [tt], [pp], [jj].',
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Учебные материалы по корейскому языку',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'На карточке: № · Буква · Название · Транскрипция [Начало / Конец]',
   },
   ja: {
@@ -188,7 +188,7 @@ export const CONSONANTS_SUMMARY_COPIES: Record<AdminSummaryLang, ConsonantsSumma
       'ㄱ[g/k] · ㄷ[d/t] · ㅂ[b/p] · ㄹ[r/l]：位置によって少しずつ発音が変化します。',
       'ㄸ · ㅃ · ㅉ：パッチムとしてはほぼ使われないため [tt], [pp], [jj] だけ覚えればOKです。',
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | 多文化・初等韓国語カスタム教材',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'カード表記：番号 · 子音字 · 名前 · 発音ローマ字 [前 / 後]',
   },
   mn: {
@@ -213,7 +213,7 @@ export const CONSONANTS_SUMMARY_COPIES: Record<AdminSummaryLang, ConsonantsSumma
       'ㄱ[g/k] · ㄷ[d/t] · ㅂ[b/p] · ㄹ[r/l]: Эхэн болон төгсгөлд дуудлага бага зэрэг өөрчлөгдөнө.',
       'ㄸ · ㅃ · ㅉ: Дэвсгэр үсгээр бараг ордоггүй тул зөвхөн эхэн үеийн [tt], [pp], [jj]-г сураарай.',
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Олон соёлт ба бага ангийн сургалтын хэрэглэгдэхүүн',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Картын мэдээлэл: Дугаар · Үсэг · Солонгос нэр · Латин дуудлага [Эхэн / Төгсгөл]',
   },
 };
@@ -248,7 +248,7 @@ export const VOWELS_SUMMARY_COPIES: Record<AdminSummaryLang, VowelsSummaryCopy> 
       'ㅡ [eu]: Do not push lips forward — pull corners slightly sideways.',
       'ㅢ [ui]: Varies by position: word-initial (의사 [의]), particle (나의 [에]), after consonant (희망 [히]).',
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Korean Learning Charts for Multicultural & Elementary Learners',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Card format: No. · Vowel · Korean Name · NIKL Romanization',
   },
   vi: {
@@ -276,7 +276,7 @@ export const VOWELS_SUMMARY_COPIES: Record<AdminSummaryLang, VowelsSummaryCopy> 
       'ㅡ [eu]: Không chu môi ra trước — kéo nhẹ khóe miệng sang ngang.',
       'ㅢ [ui]: Đọc khác nhau theo vị trí: đầu từ (의사 [의]), trợ từ (나의 [에]), sau phụ âm (희망 [히]).',
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Học liệu tiếng Hàn cho học sinh đa văn hóa & tiểu học',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Cấu trúc thẻ: Số · Nguyên âm · Tên tiếng Hàn · Phiên âm chuẩn',
   },
   bn: {
@@ -304,7 +304,7 @@ export const VOWELS_SUMMARY_COPIES: Record<AdminSummaryLang, VowelsSummaryCopy> 
       'ㅡ [eu]: ঠোঁট সামনে না বাড়িয়ে দুই পাশে সামান্য টেনে উচ্চারণ করুন।',
       'ㅢ [ui]: শুরুতে (의사 [의]), বিভক্তি হিসেবে (나의 [에]), ব্যঞ্জনের পরে (희망 [히]) ধ্বনি বদলায়।',
     ],
-    footerLeft: 'হেবল কোরিয়ান (hbkorean.ai.studio) | বহুসাংস্কৃতিক ও প্রাথমিক শিক্ষার্থীর জন্য কোরিয়ান শিক্ষণীয় চার্ট',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'কার্ড তথ্য: ক্রম · স্বরবর্ণ · কোরিয়ান নাম · রোমানাইজেশন',
   },
   zh: {
@@ -332,7 +332,7 @@ export const VOWELS_SUMMARY_COPIES: Record<AdminSummaryLang, VowelsSummaryCopy> 
       'ㅡ [eu]：嘴唇不要向前突出，嘴角向两侧微微拉开后发音。',
       'ㅢ [ui]：位置不同读音不同——词首(의사 [의])、属格助词(나의 [에])、辅音后(희망 [히])。',
     ],
-    footerLeft: 'Haebol 韩语 (hbkorean.ai.studio) | 多元文化与小学韩语定制学习教具',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: '卡片标注：序号 · 元音字母 · 韩语字音 · 国立国语院罗马音',
   },
   ru: {
@@ -360,7 +360,7 @@ export const VOWELS_SUMMARY_COPIES: Record<AdminSummaryLang, VowelsSummaryCopy> 
       'ㅡ [eu]: Не вытягивайте губы вперёд — слегка растяните уголки в стороны.',
       'ㅢ [ui]: Меняется по позиции: в начале (의사 [의]), частица (나의 [에]), после согл. (희망 [히]).',
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Учебные материалы по корейскому языку',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'На карточке: № · Гласная · Название · Романизация (NIKL)',
   },
   ja: {
@@ -388,7 +388,7 @@ export const VOWELS_SUMMARY_COPIES: Record<AdminSummaryLang, VowelsSummaryCopy> 
       'ㅡ [eu]：唇を前に突き出さず、横に軽く引いたまま発音します。',
       'ㅢ [ui]：語頭(의사 [의])、助詞(나의 [에])、子音の後(희망 [히])で音が変わります。',
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | 多文化・初等韓国語カスタム教材',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'カード表記：番号 · 母音字 · 音読 · 発音ローマ字',
   },
   mn: {
@@ -416,7 +416,7 @@ export const VOWELS_SUMMARY_COPIES: Record<AdminSummaryLang, VowelsSummaryCopy> 
       'ㅡ [eu]: Уруулаа урагш цорвойлгохгүй, хажуу тийш бага зэрэг татаж хэлнэ.',
       'ㅢ [ui]: Эхэнд (의사 [의]), нөхцөлд (나의 [에]), гийгүүлэгчийн ард (희망 [히]) өөрчлөгдөнө.',
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Олон соёлт ба бага ангийн сургалтын хэрэглэгдэхүүн',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Картын мэдээлэл: Дугаар · Эгшиг · Нэршил · Латин дуудлага',
   },
 };
@@ -458,7 +458,7 @@ export const BATCHIM_SUMMARY_COPIES: Record<AdminSummaryLang, BatchimSummaryCopy
       '• Initial ㅇ is silent [-], while final batchim ㅇ makes a nasal [ng] sound.',
       '• When a vowel follows a batchim, the final sound links into the next syllable (음악[으막], 꽃이[꼬치]).',
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Korean Learning Charts for Multicultural & Elementary Learners',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Card format: No. · Rep. Sound · Romanization · Family Consonants · 11 Double Batchims',
   },
   vi: {
@@ -493,7 +493,7 @@ export const BATCHIM_SUMMARY_COPIES: Record<AdminSummaryLang, BatchimSummaryCopy
       '• ㅇ đứng đầu thì câm [-], làm batchim thì đọc âm mũi [ng].',
       '• Sau batchim là nguyên âm thì phụ âm cuối nối sang âm tiết sau (음악[으막], 꽃이[꼬치]).',
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Học liệu tiếng Hàn cho học sinh đa văn hóa & tiểu học',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Thẻ: Số · Âm đại diện · Phiên âm · Nhóm phụ âm · 11 Batchim kép',
   },
   bn: {
@@ -528,7 +528,7 @@ export const BATCHIM_SUMMARY_COPIES: Record<AdminSummaryLang, BatchimSummaryCopy
       '• শুরুর ㅇ ধ্বনিহীন [-], কিন্তু বাচ্চিম ㅇ নাসিক্য [ng] ধ্বনি দেয়।',
       '• বাচ্চিমের পর স্বরবর্ণ থাকলে তা পরের অক্ষরের শুরুতে যুক্ত হয় (음악[으막], 꽃이[꼬치])।',
     ],
-    footerLeft: 'হেবল কোরিয়ান (hbkorean.ai.studio) | বহুসাংস্কৃতিক ও প্রাথমিক শিক্ষার্থীর জন্য কোরিয়ান শিক্ষণীয় চার্ট',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'কার্ড তথ্য: ক্রম · মূল ধ্বনি · রোমানাইজেশন · বর্ণ পরিবার · ১১ যুগ্ম বাচ্চিম',
   },
   zh: {
@@ -563,7 +563,7 @@ export const BATCHIM_SUMMARY_COPIES: Record<AdminSummaryLang, BatchimSummaryCopy
       '• 首音 ㅇ 不发音 [-]，收音 ㅇ 发后鼻音 [ng]，要注意区分。',
       '• 收音后面接元音时，收音直接连读到后一音节开头 (음악[으막], 꽃이[꼬치])。',
     ],
-    footerLeft: 'Haebol 韩语 (hbkorean.ai.studio) | 多元文化与小学韩语定制学习教具',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: '卡片标注：序号 · 代表音 · 罗马音 · 收音家族 · 11个双收音',
   },
   ru: {
@@ -598,7 +598,7 @@ export const BATCHIM_SUMMARY_COPIES: Record<AdminSummaryLang, BatchimSummaryCopy
       '• В начале слога ㅇ немой [-], а в патчиме читается носовым [ng].',
       '• Если после патчима идёт гласная, звук переносится в следующий слог (음악[으막], 꽃이[꼬치]).',
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Учебные материалы по корейскому языку',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'На карточке: № · Осн. звук · Романизация · Группа · 11 двойных патчимов',
   },
   ja: {
@@ -633,7 +633,7 @@ export const BATCHIM_SUMMARY_COPIES: Record<AdminSummaryLang, BatchimSummaryCopy
       '• 初声の ㅇ は無音[-]、パッチムの ㅇ は鼻音 [ng] として区別します。',
       '• パッチムの後ろに母音が来ると、次の音節へ連音化します (음악[으막], 꽃이[꼬치])。',
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | 多文化・初等韓国語カスタム教材',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'カード表記：番号 · 代表音 · ローマ字 · 仲間 · 二重パッチム11字',
   },
   mn: {
@@ -668,7 +668,7 @@ export const BATCHIM_SUMMARY_COPIES: Record<AdminSummaryLang, BatchimSummaryCopy
       '• Эхний ㅇ дуугүй [-], харин дэвсгэр ㅇ нь хамрын [ng] дуудлагатай.',
       '• Дэвсгэрийн ард эгшиг орвол дараагийн үе рүү шилжин уншигдана (음악[으막], 꽃이[꼬치]).',
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Олон соёлт ба бага ангийн сургалтын хэрэглэгдэхүүн',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Карт: Дугаар · Төлөөлөх дуу · Латин · Бүлэг · Давхар 11 дэвсгэр',
   },
 };
@@ -752,7 +752,7 @@ export const VERB_SUMMARY_COPIES: Record<AdminSummaryLang, VerbSummaryCopy> = {
     ],
     irregularRefNote:
       "※ Note: Native school irregulars like '우(푸다→퍼)·여(하다→하여)·러(이르다→이르러)·거라/너라' are taught as individual vocabulary or '-해요' patterns at beginner/intermediate KFL levels; the 7 types above form the standard curriculum.",
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Korean Learning Charts for Multicultural & Elementary Learners',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Tap any card to hear example conjugation · ★ Watch out for irregulars',
   },
   vi: {
@@ -829,7 +829,7 @@ export const VERB_SUMMARY_COPIES: Record<AdminSummaryLang, VerbSummaryCopy> = {
     ],
     irregularRefNote:
       "※ Tham khảo: Các dạng '우(푸다→퍼)·여(하다→하여)·러(이르다→이르러)·거라/너라' ở sơ-trung cấp được học như từ vựng riêng hoặc mẫu '-해요'; 7 BQT trên là hệ thống chuẩn.",
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Học liệu tiếng Hàn cho học sinh đa văn hóa & tiểu học',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Chạm thẻ để nghe ví dụ chia từ · ★ Lưu ý bất quy tắc',
   },
   bn: {
@@ -906,7 +906,7 @@ export const VERB_SUMMARY_COPIES: Record<AdminSummaryLang, VerbSummaryCopy> = {
     ],
     irregularRefNote:
       "※ দ্রষ্টব্য: স্কুল ব্যাকরণের '우(푸다→퍼)·여(하다→하여)·러(이르다→이르러)·거라/너라' রূপগুলো প্রাথমিক স্তরে আলাদা শব্দ বা '-해요' আকারে শেখা হয়; উপরের ৭টিই মানক পদ্ধতি।",
-    footerLeft: 'হেবল কোরিয়ান (hbkorean.ai.studio) | বহুসাংস্কৃতিক ও প্রাথমিক শিক্ষার্থীর জন্য কোরিয়ান শিক্ষণীয় চার্ট',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'উদাহরণ শুনতে কার্ডে ট্যাপ করুন · ★ অনিয়মিত ক্রিয়া সতর্কতা',
   },
   zh: {
@@ -983,7 +983,7 @@ export const VERB_SUMMARY_COPIES: Record<AdminSummaryLang, VerbSummaryCopy> = {
     ],
     irregularRefNote:
       "※ 参考：韩国本土学校语法中的 '우(푸다→퍼)·여(하다→하여)·러(이르다→이르러)·거라/너라' 在对外韩语初中级阶段多作为个别词汇或 '-해요' 句型记忆，以上7类为标准教学体系。",
-    footerLeft: 'Haebol 韩语 (hbkorean.ai.studio) | 多元文化与小学韩语定制学习教具',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: '点击卡片可听活用例句 · ★ 注意不规则变化单元',
   },
   ru: {
@@ -1060,7 +1060,7 @@ export const VERB_SUMMARY_COPIES: Record<AdminSummaryLang, VerbSummaryCopy> = {
     ],
     irregularRefNote:
       "※ Примечание: типы '우(푸다→퍼)·여(하다→하여)·러(이르다→이르러)·거라/너라' на базовом уровне запоминаются как отдельные слова или с '-해요'; стандартом служат 7 типов выше.",
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Учебные материалы по корейскому языку',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Нажмите карточку для примера · ★ Внимание: исключения',
   },
   ja: {
@@ -1137,7 +1137,7 @@ export const VERB_SUMMARY_COPIES: Record<AdminSummaryLang, VerbSummaryCopy> = {
     ],
     irregularRefNote:
       "※ 参考：韓国学校文法の '우(푸다→퍼)·여(하다→하여)·러(이르다→이르러)·거라/너라' 不規則は初・中級教育では個別単語や '-해요' 形で扱い、上記7大不規則を標準体系とします。",
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | 多文化・初等韓国語カスタム教材',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'カードをタップして音声再生 · ★ 不規則活用に注意',
   },
   mn: {
@@ -1214,7 +1214,7 @@ export const VERB_SUMMARY_COPIES: Record<AdminSummaryLang, VerbSummaryCopy> = {
     ],
     irregularRefNote:
       "※ Тэмдэглэл: '우(푸다→퍼)·여(하다→하여)·러(이르다→이르러)·거라/너라' зэргийг анхан/дунд шатанд тусдаа үг эсвэл '-해요'-р сурч, дээрх 7 хэлбэрийг үндсэн тогтолцоо болгоно.",
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Олон соёлт ба бага ангийн сургалтын хэрэглэгдэхүүн',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Карт дээр дарж дуудлага сонсоно уу · ★ Дүрэм бус анхаар',
   },
 };
@@ -1283,7 +1283,7 @@ export const PARTICLE_SUMMARY_COPIES: Record<AdminSummaryLang, ParticleSummaryCo
         audio: '하나밖에 없어요, 할머니께서 주셨어요',
       },
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Korean Learning Charts for Multicultural & Elementary Learners',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Tap any card to hear particle examples · ★ Watch out for shifts & exceptions',
   },
   vi: {
@@ -1345,7 +1345,7 @@ export const PARTICLE_SUMMARY_COPIES: Record<AdminSummaryLang, ParticleSummaryCo
         audio: '하나밖에 없어요, 할머니께서 주셨어요',
       },
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Học liệu tiếng Hàn cho học sinh đa văn hóa & tiểu học',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Chạm thẻ để nghe ví dụ · ★ Lưu ý biến đổi & ngoại lệ',
   },
   bn: {
@@ -1407,7 +1407,7 @@ export const PARTICLE_SUMMARY_COPIES: Record<AdminSummaryLang, ParticleSummaryCo
         audio: '하나밖에 없어요, 할머니께서 주셨어요',
       },
     ],
-    footerLeft: 'হেবল কোরিয়ান (hbkorean.ai.studio) | বহুসাংস্কৃতিক ও প্রাথমিক শিক্ষার্থীর জন্য কোরিয়ান শিক্ষণীয় চার্ট',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'উদাহরণ শুনতে কার্ডে ট্যাপ করুন · ★ রূপান্তর ও ব্যতিক্রম সতর্কতা',
   },
   zh: {
@@ -1469,7 +1469,7 @@ export const PARTICLE_SUMMARY_COPIES: Record<AdminSummaryLang, ParticleSummaryCo
         audio: '하나밖에 없어요, 할머니께서 주셨어요',
       },
     ],
-    footerLeft: 'Haebol 韩语 (hbkorean.ai.studio) | 多元文化与小学韩语定制学习教具',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: '点击卡片可听助词结合例句 · ★ 注意变形与例外单元',
   },
   ru: {
@@ -1531,7 +1531,7 @@ export const PARTICLE_SUMMARY_COPIES: Record<AdminSummaryLang, ParticleSummaryCo
         audio: '하나밖에 없어요, 할머니께서 주셨어요',
       },
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Учебные материалы по корейскому языку',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Нажмите карточку для примера · ★ Внимание: изменения и исключения',
   },
   ja: {
@@ -1593,7 +1593,7 @@ export const PARTICLE_SUMMARY_COPIES: Record<AdminSummaryLang, ParticleSummaryCo
         audio: '하나밖에 없어요, 할머니께서 주셨어요',
       },
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | 多文化・初等韓国語カスタム教材',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'カードをタップして音声再生 · ★ 変化・例外に注意',
   },
   mn: {
@@ -1655,7 +1655,7 @@ export const PARTICLE_SUMMARY_COPIES: Record<AdminSummaryLang, ParticleSummaryCo
         audio: '하나밖에 없어요, 할머니께서 주셨어요',
       },
     ],
-    footerLeft: 'Haebol Korean (hbkorean.ai.studio) | Олон соёлт ба бага ангийн сургалтын хэрэглэгдэхүүн',
+    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: 'Карт дээр дарж жишээ сонсоно уу · ★ Хувирал ба онцгой анхаар',
   },
 };

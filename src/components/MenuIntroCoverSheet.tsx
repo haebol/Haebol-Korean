@@ -832,7 +832,7 @@ export const MenuIntroCoverSheet: React.FC<MenuIntroCoverSheetProps> = ({
           color: palette.mutedHex,
         }}
       >
-        <span>해볼 한국어 (hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구</span>
+        <span>해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
         <span>플래시카드 · A4 학습지 인쇄 · 인터랙티브 게임</span>
       </div>
     </div>

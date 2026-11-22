@@ -247,6 +247,9 @@ const ClassroomBingoSheet: React.FC<{
           <span>·</span>
           <span className="text-rose-700">② 가로·세로·대각선 2줄 먼저 완성하면 빙고 만세!</span>
         </div>
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        </div>
       </div>
     </div>
   );
@@ -480,6 +483,9 @@ const ClassroomBoardGameSheet: React.FC<{
           <span>🎲 주사위나 지우개로 톡톡! 도착한 칸 낱말을 큰 소리로 읽기!</span>
           <span className="text-rose-700">★ 끝까지 먼저 탈출하면 승리!</span>
         </div>
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        </div>
       </div>
     </div>
   );
@@ -697,6 +703,9 @@ const ClassroomUrgentMazeSheet: React.FC<{
           <span>✏️ ①→②→③→④→⑤ 순서대로 선을 그으며 낱말을 크게 읽어 보세요!</span>
           <span className="text-rose-700">꽝 길에 빠지면 꽈당~!</span>
         </div>
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        </div>
       </div>
     </div>
   );
@@ -879,6 +888,9 @@ const ClassroomHiddenPictureSheet: React.FC<{
             );
           })}
         </div>
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        </div>
       </div>
     </div>
   );
@@ -1038,6 +1050,9 @@ const ClassroomMemoryCardsSheet: React.FC<{
           <span>✂️ 뒤집어서 메모리 게임!</span>
           <span>·</span>
           <span className="text-rose-700">짝꿍을 찾으면 큰 소리로 외치기!</span>
+        </div>
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
         </div>
       </div>
     </div>

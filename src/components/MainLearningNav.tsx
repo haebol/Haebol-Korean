@@ -152,9 +152,9 @@ export const MainLearningNav: React.FC<MainLearningNavProps> = ({
 
   return (
     <div className="lg:hidden sticky top-0 z-30 w-full bg-[#FFF5F8]/95 backdrop-blur-md no-print select-none font-korean-gothic">
-      {/* Row 3 (Tier 1 Top Navigation): 4-Track Underline Text Tabs — Light Pink Surface */}
+      {/* Row 3 (Tier 1 Top Navigation): 4-Track Single-Line Underline Tabs */}
       <nav aria-label="학습 영역 선택" className="border-b border-pink-200/80 bg-[#FFF5F8] relative">
-        <div className="grid grid-cols-4 w-full h-[44px] sm:h-[48px] px-0.5 sm:px-3">
+        <div className="grid grid-cols-4 w-full h-[32px] sm:h-[36px] px-0.5 sm:px-3">
           {trackItems.map(item => {
             const isActive = activeTrack === item.id;
             const hasRightMascot = item.id === 'particle' && Boolean(onOpenStickmanBonus);
@@ -166,24 +166,17 @@ export const MainLearningNav: React.FC<MainLearningNavProps> = ({
                   playCutePop();
                   onSelectTrack(item.id);
                 }}
-                className={`relative py-1 px-0.5 sm:px-2 rounded-none transition-colors cursor-pointer text-center flex flex-col items-center justify-center leading-none min-w-0 overflow-hidden ${
+                className={`relative py-0.5 px-0.5 sm:px-2 rounded-none transition-colors cursor-pointer text-center flex items-center justify-center leading-none min-w-0 overflow-hidden ${
                   hasRightMascot ? 'pr-5 sm:pr-7' : ''
                 } ${isActive ? item.activeClass : item.inactiveClass}`}
-                title={`${item.ko} · ${item.koDesc} (${item.sub})`}
+                title={`${item.ko} · ${item.koDesc}`}
               >
-                <span className="text-[12px] xs:text-[13.5px] sm:text-base md:text-[17px] leading-tight truncate w-full tracking-tight">
+                <span className="text-[12.5px] xs:text-[13.5px] sm:text-[15px] leading-none truncate w-full tracking-tight">
                   {item.ko}
-                </span>
-                <span
-                  className={`text-[8.5px] xs:text-[9.5px] sm:text-[11px] leading-none mt-0.5 truncate w-full tracking-tight ${
-                    isActive ? item.subActiveClass : item.subInactiveClass
-                  }`}
-                >
-                  [{item.sub}]
                 </span>
                 {isActive && (
                   <span
-                    className={`absolute bottom-0 left-1.5 right-1.5 sm:left-4 sm:right-4 h-[3px] ${item.underlineClass}`}
+                    className={`absolute bottom-0 left-1.5 right-1.5 sm:left-4 sm:right-4 h-[2.5px] ${item.underlineClass}`}
                     aria-hidden="true"
                   />
                 )}
@@ -192,7 +185,7 @@ export const MainLearningNav: React.FC<MainLearningNavProps> = ({
           })}
         </div>
 
-        {/* 0.8x Stationary Waving Slingshot-Hero Stickman at the far right of the [조사] button */}
+        {/* Stationary Waving Stickman at the far right of the [조사] button */}
         {onOpenStickmanBonus && (
           <button
             type="button"
@@ -206,7 +199,7 @@ export const MainLearningNav: React.FC<MainLearningNavProps> = ({
           >
             <svg
               viewBox="-26 -60 52 114"
-              className="w-[19px] h-[32px] sm:w-[22px] sm:h-[35px] block"
+              className="w-[16px] h-[27px] sm:w-[19px] sm:h-[31px] block"
               aria-hidden="true"
             >
               {/* Head (Slingshot Hero StickmanPlayer shape) */}
@@ -238,9 +231,9 @@ export const MainLearningNav: React.FC<MainLearningNavProps> = ({
         )}
       </nav>
 
-      {/* Row 4 (Tier 2 Method Switcher): Solid Rectangular Block on Clean Surface */}
+      {/* Row 4 (Tier 2 Method Switcher): Compact Single-Line Block */}
       <nav aria-label="학습 방법 선택" className={`border-b ${mStyles.barBg}`}>
-        <div className="grid grid-cols-3 w-full h-[34px] sm:h-[40px] gap-1 sm:gap-2 px-1.5 sm:px-3 py-1">
+        <div className="grid grid-cols-3 w-full h-[30px] sm:h-[34px] gap-1 sm:gap-2 px-1.5 sm:px-3 py-0.5">
           {methodItems.map(({ id, ko, sub, Icon }) => {
             const isActive = activeMethod === id;
             return (
@@ -251,23 +244,14 @@ export const MainLearningNav: React.FC<MainLearningNavProps> = ({
                   playCutePop();
                   onSelectMethod(id);
                 }}
-                className={`h-full px-1 sm:px-3 rounded-xs transition-colors cursor-pointer text-center flex flex-col sm:flex-row items-center justify-center sm:gap-1.5 leading-none min-w-0 overflow-hidden ${
+                className={`h-full px-1 sm:px-3 rounded-xs transition-colors cursor-pointer text-center flex items-center justify-center gap-1 leading-none min-w-0 overflow-hidden ${
                   isActive ? mStyles.activeBtn : mStyles.inactiveBtn
                 }`}
                 title={`${ko} (${sub})`}
               >
-                <span className="flex items-center justify-center gap-1 min-w-0 sm:shrink-0">
-                  <Icon className={`w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 ${isActive ? mStyles.iconActive : mStyles.iconInactive}`} />
-                  <span className="text-[11px] xs:text-xs sm:text-[13.5px] leading-tight truncate">
-                    {ko}
-                  </span>
-                </span>
-                <span
-                  className={`text-[7.5px] xs:text-[8.5px] sm:text-[10.5px] leading-none mt-0.5 sm:mt-0 truncate w-full sm:w-auto tracking-tight ${
-                    isActive ? mStyles.activeSub : mStyles.inactiveSub
-                  }`}
-                >
-                  [{sub}]
+                <Icon className={`w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 ${isActive ? mStyles.iconActive : mStyles.iconInactive}`} />
+                <span className="text-[11.5px] xs:text-xs sm:text-[13.5px] leading-none truncate">
+                  {ko}
                 </span>
               </button>
             );

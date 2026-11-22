@@ -663,7 +663,7 @@ export const ParticleExamSheet: React.FC<ParticleExamSheetProps> = ({
         {/* 3. BOTTOM FOOTER */}
         <div className="mt-2 pt-1.5 border-t border-slate-300 flex items-center justify-between gap-2 text-[9.5px] sm:text-[10px] text-slate-500 font-korean-gothic font-bold">
           <span className="shrink-0">
-            해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구 · 조사 {lesson.rangeLabel} 종합 ({lesson.lessonNo}/6)
+            해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어 · 조사 {lesson.rangeLabel} 종합 ({lesson.lessonNo}/6)
           </span>
           <span className="text-[10px] text-slate-600 truncate">
             {showAnswerKey

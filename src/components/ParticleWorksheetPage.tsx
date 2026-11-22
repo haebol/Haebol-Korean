@@ -1219,7 +1219,7 @@ export const ParticleWorksheetPage: React.FC<ParticleWorksheetPageProps> = ({
       {/* 4. SHEET FOOTER */}
       <div className="mt-0.5 pt-0.5 border-t border-emerald-200 flex items-center justify-start text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic font-bold">
         <span>
-          해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구
+          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>

@@ -139,10 +139,10 @@ export const PrintableWorksheetPage: React.FC<PrintableWorksheetPageProps> = ({
         ))}
       </div>
 
-      {/* Sheet Footer: 최하단 왼쪽 "해볼 한국어(hbkorean.ai.studio)..." */}
+      {/* Sheet Footer: 최하단 왼쪽 브랜드 표기 */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic">
         <span className="font-medium">
-          해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구
+          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>

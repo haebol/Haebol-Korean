@@ -246,6 +246,9 @@ const ParticleRockLiftSheet: React.FC<{
         <div className="mt-1 flex items-center justify-center text-[13px] font-black text-slate-700 shrink-0">
           🪨 받침 있는 글자는 무거워요! 고른 뒤 “가방은! 친구는!” 크게 읽어 보세요!
         </div>
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        </div>
       </div>
     </div>
   );
@@ -397,6 +400,9 @@ const ParticleSeesawSheet: React.FC<{
 
         <div className="mt-1 flex items-center justify-center text-[13px] font-black text-slate-700 shrink-0">
           ⚖️ 알맞은 조사에 동그라미 ○ 치고 빈칸에 쓱쓱 써 보세요!
+        </div>
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
         </div>
       </div>
     </div>
@@ -618,6 +624,9 @@ const ParticleRocketLaunchSheet: React.FC<{
         <div className="mt-1 flex items-center justify-center text-[13px] font-black text-slate-700 shrink-0">
           🚀 완성한 로켓 문장을 3·2·1 발사! 하며 크게 외쳐 보세요!
         </div>
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        </div>
       </div>
     </div>
   );
@@ -778,6 +787,9 @@ const ParticleUfoCatchSheet: React.FC<{
         <div className="mt-1 flex items-center justify-center text-[13px] font-black text-slate-700 shrink-0">
           🛸 가짜 외계인 글자 5개를 모두 X표로 물리쳐 주세요!
         </div>
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        </div>
       </div>
     </div>
   );
@@ -932,6 +944,9 @@ const ParticleFartBalloonSheet: React.FC<{
 
         <div className="mt-1 flex items-center justify-center text-[13px] font-black text-slate-700 shrink-0">
           💨 방귀 풍선 4개를 모두 터뜨리면 구름성 도착 만세!
+        </div>
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
         </div>
       </div>
     </div>

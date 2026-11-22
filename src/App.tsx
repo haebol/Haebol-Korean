@@ -97,12 +97,76 @@ export default function App() {
     );
   };
 
+  const [showLegacyDomainBanner, setShowLegacyDomainBanner] = useState(false);
+
+  // Redirect legacy hbkorean.ai.studio visitors (including iframe-wrapped views) to haebol.com
+  useEffect(() => {
+    try {
+      const host = window.location.hostname.toLowerCase();
+      const isDirectLegacy = host === 'hbkorean.ai.studio' || host === 'www.hbkorean.ai.studio';
+      let isFramedLegacy = false;
+      if (window.top !== window.self) {
+        try {
+          const refHost = document.referrer ? new URL(document.referrer).hostname.toLowerCase() : '';
+          if (refHost === 'hbkorean.ai.studio' || refHost === 'www.hbkorean.ai.studio') {
+            isFramedLegacy = true;
+          }
+        } catch {
+          // Ignore invalid referrer
+        }
+        const origins = window.location.ancestorOrigins;
+        if (!isFramedLegacy && origins && origins.length > 0) {
+          for (let i = 0; i < origins.length; i += 1) {
+            try {
+              const oHost = new URL(origins[i]).hostname.toLowerCase();
+              if (oHost === 'hbkorean.ai.studio' || oHost === 'www.hbkorean.ai.studio') {
+                isFramedLegacy = true;
+                break;
+              }
+            } catch {
+              // Ignore invalid origin
+            }
+          }
+        }
+      }
+
+      if (isDirectLegacy || isFramedLegacy) {
+        const target = `https://haebol.com${window.location.pathname}${window.location.search}${window.location.hash}`;
+        setShowLegacyDomainBanner(true);
+        try {
+          if (window.top && window.top !== window.self) {
+            window.top.location.replace(target);
+          } else {
+            window.location.replace(target);
+          }
+        } catch {
+          // Cross-origin iframe prevented top navigation; keep fallback banner visible
+        }
+      }
+    } catch {
+      // Ignore navigation errors
+    }
+  }, []);
+
   const headerUi = HEADER_UI[uiLang] || HEADER_UI.ko;
   const selectedVerbUnitIndex = VERB_UNIT_META.findIndex(u => u.id === selectedVerbUnit);
   const selectedParticleUnitIndex = PARTICLE_UNIT_META.findIndex(u => u.id === selectedParticleUnit);
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FFF5F8] text-slate-800 font-sans">
+      {showLegacyDomainBanner && (
+        <div className="no-print bg-rose-600 text-white px-3 py-2 text-center text-xs sm:text-sm font-bold flex flex-wrap items-center justify-center gap-2">
+          <span>해볼 한국어 주소가 새 도메인(haebol.com)으로 이사했습니다.</span>
+          <a
+            href="https://haebol.com"
+            target="_top"
+            rel="noopener noreferrer"
+            className="underline font-black bg-white text-rose-700 px-2.5 py-0.5 rounded-md hover:bg-rose-50 transition-colors"
+          >
+            haebol.com 바로가기 →
+          </a>
+        </div>
+      )}
       {/* 1. Layer 1 Main Header Bar (Hidden when collapsed) */}
       {!isMenuCollapsed && (
         <HeaderAndEmergencyBar
@@ -232,9 +296,11 @@ export default function App() {
         <footer className="mt-2 sm:mt-8 border-t border-pink-200/80 bg-[#FFF5F8] py-2.5 sm:py-4 px-3 sm:px-4 text-center no-print">
           <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-[11px] sm:text-sm text-rose-600">
             <div className="flex items-center gap-2">
-              <span className="font-bold text-rose-950 font-korean-gothic">해볼 한국어</span>
+              <span className="font-bold text-rose-950 font-korean-gothic">
+                다국어로 배우는 쉬운 한국어, 해볼 한국어
+              </span>
               <span>•</span>
-              <span>{headerUi.footerSubtitle} 🥟</span>
+              <span className="font-semibold text-rose-600">haebol.com</span>
             </div>
           </div>
         </footer>

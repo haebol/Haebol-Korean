@@ -920,7 +920,7 @@ export const HangeulExamSheet: React.FC<HangeulExamSheetProps> = ({ lesson }) =>
       {/* Bottom Footer & Teacher Answer Key */}
       <div className="mt-2.5 pt-2 border-t border-slate-200 flex items-center justify-between text-[11px] font-bold text-slate-500">
         <span>
-          해볼 한국어 · 한글 쪽지시험 · {part.fullTitle} 중 {lesson.lessonNo}강
+          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어 · {part.fullTitle} {lesson.lessonNo}강
         </span>
         <span className="text-[10px] font-extrabold text-slate-400">
           {showAnswerKey

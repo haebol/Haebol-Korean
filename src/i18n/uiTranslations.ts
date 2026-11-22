@@ -29,6 +29,7 @@ export const getUiLanguageMeta = (code: UiLanguage): UiLanguageMeta =>
   UI_LANGUAGES.find((l) => l.code === code) || UI_LANGUAGES[0];
 
 export interface HeaderUiStrings {
+  brandTitle: string;
   subtitle: string;
   myLangTitle: string;
   dropdownHeader: string;
@@ -45,6 +46,7 @@ export interface HeaderUiStrings {
 
 export const HEADER_UI: Record<UiLanguage, HeaderUiStrings> = {
   ko: {
+    brandTitle: '해볼 한국어',
     subtitle: '다문화·외국인 초등학생 맞춤 한국어',
     myLangTitle: '내 언어로 이용하기',
     dropdownHeader: '내 언어 선택 · Select Language',
@@ -59,6 +61,7 @@ export const HEADER_UI: Record<UiLanguage, HeaderUiStrings> = {
     footerSubtitle: '초등 다문화 학생용 한국어',
   },
   en: {
+    brandTitle: 'Haebol Korean',
     subtitle: 'Korean for Multicultural Elementary Students in South Korea',
     myLangTitle: 'Use in My Language',
     dropdownHeader: 'Select My Language',
@@ -73,6 +76,7 @@ export const HEADER_UI: Record<UiLanguage, HeaderUiStrings> = {
     footerSubtitle: 'Korean for Multicultural Elementary Students',
   },
   vi: {
+    brandTitle: 'Tiếng Hàn Haebol',
     subtitle: 'Tiếng Hàn dành cho học sinh tiểu học đa văn hóa tại Hàn Quốc',
     myLangTitle: 'Dùng bằng ngôn ngữ của tôi',
     dropdownHeader: 'Chọn ngôn ngữ của tôi',
@@ -87,6 +91,7 @@ export const HEADER_UI: Record<UiLanguage, HeaderUiStrings> = {
     footerSubtitle: 'Tiếng Hàn cho học sinh tiểu học đa văn hóa',
   },
   bn: {
+    brandTitle: 'হেবল কোরিয়ান',
     subtitle: 'দক্ষিণ কোরিয়ার প্রাথমিক বিদ্যালয়ের শিক্ষার্থীদের জন্য কোরিয়ান',
     myLangTitle: 'আমার ভাষায় ব্যবহার করুন',
     dropdownHeader: 'আমার ভাষা নির্বাচন করুন',
@@ -101,6 +106,7 @@ export const HEADER_UI: Record<UiLanguage, HeaderUiStrings> = {
     footerSubtitle: 'প্রাথমিক শিক্ষার্থীদের জন্য কোরিয়ান',
   },
   zh: {
+    brandTitle: 'Haebol 韩语',
     subtitle: '面向韩国多元文化小学学生的韩语学习',
     myLangTitle: '使用我的母语',
     dropdownHeader: '选择我的语言',
@@ -115,6 +121,7 @@ export const HEADER_UI: Record<UiLanguage, HeaderUiStrings> = {
     footerSubtitle: '面向小学多元文化学生的韩语',
   },
   ru: {
+    brandTitle: 'Haebol Корейский',
     subtitle: 'Корейский язык для школьников в Южной Корее',
     myLangTitle: 'На моём языке',
     dropdownHeader: 'Выберите свой язык',
@@ -129,6 +136,7 @@ export const HEADER_UI: Record<UiLanguage, HeaderUiStrings> = {
     footerSubtitle: 'Корейский для младших школьников',
   },
   ja: {
+    brandTitle: 'Haebol 韓国語',
     subtitle: '韓国の多文化小学生のための韓国語学習',
     myLangTitle: '自分の言語で使う',
     dropdownHeader: '言語を選択',
@@ -143,6 +151,7 @@ export const HEADER_UI: Record<UiLanguage, HeaderUiStrings> = {
     footerSubtitle: '小学生のための韓国語学習',
   },
   mn: {
+    brandTitle: 'Haebol Солонгос хэл',
     subtitle: 'Солонгос дахь бага ангийн сурагчдад зориулсан солонгос хэл',
     myLangTitle: 'Өөрийн хэлээр ашиглах',
     dropdownHeader: 'Миний хэлийг сонгох',

@@ -1440,7 +1440,7 @@ export const PrintWorksheetModal: React.FC<PrintWorksheetModalProps> = ({
             {/* 3. Sheet Footer */}
             <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[10px] text-slate-500 font-korean-gothic shrink-0">
               <span className="font-medium">
-                해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구
+                해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
               </span>
             </div>
           </div>

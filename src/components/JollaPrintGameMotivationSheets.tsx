@@ -381,6 +381,9 @@ export const JollaJamoTerritoryBoardSheet: React.FC = () => {
           </div>
         </div>
       </div>
+      <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+      </div>
     </div>
   );
 };
@@ -704,10 +707,12 @@ export const JollaConsonantBingoSheet: React.FC = () => {
       </div>
 
       <div className="mt-2 pt-1.5 border-t border-slate-200 flex items-center justify-between text-[11px] font-bold text-slate-600 shrink-0">
-        <span>
-          <strong>규칙:</strong> ① 자음 14자 중 8개를 빈칸에 써요 → ② 부르는 자음을 찾아 큰 소리로 읽고 ○ 표! → ③ 가로·세로·대각선 2줄 완성 시 &quot;빙고!&quot;
+        <span className="text-[9.5px] font-medium text-slate-500 font-korean-gothic shrink-0">
+          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
-        <span className="font-black text-amber-700">해볼 한국어 · 졸라 자음 빙고</span>
+        <span className="text-right">
+          <strong>규칙:</strong> ① 자음 14자 중 8개를 빈칸에 써요 → ② 부르는 자음을 찾아 큰 소리로 읽고 ○ 표! → ③ 2줄 완성 시 &quot;빙고!&quot;
+        </span>
       </div>
     </div>
   );
@@ -795,10 +800,12 @@ export const JollaVowelBingoSheet: React.FC = () => {
       </div>
 
       <div className="mt-2 pt-1.5 border-t border-slate-200 flex items-center justify-between text-[11px] font-bold text-slate-600 shrink-0">
-        <span>
-          <strong>규칙:</strong> ① 모음 10자(+보너스 ㅐ, ㅔ) 중 8개를 빈칸에 써요 → ② 부르는 모음 소리를 따라 읽고 ○ 표! → ③ 2줄 완성 시 &quot;빙고!&quot;
+        <span className="text-[9.5px] font-medium text-slate-500 font-korean-gothic shrink-0">
+          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
-        <span className="font-black text-sky-700">해볼 한국어 · 졸라 모음 빙고</span>
+        <span className="text-right">
+          <strong>규칙:</strong> ① 모음 10자(+ㅐ, ㅔ) 중 8개를 빈칸에 써요 → ② 부르는 모음 소리를 따라 읽고 ○ 표! → ③ 2줄 완성 시 &quot;빙고!&quot;
+        </span>
       </div>
     </div>
   );
@@ -1000,6 +1007,9 @@ export const JollaMountainStampSheet: React.FC = () => {
           </div>
         ))}
       </div>
+      <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+      </div>
     </div>
   );
 };
@@ -1138,6 +1148,9 @@ export const JollaDiceFactorySheet: React.FC = () => {
           <span>② __________</span>
           <span>③ __________</span>
         </div>
+      </div>
+      <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
       </div>
     </div>
   );
@@ -1306,9 +1319,12 @@ export const JollaHeroAwardCouponSheet: React.FC = () => {
           </div>
 
           <div className="text-center text-[10px] font-extrabold text-slate-400">
-            해볼 한국어 · A4 가로 인쇄용 동기부여 세트
+            A4 가로 인쇄용 동기부여 세트
           </div>
         </div>
+      </div>
+      <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
       </div>
     </div>
   );

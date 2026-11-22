@@ -436,7 +436,7 @@ export const ConsonantsWorksheetPage: React.FC<JamoSheetProps> = ({
       {/* 3. Sheet Footer */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-badasseugi">
         <span className="font-medium">
-          해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구
+          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>
@@ -669,7 +669,7 @@ export const VowelsWorksheetPage: React.FC<JamoSheetProps> = ({
       {/* 3. Sheet Footer */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-badasseugi">
         <span className="font-medium">
-          해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구
+          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>
@@ -820,7 +820,7 @@ export const ComboTracingWorksheetPage: React.FC<JamoSheetProps> = ({
       {/* 3. Sheet Footer */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-badasseugi">
         <span className="font-medium">
-          해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구
+          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>
@@ -953,7 +953,7 @@ export const ComboWorksheetPage: React.FC<JamoSheetProps> = ({
       {/* 3. Sheet Footer */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-badasseugi">
         <span className="font-medium">
-          해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구
+          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>
@@ -1163,7 +1163,7 @@ export const ConsonantsStrokeSheetBase: React.FC<StrokeSheetBaseProps> = ({
       {/* 4. Sheet Footer */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-badasseugi shrink-0">
         <span className="font-medium">
-          해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구
+          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>
@@ -2760,7 +2760,7 @@ export const LargeComboWorksheetPage: React.FC<LargeComboWorksheetPageProps> = (
       {/* 4. Sheet Footer */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-badasseugi shrink-0">
         <span className="font-medium">
-          해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구
+          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>
@@ -2842,7 +2842,7 @@ export const DEFAULT_CONSONANTS_SUMMARY_COPY: ConsonantsSummaryCopy = {
     'ㄱ[g/k] · ㄷ[d/t] · ㅂ[b/p] · ㄹ[r/l]: 앞·뒤 위치에 따라 소리가 조금씩 달라져요.',
     'ㄸ · ㅃ · ㅉ: 받침으로 거의 쓰이지 않아 첫소리 [tt], [pp], [jj]만 익히면 돼요.',
   ],
-  footerLeft: '해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구',
+  footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
   footerRight: '카드 표기: 순번 · 자음 글자 · 자음 이름 · 발음 로마자 [앞 / 뒤]',
 };
 
@@ -3128,7 +3128,7 @@ export const DEFAULT_VOWELS_SUMMARY_COPY: VowelsSummaryCopy = {
     'ㅡ [eu]: 입술을 앞으로 내밀지 말고 옆으로 살짝 당긴 채 발음해요.',
     'ㅢ [ui]: 첫소리(의사 [의]), 조사(나의 [에]), 자음 뒤(희망 [히]) 소리가 달라져요.',
   ],
-  footerLeft: '해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구',
+  footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
   footerRight: '카드 표기: 순번 · 모음 글자 · 모음 이름 · 발음 로마자',
 };
 

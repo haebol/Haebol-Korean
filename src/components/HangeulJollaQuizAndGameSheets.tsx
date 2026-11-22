@@ -587,7 +587,7 @@ export const HangeulQuizJamoSheet: React.FC = () => {
         <div className="flex items-center justify-between px-3 py-1.5 rounded-lg border border-slate-300 bg-slate-50 text-xs font-bold text-slate-600">
           <div className="flex items-center gap-2">
             <MiniJollaman pose="run" size={24} />
-            <span>해볼 한국어 · 자음·모음 확인 쪽지시험 (총 10문항)</span>
+            <span>해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-slate-700 font-black">졸라맨 도장:</span>
@@ -896,6 +896,9 @@ export const HangeulQuizBasicSheet: React.FC = () => {
           </div>
         </section>
       </div>
+      <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+      </div>
     </div>
   );
 };
@@ -1098,6 +1101,9 @@ export const JollaHiddenLettersSheet: React.FC = () => {
             </div>
           );
         })}
+      </div>
+      <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
       </div>
     </div>
   );
@@ -1341,6 +1347,9 @@ export const JollaTerritoryGameSheet: React.FC = () => {
           </span>
         </div>
       </div>
+      <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+      </div>
     </div>
   );
 };
@@ -1555,6 +1564,9 @@ export const JollaMazeGameSheet: React.FC = () => {
       <div className="mt-2 flex items-center justify-between px-3 py-1 rounded-lg border border-slate-300 bg-slate-50 text-xs font-bold text-slate-700 shrink-0">
         <span>✏️ 종이에서는 색연필로 길을 쭉 이어보세요! (어질어질 졸라맨 칸은 함정!)</span>
         <span className="font-black text-emerald-800">사자 → 버터 → 포도 → 구두 → 우유 → 가지 → 사과</span>
+      </div>
+      <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
       </div>
     </div>
   );
@@ -1797,6 +1809,9 @@ export const JollaBingoGameSheet: React.FC = () => {
           autoFilled={autoFilled}
           seed={seed + 100}
         />
+      </div>
+      <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
       </div>
     </div>
   );

@@ -313,11 +313,11 @@ export const HeaderAndEmergencyBar: React.FC<HeaderAndEmergencyBarProps> = ({
             onPointerLeave={clearBrandLongPress}
             onPointerCancel={clearBrandLongPress}
             className="flex items-center gap-1.5 select-none cursor-pointer group text-left border-0 bg-transparent p-0 transition-transform active:scale-95 shrink-0"
-            title="해볼 한국어"
+            title={ui.brandTitle}
           >
             <ManduMascot size="xs" interactive={false} />
             <h1 className="text-[17px] xl:text-[19px] font-black text-rose-950 font-korean-gothic tracking-tight leading-none whitespace-nowrap group-hover:text-pink-600 transition-colors">
-              해볼 한국어
+              {ui.brandTitle}
             </h1>
           </button>
 
@@ -456,7 +456,7 @@ export const HeaderAndEmergencyBar: React.FC<HeaderAndEmergencyBarProps> = ({
       {/* ===================================================================== */}
       {/* MOBILE / TABLET (< lg): Existing Compact 2-Tier Header (Without ≡ 더보기) */}
       {/* ===================================================================== */}
-      <div className="flex lg:hidden w-full px-2.5 sm:px-6 py-1.5 sm:py-2 flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-3">
+      <div className="flex lg:hidden w-full px-2.5 sm:px-6 py-1 sm:py-1.5 flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2.5">
         {/* Tier 1: Brand + Emergency Emojis (Mobile) */}
         <div className="flex items-center justify-between w-full sm:w-auto gap-2">
           <button
@@ -467,18 +467,13 @@ export const HeaderAndEmergencyBar: React.FC<HeaderAndEmergencyBarProps> = ({
             onPointerUp={clearBrandLongPress}
             onPointerLeave={clearBrandLongPress}
             onPointerCancel={clearBrandLongPress}
-            className="flex items-center gap-1.5 sm:gap-2 select-none cursor-pointer group text-left border-0 bg-transparent p-0 transition-transform active:scale-95"
-            title="해볼 한국어"
+            className="flex items-center gap-1.5 sm:gap-2 select-none cursor-pointer group text-left border-0 bg-transparent p-0 transition-transform active:scale-95 min-w-0"
+            title={ui.brandTitle}
           >
             <ManduMascot size="xs" interactive={false} />
-            <div>
-              <h1 className="text-sm sm:text-lg font-bold text-rose-950 font-korean-gothic tracking-normal leading-none whitespace-nowrap group-hover:text-pink-600 transition-colors">
-                해볼 한국어
-              </h1>
-              <span className="hidden sm:inline-block text-[10px] font-bold text-rose-500 tracking-tight leading-tight">
-                {ui.subtitle}
-              </span>
-            </div>
+            <h1 className="text-sm sm:text-lg font-bold text-rose-950 font-korean-gothic tracking-normal leading-none whitespace-nowrap truncate group-hover:text-pink-600 transition-colors">
+              {ui.brandTitle}
+            </h1>
           </button>
 
           <div className="flex sm:hidden items-center gap-1 shrink-0">
@@ -486,7 +481,7 @@ export const HeaderAndEmergencyBar: React.FC<HeaderAndEmergencyBarProps> = ({
           </div>
         </div>
 
-        {/* Tier 2: Desktop-sm Emergency + Mic + Collapse + Wide Language Selector */}
+        {/* Tier 2: Desktop-sm Emergency + Mic + Collapse + Compact Single-Line Language Selector */}
         <div className="flex items-center justify-between sm:justify-end gap-1.5 sm:gap-2 w-full sm:w-auto">
           <div
             className="hidden sm:flex items-center gap-1 sm:gap-1.5 pr-2 border-r-2 border-pink-200"
@@ -498,7 +493,7 @@ export const HeaderAndEmergencyBar: React.FC<HeaderAndEmergencyBarProps> = ({
           <button
             type="button"
             onClick={handleMicClick}
-            className="w-8 h-8 sm:w-9 sm:h-9 rounded-md bg-gradient-to-tr from-rose-500 to-[#D94A6B] hover:from-rose-600 hover:to-[#BE3A58] active:scale-95 text-white shadow-2xs flex items-center justify-center transition-all cursor-pointer shrink-0"
+            className="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px] rounded-md bg-gradient-to-tr from-rose-500 to-[#D94A6B] hover:from-rose-600 hover:to-[#BE3A58] active:scale-95 text-white shadow-2xs flex items-center justify-center transition-all cursor-pointer shrink-0"
             title={ui.aiTeacherTitle}
             aria-label={ui.aiTeacherTitle}
           >
@@ -512,7 +507,7 @@ export const HeaderAndEmergencyBar: React.FC<HeaderAndEmergencyBarProps> = ({
                 playCutePop();
                 onToggleMenuCollapse();
               }}
-              className="h-8 sm:h-9 px-2 rounded-md bg-white hover:bg-pink-50 border border-pink-200 text-rose-900 active:scale-95 shadow-2xs flex items-center justify-center gap-1 text-[11px] font-bold transition-all cursor-pointer shrink-0"
+              className="h-[30px] sm:h-[34px] px-2 rounded-md bg-white hover:bg-pink-50 border border-pink-200 text-rose-900 active:scale-95 shadow-2xs flex items-center justify-center gap-1 text-[11px] font-bold transition-all cursor-pointer shrink-0"
               title={ui.collapseMenu}
               aria-label={ui.collapseMenu}
             >
@@ -520,33 +515,26 @@ export const HeaderAndEmergencyBar: React.FC<HeaderAndEmergencyBarProps> = ({
             </button>
           )}
 
-          {/* Mobile Wide Language Selector */}
+          {/* Mobile Single-Row Compact Language Selector */}
           <div className="relative flex-1 sm:flex-initial shrink-0 min-w-0">
             <button
               type="button"
               onClick={() => setIsLangOpen(!isLangOpen)}
-              className="h-[36px] sm:h-[44px] w-full sm:w-[290px] px-2 sm:px-3 py-0.5 sm:py-1 rounded-md bg-[#441A75] hover:bg-[#52208E] active:scale-[0.98] text-white shadow-md flex items-center justify-between transition-all focus:outline-none cursor-pointer border border-[#6328A6]"
+              className="h-[30px] sm:h-[34px] w-full sm:w-[270px] px-2 sm:px-2.5 rounded-md bg-[#441A75] hover:bg-[#52208E] active:scale-[0.98] text-white shadow-md flex items-center justify-between transition-all focus:outline-none cursor-pointer border border-[#6328A6]"
               aria-label={ui.myLangTitle}
               aria-expanded={isLangOpen}
               title={ui.dropdownHeader}
             >
-              <div className="flex items-center gap-1.5 sm:gap-2 text-left min-w-0">
-                <span className="text-sm sm:text-base leading-none shrink-0" role="img" aria-label="Globe">🌐</span>
-                <div className="flex flex-col justify-center leading-tight min-w-0">
-                  <span className="text-[11px] sm:text-[12.5px] font-bold text-white tracking-tight leading-snug whitespace-nowrap truncate max-w-[140px] sm:max-w-[165px]">
-                    {ui.myLangTitle}
-                  </span>
-                  <span className="text-[8.5px] sm:text-[9.5px] font-normal text-[#C084FC] tracking-normal leading-none mt-0.5 whitespace-nowrap truncate max-w-[130px] sm:max-w-[160px]">
-                    {uiLang === 'ko'
-                      ? 'Use Your Language'
-                      : USE_YOUR_LANG_SUBTITLES[currentLang] || '내 언어로 이용하기'}
-                  </span>
-                </div>
+              <div className="flex items-center gap-1.5 text-left min-w-0">
+                <span className="text-sm leading-none shrink-0" role="img" aria-label="Globe">🌐</span>
+                <span className="text-[11px] sm:text-xs font-bold text-white tracking-tight leading-none whitespace-nowrap truncate max-w-[145px] sm:max-w-[165px]">
+                  {ui.myLangTitle}
+                </span>
               </div>
 
               <div className="flex items-center gap-1 shrink-0 ml-1.5">
-                <span className="bg-[#FEF08A] text-[#1E0B36] font-bold text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-sm shadow-2xs whitespace-nowrap flex items-center gap-1 leading-none">
-                  <span className="text-[11px] sm:text-sm">{selectedLangObj.flag}</span>
+                <span className="bg-[#FEF08A] text-[#1E0B36] font-bold text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-sm shadow-2xs whitespace-nowrap flex items-center gap-1 leading-none">
+                  <span className="text-[11px] sm:text-xs">{selectedLangObj.flag}</span>
                   <span className="truncate max-w-[65px] sm:max-w-[90px]">{selectedLangObj.nativeName}</span>
                 </span>
                 <ChevronDown className={`w-3 h-3 sm:w-3.5 sm:h-3.5 text-white transition-transform shrink-0 ${isLangOpen ? 'rotate-180' : ''}`} />

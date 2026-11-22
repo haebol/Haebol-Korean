@@ -306,6 +306,9 @@ const VerbDumplingChefSheet: React.FC<{
           <span>·</span>
           <span>🥟 하다 → <strong className="text-purple-700">-해요</strong></span>
         </div>
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        </div>
       </div>
     </div>
   );
@@ -461,6 +464,9 @@ const VerbBalloonsSheet: React.FC<{
         <div className="mt-1 flex items-center justify-center text-[13px] font-black text-slate-700 shrink-0">
           🎈 색칠하고 “놀아요! 먹어요! 공부해요!” 큰 소리로 변신해 보세요!
         </div>
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        </div>
       </div>
     </div>
   );
@@ -614,6 +620,9 @@ const VerbActionStageSheet: React.FC<{
 
         <div className="mt-1 flex items-center justify-center text-[13px] font-black text-slate-700 shrink-0">
           🕺 짝꿍이 내 동작을 맞히면 박수 짝짝짝!
+        </div>
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
         </div>
       </div>
     </div>
@@ -788,6 +797,9 @@ const VerbRiverCrossingSheet: React.FC<{
         <div className="mt-1 flex items-center justify-center gap-4 text-[13px] font-black text-slate-700 shrink-0">
           <span>🌊 진짜 변신 돌을 찾아 선으로 이어 강을 건너 보세요!</span>
           <span className="text-rose-600">틀린 돌 밟으면 풍덩~!</span>
+        </div>
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
         </div>
       </div>
     </div>
@@ -1009,6 +1021,9 @@ const VerbFishingPondSheet: React.FC<{
 
         <div className="mt-1 flex items-center justify-center text-[13px] font-black text-slate-700 shrink-0">
           🎣 “밥을 먹어요! 책을 읽어요!” 낚은 물고기 문장을 큰 소리로 외쳐 보세요!
+        </div>
+        <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
+          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
         </div>
       </div>
     </div>

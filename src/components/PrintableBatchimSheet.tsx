@@ -2189,7 +2189,7 @@ export const BatchimWorksheetPage: React.FC<BatchimWorksheetPageProps> = ({
       {/* 3. Sheet Footer */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-badasseugi">
         <span className="font-medium">
-          해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구
+          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>
@@ -2261,7 +2261,7 @@ export const DEFAULT_BATCHIM_SUMMARY_COPY: BatchimSummaryCopy = {
     '• 첫소리 ㅇ은 소리 없음[-], 받침 ㅇ은 콧소리[ng]로 구별해 읽어요.',
     '• 받침 뒤에 모음이 오면 받침이 뒤로 이어져 발음돼요 (음악[으막], 꽃이[꼬치])',
   ],
-  footerLeft: '해볼 한국어(hbkorean.ai.studio) | 다문화·초등 한국어 맞춤형 학습 교구',
+  footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
   footerRight: '카드 표기: 순번 · 대표 소리 · 로마자 · 받침 가족 · 겹받침 11자',
 };
 
