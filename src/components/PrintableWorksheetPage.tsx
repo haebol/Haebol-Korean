@@ -30,12 +30,12 @@ export const PrintableWorksheetPage: React.FC<PrintableWorksheetPageProps> = ({
       className={`printable-a4-page w-full max-w-[990px] bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2 sm:p-2.5 text-slate-800 flex flex-col justify-between transition-shadow ${className}`}
       style={{ minHeight: '620px' }}
     >
-      {/* Sheet Top Header: 2. 최상단 "해볼 한국어 <그림카드>", 3. "학년: ________ 이름: ________________" (날짜 삭제) */}
+      {/* Sheet Top Header: 2. 최상단 "해볼한국어 <그림카드>", 3. "학년: ________ 이름: ________________" (날짜 삭제) */}
       <div className="flex flex-wrap items-center justify-between gap-1 border-b-2 border-slate-700 pb-1 mb-1 text-slate-800 shrink-0">
         <div className="flex items-center gap-1.5 min-w-0">
           <span className="text-base leading-none shrink-0">🥟</span>
           <span className="text-xs sm:text-sm font-black text-slate-900 font-korean-gothic break-keep">
-            해볼 한국어 [그림카드] {chapter.circledTitle}
+            해볼한국어 [그림카드] {chapter.circledTitle}
           </span>
         </div>
 
@@ -142,7 +142,7 @@ export const PrintableWorksheetPage: React.FC<PrintableWorksheetPageProps> = ({
       {/* Sheet Footer: 최하단 왼쪽 브랜드 표기 */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic">
         <span className="font-medium">
-          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
+          해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>

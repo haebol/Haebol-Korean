@@ -85,7 +85,7 @@ export const PrintableWordbookSheet: React.FC<PrintableWordbookSheetProps> = ({
 
   return (
     <div
-      className={`print-sheet printable-word-sheet printable-wordbook-page w-full max-w-[1060px] bg-white rounded-xl border-2 border-slate-700 p-2 sm:p-2.5 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet printable-wordbook-page w-full max-w-[1060px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-2.5 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '700px' }}
     >
       {/* 1. Header Row */}
@@ -93,7 +93,7 @@ export const PrintableWordbookSheet: React.FC<PrintableWordbookSheetProps> = ({
         <div className="flex items-center gap-1.5 font-bold text-xs sm:text-[13px] font-korean-gothic min-w-0 flex-1 overflow-hidden">
           <span className="text-base leading-none shrink-0">📖</span>
           <span className="whitespace-nowrap">
-            해볼 한국어 [단어장] {resolvedTitle}
+            해볼한국어 [단어장] {resolvedTitle}
           </span>
           <span className="text-xs text-slate-500 font-bold ml-1 whitespace-nowrap shrink-0">
             · {getLangName()} ({colCount}열)
@@ -225,7 +225,7 @@ export const PrintableWordbookSheet: React.FC<PrintableWordbookSheetProps> = ({
       {/* 3. Sheet Footer */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] text-slate-500 font-korean-gothic shrink-0">
         <span className="font-medium">
-          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
+          해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
         <span className="font-bold text-slate-400">
           A4 가로 {colCount}열 압축 단어장 ({pageIndex + 1}/{totalPages}쪽 · {totalItems}단어)

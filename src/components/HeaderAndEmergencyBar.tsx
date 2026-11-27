@@ -1,14 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
   ChevronDown,
-  ChevronUp,
   Check,
   Mic,
+  Printer,
+  Lock,
+  FileText,
+  Layers,
+  ExternalLink,
+  Gift,
 } from 'lucide-react';
 import {
   SupportedLanguage,
   EmergencyCardData,
   LearningTrack,
+  LearningMethod,
 } from '../types';
 import {
   UiLanguage,
@@ -21,38 +27,43 @@ import {
 import { EMERGENCY_CARDS } from '../data/emergency';
 import { ManduMascot } from './ManduMascot';
 import { playCutePop, playEmergencyAlert, speakKorean } from '../utils/audio';
+import { buildPrintChunks, WebPrintRequest } from '../utils/printReadiness';
 
-export const APP_DESCRIPTIONS: Record<SupportedLanguage, string> = {
-  en: 'Multicultural Elementary Korean',
-  vi: 'Tiếng Hàn Tiểu học Đa văn hóa',
-  bn: 'বহুসাংস্কৃতিক প্রাথমিক কোরিয়ান',
-  zh: '多元文化小学韩语',
-  ru: 'Корейский для начальной школы',
-  ja: '多文化・小学校韓国語',
-  mn: 'Олон соёлт бага ангийн солонгос хэл'
-};
+export interface DesktopRow2TabItem {
+  id: string;
+  label: string;
+  isActive: boolean;
+  locked?: boolean;
+  group?: 'worksheet';
+  onClick: () => void;
+}
 
-export const USE_YOUR_LANG_SUBTITLES: Record<SupportedLanguage, string> = {
-  en: 'Use Your Language',
-  vi: 'Sử dụng ngôn ngữ của bạn',
-  bn: 'নিজস্ব ভাষায় ব্যবহার করুন',
-  zh: '使用我的母语',
-  ru: 'Использовать родной язык',
-  ja: '母国語で利用する',
-  mn: 'Өөрийн хэлээр ашиглах'
-};
+export interface HeaderPrintMenuMeta {
+  sectionLabel: string;
+  currentLabel: string;
+  unitSuffix: string;
+  totalCount: number;
+  supportsTripleSet?: boolean;
+}
 
 interface HeaderAndEmergencyBarProps {
   currentLang: SupportedLanguage;
   uiLang?: UiLanguage;
   activeTrack: LearningTrack;
   onSelectTrack: (track: LearningTrack) => void;
+  activeMethod?: LearningMethod;
+  onSelectMethod?: (method: LearningMethod) => void;
   onLanguageChange: (lang: UiLanguage) => void;
   onSelectEmergencyCard?: (card: EmergencyCardData) => void;
   onOpenVoiceModal?: () => void;
   onOpenStickmanBonus?: () => void;
   onOpenTeacherAdmin?: () => void;
   onGoHome?: () => void;
+  onPrint?: () => void;
+  onPrintRequest?: (req: Omit<WebPrintRequest, 'id'>) => void;
+  printMenuMeta?: HeaderPrintMenuMeta;
+  blogBundleUrl?: string;
+  desktopRow2Tabs?: DesktopRow2TabItem[];
   isMenuCollapsed?: boolean;
   onToggleMenuCollapse?: () => void;
 }
@@ -68,10 +79,15 @@ export const HeaderAndEmergencyBar: React.FC<HeaderAndEmergencyBarProps> = ({
   onOpenStickmanBonus,
   onOpenTeacherAdmin,
   onGoHome,
-  isMenuCollapsed = false,
+  onPrint,
+  onPrintRequest,
+  printMenuMeta,
+  blogBundleUrl = '',
+  desktopRow2Tabs = [],
   onToggleMenuCollapse,
 }) => {
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isPrintMenuOpen, setIsPrintMenuOpen] = useState(false);
 
   const singleClickTimerRef = useRef<number | null>(null);
   const longPressTimerRef = useRef<number | null>(null);
@@ -133,42 +149,11 @@ export const HeaderAndEmergencyBar: React.FC<HeaderAndEmergencyBarProps> = ({
     id: LearningTrack;
     label: string;
     koLabel: string;
-    activeClass: string;
-    inactiveClass: string;
-    underlineClass: string;
   }[] = [
-    {
-      id: 'hangeul',
-      label: navUi.tracks.hangeul,
-      koLabel: koNavUi.tracks.hangeul,
-      activeClass: 'text-amber-800 font-black bg-amber-50/80',
-      inactiveClass: 'text-slate-700 hover:text-amber-800 hover:bg-amber-50/40 font-bold',
-      underlineClass: 'bg-amber-400',
-    },
-    {
-      id: 'classroom',
-      label: navUi.tracks.classroom,
-      koLabel: koNavUi.tracks.classroom,
-      activeClass: 'text-[#D94A6B] font-black bg-rose-50/75',
-      inactiveClass: 'text-slate-700 hover:text-[#D94A6B] hover:bg-rose-50/40 font-bold',
-      underlineClass: 'bg-[#D94A6B]',
-    },
-    {
-      id: 'verb',
-      label: navUi.tracks.verb,
-      koLabel: koNavUi.tracks.verb,
-      activeClass: 'text-[#7E22CE] font-black bg-purple-50/75',
-      inactiveClass: 'text-slate-700 hover:text-[#7E22CE] hover:bg-purple-50/40 font-bold',
-      underlineClass: 'bg-[#7E22CE]',
-    },
-    {
-      id: 'particle',
-      label: navUi.tracks.particle,
-      koLabel: koNavUi.tracks.particle,
-      activeClass: 'text-emerald-900 font-black bg-emerald-50/85',
-      inactiveClass: 'text-slate-700 hover:text-emerald-800 hover:bg-emerald-50/45 font-bold',
-      underlineClass: 'bg-emerald-500',
-    },
+    { id: 'hangeul', label: navUi.tracks.hangeul, koLabel: koNavUi.tracks.hangeul },
+    { id: 'classroom', label: navUi.tracks.classroom, koLabel: koNavUi.tracks.classroom },
+    { id: 'verb', label: navUi.tracks.verb, koLabel: koNavUi.tracks.verb },
+    { id: 'particle', label: navUi.tracks.particle, koLabel: koNavUi.tracks.particle },
   ];
 
   // Hidden teacher-admin trigger: double-click OR long-press (650ms) on brand logo
@@ -243,8 +228,10 @@ export const HeaderAndEmergencyBar: React.FC<HeaderAndEmergencyBarProps> = ({
           type="button"
           onClick={() => handleCardClick(card)}
           className={`${
-            size === 'desktop' ? 'w-8 h-8 text-base' : 'w-7 h-7 sm:w-9 sm:h-9 text-sm sm:text-lg'
-          } rounded-md bg-white hover:bg-pink-100/90 active:scale-95 border border-pink-200 hover:border-pink-400 shadow-2xs flex items-center justify-center transition-all cursor-pointer shrink-0`}
+            size === 'desktop'
+              ? 'w-[34px] h-[34px] text-[15px] rounded-lg bg-white/14 hover:bg-white/24 border-white/20 hover:border-white/40'
+              : 'w-7 h-7 sm:w-9 sm:h-9 text-sm sm:text-lg rounded-md bg-white/14 hover:bg-white/24 border-white/22 hover:border-white/40'
+          } active:scale-95 border shadow-2xs flex items-center justify-center transition-all cursor-pointer shrink-0`}
           title={`${card.titleKo} (${tip})`}
           aria-label={card.titleKo}
         >
@@ -260,7 +247,7 @@ export const HeaderAndEmergencyBar: React.FC<HeaderAndEmergencyBarProps> = ({
           className="fixed inset-0 z-30"
           onClick={() => setIsLangOpen(false)}
         />
-        <div className="absolute right-0 mt-1.5 w-[270px] sm:w-[320px] bg-white rounded-lg shadow-2xl border-2 border-[#441A75]/25 py-2 z-50 overflow-hidden animate-in fade-in slide-in-from-top-1">
+        <div className="absolute right-0 mt-1.5 w-[270px] sm:w-[320px] bg-white rounded-xl shadow-2xl border-2 border-[#441A75]/25 py-2 z-50 overflow-hidden animate-in fade-in slide-in-from-top-1 text-slate-800">
           <div className="px-3.5 py-1 text-[11px] font-black text-purple-950 border-b border-purple-100 mb-1 flex items-center justify-between">
             <span>{ui.dropdownHeader}</span>
             <span className="text-[10px] text-purple-600 font-medium">{ui.langCountBadge}</span>
@@ -295,62 +282,336 @@ export const HeaderAndEmergencyBar: React.FC<HeaderAndEmergencyBarProps> = ({
       </>
     );
 
-  return (
-    <header className="relative z-40 w-full bg-[#FFF5F8] border-b border-pink-200/90 shadow-2xs no-print select-none font-korean-gothic">
-      {/* ===================================================================== */}
-      {/* DESKTOP (lg+): Slim 1-Row Main Header Bar (Layer 1)                  */}
-      {/* ===================================================================== */}
-      <div className="hidden lg:flex w-full max-w-[1600px] mx-auto px-4 h-[52px] items-center justify-between gap-3">
-        {/* Left: Logo + 4 Track Tabs + Stickman */}
-        <div className="flex items-center gap-2 xl:gap-3 min-w-0">
-          {/* Brand Logo (Single click = Home, Hidden Double-Click / Long-Press = Teacher Admin) */}
+  const printChunks = printMenuMeta
+    ? buildPrintChunks(printMenuMeta.totalCount, printMenuMeta.unitSuffix, 10)
+    : [];
+
+  const dispatchPrint = (req: Omit<WebPrintRequest, 'id'>) => {
+    playCutePop();
+    setIsPrintMenuOpen(false);
+    if (onPrintRequest) {
+      onPrintRequest(req);
+    } else {
+      onPrint?.();
+    }
+  };
+
+  const renderPrintMenuPopover = () =>
+    isPrintMenuOpen && (
+      <>
+        <div
+          className="fixed inset-0 z-30"
+          onClick={() => setIsPrintMenuOpen(false)}
+        />
+        <div className="absolute right-0 mt-1.5 w-[270px] sm:w-[296px] bg-white rounded-xl shadow-2xl border-2 border-[#441A75]/25 p-3 z-50 text-slate-800 space-y-2.5 animate-in fade-in slide-in-from-top-1">
+          {/* Header */}
+          <div className="flex items-center justify-between gap-2 pb-2 border-b border-purple-100">
+            <div className="text-xs font-black text-[#2E1052] truncate">
+              {printMenuMeta ? `${printMenuMeta.sectionLabel} 인쇄` : '학습지 인쇄'}
+            </div>
+            <span className="px-2 py-0.5 rounded-full bg-purple-100 text-[#3B1668] text-[10px] font-black shrink-0">
+              A4 가로
+            </span>
+          </div>
+
+          {/* 1. 현재 페이지 인쇄 */}
           <button
             type="button"
-            onClick={handleBrandClick}
-            onDoubleClick={handleBrandDoubleClick}
-            onPointerDown={handleBrandPointerDown}
-            onPointerUp={clearBrandLongPress}
-            onPointerLeave={clearBrandLongPress}
-            onPointerCancel={clearBrandLongPress}
-            className="flex items-center gap-1.5 select-none cursor-pointer group text-left border-0 bg-transparent p-0 transition-transform active:scale-95 shrink-0"
-            title={ui.brandTitle}
+            onClick={() => dispatchPrint({ type: 'current' })}
+            className="w-full px-3 py-2.5 rounded-lg bg-[#3B1668] hover:bg-[#2E1052] active:scale-[0.99] text-white text-left flex items-center gap-2 transition-all cursor-pointer shadow-xs"
           >
-            <ManduMascot size="xs" interactive={false} />
-            <h1 className="text-[17px] xl:text-[19px] font-black text-rose-950 font-korean-gothic tracking-tight leading-none whitespace-nowrap group-hover:text-pink-600 transition-colors">
-              {ui.brandTitle}
-            </h1>
+            <FileText className="w-4 h-4 text-purple-200 shrink-0" />
+            <span className="text-xs font-black leading-none">현재 페이지 인쇄</span>
           </button>
 
-          <div className="h-5 w-px bg-pink-200/90 shrink-0 mx-0.5" aria-hidden="true" />
+          {/* 1-B. 교실한국어 전용: 현재 단원 3종세트 */}
+          {printMenuMeta?.supportsTripleSet && (
+            <button
+              type="button"
+              onClick={() => dispatchPrint({ type: 'triple' })}
+              className="w-full px-3 py-2 rounded-lg bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-950 text-left flex items-center gap-2 transition-colors cursor-pointer"
+            >
+              <Layers className="w-4 h-4 text-rose-600 shrink-0" />
+              <span className="text-xs font-black leading-none">현재 단원 3종세트 인쇄</span>
+            </button>
+          )}
 
-          {/* 4 Main Tracks + Stickman */}
-          <nav aria-label="학습 영역 선택" className="flex items-center gap-1 xl:gap-1.5 h-[52px] shrink-0">
-            {trackTabs.map(tab => {
-              const isActive = activeTrack === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  type="button"
-                  onClick={() => {
-                    playCutePop();
-                    onSelectTrack(tab.id);
-                  }}
-                  className={`relative h-full px-3 xl:px-4 flex items-center justify-center whitespace-nowrap shrink-0 cursor-pointer transition-colors text-[14px] xl:text-[15px] tracking-tight ${
-                    isActive ? tab.activeClass : tab.inactiveClass
+          {/* 2. 묶음 인쇄 */}
+          {printChunks.length > 0 && (
+            <div className="space-y-1.5 pt-0.5">
+              <div className="flex items-center gap-1 px-0.5 text-[11px] font-black text-slate-700">
+                <Layers className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+                <span>묶음 인쇄</span>
+              </div>
+              <div
+                className={`grid gap-1.5 ${
+                  printChunks.length >= 3
+                    ? 'grid-cols-3'
+                    : printChunks.length === 2
+                    ? 'grid-cols-2'
+                    : 'grid-cols-1'
+                }`}
+              >
+                {printChunks.map((chunk) => (
+                  <button
+                    key={`${chunk.startIdx}-${chunk.endIdx}`}
+                    type="button"
+                    onClick={() =>
+                      dispatchPrint({
+                        type: 'range',
+                        startIdx: chunk.startIdx,
+                        endIdx: chunk.endIdx,
+                      })
+                    }
+                    className="px-2 py-2 rounded-lg bg-purple-50/75 hover:bg-purple-100 border border-purple-200/80 text-[#3B1668] text-center transition-colors cursor-pointer"
+                  >
+                    <span className="text-[11.5px] font-black leading-none whitespace-nowrap">
+                      {chunk.label}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 3. 전체 합본 PDF */}
+          <div className="pt-2 border-t border-purple-100">
+            {blogBundleUrl ? (
+              <a
+                href={blogBundleUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  playCutePop();
+                  setIsPrintMenuOpen(false);
+                }}
+                className="w-full px-3 py-2 rounded-lg bg-gradient-to-r from-amber-50 to-orange-50 hover:from-amber-100 hover:to-orange-100 border border-amber-200 text-amber-950 flex items-center justify-between gap-2 transition-colors"
+              >
+                <div className="flex items-center gap-2 min-w-0">
+                  <Gift className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                  <span className="text-[11.5px] font-black leading-none truncate">
+                    전체 합본 PDF (블로그)
+                  </span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+              </a>
+            ) : (
+              <div className="px-3 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-600 flex items-center gap-2">
+                <Gift className="w-3.5 h-3.5 text-purple-500 shrink-0" />
+                <span className="text-[11px] font-bold text-slate-700 leading-none truncate">
+                  전체 합본 PDF · 블로그 무료 배포 예정
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+      </>
+    );
+
+  return (
+    <header className="relative z-40 w-full bg-[#3B1668] lg:bg-transparent border-b border-white/15 lg:border-b-0 shadow-2xs lg:shadow-none lg:px-4 lg:pt-2.5 no-print select-none font-korean-gothic">
+      {/* ===================================================================== */}
+      {/* DESKTOP (lg+): Twin '해볼 수학' Row 1 + Row 2 Unified Purple Card      */}
+      {/* ===================================================================== */}
+      <div className="hidden lg:block w-full max-w-[1080px] mx-auto rounded-2xl bg-white border border-purple-200/85 shadow-[0_2px_12px_rgba(59,22,104,0.08)]">
+        {/* ROW 1: Solid Deep Purple Top Bar */}
+        <div className="w-full px-4 h-[56px] flex items-center justify-between gap-3 bg-[#3B1668] text-white rounded-t-2xl">
+          {/* Left: Mandu Logo + '해볼 한국어' + 4 Main Tracks (한글, 교실한국어, 용언, 조사) */}
+          <div className="flex items-center gap-2.5 min-w-0">
+            <button
+              type="button"
+              onClick={handleBrandClick}
+              onDoubleClick={handleBrandDoubleClick}
+              onPointerDown={handleBrandPointerDown}
+              onPointerUp={clearBrandLongPress}
+              onPointerLeave={clearBrandLongPress}
+              onPointerCancel={clearBrandLongPress}
+              className="flex items-center gap-2 select-none cursor-pointer group text-left border-0 bg-transparent p-0 transition-transform active:scale-95 shrink-0"
+              title={ui.brandTitle}
+            >
+              <ManduMascot size="xs" interactive={false} />
+              <h1 className="text-[19px] font-black text-white font-korean-gothic tracking-tight leading-none whitespace-nowrap group-hover:text-purple-100 transition-colors">
+                {ui.brandTitle}
+              </h1>
+            </button>
+
+            <div className="h-5 w-px bg-white/20 shrink-0 mx-0.5" aria-hidden="true" />
+
+            <nav aria-label="대분류 영역 선택" className="flex items-center gap-1 shrink-0">
+              {trackTabs.map(tab => {
+                const isActive = activeTrack === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    onClick={() => {
+                      playCutePop();
+                      onSelectTrack(tab.id);
+                    }}
+                    className={`h-[34px] px-3.5 rounded-lg flex items-center justify-center whitespace-nowrap shrink-0 cursor-pointer transition-all text-[14px] tracking-tight ${
+                      isActive
+                        ? 'bg-white/20 text-white font-black ring-1 ring-white/30 shadow-2xs'
+                        : 'text-purple-100/85 hover:text-white hover:bg-white/10 font-bold'
+                    }`}
+                    title={uiLang === 'ko' ? tab.label : `${tab.label} (${tab.koLabel})`}
+                  >
+                    <span>{tab.label}</span>
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
+
+          {/* Right: 4 Emergency Icons + [KR 한국어 ∨] Language Dropdown + White [인쇄] Button */}
+          <div className="flex items-center gap-2 shrink-0">
+            <div className="flex items-center gap-1" aria-label="Emergency Quick Cards">
+              {renderEmergencyButtons('desktop')}
+            </div>
+
+            <div className="h-5 w-px bg-white/20 shrink-0" aria-hidden="true" />
+
+            {/* Compact Language Selector matching 해볼 수학 top-right selector */}
+            <div className="relative shrink-0">
+              <button
+                type="button"
+                onClick={() => setIsLangOpen(prev => !prev)}
+                className="h-[36px] px-2.5 rounded-lg bg-white/14 hover:bg-white/22 active:scale-[0.98] text-white flex items-center gap-1.5 transition-all focus:outline-none cursor-pointer border border-white/22 whitespace-nowrap"
+                aria-label={ui.myLangTitle}
+                aria-expanded={isLangOpen}
+                title={`${ui.myLangTitle} · ${ui.dropdownHeader}`}
+              >
+                <span className="text-[14px] leading-none shrink-0" aria-hidden="true">🌐</span>
+                <span className="text-[13.5px] leading-none shrink-0">{selectedLangObj.flag}</span>
+                <span className="px-1.5 py-[2px] rounded-[4px] border border-yellow-300 bg-yellow-300/15 text-[12.5px] font-black text-yellow-100 leading-tight whitespace-nowrap">
+                  {selectedLangObj.nativeName}
+                </span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 text-purple-100 transition-transform shrink-0 ${
+                    isLangOpen ? 'rotate-180' : ''
                   }`}
-                  title={uiLang === 'ko' ? tab.label : `${tab.label} (${tab.koLabel})`}
-                >
-                  <span>{tab.label}</span>
-                  {isActive && (
-                    <span
-                      className={`absolute bottom-0 left-1.5 right-1.5 h-[3px] ${tab.underlineClass}`}
-                      aria-hidden="true"
-                    />
-                  )}
-                </button>
-              );
-            })}
+                />
+              </button>
 
+              {renderLangDropdownPopover()}
+            </div>
+
+            {/* White Rounded-Rect [인쇄 ∨] Popover Trigger */}
+            <div className="relative shrink-0">
+              <button
+                type="button"
+                onClick={() => {
+                  playCutePop();
+                  setIsLangOpen(false);
+                  setIsPrintMenuOpen((prev) => !prev);
+                }}
+                className="h-[36px] px-3 rounded-lg bg-white hover:bg-purple-50 active:scale-95 text-[#2E1052] text-[13.5px] font-black flex items-center gap-1.5 whitespace-nowrap shrink-0 shadow-xs transition-all cursor-pointer border border-white"
+                title="학습지 인쇄 메뉴 (1장 · 10장 묶음)"
+                aria-label="인쇄 메뉴 열기"
+                aria-expanded={isPrintMenuOpen}
+              >
+                <Printer className="w-4 h-4 text-[#3B1668] shrink-0" />
+                <span>인쇄</span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 text-[#3B1668]/75 transition-transform shrink-0 ${
+                    isPrintMenuOpen ? 'rotate-180' : ''
+                  }`}
+                />
+              </button>
+
+              {renderPrintMenuPopover()}
+            </div>
+          </div>
+        </div>
+
+        {/* ROW 2: Single-Row Lavender Pill Bar — [1. 플래시카드] [2. 게임] | (3. 학습지 ▸) [하위 메뉴들] ... [졸라맨] */}
+        <div className="w-full px-3 py-2 bg-white rounded-b-2xl">
+          <div className="w-full min-h-[42px] px-3 py-1 rounded-full bg-[#F3EFFA] border border-purple-200/80 flex items-center justify-between gap-2">
+            {(() => {
+              const primaryTabs = desktopRow2Tabs.filter((item) => item.group !== 'worksheet');
+              const worksheetTabs = desktopRow2Tabs.filter((item) => item.group === 'worksheet');
+
+              return (
+                <nav
+                  aria-label="세부 학습 메뉴"
+                  className="flex items-center flex-1 justify-center gap-1.5 xl:gap-2 min-w-0"
+                >
+                  <div className="flex items-center gap-1 xl:gap-1.5 shrink-0">
+                    {primaryTabs.map((item) => (
+                      <button
+                        key={item.id}
+                        type="button"
+                        disabled={item.locked}
+                        onClick={() => {
+                          if (item.locked) return;
+                          playCutePop();
+                          item.onClick();
+                        }}
+                        title={item.locked ? '준비 중입니다 (곧 공개 예정)' : item.label}
+                        className={`h-[32px] px-3.5 rounded-full text-[13.5px] tracking-tight whitespace-nowrap shrink-0 inline-flex items-center justify-center gap-1 transition-all ${
+                          item.locked
+                            ? 'text-slate-400 font-semibold cursor-not-allowed opacity-75'
+                            : item.isActive
+                            ? 'bg-[#3B1668] text-white font-black shadow-xs cursor-pointer'
+                            : 'text-[#3A2259] hover:text-[#3B1668] hover:bg-purple-200/55 font-bold cursor-pointer'
+                        }`}
+                      >
+                        {item.locked && <Lock className="w-3 h-3 shrink-0" />}
+                        <span>{item.label}</span>
+                      </button>
+                    ))}
+                  </div>
+
+                  {worksheetTabs.length > 0 && (
+                    <>
+                      <span
+                        className="w-px h-4 bg-purple-300/80 mx-1.5 xl:mx-2.5 shrink-0"
+                        aria-hidden="true"
+                      />
+                      <div
+                        role="group"
+                        aria-label="3. 학습지 하위 메뉴"
+                        className="flex items-center gap-1 shrink-0"
+                      >
+                        <span
+                          className="h-[25px] px-2.5 mr-0.5 rounded-full bg-purple-200/65 text-[#5B2E91] text-[12px] font-extrabold tracking-tight whitespace-nowrap select-none pointer-events-none inline-flex items-center gap-1 shrink-0"
+                          aria-hidden="true"
+                        >
+                          <span>3. 학습지</span>
+                          <span className="text-[10px] opacity-80 leading-none">▸</span>
+                        </span>
+                        <div className="flex items-center gap-0.5 xl:gap-1">
+                          {worksheetTabs.map((item) => (
+                            <button
+                              key={item.id}
+                              type="button"
+                              disabled={item.locked}
+                              onClick={() => {
+                                if (item.locked) return;
+                                playCutePop();
+                                item.onClick();
+                              }}
+                              title={item.locked ? '준비 중입니다 (곧 공개 예정)' : item.label}
+                              className={`h-[30px] px-3 rounded-full text-[13.5px] tracking-tight whitespace-nowrap shrink-0 inline-flex items-center justify-center gap-1 transition-all ${
+                                item.locked
+                                  ? 'text-slate-400 font-semibold cursor-not-allowed opacity-75'
+                                  : item.isActive
+                                  ? 'bg-[#3B1668] text-white font-black shadow-xs cursor-pointer'
+                                  : 'text-[#3A2259] hover:text-[#3B1668] hover:bg-purple-200/55 font-bold cursor-pointer'
+                              }`}
+                            >
+                              {item.locked && <Lock className="w-3 h-3 shrink-0" />}
+                              <span>{item.label}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </nav>
+              );
+            })()}
+
+            {/* Stickman Icon moved from Row 1 to Far Right End of Row 2 */}
             {onOpenStickmanBonus && (
               <button
                 type="button"
@@ -358,190 +619,93 @@ export const HeaderAndEmergencyBar: React.FC<HeaderAndEmergencyBarProps> = ({
                   playCutePop();
                   onOpenStickmanBonus();
                 }}
-                className="ml-0.5 p-1 bg-transparent border-0 cursor-pointer focus:outline-none transition-transform hover:scale-110 active:scale-95 shrink-0 flex items-center"
+                className="mr-1 w-8 h-8 rounded-full hover:bg-purple-200/60 border-0 bg-transparent cursor-pointer focus:outline-none transition-transform hover:scale-110 active:scale-95 shrink-0 flex items-center justify-center"
                 title={stickmanTitle}
                 aria-label={stickmanTitle}
               >
                 <svg
                   viewBox="-26 -60 52 114"
-                  className="w-[18px] h-[30px] block"
+                  className="w-[17px] h-[28px] block"
                   aria-hidden="true"
                 >
-                  <circle cx="0" cy="-38" r="18" fill="#FFFFFF" stroke="#0F172A" strokeWidth="4" />
-                  <circle cx="-6" cy="-41" r="2.5" fill="#0F172A" />
-                  <circle cx="6" cy="-41" r="2.5" fill="#0F172A" />
+                  <circle cx="0" cy="-38" r="18" fill="#FFFFFF" stroke="#3B1668" strokeWidth="4" />
+                  <circle cx="-6" cy="-41" r="2.6" fill="#3B1668" />
+                  <circle cx="6" cy="-41" r="2.6" fill="#3B1668" />
                   <path
                     d="M-6 -32 Q0 -26 6 -32"
                     fill="none"
-                    stroke="#0F172A"
-                    strokeWidth="2.5"
+                    stroke="#3B1668"
+                    strokeWidth="2.6"
                     strokeLinecap="round"
                   />
-                  <line x1="0" y1="-20" x2="0" y2="16" stroke="#0F172A" strokeWidth="5.5" strokeLinecap="round" />
-                  <line x1="0" y1="-10" x2="-16" y2="6" stroke="#0F172A" strokeWidth="4.5" strokeLinecap="round" />
+                  <line x1="0" y1="-20" x2="0" y2="16" stroke="#3B1668" strokeWidth="5.5" strokeLinecap="round" />
+                  <line x1="0" y1="-10" x2="-16" y2="6" stroke="#3B1668" strokeWidth="4.5" strokeLinecap="round" />
                   <g transform="translate(0, -10)">
                     <g className="stickman-arm-wave">
-                      <line x1="0" y1="0" x2="0" y2="23" stroke="#0F172A" strokeWidth="4.5" strokeLinecap="round" />
+                      <line x1="0" y1="0" x2="0" y2="23" stroke="#3B1668" strokeWidth="4.5" strokeLinecap="round" />
                     </g>
                   </g>
-                  <line x1="0" y1="16" x2="-11" y2="48" stroke="#0F172A" strokeWidth="5.5" strokeLinecap="round" />
-                  <line x1="0" y1="16" x2="11" y2="48" stroke="#0F172A" strokeWidth="5.5" strokeLinecap="round" />
+                  <line x1="0" y1="16" x2="-11" y2="48" stroke="#3B1668" strokeWidth="5.5" strokeLinecap="round" />
+                  <line x1="0" y1="16" x2="11" y2="48" stroke="#3B1668" strokeWidth="5.5" strokeLinecap="round" />
                 </svg>
               </button>
             )}
-          </nav>
-        </div>
-
-        {/* Right: 4 Emergency Icons + Mic + Language Dropdown + Collapse Menu Button */}
-        <div className="flex items-center gap-1.5 xl:gap-2 shrink-0">
-          <div className="flex items-center gap-1" aria-label="Emergency Quick Cards">
-            {renderEmergencyButtons('desktop')}
           </div>
-
-          <button
-            type="button"
-            onClick={handleMicClick}
-            className="w-8 h-8 rounded-md bg-gradient-to-tr from-rose-500 to-[#D94A6B] hover:from-rose-600 hover:to-[#BE3A58] active:scale-95 text-white shadow-2xs flex items-center justify-center transition-all cursor-pointer shrink-0"
-            title={ui.aiTeacherTitle}
-            aria-label={ui.aiTeacherTitle}
-          >
-            <Mic className="w-3.5 h-3.5" />
-          </button>
-
-          <div className="h-5 w-px bg-pink-200/90 shrink-0 mx-0.5" aria-hidden="true" />
-
-          {/* Compact Single-Line Language Selector */}
-          <div className="relative shrink-0">
-            <button
-              type="button"
-              onClick={() => setIsLangOpen(prev => !prev)}
-              className="h-8 px-2.5 rounded-md bg-[#441A75] hover:bg-[#52208E] active:scale-[0.98] text-white shadow-2xs flex items-center gap-1.5 transition-all focus:outline-none cursor-pointer border border-[#6328A6] whitespace-nowrap"
-              aria-label={ui.myLangTitle}
-              aria-expanded={isLangOpen}
-              title={`${ui.myLangTitle} · ${ui.dropdownHeader}`}
-            >
-              <span className="text-sm leading-none shrink-0" role="img" aria-label="Globe">🌐</span>
-              <span className="hidden xl:inline text-[11.5px] font-bold text-purple-100 whitespace-nowrap">
-                {ui.myLangTitle}
-              </span>
-              <span className="bg-[#FEF08A] text-[#1E0B36] font-bold text-[11px] px-1.5 py-0.5 rounded-sm whitespace-nowrap flex items-center gap-1 leading-none">
-                <span>{selectedLangObj.flag}</span>
-                <span>{selectedLangObj.nativeName}</span>
-              </span>
-              <ChevronDown className={`w-3.5 h-3.5 text-white transition-transform shrink-0 ${isLangOpen ? 'rotate-180' : ''}`} />
-            </button>
-
-            {renderLangDropdownPopover()}
-          </div>
-
-          {/* Collapse Top Bars Button ('메뉴 접기') */}
-          {onToggleMenuCollapse && (
-            <button
-              type="button"
-              onClick={() => {
-                playCutePop();
-                onToggleMenuCollapse();
-              }}
-              className="h-8 px-2.5 rounded-md bg-white hover:bg-pink-50 active:scale-95 border border-pink-200 hover:border-pink-400 text-rose-900 text-xs font-bold flex items-center gap-1 whitespace-nowrap shrink-0 shadow-2xs transition-all cursor-pointer"
-              title={isMenuCollapsed ? ui.expandMenu : ui.collapseMenu}
-              aria-label={isMenuCollapsed ? ui.expandMenu : ui.collapseMenu}
-            >
-              <ChevronUp className="w-3.5 h-3.5 text-rose-700 shrink-0" />
-              <span>{ui.collapseMenu}</span>
-            </button>
-          )}
         </div>
       </div>
 
       {/* ===================================================================== */}
-      {/* MOBILE / TABLET (< lg): Existing Compact 2-Tier Header (Without ≡ 더보기) */}
+      {/* MOBILE / TABLET (< lg): Compact Single-Row Header (Emergency + Mic + Print) */}
       {/* ===================================================================== */}
-      <div className="flex lg:hidden w-full px-2.5 sm:px-6 py-1 sm:py-1.5 flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2.5">
-        {/* Tier 1: Brand + Emergency Emojis (Mobile) */}
-        <div className="flex items-center justify-between w-full sm:w-auto gap-2">
-          <button
-            type="button"
-            onClick={handleBrandClick}
-            onDoubleClick={handleBrandDoubleClick}
-            onPointerDown={handleBrandPointerDown}
-            onPointerUp={clearBrandLongPress}
-            onPointerLeave={clearBrandLongPress}
-            onPointerCancel={clearBrandLongPress}
-            className="flex items-center gap-1.5 sm:gap-2 select-none cursor-pointer group text-left border-0 bg-transparent p-0 transition-transform active:scale-95 min-w-0"
-            title={ui.brandTitle}
-          >
-            <ManduMascot size="xs" interactive={false} />
-            <h1 className="text-sm sm:text-lg font-bold text-rose-950 font-korean-gothic tracking-normal leading-none whitespace-nowrap truncate group-hover:text-pink-600 transition-colors">
-              {ui.brandTitle}
-            </h1>
-          </button>
+      <div className="flex lg:hidden w-full px-2 sm:px-6 py-1 sm:py-1.5 items-center justify-between gap-1.5 sm:gap-2.5">
+        <button
+          type="button"
+          onClick={handleBrandClick}
+          onDoubleClick={handleBrandDoubleClick}
+          onPointerDown={handleBrandPointerDown}
+          onPointerUp={clearBrandLongPress}
+          onPointerLeave={clearBrandLongPress}
+          onPointerCancel={clearBrandLongPress}
+          className="flex items-center gap-1 sm:gap-2 select-none cursor-pointer group text-left border-0 bg-transparent p-0 transition-transform active:scale-95 min-w-0"
+          title={ui.brandTitle}
+        >
+          <ManduMascot size="xs" interactive={false} />
+          <h1 className="text-[13.5px] sm:text-lg font-black text-white font-korean-gothic tracking-tight leading-none whitespace-nowrap truncate group-hover:text-purple-100 transition-colors">
+            {ui.brandTitle}
+          </h1>
+        </button>
 
-          <div className="flex sm:hidden items-center gap-1 shrink-0">
-            {renderEmergencyButtons('mobile')}
-          </div>
-        </div>
-
-        {/* Tier 2: Desktop-sm Emergency + Mic + Collapse + Compact Single-Line Language Selector */}
-        <div className="flex items-center justify-between sm:justify-end gap-1.5 sm:gap-2 w-full sm:w-auto">
-          <div
-            className="hidden sm:flex items-center gap-1 sm:gap-1.5 pr-2 border-r-2 border-pink-200"
-            aria-label="Emergency Quick Cards"
-          >
-            {renderEmergencyButtons('mobile')}
-          </div>
+        {/* Right: 4 Emergency Icons + Mic + Print (Far Right End) */}
+        <div className="flex items-center gap-1 sm:gap-1.5 shrink-0" aria-label="긴급 알림 · 음성 · 인쇄">
+          {renderEmergencyButtons('mobile')}
 
           <button
             type="button"
             onClick={handleMicClick}
-            className="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px] rounded-md bg-gradient-to-tr from-rose-500 to-[#D94A6B] hover:from-rose-600 hover:to-[#BE3A58] active:scale-95 text-white shadow-2xs flex items-center justify-center transition-all cursor-pointer shrink-0"
+            className="w-7 h-7 sm:w-9 sm:h-9 rounded-md bg-gradient-to-tr from-pink-500 to-rose-500 hover:from-pink-400 hover:to-rose-400 active:scale-95 text-white border border-white/25 shadow-2xs flex items-center justify-center transition-all cursor-pointer shrink-0"
             title={ui.aiTeacherTitle}
             aria-label={ui.aiTeacherTitle}
           >
             <Mic className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
 
-          {onToggleMenuCollapse && (
+          <div className="relative shrink-0">
             <button
               type="button"
               onClick={() => {
                 playCutePop();
-                onToggleMenuCollapse();
+                setIsLangOpen(false);
+                setIsPrintMenuOpen((prev) => !prev);
               }}
-              className="h-[30px] sm:h-[34px] px-2 rounded-md bg-white hover:bg-pink-50 border border-pink-200 text-rose-900 active:scale-95 shadow-2xs flex items-center justify-center gap-1 text-[11px] font-bold transition-all cursor-pointer shrink-0"
-              title={ui.collapseMenu}
-              aria-label={ui.collapseMenu}
+              className="w-7 h-7 sm:w-9 sm:h-9 rounded-md bg-white hover:bg-purple-50 active:scale-95 text-[#2E1052] border border-white shadow-2xs flex items-center justify-center transition-all cursor-pointer shrink-0"
+              title="학습지 인쇄 메뉴 (1장 · 묶음)"
+              aria-label="인쇄 메뉴 열기"
+              aria-expanded={isPrintMenuOpen}
             >
-              <ChevronUp className="w-3.5 h-3.5" />
-            </button>
-          )}
-
-          {/* Mobile Single-Row Compact Language Selector */}
-          <div className="relative flex-1 sm:flex-initial shrink-0 min-w-0">
-            <button
-              type="button"
-              onClick={() => setIsLangOpen(!isLangOpen)}
-              className="h-[30px] sm:h-[34px] w-full sm:w-[270px] px-2 sm:px-2.5 rounded-md bg-[#441A75] hover:bg-[#52208E] active:scale-[0.98] text-white shadow-md flex items-center justify-between transition-all focus:outline-none cursor-pointer border border-[#6328A6]"
-              aria-label={ui.myLangTitle}
-              aria-expanded={isLangOpen}
-              title={ui.dropdownHeader}
-            >
-              <div className="flex items-center gap-1.5 text-left min-w-0">
-                <span className="text-sm leading-none shrink-0" role="img" aria-label="Globe">🌐</span>
-                <span className="text-[11px] sm:text-xs font-bold text-white tracking-tight leading-none whitespace-nowrap truncate max-w-[145px] sm:max-w-[165px]">
-                  {ui.myLangTitle}
-                </span>
-              </div>
-
-              <div className="flex items-center gap-1 shrink-0 ml-1.5">
-                <span className="bg-[#FEF08A] text-[#1E0B36] font-bold text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-sm shadow-2xs whitespace-nowrap flex items-center gap-1 leading-none">
-                  <span className="text-[11px] sm:text-xs">{selectedLangObj.flag}</span>
-                  <span className="truncate max-w-[65px] sm:max-w-[90px]">{selectedLangObj.nativeName}</span>
-                </span>
-                <ChevronDown className={`w-3 h-3 sm:w-3.5 sm:h-3.5 text-white transition-transform shrink-0 ${isLangOpen ? 'rotate-180' : ''}`} />
-              </div>
+              <Printer className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3B1668]" />
             </button>
 
-            {renderLangDropdownPopover()}
+            {renderPrintMenuPopover()}
           </div>
         </div>
       </div>

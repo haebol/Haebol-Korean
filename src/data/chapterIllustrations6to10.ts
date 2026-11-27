@@ -331,7 +331,7 @@ export const BADA_YO_NOTEBOOK_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://
     <!-- Head -->
     <circle cx="28" cy="24" r="14.5" fill="rgb(254,215,170)" />
     <!-- Soft rounded hair with neat bangs (no ear protrusions) -->
-    <path d="M 13.3 22 C 13 6 43 6 42.7 22 C 39 14 33 13 28 14 C 23 13 17 14 13.3 22 Z" fill="rgb(51,65,85)" />
+    <path d="M 13 23.5 A 15 15.6 0 0 1 43 23.5 C 39.5 17 33.5 16 28 17.5 C 22.5 16 16.5 17 13 23.5 Z" fill="rgb(51,65,85)" />
     <!-- Happy smiling crescent eyes looking right at the notebook -->
     <path d="M 21 23 Q 23.5 20 26 23" stroke="rgb(30,41,59)" stroke-width="1.8" stroke-linecap="round" fill="none" />
     <path d="M 31 23 Q 33.5 20 36 23" stroke="rgb(30,41,59)" stroke-width="1.8" stroke-linecap="round" fill="none" />
@@ -394,21 +394,24 @@ export const BADA_YO_LUNCH_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www
 export const MEOK_EO_YO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
   <circle cx="50" cy="50" r="46" fill="rgb(254,243,199)" />
   <g transform="translate(20, 14)">
+    <!-- Body (drawn behind head & neck) -->
+    <path d="M 12 62 C 12 47 20 42 30 42 C 40 42 48 47 48 62 Z" fill="rgb(249,115,22)" />
+    <!-- Neck -->
+    <rect x="26" y="38" width="8" height="7" rx="2.5" fill="rgb(254,215,170)" />
     <!-- Face -->
-    <circle cx="30" cy="24" r="18" fill="rgb(254,215,170)" />
-    <!-- Hair -->
-    <path d="M 11.2 20 C 9.8 -1.6 50.2 -1.6 48.8 20 C 48 14 40 10 30 10 C 20 10 12 14 11.2 20 Z" fill="rgb(51,65,85)" />
+    <circle cx="30" cy="24" r="17" fill="rgb(254,215,170)" />
+    <!-- Full lush hair with soft bangs -->
+    <path d="M 12.4 23 A 17.6 18.2 0 0 1 47.6 23 C 43.2 15.5 36.2 14.5 30 16.2 C 23.8 14.5 16.8 15.5 12.4 23 Z" fill="rgb(51,65,85)" />
     <!-- Happy Eating Eyes (Squinting joy) -->
-    <path d="M 20 22 Q 24 17 28 22" stroke="rgb(30,41,59)" stroke-width="2.5" stroke-linecap="round" fill="none" />
-    <path d="M 32 22 Q 36 17 40 22" stroke="rgb(30,41,59)" stroke-width="2.5" stroke-linecap="round" fill="none" />
+    <path d="M 20 23.5 Q 24 18.8 28 23.5" stroke="rgb(30,41,59)" stroke-width="2.4" stroke-linecap="round" fill="none" />
+    <path d="M 32 23.5 Q 36 18.8 40 23.5" stroke="rgb(30,41,59)" stroke-width="2.4" stroke-linecap="round" fill="none" />
     <!-- Big Rosy Cheeks -->
-    <circle cx="16" cy="28" r="4.5" fill="rgb(244,63,94)" opacity="0.65" />
-    <circle cx="44" cy="28" r="4.5" fill="rgb(244,63,94)" opacity="0.65" />
+    <circle cx="17" cy="28.5" r="4" fill="rgb(244,63,94)" opacity="0.65" />
+    <circle cx="43" cy="28.5" r="4" fill="rgb(244,63,94)" opacity="0.65" />
     <!-- Open Happy Mouth (냠냠!) -->
-    <path d="M 23 28 Q 30 38 37 28 Z" fill="rgb(190,18,60)" />
-    <!-- Body -->
-    <path d="M 14 54 C 14 42 22 38 30 38 C 38 38 46 42 46 54 Z" fill="rgb(249,115,22)" />
-    <!-- Hand holding spoon to mouth -->
+    <path d="M 23.5 29 Q 30 37.5 36.5 29 Z" fill="rgb(190,18,60)" />
+    <!-- Arm & Hand holding spoon to mouth -->
+    <path d="M 43 52 L 41 44" stroke="rgb(249,115,22)" stroke-width="5" stroke-linecap="round" />
     <g transform="translate(38, 26)">
       <line x1="2" y1="18" x2="-8" y2="6" stroke="rgb(148,163,184)" stroke-width="3" stroke-linecap="round" />
       <ellipse cx="-8" cy="6" rx="5" ry="3.5" fill="rgb(255,255,255)" stroke="rgb(148,163,184)" stroke-width="1.2" />

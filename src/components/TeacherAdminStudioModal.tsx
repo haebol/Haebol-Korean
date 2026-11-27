@@ -19,6 +19,10 @@ import {
   Printer,
   BookOpen,
   Video,
+  ArrowLeft,
+  Columns3,
+  Upload,
+  FileJson,
 } from 'lucide-react';
 import { SUPPORTED_LANGUAGES, SupportedLanguage, getLanguageMeta } from '../types';
 import { CHAPTER_LIST, VOCABULARY_DATA, getChapterCircledTitle } from '../data/vocabulary';
@@ -53,6 +57,14 @@ import { playCutePop } from '../utils/audio';
 import { AdminPrintAndReferenceTab } from './AdminPrintAndReferenceTab';
 import { SummaryShareBlogPanel } from './SummaryShareBlogPanel';
 import { AdminYoutubeStudioTab } from './AdminYoutubeStudioTab';
+import { AdminCurriculumWorkspace } from './AdminCurriculumWorkspace';
+import {
+  useAdminCurriculumConfig,
+  getCurriculumStats,
+  exportAdminConfigJson,
+  parseAdminConfigJson,
+  getDefaultAdminCurriculumConfig,
+} from '../utils/adminCurriculumConfig';
 
 interface TeacherAdminStudioModalProps {
   isOpen: boolean;
@@ -60,7 +72,7 @@ interface TeacherAdminStudioModalProps {
   onAuthChange?: (authed: boolean) => void;
 }
 
-type StudioTab = 'print' | 'reference' | 'blog' | 'youtube' | 'backup' | 'covers';
+type StudioTab = 'curriculum' | 'print' | 'reference' | 'blog' | 'youtube' | 'backup' | 'covers';
 
 const TEACHER_AUTH_SESSION_KEY = 'haebol_teacher_authed';
 
@@ -90,8 +102,18 @@ export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = (
   const [passwordInput, setPasswordInput] = useState('');
   const [authError, setAuthError] = useState<string | null>(null);
   const [isVerifying, setIsVerifying] = useState(false);
+  const pwInputRef = useRef<HTMLInputElement | null>(null);
 
-  const [activeTab, setActiveTab] = useState<StudioTab>('blog');
+  const [activeTab, setActiveTab] = useState<StudioTab>('curriculum');
+  const [adminConfig, updateAdminConfig] = useAdminCurriculumConfig();
+  const curriculumStats = useMemo(() => getCurriculumStats(adminConfig), [adminConfig]);
+
+  // Admin JSON Config Backup / Restore Drawer State
+  const [isConfigSyncOpen, setIsConfigSyncOpen] = useState(false);
+  const [configCopyDone, setConfigCopyDone] = useState(false);
+  const [importJsonText, setImportJsonText] = useState('');
+  const [importStatus, setImportStatus] = useState<{ type: 'ok' | 'err'; msg: string } | null>(null);
+  const [confirmResetStep, setConfirmResetStep] = useState(false);
 
   // Tool 1: Backup Extractor State
   const [backupScope, setBackupScope] = useState<BackupScope>('all');
@@ -142,9 +164,9 @@ export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = (
     return () => window.removeEventListener('keydown', handleKey);
   }, [isOpen, onClose]);
 
-  const handleVerifyPassword = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!passwordInput.trim() || isVerifying) return;
+  const verifyPassword = async (rawPassword: string, isAutoSubmit = false) => {
+    const candidate = rawPassword.trim();
+    if (!candidate || isVerifying) return;
     setIsVerifying(true);
     setAuthError(null);
 
@@ -152,7 +174,7 @@ export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = (
       const res = await fetch('/api/teacher/verify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: passwordInput }),
+        body: JSON.stringify({ password: candidate }),
       });
       const data = await res.json().catch(() => ({ ok: false }));
       if (res.ok && data?.ok) {
@@ -166,12 +188,21 @@ export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = (
         setPasswordInput('');
       } else {
         setAuthError(data?.error || '비밀번호가 일치하지 않습니다.');
+        if (isAutoSubmit) {
+          setPasswordInput('');
+          requestAnimationFrame(() => pwInputRef.current?.focus());
+        }
       }
     } catch {
       setAuthError('서버 인증에 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.');
     } finally {
       setIsVerifying(false);
     }
+  };
+
+  const handleVerifyPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await verifyPassword(passwordInput, false);
   };
 
   const handleLockStudio = () => {
@@ -246,6 +277,74 @@ export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = (
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+  };
+
+  const handleCopyAdminConfigJson = async () => {
+    playCutePop();
+    try {
+      await navigator.clipboard.writeText(exportAdminConfigJson(adminConfig));
+      setConfigCopyDone(true);
+      setTimeout(() => setConfigCopyDone(false), 2000);
+    } catch {
+      setImportStatus({ type: 'err', msg: '클립보드 복사에 실패했습니다. 아래 파일 저장을 이용해 주세요.' });
+    }
+  };
+
+  const handleDownloadAdminConfigJson = () => {
+    playCutePop();
+    const json = exportAdminConfigJson(adminConfig);
+    const blob = new Blob([json], { type: 'application/json;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `해볼한국어_관리자설정_${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const handleApplyImportJson = (rawText: string) => {
+    const trimmed = rawText.trim();
+    if (!trimmed) {
+      setImportStatus({ type: 'err', msg: '복원할 JSON 텍스트를 붙여넣어 주세요.' });
+      return;
+    }
+    const parsed = parseAdminConfigJson(trimmed);
+    if ('error' in parsed) {
+      setImportStatus({ type: 'err', msg: parsed.error });
+      return;
+    }
+    playCutePop();
+    updateAdminConfig(parsed.config);
+    setImportJsonText('');
+    setImportStatus({
+      type: 'ok',
+      msg: `설정 복원 완료 (전체 ${parsed.stats.total} · 공개 ${parsed.stats.published} · 준비중 ${parsed.stats.locked})`,
+    });
+  };
+
+  const handleUploadConfigFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const content = typeof reader.result === 'string' ? reader.result : '';
+      handleApplyImportJson(content);
+    };
+    reader.readAsText(file, 'utf-8');
+    e.target.value = '';
+  };
+
+  const handleResetAdminConfig = () => {
+    if (!confirmResetStep) {
+      setConfirmResetStep(true);
+      return;
+    }
+    playCutePop();
+    updateAdminConfig(getDefaultAdminCurriculumConfig());
+    setConfirmResetStep(false);
+    setImportStatus({ type: 'ok', msg: '모든 단원 순서와 공개 상태가 기본값으로 초기화되었습니다.' });
   };
 
   // Active Unit & Blog Draft Assembly
@@ -574,53 +673,222 @@ export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = (
   const langMeta = getLanguageMeta(targetLang);
 
   return createPortal(
-    <div
-      className="fixed inset-0 z-[120] bg-slate-900/75 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 font-korean-gothic no-print"
-      onClick={onClose}
-    >
-      <div
-        className="relative w-full max-w-6xl max-h-[94vh] bg-[#F8FAFC] rounded-xl border border-slate-300 shadow-2xl flex flex-col overflow-hidden"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Top Admin Studio Header */}
-        <header className="px-4 sm:px-6 py-3.5 bg-slate-950 text-white flex items-center justify-between gap-3 shrink-0">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <span className="w-8 h-8 rounded-md bg-rose-500 text-white flex items-center justify-center shrink-0">
-              {isAuthenticated ? <Unlock className="w-4 h-4" /> : <Lock className="w-4 h-4" />}
+    <div className="fixed inset-0 z-[120] w-screen h-screen bg-[#F8F9FB] flex flex-col overflow-hidden font-korean-gothic no-print">
+      {/* Full-Screen Admin Top Bar */}
+      <header className="px-4 sm:px-5 h-[56px] bg-[#1E1035] text-white border-b border-white/10 flex items-center justify-between gap-4 shrink-0">
+        {/* Left: Brand Title + Live Curriculum Status Summary */}
+        <div className="flex items-center gap-4 min-w-0">
+          <div className="flex items-center gap-2 min-w-0 shrink-0">
+            <span className="w-7 h-7 rounded-md bg-white/15 text-white flex items-center justify-center shrink-0">
+              {isAuthenticated ? <Unlock className="w-3.5 h-3.5" /> : <Lock className="w-3.5 h-3.5" />}
             </span>
-            <div className="min-w-0">
-              <h2 className="text-sm sm:text-base font-black tracking-tight truncate">
-                해볼쌤 전용 관리자 스튜디오
-              </h2>
-              <p className="text-[11px] text-slate-300 font-medium truncate">
-                전체 학습지·3종세트 인쇄 및 PDF 저장 · 총정리(6종)·단어장(4종) · 블로그 · 백업 추출
-              </p>
-            </div>
+            <h2 className="text-sm sm:text-[15px] font-black tracking-tight whitespace-nowrap">
+              해볼한국어 관리자
+            </h2>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
-            {isAuthenticated && (
+          {isAuthenticated && (
+            <div
+              className="hidden md:flex items-center gap-2 text-xs text-purple-100/90 border-l border-white/15 pl-4 tabular-nums whitespace-nowrap"
+              aria-label="단원 공개 현황 요약"
+            >
+              <span>
+                전체 <strong className="text-white font-black">{curriculumStats.total}</strong>
+              </span>
+              <span aria-hidden="true" className="text-white/30">·</span>
+              <span>
+                공개 <strong className="text-emerald-300 font-black">{curriculumStats.published}</strong>
+              </span>
+              <span aria-hidden="true" className="text-white/30">·</span>
+              <span>
+                준비중 <strong className="text-amber-300 font-black">{curriculumStats.locked}</strong>
+              </span>
+            </div>
+          )}
+        </div>
+
+        {/* Right: JSON Sync, Lock, Return to Learner View */}
+        <div className="flex items-center gap-2 shrink-0">
+          {isAuthenticated && (
+            <>
+              <button
+                type="button"
+                onClick={() => {
+                  playCutePop();
+                  setIsConfigSyncOpen((v) => !v);
+                  setImportStatus(null);
+                  setConfirmResetStep(false);
+                }}
+                className={`h-8 px-2.5 sm:px-3 rounded-md text-xs font-bold flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 transition-colors border ${
+                  isConfigSyncOpen
+                    ? 'bg-white text-[#1E1035] border-white'
+                    : 'bg-white/10 hover:bg-white/18 text-purple-100 border-white/15'
+                }`}
+                title="단원 순서 및 공개/준비중 설정 JSON 복사·불러오기"
+              >
+                <FileJson className="w-3.5 h-3.5 shrink-0" />
+                <span className="hidden sm:inline">설정 복사/불러오기</span>
+                <span className="sm:hidden">JSON</span>
+              </button>
+
               <button
                 type="button"
                 onClick={handleLockStudio}
-                className="px-2.5 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 transition-colors"
+                className="h-8 px-2.5 rounded-md bg-white/10 hover:bg-white/18 text-purple-100 text-xs font-bold flex items-center gap-1 cursor-pointer whitespace-nowrap shrink-0 transition-colors"
+                title="관리자 잠금"
               >
-                <Lock className="w-3.5 h-3.5" />
-                <span>잠금</span>
+                <Lock className="w-3.5 h-3.5 shrink-0" />
+                <span className="hidden sm:inline">잠금</span>
               </button>
-            )}
-            <button
-              type="button"
-              onClick={onClose}
-              className="p-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 cursor-pointer transition-colors"
-              aria-label="닫기"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-        </header>
+            </>
+          )}
 
-        {/* Auth Lock Screen vs Authenticated Studio Body */}
+          <button
+            type="button"
+            onClick={() => {
+              playCutePop();
+              onClose();
+            }}
+            className="h-8 px-3 sm:px-3.5 rounded-md bg-white hover:bg-purple-50 text-[#1E1035] text-xs font-black flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 transition-colors"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 shrink-0" />
+            <span>학습자 화면으로 돌아가기</span>
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Compact Status Strip (< md, when authenticated) */}
+      {isAuthenticated && (
+        <div className="md:hidden px-4 py-1.5 bg-[#2A1748] text-purple-100 text-[11.5px] font-semibold flex items-center justify-between border-b border-white/10 tabular-nums shrink-0">
+          <span>단원 현황</span>
+          <div className="flex items-center gap-2">
+            <span>
+              전체 <strong className="text-white">{curriculumStats.total}</strong>
+            </span>
+            <span className="text-white/30">·</span>
+            <span>
+              공개 <strong className="text-emerald-300">{curriculumStats.published}</strong>
+            </span>
+            <span className="text-white/30">·</span>
+            <span>
+              준비중 <strong className="text-amber-300">{curriculumStats.locked}</strong>
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* JSON Backup / Restore Inline Drawer */}
+      {isAuthenticated && isConfigSyncOpen && (
+        <div className="bg-white border-b border-slate-200 px-4 sm:px-6 py-4 shrink-0">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {/* Left: Export / Copy / Reset */}
+            <div className="space-y-2.5">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xs font-black text-slate-900">
+                  현재 관리자 설정 백업 (단원 순서 · 공개/준비중 상태)
+                </h3>
+                <button
+                  type="button"
+                  onClick={() => setIsConfigSyncOpen(false)}
+                  className="text-slate-400 hover:text-slate-600 cursor-pointer"
+                  aria-label="설정 백업 닫기"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+              <p className="text-[11.5px] text-slate-500 leading-relaxed">
+                PC에서 설정한 단원 순서와 공개/준비중 상태를 JSON으로 복사하거나 파일로 저장해 폰·태블릿에 그대로 복원할 수 있습니다.
+              </p>
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleCopyAdminConfigJson}
+                  className="h-8 px-3 rounded-md bg-[#3B1668] hover:bg-[#2E1052] text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-colors whitespace-nowrap"
+                >
+                  {configCopyDone ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                  <span>{configCopyDone ? 'JSON 복사됨' : '설정 JSON 복사'}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={handleDownloadAdminConfigJson}
+                  className="h-8 px-3 rounded-md bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-colors whitespace-nowrap"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>JSON 파일 저장</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={handleResetAdminConfig}
+                  className={`h-8 px-3 rounded-md border text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-colors whitespace-nowrap ${
+                    confirmResetStep
+                      ? 'bg-rose-600 border-rose-600 text-white'
+                      : 'bg-white hover:bg-rose-50 border-slate-300 text-slate-600 hover:text-rose-700'
+                  }`}
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>{confirmResetStep ? '한 번 더 눌러 초기화 확인' : '기본값 초기화'}</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Right: Import Paste or File */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between gap-2">
+                <label htmlFor="admin-config-import" className="text-xs font-black text-slate-900">
+                  다른 기기 설정 불러오기 (JSON 붙여넣기 또는 파일 선택)
+                </label>
+                <label className="h-7 px-2.5 rounded border border-slate-300 bg-slate-50 hover:bg-slate-100 text-[11px] font-bold text-slate-700 inline-flex items-center gap-1 cursor-pointer whitespace-nowrap">
+                  <Upload className="w-3 h-3" />
+                  <span>파일 선택</span>
+                  <input
+                    type="file"
+                    accept="application/json,.json"
+                    onChange={handleUploadConfigFile}
+                    className="hidden"
+                  />
+                </label>
+              </div>
+              <div className="flex items-stretch gap-2">
+                <textarea
+                  id="admin-config-import"
+                  rows={2}
+                  value={importJsonText}
+                  onChange={(e) => {
+                    setImportJsonText(e.target.value);
+                    if (importStatus) setImportStatus(null);
+                  }}
+                  placeholder='복사한 JSON 설정 텍스트를 여기에 붙여넣으세요...'
+                  className="flex-1 px-3 py-2 rounded-md border border-slate-300 focus:border-[#3B1668] focus:outline-none text-[11.5px] font-mono text-slate-800 bg-slate-50 focus:bg-white resize-none"
+                />
+                <button
+                  type="button"
+                  onClick={() => handleApplyImportJson(importJsonText)}
+                  className="px-3.5 rounded-md bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold cursor-pointer whitespace-nowrap shrink-0 transition-colors"
+                >
+                  적용하기
+                </button>
+              </div>
+              {importStatus && (
+                <div
+                  className={`text-[11.5px] font-bold flex items-center gap-1.5 ${
+                    importStatus.type === 'ok' ? 'text-emerald-700' : 'text-rose-600'
+                  }`}
+                >
+                  {importStatus.type === 'ok' ? (
+                    <Check className="w-3.5 h-3.5 shrink-0" />
+                  ) : (
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                  )}
+                  <span>{importStatus.msg}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Auth Lock Screen vs Authenticated Full-Screen Body */}
+      <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
         {!isAuthenticated ? (
           <div className="flex-1 flex items-center justify-center p-6 sm:p-10 bg-gradient-to-b from-slate-50 to-slate-100">
             <form
@@ -644,16 +912,23 @@ export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = (
                   관리자 비밀번호
                 </label>
                 <input
+                  ref={pwInputRef}
                   id="teacher-pw"
                   type="password"
+                  inputMode="numeric"
+                  autoComplete="one-time-code"
                   value={passwordInput}
                   onChange={(e) => {
-                    setPasswordInput(e.target.value);
+                    const nextVal = e.target.value;
+                    setPasswordInput(nextVal);
                     if (authError) setAuthError(null);
+                    if (/^\d{4}$/.test(nextVal)) {
+                      void verifyPassword(nextVal, true);
+                    }
                   }}
-                  placeholder="비밀번호를 입력하세요"
+                  placeholder="4자리 숫자 입력 시 바로 열립니다"
                   autoFocus
-                  className="w-full px-3.5 py-2.5 rounded-md border border-slate-300 focus:border-slate-900 focus:outline-none text-sm font-bold text-slate-900 bg-white"
+                  className="w-full px-3.5 py-2.5 rounded-md border border-slate-300 focus:border-slate-900 focus:outline-none text-sm font-bold text-slate-900 bg-white tracking-widest"
                 />
               </div>
 
@@ -686,21 +961,37 @@ export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = (
         ) : (
           <>
             {/* Sub-Tabs Navigation Bar */}
-            <nav className="px-4 sm:px-6 bg-white border-b border-slate-200 flex items-center gap-1 overflow-x-auto shrink-0">
+            <nav className="px-4 sm:px-5 bg-white border-b border-slate-200 flex items-center gap-1 overflow-x-auto shrink-0">
+              <button
+                type="button"
+                onClick={() => {
+                  playCutePop();
+                  setActiveTab('curriculum');
+                }}
+                className={`px-3.5 py-2.5 text-xs sm:text-[13px] font-black border-b-2 flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer transition-colors ${
+                  activeTab === 'curriculum'
+                    ? 'border-[#3B1668] text-[#3B1668] bg-purple-50/50'
+                    : 'border-transparent text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                <Columns3 className="w-4 h-4" />
+                <span>단원·공개 관리 (3단)</span>
+              </button>
+
               <button
                 type="button"
                 onClick={() => {
                   playCutePop();
                   setActiveTab('print');
                 }}
-                className={`px-3.5 py-3 text-xs sm:text-sm font-black border-b-2 flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer transition-colors ${
+                className={`px-3.5 py-2.5 text-xs sm:text-[13px] font-black border-b-2 flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer transition-colors ${
                   activeTab === 'print'
                     ? 'border-indigo-600 text-indigo-800 bg-indigo-50/50'
                     : 'border-transparent text-slate-600 hover:text-slate-900'
                 }`}
               >
                 <Printer className="w-4 h-4" />
-                <span>인쇄 · PDF 센터 (3종세트)</span>
+                <span>인쇄 · PDF 센터</span>
               </button>
 
               <button
@@ -709,14 +1000,14 @@ export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = (
                   playCutePop();
                   setActiveTab('reference');
                 }}
-                className={`px-3.5 py-3 text-xs sm:text-sm font-black border-b-2 flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer transition-colors ${
+                className={`px-3.5 py-2.5 text-xs sm:text-[13px] font-black border-b-2 flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer transition-colors ${
                   activeTab === 'reference'
                     ? 'border-emerald-600 text-emerald-800 bg-emerald-50/50'
                     : 'border-transparent text-slate-600 hover:text-slate-900'
                 }`}
               >
                 <BookOpen className="w-4 h-4" />
-                <span>총정리(6종) · 단어장(4종)</span>
+                <span>총정리 · 단어장</span>
               </button>
 
               <button
@@ -725,14 +1016,14 @@ export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = (
                   playCutePop();
                   setActiveTab('blog');
                 }}
-                className={`px-3.5 py-3 text-xs sm:text-sm font-black border-b-2 flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer transition-colors ${
+                className={`px-3.5 py-2.5 text-xs sm:text-[13px] font-black border-b-2 flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer transition-colors ${
                   activeTab === 'blog'
                     ? 'border-rose-600 text-rose-700 bg-rose-50/50'
                     : 'border-transparent text-slate-600 hover:text-slate-900'
                 }`}
               >
                 <FileText className="w-4 h-4" />
-                <span>블로그 원고 & 이미지 생산기</span>
+                <span>블로그 스튜디오</span>
               </button>
 
               <button
@@ -741,14 +1032,14 @@ export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = (
                   playCutePop();
                   setActiveTab('youtube');
                 }}
-                className={`px-3.5 py-3 text-xs sm:text-sm font-black border-b-2 flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer transition-colors ${
+                className={`px-3.5 py-2.5 text-xs sm:text-[13px] font-black border-b-2 flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer transition-colors ${
                   activeTab === 'youtube'
                     ? 'border-red-600 text-red-700 bg-red-50/50'
                     : 'border-transparent text-slate-600 hover:text-slate-900'
                 }`}
               >
                 <Video className="w-4 h-4" />
-                <span>유튜브 스튜디오 (한글 획순)</span>
+                <span>유튜브 스튜디오</span>
               </button>
 
               <button
@@ -757,14 +1048,14 @@ export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = (
                   playCutePop();
                   setActiveTab('backup');
                 }}
-                className={`px-3.5 py-3 text-xs sm:text-sm font-black border-b-2 flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer transition-colors ${
+                className={`px-3.5 py-2.5 text-xs sm:text-[13px] font-black border-b-2 flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer transition-colors ${
                   activeTab === 'backup'
                     ? 'border-slate-900 text-slate-900 bg-slate-50'
                     : 'border-transparent text-slate-600 hover:text-slate-900'
                 }`}
               >
                 <Database className="w-4 h-4" />
-                <span>전체 학습 데이터 백업</span>
+                <span>학습 데이터 백업</span>
               </button>
 
               <button
@@ -773,18 +1064,24 @@ export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = (
                   playCutePop();
                   setActiveTab('covers');
                 }}
-                className={`px-3.5 py-3 text-xs sm:text-sm font-black border-b-2 flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer transition-colors ${
+                className={`px-3.5 py-2.5 text-xs sm:text-[13px] font-black border-b-2 flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer transition-colors ${
                   activeTab === 'covers'
                     ? 'border-purple-700 text-purple-800 bg-purple-50/50'
                     : 'border-transparent text-slate-600 hover:text-slate-900'
                 }`}
               >
                 <ImageIcon className="w-4 h-4" />
-                <span>메뉴 소개 표지 자료실 (4종)</span>
+                <span>표지 자료실</span>
               </button>
             </nav>
 
-            {/* Tab Body */}
+            {/* Primary Full-Screen 3-Pane Curriculum Manager */}
+            {activeTab === 'curriculum' ? (
+              <AdminCurriculumWorkspace
+                config={adminConfig}
+                onUpdateConfig={updateAdminConfig}
+              />
+            ) : (
             <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
               {/* ============================================================ */}
               {/* TAB: 인쇄 · PDF 센터 / 총정리 · 단어장 자료실                   */}
@@ -1293,6 +1590,7 @@ export const TeacherAdminStudioModal: React.FC<TeacherAdminStudioModalProps> = (
                 </div>
               )}
             </div>
+            )}
           </>
         )}
       </div>

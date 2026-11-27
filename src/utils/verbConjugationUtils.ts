@@ -1,3 +1,5 @@
+import type { VerbUnitType, VerbCardItem } from '../components/VerbConjugationSection';
+
 export interface ConjugatedCharInfo {
   char: string;
   color: string; // '#1E293B' | '#EF4444' | '#9333EA'
@@ -2854,4 +2856,447 @@ export function getFallingCardText(unit: string): string {
     default:
       return '아요';
   }
+}
+
+export interface VerbEndingQuestion {
+  unitId: VerbUnitType;
+  card: VerbCardItem;
+  stemDisplay: string;
+  baseEnding: string;
+  cueBadge?: string;
+  correctOption: string;
+  options: string[];
+  optionHints?: Record<string, string>;
+}
+
+const PRESENT_BY_PAST_GROUP: Record<string, '-아요' | '-어요' | '-해요'> = {
+  '-았어요': '-아요',
+  '-었어요': '-어요',
+  '-했어요': '-해요',
+};
+
+export function buildVerbEndingQuestion(
+  unit: VerbUnitType,
+  card: VerbCardItem
+): VerbEndingQuestion {
+  const baseParts = getBaseWordParts(card.baseWord, unit);
+  const stemDisplay = card.stem || baseParts.stem;
+  const baseEnding = baseParts.ending;
+  const isHada = baseEnding === '하다';
+
+  let correctOption = '';
+  let distractors: string[] = [];
+  let cueBadge: string | undefined;
+  const optionHints: Record<string, string> = {};
+
+  switch (unit) {
+    case 'unit1':
+      correctOption = '-아요';
+      distractors = ['-어요', '-해요', '-으요'];
+      optionHints['-어요'] = "어간에 밝은 모음 'ㅏ·ㅗ'가 있으니 '-어요'는 어색한 비문이에요. '-아요'가 맞아요!";
+      optionHints['-해요'] = "'하다' 동사가 아니므로 '-해요'를 붙일 수 없어요!";
+      optionHints['-으요'] = "'-으요'라는 활용 어미는 없어요! 모음조화에 맞춰 '-아요'를 붙여요.";
+      break;
+    case 'unit2':
+      correctOption = '-어요';
+      distractors = ['-아요', '-해요', '-으요'];
+      optionHints['-아요'] = "어간에 'ㅏ·ㅗ'가 없으므로 '-아요'를 붙일 수 없어요. '-어요'가 맞아요!";
+      optionHints['-해요'] = "'하다' 동사가 아니므로 '-해요'를 붙일 수 없어요!";
+      optionHints['-으요'] = "'-으요'라는 활용 어미는 없어요! '-어요'를 붙여요.";
+      break;
+    case 'unit3':
+      correctOption = '-해요';
+      distractors = ['-아요', '-어요', '-으요'];
+      optionHints['-아요'] = "'하다' 동사는 어간 뒤에 '-아요'가 아니라 '-해요'로 결합해요!";
+      optionHints['-어요'] = "'하다' 동사는 '-어요'가 아니라 '-해요'가 문법에 맞아요!";
+      optionHints['-으요'] = "'-으요'라는 어미는 쓸 수 없어요. '하다 → 해요'예요!";
+      break;
+    case 'unit4':
+      correctOption = '-아요';
+      distractors = ['-어요', '-해요', '-으요'];
+      optionHints['-어요'] = "어간이 변신해도 'ㅏ·ㅗ' 계열이므로 '-어요'는 비문이에요. '-아요'예요!";
+      optionHints['-해요'] = "'하다' 동사가 아니므로 '-해요'를 쓸 수 없어요!";
+      optionHints['-으요'] = "'-으요'라는 활용 어미는 없어요! '-아요'가 맞아요.";
+      cueBadge = '★ 변신 (ㅏ·ㅗ 계열)';
+      break;
+    case 'unit5':
+      correctOption = '-어요';
+      distractors = ['-아요', '-해요', '-으요'];
+      optionHints['-아요'] = "이 어간은 'ㅏ·ㅗ'가 아니므로 '-아요'가 아니라 '-어요'가 맞아요!";
+      optionHints['-해요'] = "'하다' 동사가 아니므로 '-해요'를 붙일 수 없어요!";
+      optionHints['-으요'] = "'-으요'라는 활용 어미는 없어요! '-어요'를 골라요.";
+      cueBadge = '★ 변신 (ㅓ·ㅜ·ㅡ 계열)';
+      break;
+    case 'unit6':
+    case 'unit9':
+      correctOption = '-았어요';
+      distractors = ['-었어요', '-해요', '-으어요'];
+      cueBadge = unit === 'unit9' ? '🕰️ 과거 ★변신' : '🕰️ 과거';
+      optionHints['-었어요'] = "어간에 'ㅏ·ㅗ'가 있으므로 '-었어요'는 비문이에요! '-았어요'가 맞아요.";
+      optionHints['-해요'] = "'하다' 동사가 아니므로 '-해요'를 붙일 수 없어요!";
+      optionHints['-으어요'] = "'-으어요'라는 어미는 한국어에 없어요!";
+      break;
+    case 'unit7':
+    case 'unit10':
+      if (unit === 'unit10' && card.baseWord === '까맣다') {
+        correctOption = '-았어요';
+        distractors = ['-었어요', '-해요', '-으어요'];
+        optionHints['-었어요'] = "'까맣-'에는 밝은 모음 'ㅏ'가 있어서 '-었어요'가 아니라 '-았어요'예요!";
+        optionHints['-해요'] = "'하다' 동사가 아니므로 '-해요'를 쓸 수 없어요!";
+        optionHints['-으어요'] = "'-으어요'라는 어미는 문법에 맞지 않아요!";
+      } else {
+        correctOption = '-었어요';
+        distractors = ['-았어요', '-해요', '-으어요'];
+        optionHints['-았어요'] = "어간에 'ㅏ·ㅗ'가 없으므로 '-았어요'는 비문이에요! '-었어요'가 맞아요.";
+        optionHints['-해요'] = "'하다' 동사가 아니므로 '-해요'를 붙일 수 없어요!";
+        optionHints['-으어요'] = "'-으어요'라는 어미는 문법에 맞지 않아요!";
+      }
+      cueBadge = unit === 'unit10' ? '🕰️ 과거 ★변신' : '🕰️ 과거';
+      break;
+    case 'unit8':
+      correctOption = '-했어요';
+      distractors = ['-았어요', '-었어요', '-으어요'];
+      cueBadge = '🕰️ 과거 (하다)';
+      optionHints['-았어요'] = "'하다' 동사의 과거형은 '-았어요'가 아니라 '-했어요'예요!";
+      optionHints['-었어요'] = "'하다' 동사의 과거형은 '-었어요'가 아니라 '-했어요'예요!";
+      optionHints['-으어요'] = "'-으어요'라는 어미는 쓸 수 없어요. '하다 → 했어요'예요!";
+      break;
+    case 'unit11': {
+      const isAn = card.conjugatedWord.startsWith('안 ');
+      const endType = card.conjugatedEnding === '아요' ? '아요' : '어요';
+      cueBadge = isAn ? '🙅 안 (안 함 · 의지)' : '🚫 못 (못 함 · 불가)';
+      correctOption = `${isAn ? '안' : '못'} ~${endType}`;
+      distractors = ['안 ~아요', '안 ~어요', '못 ~아요', '못 ~어요'].filter(
+        (x) => x !== correctOption
+      );
+      for (const d of distractors) {
+        if (d.startsWith(isAn ? '못' : '안')) {
+          optionHints[d] = isAn
+            ? "배지 확인! 스스로 하지 않는 '🙅 안' 부정 표현이에요!"
+            : "배지 확인! 할 수 없는 '🚫 못' 부정 표현이에요!";
+        } else {
+          optionHints[d] = `모음 조화에 맞춰 어미가 '~${endType}'로 끝나야 비문이 되지 않아요!`;
+        }
+      }
+      break;
+    }
+    case 'unit12': {
+      const isAn = card.conjugatedEnding.startsWith('안');
+      cueBadge = isAn ? '🙅 안 (의지 부정)' : '🚫 못 (능력·상황 부정)';
+      correctOption = isAn ? '안 해요' : '못 해요';
+      distractors = ['안 해요', '못 해요', '안 아요', '못 어요'].filter(
+        (x) => x !== correctOption
+      );
+      optionHints[isAn ? '못 해요' : '안 해요'] = isAn
+        ? "배지 확인! 스스로 안 하는 '🙅 안 해요'가 맞아요!"
+        : "배지 확인! 능력·상황상 어려운 '🚫 못 해요'가 맞아요!";
+      optionHints['안 아요'] = "'하다' 동사는 '-아요'가 아니라 '-해요'와 결합해요!";
+      optionHints['못 어요'] = "'하다' 동사는 '-어요'가 아니라 '-해요'와 결합해요!";
+      break;
+    }
+    case 'unit13':
+      correctOption = isHada ? '-하고 싶어요' : '-고 싶어요';
+      distractors = isHada
+        ? ['-고 싶어요', '-으고 싶어요', '-아 싶어요']
+        : ['-하고 싶어요', '-으고 싶어요', '-아 싶어요'];
+      optionHints[isHada ? '-고 싶어요' : '-하고 싶어요'] = isHada
+        ? "명사 뒤에 '하다'가 꼭 들어가야 하므로 '-하고 싶어요'예요!"
+        : "'하다' 동사가 아니므로 '-하고' 없이 바로 '-고 싶어요'를 붙여요!";
+      optionHints['-으고 싶어요'] = "'-고' 앞에는 '으'를 넣지 않아요!";
+      optionHints['-아 싶어요'] = "희망을 말할 때는 '-아'가 아니라 '-고 싶어요'예요!";
+      break;
+    case 'unit14':
+      correctOption = isHada ? '-하고 있어요' : '-고 있어요';
+      distractors = isHada
+        ? ['-고 있어요', '-으고 있어요', '-고 있아요']
+        : ['-하고 있어요', '-으고 있어요', '-고 있아요'];
+      optionHints[isHada ? '-고 있어요' : '-하고 있어요'] = isHada
+        ? "명사 뒤에 '하다'가 살아 있어야 하므로 '-하고 있어요'예요!"
+        : "'하다' 동사가 아니므로 '-하고' 없이 바로 '-고 있어요'를 붙여요!";
+      optionHints['-으고 있어요'] = "'-고' 앞에는 '으'를 붙이지 않아요!";
+      optionHints['-고 있아요'] = "'있-' 뒤에는 '-아요'가 아니라 '-어요'가 와야 해요 ('있어요')!";
+      break;
+    case 'unit15': {
+      correctOption = isHada
+        ? '-하세요'
+        : card.conjugatedEnding.startsWith('으')
+        ? '-으세요'
+        : '-세요';
+      distractors = ['-세요', '-으세요', '-하세요', '-아세요']
+        .filter((x) => x !== correctOption)
+        .slice(0, 3);
+      optionHints['-세요'] = "어간 끝에 받침이 남았으니 '-으세요'를 붙여야 발음이 자연스러워요!";
+      optionHints['-으세요'] = isHada
+        ? "'하다' 동사는 '-하세요'로 결합해요!"
+        : "받침이 없거나 'ㄹ' 받침 뒤에는 '으' 없이 바로 '-세요'를 붙여요!";
+      optionHints['-하세요'] = "'하다' 동사가 아니므로 '-하세요'는 비문이에요!";
+      optionHints['-아세요'] = "요청·명령을 나타내는 어미는 '-아세요'가 아니라 '-(으)세요'예요!";
+      break;
+    }
+    case 'unit16':
+      correctOption = '-지 마세요';
+      distractors = ['-으지 마세요', '-지 마아요', '-지 마해요'];
+      cueBadge = '🚫 금지 부탁';
+      optionHints['-으지 마세요'] = "'-지' 앞에는 '으'를 넣지 않고 어간에 바로 '-지 마세요'를 붙여요!";
+      optionHints['-지 마아요'] = "'말다+세요'는 '마아요'가 아니라 '-지 마세요'예요!";
+      optionHints['-지 마해요'] = "금지 표현의 끝은 '-마해요'가 아니라 '-지 마세요'예요!";
+      break;
+    case 'unit17':
+      correctOption =
+        card.conjugatedEnding === ' 거예요'
+          ? '- 거예요'
+          : card.conjugatedEnding.startsWith('을')
+          ? '-을 거예요'
+          : '-ㄹ 거예요';
+      distractors = ['-ㄹ 거예요', '-을 거예요', '- 거예요', '-으 거예요']
+        .filter((x) => x !== correctOption)
+        .slice(0, 3);
+      cueBadge = '🚀 미래 계획';
+      optionHints['-ㄹ 거예요'] = "어간 끝 받침이 남아 있으니 '-을 거예요'가 문법에 맞아요!";
+      optionHints['-을 거예요'] = "받침이 없거나 'ㄹ' 받침일 때는 '-을'을 붙이면 비문이에요!";
+      optionHints['- 거예요'] = "'ㄹ' 받침이 이미 있는 어간이 아니면 '- 거예요'만 붙일 수 없어요!";
+      optionHints['-으 거예요'] = "미래 어미에는 ㄹ 받침이 필요해요 ('-(으)ㄹ 거예요')!";
+      break;
+    case 'unit18':
+      if (isHada) correctOption = '-해 주세요';
+      else if (card.vowelHint.includes('ㅏ') || card.conjugatedEnding.startsWith('아'))
+        correctOption = '-아 주세요';
+      else correctOption = '-어 주세요';
+      distractors = ['-아 주세요', '-어 주세요', '-해 주세요', '-으 주세요']
+        .filter((x) => x !== correctOption)
+        .slice(0, 3);
+      optionHints['-아 주세요'] = "어간 모음에 맞게 '-어 주세요' 또는 '-해 주세요'를 써야 해요!";
+      optionHints['-어 주세요'] = "어간에 'ㅏ·ㅗ'가 있거나 '하다' 동사일 땐 '-어 주세요'가 비문이에요!";
+      optionHints['-해 주세요'] = "'하다' 동사가 아니므로 '-해 주세요'를 붙일 수 없어요!";
+      optionHints['-으 주세요'] = "'-으 주세요'라는 형태는 문법에 없어요! '-아/어/해 주세요'예요.";
+      break;
+    case 'unit19':
+      if (isHada) correctOption = '-해도 돼요?';
+      else if (card.vowelHint.includes('ㅏ')) correctOption = '-아도 돼요?';
+      else correctOption = '-어도 돼요?';
+      distractors = ['-아도 돼요?', '-어도 돼요?', '-해도 돼요?', '-으도 돼요?']
+        .filter((x) => x !== correctOption)
+        .slice(0, 3);
+      cueBadge = '🙋 허락 구하기';
+      optionHints['-아도 돼요?'] = "'ㅏ·ㅗ'가 없을 땐 '-어도 돼요?'로 써야 자연스러워요!";
+      optionHints['-어도 돼요?'] = "'ㅏ·ㅗ' 계열 어간이나 '하다' 동사에는 '-어도 돼요?'가 비문이에요!";
+      optionHints['-해도 돼요?'] = "'하다' 동사가 아니므로 '-해도 돼요?'는 붙일 수 없어요!";
+      optionHints['-으도 돼요?'] = "'-으도 돼요?'는 없는 형태예요! '-아/어/해도 돼요?'를 골라요.";
+      break;
+    case 'unit20':
+      if (isHada) correctOption = '-해야 돼요';
+      else if (
+        card.vowelHint.includes('ㅏ 발견') ||
+        card.vowelHint.includes('바르+아') ||
+        card.conjugatedEnding.startsWith('아')
+      ) {
+        correctOption = '-아야 돼요';
+      } else {
+        correctOption = '-어야 돼요';
+      }
+      distractors = ['-아야 돼요', '-어야 돼요', '-해야 돼요', '-으야 돼요']
+        .filter((x) => x !== correctOption)
+        .slice(0, 3);
+      cueBadge = '📌 의무';
+      optionHints['-아야 돼요'] = "어간 모음 조화에 맞게 '-어야 돼요' 또는 '-해야 돼요'가 맞아요!";
+      optionHints['-어야 돼요'] = "'ㅏ·ㅗ' 계열이나 '하다' 동사 뒤엔 '-어야 돼요'가 비문이에요!";
+      optionHints['-해야 돼요'] = "'하다' 동사가 아니므로 '-해야 돼요'를 쓸 수 없어요!";
+      optionHints['-으야 돼요'] = "'-으야 돼요'라는 어미는 한국어에 없어요!";
+      break;
+    case 'unit21': {
+      const isPossible = card.conjugatedWord.includes('있어요');
+      cueBadge = isPossible ? '⭕ 가능 (할 수 있음)' : '❌ 불가능 (할 수 없음)';
+      if (card.conjugatedEnding.trim() === '수 있어요') correctOption = '- 수 있어요';
+      else if (card.conjugatedEnding.startsWith('을'))
+        correctOption = isPossible ? '-을 수 있어요' : '-을 수 없어요';
+      else correctOption = isPossible ? '-ㄹ 수 있어요' : '-ㄹ 수 없어요';
+
+      const suf = isPossible ? '있어요' : '없어요';
+      const oppSuf = isPossible ? '없어요' : '있어요';
+      distractors = [
+        `-ㄹ 수 ${suf}`,
+        `-을 수 ${suf}`,
+        `- 수 ${suf}`,
+        `-으 수 ${suf}`,
+        `-ㄹ 수 ${oppSuf}`,
+      ]
+        .filter((x) => x !== correctOption)
+        .slice(0, 3);
+      for (const d of distractors) {
+        if (d.endsWith(oppSuf)) {
+          optionHints[d] = isPossible
+            ? "배지 확인! 할 수 있음('⭕ 가능')이므로 '있어요'를 골라야 해요!"
+            : "배지 확인! 할 수 없음('❌ 불가능')이므로 '없어요'를 골라야 해요!";
+        } else {
+          optionHints[d] = "받침 유무(받침 O → -을, 받침 X → -ㄹ, ㄹ받침 → - 수)에 맞는 형태만 문법에 맞아요!";
+        }
+      }
+      break;
+    }
+    case 'unit22':
+      correctOption = isHada
+        ? '-할까요?'
+        : card.conjugatedEnding.startsWith('을')
+        ? '-을까요?'
+        : '-ㄹ까요?';
+      distractors = ['-ㄹ까요?', '-을까요?', '-할까요?', '-으까요?']
+        .filter((x) => x !== correctOption)
+        .slice(0, 3);
+      cueBadge = '🤝 제안하기';
+      optionHints['-ㄹ까요?'] = "받침이 남는 어간에는 '-을까요?'가 붙어야 자연스러워요!";
+      optionHints['-을까요?'] = "받침이 없거나 '하다' 동사에는 '-을까요?'를 붙이면 비문이에요!";
+      optionHints['-할까요?'] = "'하다' 동사가 아니므로 '-할까요?'는 쓸 수 없어요!";
+      optionHints['-으까요?'] = "'-으까요?'는 비문이에요! ㄹ 받침이 들어간 '-(으)ㄹ까요?'예요.";
+      break;
+    case 'unit23':
+      correctOption = isHada ? '-하고' : '-고';
+      distractors = isHada ? ['-고', '-으고', '-아고'] : ['-하고', '-으고', '-아고'];
+      optionHints[isHada ? '-고' : '-하고'] = isHada
+        ? "명사+'하다' 형태이므로 '-하고'를 붙여야 문장이 완성돼요!"
+        : "'하다' 동사가 아니므로 바로 '-고'를 붙여요!";
+      optionHints['-으고'] = "'-고' 앞에는 '으'를 넣지 않아요!";
+      optionHints['-아고'] = "나열 연결 어미는 '-아고'가 아니라 '-고 / -하고'예요!";
+      break;
+    case 'unit24':
+      correctOption = '-지만';
+      distractors = ['-하지만', '-으지만', '-아지만'];
+      cueBadge = '⚖️ 대조 연결';
+      optionHints['-하지만'] = "'하다' 동사가 아닌데 '-하지만'을 붙이면 비문이에요!";
+      optionHints['-으지만'] = "'-지만' 앞에는 '으'가 들어가지 않아요!";
+      optionHints['-아지만'] = "'-지만'은 어간에 바로 붙어요 ('-아지만' ❌)!";
+      break;
+    case 'unit25':
+      correctOption = isHada ? '-해서' : card.conjugatedEnding.startsWith('아') ? '-아서' : '-어서';
+      distractors = ['-아서', '-어서', '-해서', '-으서']
+        .filter((x) => x !== correctOption)
+        .slice(0, 3);
+      cueBadge = '💡 이유·원인';
+      optionHints['-아서'] = "어간 모음에 맞게 '-어서' 또는 '-해서'를 골라야 해요!";
+      optionHints['-어서'] = "'ㅏ·ㅗ'가 있거나 '하다' 동사 뒤엔 '-어서'가 비문이에요!";
+      optionHints['-해서'] = "'하다' 동사가 아니므로 '-해서'를 붙일 수 없어요!";
+      optionHints['-으서'] = "이유 어미는 '-으서'가 아니라 '-아서/어서/해서'예요!";
+      break;
+    case 'unit26':
+      correctOption = isHada
+        ? '-하면'
+        : card.conjugatedEnding.startsWith('으')
+        ? '-으면'
+        : '-면';
+      distractors = ['-면', '-으면', '-하면', '-아면']
+        .filter((x) => x !== correctOption)
+        .slice(0, 3);
+      cueBadge = '🔮 조건 (~하면)';
+      optionHints['-면'] = "어간 끝 받침이 남아 있으니 '-으면'을 써야 해요!";
+      optionHints['-으면'] = "받침이 없거나 'ㄹ' 받침·'하다' 동사에는 '-으면'이 비문이에요!";
+      optionHints['-하면'] = "'하다' 동사가 아니므로 '-하면'은 붙일 수 없어요!";
+      optionHints['-아면'] = "조건 어미는 '-아면'이 아니라 '-(으)면'이에요!";
+      break;
+    case 'unit27':
+      correctOption = isHada
+        ? '-할 때'
+        : card.conjugatedEnding.startsWith('을')
+        ? '-을 때'
+        : '-ㄹ 때';
+      distractors = ['-ㄹ 때', '-을 때', '-할 때', '-으 때']
+        .filter((x) => x !== correctOption)
+        .slice(0, 3);
+      cueBadge = '⏱️ 시간 (~할 때)';
+      optionHints['-ㄹ 때'] = "받침이 남는 어간에는 '-을 때'가 붙어야 해요!";
+      optionHints['-을 때'] = "받침이 없거나 'ㄹ' 받침·'하다' 동사에는 '-을 때'가 비문이에요!";
+      optionHints['-할 때'] = "'하다' 동사가 아니므로 '-할 때'는 쓸 수 없어요!";
+      optionHints['-으 때'] = "'-으 때'가 아니라 '-(으)ㄹ 때'로 ㄹ 받침이 들어가야 해요!";
+      break;
+    case 'unit28': {
+      const isCome = card.conjugatedWord.includes('와요');
+      if (isCome) {
+        cueBadge = '🏫 목적 (~러 와요)';
+        correctOption = '-하러 와요';
+        distractors = ['-러 와요', '-으러 와요', '-아러 와요'];
+        optionHints['-러 와요'] = "명사+'하다'는 '하'가 있어야 하므로 '-하러 와요'예요!";
+        optionHints['-으러 와요'] = "'하다' 동사는 '-하러 와요'로 연결해요!";
+        optionHints['-아러 와요'] = "'-아러 와요'라는 표현은 문법에 없어요!";
+      } else {
+        cueBadge = '🚶 목적 (~러 가요)';
+        correctOption = isHada
+          ? '-하러 가요'
+          : card.conjugatedEnding.startsWith('으')
+          ? '-으러 가요'
+          : '-러 가요';
+        distractors = ['-러 가요', '-으러 가요', '-하러 가요', '-아러 가요']
+          .filter((x) => x !== correctOption)
+          .slice(0, 3);
+        optionHints['-러 가요'] = "받침이 남아 있는 어간 뒤에는 '-으러 가요'를 붙여야 해요!";
+        optionHints['-으러 가요'] = "받침이 없거나 'ㄹ' 받침·'하다' 동사 뒤에는 '-으러'가 비문이에요!";
+        optionHints['-하러 가요'] = "'하다' 동사가 아니므로 '-하러 가요'는 쓸 수 없어요!";
+        optionHints['-아러 가요'] = "목적 어미는 '-아러 가요'가 아니라 '-(으)러 가요'예요!";
+      }
+      break;
+    }
+    case 'unit29': {
+      const isBefore = card.conjugatedWord.includes('전에');
+      cueBadge = isBefore ? '⏪ 순서 (~전에)' : '⏩ 순서 (~후에)';
+      if (isBefore) {
+        correctOption = isHada ? '-하기 전에' : '-기 전에';
+        distractors = isHada
+          ? ['-기 전에', '-으기 전에', '-아기 전에']
+          : ['-하기 전에', '-으기 전에', '-아기 전에'];
+        optionHints['-기 전에'] = "'하다' 동사는 '하'가 남아 '-하기 전에'가 맞아요!";
+        optionHints['-하기 전에'] = "'하다' 동사가 아니므로 바로 '-기 전에'를 붙여요!";
+        optionHints['-으기 전에'] = "'-기' 앞에는 '으'를 붙이지 않아요!";
+        optionHints['-아기 전에'] = "순서 표현은 '-아기 전에'가 아니라 '-(하)기 전에'예요!";
+      } else {
+        correctOption = isHada
+          ? '-한 후에'
+          : card.conjugatedEnding.startsWith('은')
+          ? '-은 후에'
+          : '-ㄴ 후에';
+        distractors = ['-ㄴ 후에', '-은 후에', '-한 후에', '-으 후에']
+          .filter((x) => x !== correctOption)
+          .slice(0, 3);
+        optionHints['-ㄴ 후에'] = "받침이 있는 어간에는 '-은 후에'가 자연스러워요!";
+        optionHints['-은 후에'] = "받침이 없거나 'ㄹ'·모음 어간 예외에는 '-ㄴ 후에'가 붙어요!";
+        optionHints['-한 후에'] = "'하다' 동사가 아니므로 '-한 후에'는 쓸 수 없어요!";
+        optionHints['-으 후에'] = "'-으 후에'가 아니라 ㄴ 받침이 있는 '-(으)ㄴ 후에'예요!";
+      }
+      break;
+    }
+    case 'unit30':
+      correctOption = isHada
+        ? '-해 봤어요'
+        : card.conjugatedEnding.startsWith('아')
+        ? '-아 봤어요'
+        : '-어 봤어요';
+      distractors = ['-아 봤어요', '-어 봤어요', '-해 봤어요', '-으 봤어요']
+        .filter((x) => x !== correctOption)
+        .slice(0, 3);
+      cueBadge = '🌟 경험 (~해 봤어요)';
+      optionHints['-아 봤어요'] = "어간 모음에 맞게 '-어 봤어요' 또는 '-해 봤어요'를 써야 해요!";
+      optionHints['-어 봤어요'] = "'ㅏ·ㅗ'가 있거나 '하다' 동사 뒤엔 '-어 봤어요'가 비문이에요!";
+      optionHints['-해 봤어요'] = "'하다' 동사가 아니므로 '-해 봤어요'는 쓸 수 없어요!";
+      optionHints['-으 봤어요'] = "경험 어미는 '-으 봤어요'가 아니라 '-아/어/해 봤어요'예요!";
+      break;
+    default: {
+      const guessedPresent = PRESENT_BY_PAST_GROUP[`-${card.conjugatedEnding.trim()}`];
+      correctOption = `-${card.conjugatedEnding.trim()}`;
+      distractors = ['-아요', '-어요', '-해요', ...(guessedPresent ? [guessedPresent] : [])]
+        .filter((x) => x !== correctOption)
+        .slice(0, 3);
+    }
+  }
+
+  const uniqueDistractors = Array.from(new Set(distractors))
+    .filter((d) => d !== correctOption)
+    .slice(0, 3);
+  const options = [correctOption, ...uniqueDistractors].sort(() => 0.5 - Math.random());
+
+  return {
+    unitId: unit,
+    card,
+    stemDisplay,
+    baseEnding,
+    cueBadge,
+    correctOption,
+    options,
+    optionHints,
+  };
 }

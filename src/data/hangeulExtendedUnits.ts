@@ -1,4 +1,4 @@
-import type { HangeulUnitGroup, HangeulCardData } from '../components/HangeulStrokeFlashcardSection';
+import type { HangeulUnitGroup, HangeulCardData } from './hangeulGroupsData';
 
 type LangRecord = HangeulCardData['meanings'];
 

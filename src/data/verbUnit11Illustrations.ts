@@ -30,10 +30,13 @@ export const ULDA_U11_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.o
     <path d="M 37 41 L 46 33" stroke="rgb(20,184,166)" stroke-width="4.5" stroke-linecap="round" />
     <circle cx="47" cy="32" r="3.6" fill="rgb(254,215,170)" />
 
+    <!-- Neck -->
+    <rect x="22.5" y="31" width="7" height="6" rx="2.5" fill="rgb(254,215,170)" />
+
     <!-- Head -->
     <circle cx="26" cy="20" r="14" fill="rgb(254,215,170)" />
     <!-- Dark hair with cute bangs -->
-    <path d="M 11.2 20 C 10.1 -1.1 41.9 -1.1 40.8 20 C 40 13 34 8 26 8 C 18 8 12 13 11.2 20 Z" fill="rgb(51,65,85)" />
+    <path d="M 11.4 19.5 A 14.6 15.2 0 0 1 40.6 19.5 C 39.2 14 33.5 12 26 12 C 18.5 12 12.8 14 11.4 19.5 Z" fill="rgb(51,65,85)" />
 
     <!-- Happy smiling crescent eyes -->
     <path d="M 18 19 Q 21 15.5 24 19" stroke="rgb(30,41,59)" stroke-width="1.8" stroke-linecap="round" fill="none" />
@@ -68,10 +71,13 @@ export const SSOTDA_U11_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3
     <!-- Torso in soft sky-blue sweater -->
     <path d="M 14 56 C 14 40 20 34 26 34 C 32 34 38 40 38 56 Z" fill="rgb(59,130,246)" />
 
+    <!-- Neck -->
+    <rect x="22.5" y="31.5" width="7" height="6.5" rx="2.5" fill="rgb(254,215,170)" />
+
     <!-- Head -->
     <circle cx="26" cy="20" r="14" fill="rgb(254,215,170)" />
     <!-- Short brown hair with bangs -->
-    <path d="M 11.2 20 C 10.1 -1.1 41.9 -1.1 40.8 20 C 40 13 34 9 26 9 C 18 9 12 13 11.2 20 Z" fill="rgb(120,53,15)" />
+    <path d="M 11.4 19.5 A 14.6 15.2 0 0 1 40.6 19.5 C 39.2 14.5 33.5 12.5 26 12.5 C 18.5 12.5 12.8 14.5 11.4 19.5 Z" fill="rgb(120,53,15)" />
 
     <!-- Focused cute eyes with highlights -->
     <circle cx="21" cy="21" r="1.8" fill="rgb(30,41,59)" />
@@ -122,10 +128,13 @@ export const CHAMDA_U11_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3
     <!-- Torso in playful purple-violet sweater -->
     <path d="M 14 56 C 14 40 20 34 26 34 C 32 34 38 40 38 56 Z" fill="rgb(168,85,247)" />
 
+    <!-- Neck -->
+    <rect x="22.5" y="32" width="7" height="6" rx="2.5" fill="rgb(254,215,170)" />
+
     <!-- Head -->
     <circle cx="26" cy="21" r="14" fill="rgb(254,215,170)" />
     <!-- Cute hair -->
-    <path d="M 11.2 20 C 10.1 0.3 41.9 0.3 40.8 20 C 40 13 34 9 26 9 C 18 9 12 13 11.2 20 Z" fill="rgb(51,65,85)" />
+    <path d="M 11.4 20.5 A 14.6 15.2 0 0 1 40.6 20.5 C 39.2 15 33.5 13 26 13 C 18.5 13 12.8 15 11.4 20.5 Z" fill="rgb(51,65,85)" />
 
     <!-- Crinkled laughing eyes (> <) -->
     <path d="M 17 18 L 22 20 L 17 22" stroke="rgb(30,41,59)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
@@ -175,9 +184,12 @@ export const DEONJIDA_U11_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.
     <path d="M 35 41 L 46 37" stroke="rgb(249,115,22)" stroke-width="4.2" stroke-linecap="round" />
     <circle cx="47" cy="36.5" r="3.4" fill="rgb(254,215,170)" />
 
+    <!-- Neck -->
+    <rect x="21.5" y="31" width="7" height="6.5" rx="2.5" fill="rgb(254,215,170)" />
+
     <!-- Head -->
     <circle cx="25" cy="20" r="13.5" fill="rgb(254,215,170)" />
-    <path d="M 10.7 20 C 9.6 -0.4 40.4 -0.4 39.3 20 C 38.5 13 33 9 25 9 C 17 9 11.5 13 10.7 20 Z" fill="rgb(51,65,85)" />
+    <path d="M 10.9 19.5 A 14.1 14.7 0 0 1 39.1 19.5 C 37.8 14.5 32.2 12.5 25 12.5 C 17.8 12.5 12.2 14.5 10.9 19.5 Z" fill="rgb(51,65,85)" />
 
     <!-- Hesitant / flustered expression -->
     <circle cx="21.5" cy="20.5" r="1.7" fill="rgb(30,41,59)" />

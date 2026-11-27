@@ -425,7 +425,7 @@ export const BasicLetterWorksheetPage: React.FC<BasicLetterWorksheetPageProps> =
 
   return (
     <div
-      className={`print-sheet printable-word-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-700 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '620px' }}
     >
       {/* 1. Header Row (동적 원기호 및 해당 모음 표기) */}
@@ -433,7 +433,7 @@ export const BasicLetterWorksheetPage: React.FC<BasicLetterWorksheetPageProps> =
         <div className="flex items-center gap-1.5 font-black text-xs sm:text-sm font-korean-gothic min-w-0">
           <span className="text-base leading-none shrink-0">✏️</span>
           <span className="break-keep">
-            해볼 한국어 [기본글자] {data.circledNumber} {data.vowel}와 만나요 | Build Syllables with {data.vowel}
+            해볼한국어 [기본글자] {data.circledNumber} {data.vowel}와 만나요 | Build Syllables with {data.vowel}
           </span>
         </div>
         <div className="text-[10.5px] sm:text-[11.5px] font-bold text-slate-700 flex items-center gap-3 sm:gap-5 font-korean-gothic shrink-0">
@@ -693,7 +693,7 @@ export const BasicLetterWorksheetPage: React.FC<BasicLetterWorksheetPageProps> =
       {/* 4. Sheet Footer (1~15쪽과 완전 일치) */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
         <span className="font-medium">
-          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
+          해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>

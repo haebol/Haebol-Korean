@@ -1340,13 +1340,13 @@ export const ParticleFlashcardSection: React.FC<ParticleFlashcardSectionProps> =
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-1 sm:px-2 space-y-1 sm:space-y-1.5 font-korean-gothic">
+    <div className="w-full max-w-[1312px] mx-auto px-1 sm:px-4 space-y-1 sm:space-y-1.5 font-korean-gothic">
       {/* Main Flashcard Display Area */}
-      <div className="w-full max-w-full sm:max-w-3xl flex justify-center px-1 sm:px-4 font-korean-gothic mx-auto">
+      <div className="w-full max-w-full sm:max-w-3xl lg:max-w-[960px] flex justify-center px-1 sm:px-4 font-korean-gothic mx-auto">
         <div className="w-full">
           <div
             onClick={handleCardClick}
-            className="relative min-h-[400px] sm:min-h-[460px] w-full rounded-lg pt-3 sm:pt-5 px-3 sm:px-6 pb-2 sm:pb-5 shadow-lg border-2 sm:border-4 border-emerald-300 flex flex-col justify-between transition-shadow hover:shadow-xl bg-gradient-to-b from-emerald-50 via-[#F4FDF9] to-emerald-100/60 cursor-pointer select-none overflow-hidden"
+            className="relative min-h-[400px] sm:min-h-[460px] lg:min-h-[520px] w-full rounded-lg pt-3 sm:pt-5 px-3 sm:px-6 pb-2 sm:pb-5 shadow-lg border-2 sm:border-4 border-emerald-300 flex flex-col justify-between transition-shadow hover:shadow-xl bg-gradient-to-b from-emerald-50 via-[#F4FDF9] to-emerald-100/60 cursor-pointer select-none overflow-hidden"
           >
             {/* Top-Left Guide Text */}
             <div className="absolute top-4 sm:top-5 left-4 sm:left-5 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-emerald-100/95 border border-emerald-200 text-emerald-950 text-[11px] sm:text-xs font-black pointer-events-none shadow-xs">

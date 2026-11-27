@@ -48,12 +48,14 @@ export async function ensureCaptureFontsReady(): Promise<void> {
   if (typeof document === 'undefined' || !document.fonts) return;
   try {
     await Promise.allSettled([
-      document.fonts.load('400 14px "Hakgyoansim Bareondotum"', '가'),
-      document.fonts.load('700 14px "Hakgyoansim Bareondotum"', '가'),
-      document.fonts.load('400 14px "NanumBarunGothic"', '가'),
-      document.fonts.load('700 14px "NanumBarunGothic"', '가'),
-      document.fonts.load('500 14px "Noto Sans Bengali"', 'ক'),
-      document.fonts.load('700 14px "Noto Sans Bengali"', 'ক'),
+      document.fonts.load('400 14px "Hakgyoansim Bareondotum"', '가나다'),
+      document.fonts.load('700 14px "Hakgyoansim Bareondotum"', '가나다'),
+      document.fonts.load('400 20px "Hakgyoansim Badasseugi"', '가나다'),
+      document.fonts.load('700 20px "Hakgyoansim Badasseugi"', '가나다'),
+      document.fonts.load('400 14px "NanumBarunGothic"', '가나다'),
+      document.fonts.load('700 14px "NanumBarunGothic"', '가나다'),
+      document.fonts.load('500 14px "Noto Sans Bengali"', 'বাংলা'),
+      document.fonts.load('700 14px "Noto Sans Bengali"', 'বাংলা'),
     ]);
     await document.fonts.ready;
   } catch {
@@ -359,7 +361,7 @@ export const NaverBlogThumbnailCard: React.FC<NaverBlogThumbnailCardProps> = ({
           </div>
           <div>
             <div className="text-[30px] font-black tracking-tight text-slate-900 leading-none">
-              해볼 한국어
+              해볼한국어
             </div>
             <div className="text-[19px] font-bold text-slate-500 mt-1.5">
               초등 다문화 학생 맞춤형 한국어 교구
@@ -556,7 +558,7 @@ export const SeriesFirstFlashcardCaptureCard: React.FC<SeriesFirstFlashcardCaptu
         </div>
 
         <div className="text-center text-[11px] font-bold text-rose-700/75">
-          해볼 한국어 • 교실 필수 어휘 플래시카드
+          해볼한국어 • 교실 필수 어휘 플래시카드
         </div>
       </div>
     );
@@ -689,7 +691,7 @@ export const SeriesFirstFlashcardCaptureCard: React.FC<SeriesFirstFlashcardCaptu
         </div>
 
         <div className="text-center text-[11px] font-bold text-purple-700/75">
-          해볼 한국어 • 용언 활용 30단원 플래시카드
+          해볼한국어 • 용언 활용 30단원 플래시카드
         </div>
       </div>
     );
@@ -821,7 +823,7 @@ export const SeriesFirstFlashcardCaptureCard: React.FC<SeriesFirstFlashcardCaptu
       </div>
 
       <div className="text-center text-[11px] font-bold text-emerald-700">
-        해볼 한국어 • 조사 결합 30단원 플래시카드
+        해볼한국어 • 조사 결합 30단원 플래시카드
       </div>
     </div>
   );

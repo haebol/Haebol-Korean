@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { RotateCcw, CheckCircle2, Eye, EyeOff, Dices, Sparkles } from 'lucide-react';
+import { RotateCcw, Dices, Sparkles } from 'lucide-react';
 import { JamoStyleSheet } from './PrintableJamoSheets';
 import { BASIC_LETTERS_ILLUSTRATIONS } from '../data/basicLettersIllustrations';
 import { speakKorean, playCutePop, playSuccessChime } from '../utils/audio';
@@ -273,637 +273,6 @@ const SheetHeaderBar: React.FC<{
 );
 
 // ============================================================================
-// SHEET 1: 쪽지시험 ① — [자음·모음] 3분 툭! 쪽지시험 (단답형 10문항)
-// ============================================================================
-const QUIZ1_Q1_ITEMS: { char: string; type: 'C' | 'V'; pose: MiniJollaPose }[] = [
-  { char: 'ㅏ', type: 'V', pose: 'cheer' },
-  { char: 'ㅁ', type: 'C', pose: 'boxTrapped' },
-  { char: 'ㅗ', type: 'V', pose: 'sleep' },
-  { char: 'ㅅ', type: 'C', pose: 'peek' },
-];
-
-const QUIZ1_Q2_ITEMS: { seq: [string, string, string, string]; blankIdx: number; answer: string }[] = [
-  { seq: ['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ'], blankIdx: 2, answer: 'ㄷ' },
-  { seq: ['ㅁ', 'ㅂ', 'ㅅ', 'ㅇ'], blankIdx: 2, answer: 'ㅅ' },
-  { seq: ['ㅏ', 'ㅑ', 'ㅓ', 'ㅕ'], blankIdx: 2, answer: 'ㅓ' },
-];
-
-const QUIZ1_Q3_ITEMS: { left: string; right: string; answer: string }[] = [
-  { left: 'ㄱ', right: 'ㄱ', answer: 'ㄲ' },
-  { left: 'ㅗ', right: 'ㅏ', answer: 'ㅘ' },
-  { left: 'ㅜ', right: 'ㅓ', answer: 'ㅝ' },
-];
-
-export const HangeulQuizJamoSheet: React.FC = () => {
-  const [q1Ans, setQ1Ans] = useState<Record<number, 'C' | 'V' | ''>>({});
-  const [q2Ans, setQ2Ans] = useState<Record<number, string>>({});
-  const [q3Ans, setQ3Ans] = useState<Record<number, string>>({});
-  const [checked, setChecked] = useState(false);
-  const [showKey, setShowKey] = useState(false);
-
-  const cycleQ1 = (idx: number) => {
-    playCutePop();
-    setChecked(false);
-    setQ1Ans((prev) => {
-      const cur = prev[idx] || '';
-      const next = cur === '' ? 'C' : cur === 'C' ? 'V' : '';
-      return { ...prev, [idx]: next };
-    });
-  };
-
-  const score = useMemo(() => {
-    let s = 0;
-    QUIZ1_Q1_ITEMS.forEach((item, i) => {
-      if (q1Ans[i] === item.type) s += 1;
-    });
-    QUIZ1_Q2_ITEMS.forEach((item, i) => {
-      if ((q2Ans[i] || '').trim() === item.answer) s += 1;
-    });
-    QUIZ1_Q3_ITEMS.forEach((item, i) => {
-      if ((q3Ans[i] || '').trim() === item.answer) s += 1;
-    });
-    return s;
-  }, [q1Ans, q2Ans, q3Ans]);
-
-  const handleGrade = () => {
-    setChecked(true);
-    if (score >= 8) playSuccessChime();
-    else playCutePop();
-  };
-
-  const handleReset = () => {
-    playCutePop();
-    setQ1Ans({});
-    setQ2Ans({});
-    setQ3Ans({});
-    setChecked(false);
-    setShowKey(false);
-  };
-
-  return (
-    <div
-      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-800 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
-      style={{ minHeight: '620px' }}
-    >
-      <JamoStyleSheet />
-      <SheetHeaderBar
-        badge="쪽지시험 ①"
-        title="한글 자음·모음 3분 쪽지시험"
-        subtitle="단답형 · 가볍게 툭!"
-        accentBg="bg-amber-200"
-        accentText="text-amber-950"
-        scoreBox={checked ? `점수: ${score} / 10` : '점수:     / 10'}
-        jollaPose={checked && score === 10 ? 'crown' : 'cheer'}
-        webControls={
-          <>
-            <button
-              type="button"
-              onClick={handleGrade}
-              className="px-2.5 py-1 rounded-md bg-amber-500 hover:bg-amber-600 text-white text-xs font-black flex items-center gap-1 cursor-pointer"
-            >
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              채점
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                playCutePop();
-                setShowKey((v) => !v);
-              }}
-              className="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 text-xs font-bold flex items-center gap-1 cursor-pointer"
-            >
-              {showKey ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-              {showKey ? '정답 숨김' : '정답'}
-            </button>
-            <button
-              type="button"
-              onClick={handleReset}
-              className="px-2 py-1 rounded-md bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 text-xs font-bold flex items-center gap-1 cursor-pointer"
-              title="다시 풀기"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-            </button>
-          </>
-        }
-      />
-
-      {/* Body Grid: Top Row (Q1) + Bottom Row (Q2 Left | Q3 Right) */}
-      <div className="flex-1 flex flex-col justify-between gap-3">
-        {/* Q1: 자음 ○ / 모음 △ */}
-        <section className="rounded-lg border-2 border-slate-700 p-3 bg-amber-50/30">
-          <div className="flex items-center justify-between mb-2.5">
-            <div className="flex items-center gap-2">
-              <span className="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-black inline-flex items-center justify-center">1</span>
-              <h3 className="text-[15px] font-black text-slate-900">
-                자음은 <span className="text-sky-700">○</span>, 모음은 <span className="text-rose-600">△</span> 표시하세요.
-              </h3>
-            </div>
-            <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-white border border-slate-400 text-xs font-black text-slate-700">
-              <span>예시</span>
-              <span className="font-badasseugi text-lg text-slate-900">ㄱ</span>
-              <span>→</span>
-              <span className="text-sky-700 text-base">○</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-4 gap-3">
-            {QUIZ1_Q1_ITEMS.map((item, idx) => {
-              const val = q1Ans[idx] || '';
-              const isCorrect = checked && val === item.type;
-              const isWrong = checked && val !== item.type;
-              const displaySymbol = showKey
-                ? item.type === 'C'
-                  ? '○'
-                  : '△'
-                : val === 'C'
-                ? '○'
-                : val === 'V'
-                ? '△'
-                : '';
-
-              return (
-                <div
-                  key={item.char}
-                  onClick={() => cycleQ1(idx)}
-                  className={`relative rounded-lg border-2 p-2.5 bg-white flex items-center justify-between cursor-pointer transition-colors ${
-                    isCorrect
-                      ? 'border-emerald-500 bg-emerald-50/50'
-                      : isWrong
-                      ? 'border-rose-500 bg-rose-50/50'
-                      : 'border-slate-400 hover:border-amber-500'
-                  }`}
-                  title="웹에서 클릭하면 ○ / △ 전환"
-                >
-                  <div className="flex items-center gap-1.5">
-                    <MiniJollaman pose={item.pose} size={28} />
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        speakKorean(item.char, 0.85);
-                      }}
-                      className="font-badasseugi text-4xl font-black text-slate-900 leading-none px-1 cursor-pointer hover:text-amber-700"
-                      title="소리 듣기"
-                    >
-                      {item.char}
-                    </button>
-                  </div>
-                  <div className="w-12 h-12 rounded-lg border-2 border-dashed border-slate-400 bg-slate-50 flex items-center justify-center text-2xl font-black">
-                    <span className={displaySymbol === '○' ? 'text-sky-600' : 'text-rose-600'}>
-                      {displaySymbol}
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* Bottom 2-Column Split: Q2 (순서 빈칸) + Q3 (합체 변신) */}
-        <div className="grid grid-cols-2 gap-3 flex-1">
-          {/* Q2: 빠진 글자 쓰기 */}
-          <section className="rounded-lg border-2 border-slate-700 p-3 bg-sky-50/25 flex flex-col justify-between">
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-black inline-flex items-center justify-center">2</span>
-                <h3 className="text-[15px] font-black text-slate-900">빠진 글자를 쓰세요.</h3>
-              </div>
-              <MiniJollaman pose="confused" size={28} />
-            </div>
-
-            <div className="space-y-2.5 flex-1 flex flex-col justify-center">
-              {QUIZ1_Q2_ITEMS.map((item, idx) => {
-                const val = showKey ? item.answer : q2Ans[idx] || '';
-                const isCorrect = checked && (q2Ans[idx] || '').trim() === item.answer;
-                const isWrong = checked && (q2Ans[idx] || '').trim() !== item.answer;
-
-                return (
-                  <div key={idx} className="flex items-center justify-between gap-1.5 bg-white rounded-lg border border-slate-300 px-3 py-2">
-                    {item.seq.map((ch, cIdx) => {
-                      const isBlank = cIdx === item.blankIdx;
-                      return (
-                        <React.Fragment key={cIdx}>
-                          {cIdx > 0 && <span className="text-slate-400 font-black">→</span>}
-                          {isBlank ? (
-                            <input
-                              type="text"
-                              maxLength={2}
-                              value={val}
-                              onChange={(e) => {
-                                setChecked(false);
-                                setQ2Ans((prev) => ({ ...prev, [idx]: e.target.value }));
-                              }}
-                              aria-label={`순서 문제 ${idx + 1} 빈칸`}
-                              placeholder="?"
-                              className={`w-12 h-12 rounded-md border-2 text-center font-badasseugi text-3xl font-black focus:outline-none focus:ring-2 focus:ring-sky-400 ${
-                                isCorrect
-                                  ? 'border-emerald-500 bg-emerald-50 text-emerald-800'
-                                  : isWrong
-                                  ? 'border-rose-500 bg-rose-50 text-rose-700'
-                                  : showKey
-                                  ? 'border-sky-500 bg-sky-50 text-sky-800'
-                                  : 'border-slate-700 bg-amber-50/40 text-slate-900'
-                              }`}
-                            />
-                          ) : (
-                            <button
-                              type="button"
-                              onClick={() => speakKorean(ch, 0.85)}
-                              className="w-11 h-11 rounded-md bg-slate-100 border border-slate-300 font-badasseugi text-3xl font-black text-slate-900 flex items-center justify-center cursor-pointer hover:bg-amber-100"
-                            >
-                              {ch}
-                            </button>
-                          )}
-                        </React.Fragment>
-                      );
-                    })}
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-
-          {/* Q3: 합체 변신 */}
-          <section className="rounded-lg border-2 border-slate-700 p-3 bg-rose-50/25 flex flex-col justify-between">
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-black inline-flex items-center justify-center">3</span>
-                <h3 className="text-[15px] font-black text-slate-900">두 글자를 합쳐 쓰세요.</h3>
-              </div>
-              <div className="flex items-center -space-x-1">
-                <MiniJollaman pose="pushRight" size={26} />
-                <MiniJollaman pose="pushLeft" size={26} teamColor="#2563EB" />
-              </div>
-            </div>
-
-            <div className="space-y-2.5 flex-1 flex flex-col justify-center">
-              {QUIZ1_Q3_ITEMS.map((item, idx) => {
-                const val = showKey ? item.answer : q3Ans[idx] || '';
-                const isCorrect = checked && (q3Ans[idx] || '').trim() === item.answer;
-                const isWrong = checked && (q3Ans[idx] || '').trim() !== item.answer;
-
-                return (
-                  <div key={idx} className="flex items-center justify-between gap-2 bg-white rounded-lg border border-slate-300 px-3 py-2">
-                    <div className="flex items-center gap-1.5">
-                      <MiniJollaman pose="pushRight" size={24} />
-                      <span className="w-11 h-11 rounded-md bg-amber-100/70 border border-amber-400 font-badasseugi text-3xl font-black text-slate-900 flex items-center justify-center">
-                        {item.left}
-                      </span>
-                      <span className="font-black text-slate-500 text-lg">+</span>
-                      <span className="w-11 h-11 rounded-md bg-rose-100/70 border border-rose-400 font-badasseugi text-3xl font-black text-slate-900 flex items-center justify-center">
-                        {item.right}
-                      </span>
-                      <MiniJollaman pose="pushLeft" size={24} teamColor="#2563EB" />
-                    </div>
-                    <span className="font-black text-slate-700 text-xl">=</span>
-                    <input
-                      type="text"
-                      maxLength={2}
-                      value={val}
-                      onChange={(e) => {
-                        setChecked(false);
-                        setQ3Ans((prev) => ({ ...prev, [idx]: e.target.value }));
-                      }}
-                      aria-label={`합체 문제 ${idx + 1}`}
-                      placeholder="?"
-                      className={`w-14 h-12 rounded-md border-2 text-center font-badasseugi text-3xl font-black focus:outline-none focus:ring-2 focus:ring-rose-400 ${
-                        isCorrect
-                          ? 'border-emerald-500 bg-emerald-50 text-emerald-800'
-                          : isWrong
-                          ? 'border-rose-500 bg-rose-50 text-rose-700'
-                          : showKey
-                          ? 'border-rose-500 bg-rose-50 text-rose-800'
-                          : 'border-slate-700 bg-amber-50/40 text-slate-900'
-                      }`}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-        </div>
-
-        {/* Footer Stamp Strip */}
-        <div className="flex items-center justify-between px-3 py-1.5 rounded-lg border border-slate-300 bg-slate-50 text-xs font-bold text-slate-600">
-          <div className="flex items-center gap-2">
-            <MiniJollaman pose="run" size={24} />
-            <span>해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-slate-700 font-black">졸라맨 도장:</span>
-            <span className="px-2 py-0.5 rounded-full border border-dashed border-amber-500 bg-white text-amber-800 font-black">
-              {checked && score >= 8 ? '🌟 최고예요!' : '□ 참 잘했어요!'}
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// ============================================================================
-// SHEET 2: 쪽지시험 ② — [기본글자] 3분 툭! 쪽지시험 (100% 보유 데이터 & 일러스트!)
-// ============================================================================
-const QUIZ2_COMBINE_ITEMS = [
-  { c: 'ㅅ', v: 'ㅏ', ans: '사' },
-  { c: 'ㅍ', v: 'ㅗ', ans: '포' },
-  { c: 'ㅂ', v: 'ㅓ', ans: '버' },
-  { c: 'ㄱ', v: 'ㅜ', ans: '구' },
-];
-
-const QUIZ2_FILL_ITEMS: { word: string; given: string; blankPos: 0 | 1; ans: string }[] = [
-  { word: '사자', given: '사', blankPos: 1, ans: '자' },
-  { word: '포도', given: '도', blankPos: 0, ans: '포' },
-  { word: '버스', given: '버', blankPos: 1, ans: '스' },
-  { word: '우유', given: '우', blankPos: 1, ans: '유' },
-];
-
-const QUIZ2_FULL_WORDS = [
-  { word: '사과', hintSyllables: ['사', '과'] },
-  { word: '가위', hintSyllables: ['가', '위'] },
-];
-
-export const HangeulQuizBasicSheet: React.FC = () => {
-  const [combineAns, setCombineAns] = useState<Record<number, string>>({});
-  const [fillAns, setFillAns] = useState<Record<number, string>>({});
-  const [fullAns, setFullAns] = useState<Record<number, string>>({});
-  const [checked, setChecked] = useState(false);
-  const [showKey, setShowKey] = useState(false);
-
-  const score = useMemo(() => {
-    let s = 0;
-    QUIZ2_COMBINE_ITEMS.forEach((it, i) => {
-      if ((combineAns[i] || '').trim() === it.ans) s += 1;
-    });
-    QUIZ2_FILL_ITEMS.forEach((it, i) => {
-      if ((fillAns[i] || '').trim() === it.ans) s += 1;
-    });
-    QUIZ2_FULL_WORDS.forEach((it, i) => {
-      if ((fullAns[i] || '').trim() === it.word) s += 1;
-    });
-    return s;
-  }, [combineAns, fillAns, fullAns]);
-
-  const handleGrade = () => {
-    setChecked(true);
-    if (score >= 8) playSuccessChime();
-    else playCutePop();
-  };
-
-  const handleReset = () => {
-    playCutePop();
-    setCombineAns({});
-    setFillAns({});
-    setFullAns({});
-    setChecked(false);
-    setShowKey(false);
-  };
-
-  return (
-    <div
-      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-800 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
-      style={{ minHeight: '620px' }}
-    >
-      <JamoStyleSheet />
-      <SheetHeaderBar
-        badge="쪽지시험 ②"
-        title="한글 기본글자 3분 쪽지시험"
-        subtitle="배운 낱말(사자·포도·버스·우유·사과·가위)만 출제!"
-        accentBg="bg-emerald-200"
-        accentText="text-emerald-950"
-        scoreBox={checked ? `점수: ${score} / 10` : '점수:     / 10'}
-        jollaPose={checked && score === 10 ? 'crown' : 'kick'}
-        webControls={
-          <>
-            <button
-              type="button"
-              onClick={handleGrade}
-              className="px-2.5 py-1 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black flex items-center gap-1 cursor-pointer"
-            >
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              채점
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                playCutePop();
-                setShowKey((v) => !v);
-              }}
-              className="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 text-xs font-bold flex items-center gap-1 cursor-pointer"
-            >
-              {showKey ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-              {showKey ? '정답 숨김' : '정답'}
-            </button>
-            <button
-              type="button"
-              onClick={handleReset}
-              className="px-2 py-1 rounded-md bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 text-xs font-bold flex items-center gap-1 cursor-pointer"
-              title="다시 풀기"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-            </button>
-          </>
-        }
-      />
-
-      <div className="flex-1 flex flex-col justify-between gap-2.5">
-        {/* Q1: 자음 + 모음 합쳐 쓰기 (4문항) */}
-        <section className="rounded-lg border-2 border-slate-700 p-2.5 bg-amber-50/30">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
-              <span className="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-black inline-flex items-center justify-center">1</span>
-              <h3 className="text-[14.5px] font-black text-slate-900">자음과 모음을 합쳐 쓰세요.</h3>
-            </div>
-            <div className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-white border border-slate-400 text-xs font-black">
-              <span>예시</span>
-              <span className="font-badasseugi text-base">ㄱ+ㅏ=</span>
-              <span className="font-badasseugi text-lg text-amber-700">가</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-4 gap-2.5">
-            {QUIZ2_COMBINE_ITEMS.map((item, idx) => {
-              const val = showKey ? item.ans : combineAns[idx] || '';
-              const isCorrect = checked && (combineAns[idx] || '').trim() === item.ans;
-              const isWrong = checked && (combineAns[idx] || '').trim() !== item.ans;
-
-              return (
-                <div key={idx} className="rounded-lg border border-slate-400 bg-white px-2.5 py-2 flex items-center justify-between gap-1">
-                  <div className="flex items-center gap-0.5 font-badasseugi text-2xl font-black text-slate-900">
-                    <span className="text-sky-700">{item.c}</span>
-                    <span className="text-slate-400 text-base">+</span>
-                    <span className="text-rose-600">{item.v}</span>
-                    <span className="text-slate-500 text-base">=</span>
-                  </div>
-                  <input
-                    type="text"
-                    maxLength={2}
-                    value={val}
-                    onChange={(e) => {
-                      setChecked(false);
-                      setCombineAns((prev) => ({ ...prev, [idx]: e.target.value }));
-                    }}
-                    aria-label={`합치기 ${idx + 1}`}
-                    className={`w-12 h-11 rounded-md border-2 text-center font-badasseugi text-2xl font-black focus:outline-none focus:ring-2 focus:ring-amber-400 ${
-                      isCorrect
-                        ? 'border-emerald-500 bg-emerald-50 text-emerald-800'
-                        : isWrong
-                        ? 'border-rose-500 bg-rose-50 text-rose-700'
-                        : showKey
-                        ? 'border-emerald-500 bg-emerald-50 text-emerald-800'
-                        : 'border-slate-700 bg-amber-50/30 text-slate-900'
-                    }`}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* Q2: 그림 보고 빠진 한 글자 쓰기 (4문항 — 보유 일러스트!) */}
-        <section className="rounded-lg border-2 border-slate-700 p-2.5 bg-emerald-50/25">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
-              <span className="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-black inline-flex items-center justify-center">2</span>
-              <h3 className="text-[14.5px] font-black text-slate-900">그림을 보고 빈칸에 알맞은 한 글자를 쓰세요.</h3>
-            </div>
-            <MiniJollaman pose="spy" size={26} />
-          </div>
-
-          <div className="grid grid-cols-4 gap-2.5">
-            {QUIZ2_FILL_ITEMS.map((item, idx) => {
-              const val = showKey ? item.ans : fillAns[idx] || '';
-              const isCorrect = checked && (fillAns[idx] || '').trim() === item.ans;
-              const isWrong = checked && (fillAns[idx] || '').trim() !== item.ans;
-
-              return (
-                <div key={item.word} className="rounded-lg border border-slate-400 bg-white p-2 flex flex-col items-center justify-between gap-1.5">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      playCutePop();
-                      speakKorean(item.word, 0.85);
-                    }}
-                    className="w-16 h-16 flex items-center justify-center cursor-pointer hover:scale-105 transition-transform [&>svg]:w-16 [&>svg]:h-16"
-                    title="그림 클릭해서 소리 듣기"
-                  >
-                    {BASIC_LETTERS_ILLUSTRATIONS[item.word]}
-                  </button>
-
-                  <div className="flex items-center gap-1.5">
-                    {[0, 1].map((pos) =>
-                      pos === item.blankPos ? (
-                        <input
-                          key={pos}
-                          type="text"
-                          maxLength={2}
-                          value={val}
-                          onChange={(e) => {
-                            setChecked(false);
-                            setFillAns((prev) => ({ ...prev, [idx]: e.target.value }));
-                          }}
-                          aria-label={`${item.word} 빈칸`}
-                          className={`w-11 h-11 rounded-md border-2 text-center font-badasseugi text-2xl font-black focus:outline-none focus:ring-2 focus:ring-emerald-400 ${
-                            isCorrect
-                              ? 'border-emerald-500 bg-emerald-50 text-emerald-800'
-                              : isWrong
-                              ? 'border-rose-500 bg-rose-50 text-rose-700'
-                              : showKey
-                              ? 'border-emerald-500 bg-emerald-50 text-emerald-800'
-                              : 'border-slate-800 bg-amber-50/40 text-slate-900'
-                          }`}
-                        />
-                      ) : (
-                        <span
-                          key={pos}
-                          className="w-11 h-11 rounded-md border border-slate-300 bg-slate-100 font-badasseugi text-2xl font-black text-slate-900 flex items-center justify-center"
-                        >
-                          {item.given}
-                        </span>
-                      )
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* Q3: 그림 보고 낱말 쓰기 (보너스 2문항 + 글자 힌트 은행) */}
-        <section className="rounded-lg border-2 border-slate-700 p-2.5 bg-sky-50/25">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
-              <span className="w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-black inline-flex items-center justify-center">3</span>
-              <h3 className="text-[14.5px] font-black text-slate-900">그림을 보고 낱말을 쓰세요.</h3>
-            </div>
-            <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-white border border-slate-400 text-xs font-black text-slate-700">
-              <span>글자 보기:</span>
-              {['과', '위', '사', '가'].map((ch) => (
-                <span key={ch} className="font-badasseugi text-base text-sky-900 px-1 bg-sky-100 rounded-xs">
-                  {ch}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            {QUIZ2_FULL_WORDS.map((item, idx) => {
-              const val = showKey ? item.word : fullAns[idx] || '';
-              const isCorrect = checked && (fullAns[idx] || '').trim() === item.word;
-              const isWrong = checked && (fullAns[idx] || '').trim() !== item.word;
-
-              return (
-                <div key={item.word} className="rounded-lg border border-slate-400 bg-white px-4 py-2 flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2">
-                    <MiniJollaman pose={idx === 0 ? 'cheer' : 'run'} size={28} />
-                    <button
-                      type="button"
-                      onClick={() => {
-                        playCutePop();
-                        speakKorean(item.word, 0.85);
-                      }}
-                      className="w-15 h-15 flex items-center justify-center cursor-pointer hover:scale-105 transition-transform [&>svg]:w-15 [&>svg]:h-15"
-                      title="그림 클릭해서 소리 듣기"
-                    >
-                      {BASIC_LETTERS_ILLUSTRATIONS[item.word]}
-                    </button>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="text"
-                      maxLength={4}
-                      value={val}
-                      onChange={(e) => {
-                        setChecked(false);
-                        setFullAns((prev) => ({ ...prev, [idx]: e.target.value }));
-                      }}
-                      aria-label={`낱말 쓰기 ${idx + 1}`}
-                      placeholder="두 글자 쓰기"
-                      className={`w-36 h-12 rounded-md border-2 text-center font-badasseugi text-2xl font-black tracking-widest focus:outline-none focus:ring-2 focus:ring-sky-400 ${
-                        isCorrect
-                          ? 'border-emerald-500 bg-emerald-50 text-emerald-800'
-                          : isWrong
-                          ? 'border-rose-500 bg-rose-50 text-rose-700'
-                          : showKey
-                          ? 'border-sky-500 bg-sky-50 text-sky-800'
-                          : 'border-slate-800 bg-amber-50/40 text-slate-900'
-                      }`}
-                    />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-      </div>
-      <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
-        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
-      </div>
-    </div>
-  );
-};
-
-// ============================================================================
 // GAME SHEET 1: 🕵️ 숨은 졸라한글맨 찾기 (자모 크기 미니 졸라맨 7명 숨바꼭질!)
 // ============================================================================
 interface HiddenJollaSpot {
@@ -964,7 +333,7 @@ export const JollaHiddenLettersSheet: React.FC = () => {
 
   return (
     <div
-      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-800 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
+      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -1103,7 +472,7 @@ export const JollaHiddenLettersSheet: React.FC = () => {
         })}
       </div>
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
-        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        <span className="font-medium">해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
       </div>
     </div>
   );
@@ -1195,7 +564,7 @@ export const JollaTerritoryGameSheet: React.FC = () => {
 
   return (
     <div
-      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-800 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
+      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -1348,7 +717,7 @@ export const JollaTerritoryGameSheet: React.FC = () => {
         </div>
       </div>
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
-        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        <span className="font-medium">해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
       </div>
     </div>
   );
@@ -1443,7 +812,7 @@ export const JollaMazeGameSheet: React.FC = () => {
 
   return (
     <div
-      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-800 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
+      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -1566,7 +935,7 @@ export const JollaMazeGameSheet: React.FC = () => {
         <span className="font-black text-emerald-800">사자 → 버터 → 포도 → 구두 → 우유 → 가지 → 사과</span>
       </div>
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
-        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        <span className="font-medium">해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
       </div>
     </div>
   );
@@ -1746,7 +1115,7 @@ export const JollaBingoGameSheet: React.FC = () => {
 
   return (
     <div
-      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-800 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
+      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -1811,7 +1180,7 @@ export const JollaBingoGameSheet: React.FC = () => {
         />
       </div>
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
-        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        <span className="font-medium">해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
       </div>
     </div>
   );

@@ -20,13 +20,18 @@ import {
 } from 'lucide-react';
 import { VocabularyItem, SupportedLanguage, getLanguageMeta } from '../types';
 import { UiLanguage, UI_LANGUAGES, FLASHCARD_COMMON_UI, HEADER_UI, NAV_UI, SUBTAB_UI } from '../i18n/uiTranslations';
-import { CHAPTER_LIST, getChapterCircledTitle } from '../data/vocabulary';
+import { VOCABULARY_DATA, CHAPTER_LIST, getChapterCircledTitle } from '../data/vocabulary';
 import { speakKorean, playCutePop, playSuccessChime } from '../utils/audio';
 import { VocabVisual } from './VocabVisual';
 import { CompactUnitSelectButton } from './CompactUnitSelectButton';
+import {
+  useAdminCurriculumConfig,
+  getOrderedChapterMeta,
+  isUnitLocked,
+} from '../utils/adminCurriculumConfig';
 
 interface FlashcardSectionProps {
-  vocabulary: VocabularyItem[];
+  vocabulary?: VocabularyItem[];
   lang: SupportedLanguage;
   uiLang?: UiLanguage;
   savedWords: string[];
@@ -41,7 +46,7 @@ interface FlashcardSectionProps {
 }
 
 export const FlashcardSection: React.FC<FlashcardSectionProps> = ({
-  vocabulary,
+  vocabulary = VOCABULARY_DATA,
   lang,
   uiLang = 'ko',
   savedWords,
@@ -54,6 +59,8 @@ export const FlashcardSection: React.FC<FlashcardSectionProps> = ({
   hideDesktopUnitBar = false,
   isMenuCollapsed = false,
 }) => {
+  const [adminConfig] = useAdminCurriculumConfig();
+  const orderedChapters = useMemo(() => getOrderedChapterMeta(adminConfig), [adminConfig]);
   const [internalChapter, setInternalChapter] = useState<number>(initialChapter);
   const selectedChapter = propSelectedChapter !== undefined ? propSelectedChapter : internalChapter;
 
@@ -283,10 +290,10 @@ export const FlashcardSection: React.FC<FlashcardSectionProps> = ({
 
   return (
     <>
-      <div className="w-full max-w-5xl mx-auto px-1 sm:px-2 space-y-1 sm:space-y-1.5 font-korean-gothic no-print">
+      <div className="w-full max-w-[1312px] mx-auto px-1 sm:px-4 space-y-1 sm:space-y-1.5 font-korean-gothic no-print">
         {/* Row 5 Top Bar (Mobile Only when desktop control bar is active): 소제목(교실어휘) + [1x1 단원드롭] [1x1 그리드] */}
         {!isMenuCollapsed && (
-          <div className={`${hideDesktopUnitBar ? 'lg:hidden' : ''} sticky top-[80px] sm:top-[90px] lg:static z-[28] bg-[#FFF5F8]/95 backdrop-blur-md pb-1 mb-1.5 border-b border-rose-200/80 no-print w-full max-w-3xl mx-auto px-2.5 sm:px-4 select-none`}>
+          <div className={`${hideDesktopUnitBar ? 'lg:hidden' : ''} sticky top-[66px] sm:top-[74px] lg:static z-[28] bg-[#F4F3F8]/95 lg:bg-[#FFF5F8]/95 backdrop-blur-md pb-1 mb-1.5 border-b border-rose-200/80 no-print -mx-2 w-[calc(100%+1rem)] sm:mx-auto sm:w-full max-w-3xl px-3 sm:px-4 select-none`}>
           <div className="flex items-center justify-between gap-2 h-[38px] sm:h-[42px]">
             <div className="flex items-center gap-3.5 sm:gap-6 min-w-0 overflow-x-auto no-scrollbar">
               <button
@@ -303,30 +310,18 @@ export const FlashcardSection: React.FC<FlashcardSectionProps> = ({
               <CompactUnitSelectButton
                 value={selectedChapter}
                 onChange={(val) => handleSelectChapter(Number(val))}
-                options={CHAPTER_LIST.map((ch) => ({
+                options={orderedChapters.map((ch) => ({
                   value: ch.ch,
                   label: getChapterCircledTitle(ch.ch, lang),
+                  disabled: isUnitLocked(adminConfig, 'classroom', ch.ch),
+                  lockedLabel: '준비중',
                 }))}
                 theme="rose"
                 title={subUi.studyControls.unitSelectTitle}
                 ariaLabel={subUi.studyControls.unitSelectTitle}
                 align="right"
-                className="w-[155px] xs:w-[195px] sm:w-[270px]"
+                className="w-[155px] xs:w-[175px] sm:w-[225px]"
               />
-              {onOpenOverview && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    playCutePop();
-                    onOpenOverview();
-                  }}
-                  className="h-8 sm:h-8.5 w-8 sm:w-8.5 rounded-none bg-rose-100 hover:bg-rose-200 text-rose-950 border border-rose-300 cursor-pointer shrink-0 flex items-center justify-center transition-colors"
-                  title={navUi.overviewBtn}
-                  aria-label={navUi.overviewBtn}
-                >
-                  <LayoutGrid className="w-4 h-4 shrink-0" />
-                </button>
-              )}
             </div>
           </div>
           </div>
@@ -340,11 +335,11 @@ export const FlashcardSection: React.FC<FlashcardSectionProps> = ({
         </div>
       ) : (
         /* Main Flashcard Container: 조사·용언 플래시카드와 동일 규격 */
-        <div className="w-full max-w-full sm:max-w-3xl flex justify-center px-1 sm:px-4 font-korean-gothic mx-auto">
+        <div className="w-full max-w-full sm:max-w-3xl lg:max-w-[960px] flex justify-center px-1 sm:px-4 font-korean-gothic mx-auto">
           <div className="w-full">
             <div
               onClick={handleToggleExpand}
-              className="relative min-h-[400px] sm:min-h-[460px] w-full rounded-lg pt-3 sm:pt-5 px-3 sm:px-6 pb-2 sm:pb-5 shadow-lg border-2 sm:border-4 border-pink-300 flex flex-col justify-between transition-all hover:shadow-xl bg-gradient-to-b from-pink-50 via-[#FFF4F7] to-rose-50/70 select-none cursor-pointer overflow-hidden"
+              className="relative min-h-[400px] sm:min-h-[460px] lg:min-h-[520px] w-full rounded-lg pt-3 sm:pt-5 px-3 sm:px-6 pb-2 sm:pb-5 shadow-lg border-2 sm:border-4 border-pink-300 flex flex-col justify-between transition-all hover:shadow-xl bg-gradient-to-b from-pink-50 via-[#FFF4F7] to-rose-50/70 select-none cursor-pointer overflow-hidden"
             >
               {/* Top-Left Meaning Badge */}
               <div className="absolute top-4 sm:top-5 left-4 sm:left-5 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-pink-100/90 border border-pink-200 text-rose-700 text-[11px] sm:text-xs font-black pointer-events-none shadow-xs">
@@ -378,21 +373,21 @@ export const FlashcardSection: React.FC<FlashcardSectionProps> = ({
                 </div>
 
                 {/* 2. Word Slot */}
-                <div className="w-full flex items-center justify-center min-h-[92px] my-2 sm:my-3 px-12 sm:px-16">
+                <div className="w-full flex items-center justify-center min-h-[68px] sm:min-h-[92px] mt-1 mb-0.5 sm:my-3 px-12 sm:px-16">
                   <h3
                     style={{
                       fontFamily: "'Hakgyoansim Badasseugi', '학교안심 받아쓰기', '학교안심받아쓰기', 'HakgyoansimBadasseugiTTF-L', 'Hakgyoansim Badasseugi TTF L', '학교알림받아쓰기', 'KyoboHand', cursive, sans-serif",
                       fontWeight: 900,
                       WebkitTextStroke: '0.6px currentColor'
                     }}
-                    className="text-4xl sm:text-5xl font-black text-slate-900 tracking-normal leading-tight font-badasseugi"
+                    className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-normal leading-tight font-badasseugi"
                   >
                     {currentItem.ko}
                   </h3>
                 </div>
 
                 {/* 탭 전: 로마자 + 예문 표시 / 탭 후: 고정 높이 슬롯 안에서 흔들림 없이 모국어 뜻으로 전환 */}
-                <div className="relative w-full max-w-md h-[126px] sm:h-[138px] mt-2 sm:mt-3 flex items-center justify-center">
+                <div className="relative w-full max-w-md lg:max-w-xl h-[104px] sm:h-[138px] lg:h-[150px] mt-1 sm:mt-3 flex items-center justify-center">
                   <AnimatePresence initial={false}>
                     {isExpanded ? (
                       <motion.div
@@ -401,9 +396,9 @@ export const FlashcardSection: React.FC<FlashcardSectionProps> = ({
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.16 }}
-                        className="absolute inset-0 flex items-center justify-center"
+                        className="absolute inset-0 flex items-start sm:items-center justify-center pt-1 sm:pt-0"
                       >
-                        <div className="w-full bg-white/98 rounded-md px-4 py-3 sm:py-4 border-2 border-pink-300 shadow-lg min-h-[84px] sm:min-h-[96px] flex items-center justify-center text-center">
+                        <div className="w-full bg-white/98 rounded-md px-4 py-3 sm:py-4 border-2 border-pink-300 shadow-lg min-h-[80px] sm:min-h-[96px] flex items-center justify-center text-center">
                           <h4
                             style={{
                               fontFamily: "'Hakgyoansim Badasseugi', '학교안심 받아쓰기', '학교알림받아쓰기', sans-serif !important",
@@ -422,7 +417,7 @@ export const FlashcardSection: React.FC<FlashcardSectionProps> = ({
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.16 }}
-                        className="absolute inset-0 flex flex-col items-center justify-center gap-3 w-full"
+                        className="absolute inset-0 flex flex-col items-center justify-start sm:justify-center pt-0.5 sm:pt-0 gap-2.5 sm:gap-3 w-full"
                       >
                         {currentItem.romaja && (
                           <div className="px-3.5 py-0.5 bg-pink-100/80 text-rose-950 text-sm sm:text-base font-bold rounded-sm border border-pink-200 shadow-xs tracking-wide">

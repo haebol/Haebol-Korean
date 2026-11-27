@@ -46,7 +46,7 @@ export interface HeaderUiStrings {
 
 export const HEADER_UI: Record<UiLanguage, HeaderUiStrings> = {
   ko: {
-    brandTitle: '해볼 한국어',
+    brandTitle: '해볼한국어',
     subtitle: '다문화·외국인 초등학생 맞춤 한국어',
     myLangTitle: '내 언어로 이용하기',
     dropdownHeader: '내 언어 선택 · Select Language',
@@ -185,7 +185,7 @@ export interface NavUiStrings {
 export const NAV_UI: Record<UiLanguage, NavUiStrings> = {
   ko: {
     tracks: { hangeul: '한글', classroom: '교실한국어', verb: '용언', particle: '조사' },
-    methods: { flashcard: '플래시카드', study: '프린트', games: '게임' },
+    methods: { flashcard: '플래시카드', study: '학습지', games: '게임' },
     overviewBtn: '전체 단원 모아보기',
   },
   en: {

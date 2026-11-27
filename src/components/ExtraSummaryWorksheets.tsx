@@ -38,7 +38,7 @@ export interface VerbSummaryCopy {
 }
 
 export const DEFAULT_VERB_SUMMARY_COPY: VerbSummaryCopy = {
-  sheetTitle: '해볼 한국어 [용언 활용] ㉛ 한국어 용언 활용 총정리표 | Korean Verb Conjugation Master Chart',
+  sheetTitle: '해볼한국어 [용언 활용] ㉛ 한국어 용언 활용 총정리표 | Korean Verb Conjugation Master Chart',
   totalBadge: '총 30단원 · 150어휘',
   gradeLabel: '학년',
   nameLabel: '이름',
@@ -89,7 +89,7 @@ export const DEFAULT_VERB_SUMMARY_COPY: VerbSummaryCopy = {
   ],
   irregularRefNote:
     "※ 참고: 학교 문법의 '우(푸다→퍼)·여(하다→하여)·러(이르다→이르러)·거라/너라' 불규칙은 외국인 초·중급 교육에서는 개별 단어 암기나 기본 문형(-해요)으로 처리하며, 위 7대 불규칙을 표준 체계로 학습합니다.",
-  footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
+  footerLeft: '해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
   footerRight: '카드를 누르면 대표 활용형 소리가 재생됩니다 · ★ 불규칙 주의 단원',
 };
 
@@ -177,7 +177,7 @@ export const VerbSummaryWorksheetPage: React.FC<{
 
   return (
     <div
-      className={`verb-worksheet-page verb-summary-sheet printable-a4-page print:m-0 print:p-2.5 print:shadow-none w-full max-w-[1060px] mx-auto bg-white rounded-2xl shadow-md border-2 border-purple-400 p-2.5 sm:p-3 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
+      className={`verb-worksheet-page verb-summary-sheet printable-a4-page print:m-0 print:p-2.5 print:shadow-none w-full max-w-[1060px] mx-auto bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2.5 sm:p-3 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
       style={{ minHeight: '680px' }}
     >
       {/* 1. Sheet Header */}
@@ -430,7 +430,7 @@ export interface ParticleSummaryCopy {
 }
 
 export const DEFAULT_PARTICLE_SUMMARY_COPY: ParticleSummaryCopy = {
-  sheetTitle: '해볼 한국어 [조사 결합] ㉛ 한국어 조사 결합 총정리표 | Korean Particles Master Chart',
+  sheetTitle: '해볼한국어 [조사 결합] ㉛ 한국어 조사 결합 총정리표 | Korean Particles Master Chart',
   totalBadge: '총 30단원 (조사 22 · 문장 8)',
   gradeLabel: '학년',
   nameLabel: '이름',
@@ -462,7 +462,7 @@ export const DEFAULT_PARTICLE_SUMMARY_COPY: ParticleSummaryCopy = {
       audio: '하나밖에 없어요, 할머니께서 주셨어요',
     },
   ],
-  footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
+  footerLeft: '해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
   footerRight: '카드를 누르면 조사 결합 예시 소리가 재생됩니다 · ★ 변신·예외 주의 단원',
 };
 
@@ -583,7 +583,7 @@ export const ParticleSummaryWorksheetPage: React.FC<{
 
   return (
     <div
-      className={`verb-worksheet-page particle-summary-sheet printable-a4-page print:m-0 print:p-2.5 print:shadow-none w-full max-w-[1060px] mx-auto bg-white rounded-2xl shadow-md border-2 border-emerald-500 p-2.5 sm:p-3 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
+      className={`verb-worksheet-page particle-summary-sheet printable-a4-page print:m-0 print:p-2.5 print:shadow-none w-full max-w-[1060px] mx-auto bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2.5 sm:p-3 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
       style={{ minHeight: '680px' }}
     >
       {/* 1. Sheet Header */}
@@ -847,12 +847,12 @@ interface ClassroomSummaryUiCopy {
 
 const CLASSROOM_SUMMARY_UI_COPY: Record<ClassroomUiLang, ClassroomSummaryUiCopy> = {
   ko: {
-    headerPrefix: '해볼 한국어 [교실 한국어]',
+    headerPrefix: '해볼한국어 [교실 한국어]',
     unitRangeFmt: (s, e) => `${s}~${e}단원`,
     wordsCountText: '50단어',
     gradeLabel: '학년',
     nameLabel: '이름',
-    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
+    footerLeft: '해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: (p, t) => `단어를 누르면 한국어 발음이 재생됩니다 · 30단원 300어휘 총정리 (${p}/${t}쪽)`,
   },
   en: {
@@ -861,7 +861,7 @@ const CLASSROOM_SUMMARY_UI_COPY: Record<ClassroomUiLang, ClassroomSummaryUiCopy>
     wordsCountText: '50 Words',
     gradeLabel: 'Grade',
     nameLabel: 'Name',
-    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
+    footerLeft: '해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: (p, t) => `Tap any word for Korean audio · 30 Units 300 Words (${p}/${t})`,
   },
   vi: {
@@ -870,7 +870,7 @@ const CLASSROOM_SUMMARY_UI_COPY: Record<ClassroomUiLang, ClassroomSummaryUiCopy>
     wordsCountText: '50 từ',
     gradeLabel: 'Lớp',
     nameLabel: 'Tên',
-    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
+    footerLeft: '해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: (p, t) => `Chạm từ để nghe phát âm · Tổng hợp 300 từ vựng (${p}/${t})`,
   },
   bn: {
@@ -879,7 +879,7 @@ const CLASSROOM_SUMMARY_UI_COPY: Record<ClassroomUiLang, ClassroomSummaryUiCopy>
     wordsCountText: '৫০ শব্দ',
     gradeLabel: 'শ্রেণি',
     nameLabel: 'নাম',
-    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
+    footerLeft: '해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: (p, t) => `উচ্চারণ শুনতে শব্দে ট্যাপ করুন · ৩০০ শব্দ চার্ট (${p}/${t})`,
   },
   zh: {
@@ -888,7 +888,7 @@ const CLASSROOM_SUMMARY_UI_COPY: Record<ClassroomUiLang, ClassroomSummaryUiCopy>
     wordsCountText: '50词',
     gradeLabel: '年级',
     nameLabel: '姓名',
-    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
+    footerLeft: '해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: (p, t) => `点击单词可听韩语发音 · 30单元300词总整理 (${p}/${t}页)`,
   },
   ru: {
@@ -897,7 +897,7 @@ const CLASSROOM_SUMMARY_UI_COPY: Record<ClassroomUiLang, ClassroomSummaryUiCopy>
     wordsCountText: '50 слов',
     gradeLabel: 'Класс',
     nameLabel: 'Имя',
-    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
+    footerLeft: '해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: (p, t) => `Нажмите на слово для звука · 30 тем 300 слов (${p}/${t})`,
   },
   ja: {
@@ -906,7 +906,7 @@ const CLASSROOM_SUMMARY_UI_COPY: Record<ClassroomUiLang, ClassroomSummaryUiCopy>
     wordsCountText: '50語',
     gradeLabel: '学年',
     nameLabel: '名前',
-    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
+    footerLeft: '해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: (p, t) => `単語をタップして発音再生 · 全30課300語まとめ (${p}/${t})`,
   },
   mn: {
@@ -915,7 +915,7 @@ const CLASSROOM_SUMMARY_UI_COPY: Record<ClassroomUiLang, ClassroomSummaryUiCopy>
     wordsCountText: '50 үг',
     gradeLabel: 'Анги',
     nameLabel: 'Нэр',
-    footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
+    footerLeft: '해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
     footerRight: (p, t) => `Үг дээр дарж сонсоно уу · 30 хичээл 300 үг (${p}/${t})`,
   },
 };
@@ -961,7 +961,7 @@ export const ClassroomSummaryWorksheetPage: React.FC<{
 
   return (
     <div
-      className={`print-sheet printable-word-sheet classroom-summary-sheet w-full max-w-[1060px] bg-white rounded-xl border-2 border-rose-400 p-2.5 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg font-korean-gothic select-none ${className}`}
+      className={`print-sheet printable-word-sheet classroom-summary-sheet w-full max-w-[1060px] bg-white rounded-xl border-2 border-slate-300 p-2.5 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg font-korean-gothic select-none ${className}`}
       style={{ minHeight: '690px' }}
     >
       {/* 1. Sheet Header */}
@@ -1092,7 +1092,7 @@ export const VerbSummaryCompactWorksheetPage: React.FC<{
 
   return (
     <div
-      className={`verb-worksheet-page verb-summary-sheet verb-summary-compact-sheet printable-a4-page print:m-0 print:p-2 print:shadow-none w-full max-w-[990px] mx-auto bg-white rounded-2xl shadow-md border-2 border-purple-400 p-2 sm:p-2.5 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
+      className={`verb-worksheet-page verb-summary-sheet verb-summary-compact-sheet printable-a4-page print:m-0 print:p-2 print:shadow-none w-full max-w-[990px] mx-auto bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2 sm:p-2.5 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
       style={{ minHeight: '620px' }}
     >
       {/* Header */}
@@ -1305,7 +1305,7 @@ export const ParticleSummaryCompactWorksheetPage: React.FC<{
 
   return (
     <div
-      className={`verb-worksheet-page particle-summary-sheet particle-summary-compact-sheet printable-a4-page print:m-0 print:p-2 print:shadow-none w-full max-w-[990px] mx-auto bg-white rounded-2xl shadow-md border-2 border-emerald-500 p-2 sm:p-2.5 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
+      className={`verb-worksheet-page particle-summary-sheet particle-summary-compact-sheet printable-a4-page print:m-0 print:p-2 print:shadow-none w-full max-w-[990px] mx-auto bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2 sm:p-2.5 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
       style={{ minHeight: '620px' }}
     >
       {/* Header */}
@@ -1513,7 +1513,7 @@ export const ClassroomSummaryCompactWorksheetPage: React.FC<{
 
   return (
     <div
-      className={`print-sheet printable-word-sheet classroom-summary-sheet classroom-summary-compact-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-rose-400 p-2 sm:p-2.5 text-slate-800 flex flex-col justify-between shadow-lg font-korean-gothic select-none ${className}`}
+      className={`print-sheet printable-word-sheet classroom-summary-sheet classroom-summary-compact-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-2.5 text-slate-800 flex flex-col justify-between shadow-lg font-korean-gothic select-none ${className}`}
       style={{ minHeight: '620px' }}
     >
       {/* Header */}

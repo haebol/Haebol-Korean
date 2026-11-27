@@ -16,34 +16,6 @@ export const WOLYOIL_MONDAY_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://ww
   <path d="M 68 67 L 74 67 M 72 64.5 L 74.5 67 L 72 69.5" stroke="rgb(180,83,9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
 </svg>`;
 
-// 16-3. 1번 (Number 1 badge / bib)
-export const ILBEON_NUMBER1_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
-  <circle cx="50" cy="50" r="46" fill="rgb(254,249,195)" />
-  <rect x="24" y="25" width="52" height="50" rx="10" fill="rgb(255,255,255)" stroke="rgb(245,158,11)" stroke-width="3" />
-  <circle cx="31" cy="32" r="2.5" fill="rgb(148,163,184)" />
-  <circle cx="69" cy="32" r="2.5" fill="rgb(148,163,184)" />
-  <circle cx="31" cy="68" r="2.5" fill="rgb(148,163,184)" />
-  <circle cx="69" cy="68" r="2.5" fill="rgb(148,163,184)" />
-  <circle cx="50" cy="50" r="18" fill="rgb(251,146,60)" />
-  <text x="50" y="59" font-size="26" font-weight="900" fill="rgb(255,255,255)" text-anchor="middle" font-family="sans-serif">1</text>
-</svg>`;
-
-// 16-4. 지금 (Clock showing Now)
-export const JIGEUM_NOW_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
-  <circle cx="50" cy="50" r="46" fill="rgb(240,253,244)" />
-  <circle cx="50" cy="52" r="29" fill="rgb(255,255,255)" stroke="rgb(16,185,129)" stroke-width="3.5" />
-  <circle cx="50" cy="52" r="23" fill="rgb(236,253,245)" />
-  <circle cx="50" cy="32" r="2" fill="rgb(16,185,129)" />
-  <circle cx="70" cy="52" r="2" fill="rgb(16,185,129)" />
-  <circle cx="50" cy="72" r="2" fill="rgb(16,185,129)" />
-  <circle cx="30" cy="52" r="2" fill="rgb(16,185,129)" />
-  <line x1="50" y1="52" x2="50" y2="37" stroke="rgb(30,41,59)" stroke-width="3" stroke-linecap="round" />
-  <line x1="50" y1="52" x2="62" y2="52" stroke="rgb(239,68,68)" stroke-width="2.8" stroke-linecap="round" />
-  <circle cx="50" cy="52" r="3" fill="rgb(16,185,129)" />
-  <path d="M 46 20 L 54 20 L 52 24 L 48 24 Z" fill="rgb(5,150,105)" />
-  <path d="M 22 28 Q 25 28 25 24 Q 25 28 28 28 Q 25 28 25 32 Q 25 28 22 28 Z" fill="rgb(245,158,11)" />
-</svg>`;
-
 // 16-5. 언제 (Calendar with Question Mark)
 export const EONJE_WHEN_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
   <circle cx="50" cy="50" r="46" fill="rgb(250,245,255)" />
@@ -64,18 +36,6 @@ export const JEONYEOK_EVENING_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://
   <circle cx="30" cy="30" r="2" fill="rgb(234,88,12)" />
   <circle cx="42" cy="24" r="1.8" fill="rgb(234,88,12)" />
   <path d="M 14 66 Q 50 56 86 66 L 86 76 Q 50 68 14 76 Z" fill="rgb(124,45,18)" opacity="0.25" />
-</svg>`;
-
-// 17-2. 금요일 (Friday calendar)
-export const GEUMYOIL_FRIDAY_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
-  <circle cx="50" cy="50" r="46" fill="rgb(255,241,242)" />
-  <rect x="21" y="24" width="58" height="56" rx="8" fill="rgb(255,255,255)" stroke="rgb(244,63,94)" stroke-width="2.5" />
-  <path d="M 21 32 C 21 26 24 24 29 24 L 71 24 C 76 24 79 26 79 32 L 79 41 L 21 41 Z" fill="rgb(244,63,94)" />
-  <rect x="33" y="18" width="5" height="11" rx="2.5" fill="rgb(190,18,60)" />
-  <rect x="62" y="18" width="5" height="11" rx="2.5" fill="rgb(190,18,60)" />
-  <text x="50" y="36" font-size="11" font-weight="900" fill="rgb(255,255,255)" text-anchor="middle" font-family="sans-serif">FRI</text>
-  <text x="50" y="66" font-size="22" font-weight="900" fill="rgb(190,18,60)" text-anchor="middle" font-family="sans-serif">금</text>
-  <rect x="64" y="61" width="11" height="11" rx="3" fill="rgb(253,224,71)" stroke="rgb(202,138,4)" stroke-width="1.3" />
 </svg>`;
 
 // 17-4. 여기 (Here location pin)
@@ -377,73 +337,6 @@ export const EXERCISE_MON_FRI_SCENE_SVG = `data:image/svg+xml;utf8,<svg xmlns="h
   <text x="68" y="36" font-size="11" font-weight="900" fill="rgb(255,255,255)" text-anchor="middle" font-family="sans-serif">금</text>
   <circle cx="50" cy="56" r="13" fill="rgb(255,255,255)" stroke="rgb(30,41,59)" stroke-width="2" />
   <polygon points="50,49 56,54 54,61 46,61 44,54" fill="rgb(30,41,59)" />
-</svg>`;
-
-// Scene 19-4: 주말마다 저녁까지 쉬어요 (Cozy weekend rest on sofa)
-export const REST_WEEKEND_SCENE_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
-  <circle cx="50" cy="50" r="46" fill="rgb(245,243,255)" />
-  <rect x="22" y="50" width="56" height="24" rx="8" fill="rgb(168,85,247)" />
-  <rect x="18" y="57" width="12" height="17" rx="4" fill="rgb(126,34,206)" />
-  <rect x="70" y="57" width="12" height="17" rx="4" fill="rgb(126,34,206)" />
-  <circle cx="50" cy="39" r="11" fill="rgb(254,215,170)" />
-  <path d="M 45 39 L 48 39 M 52 39 L 55 39" stroke="rgb(30,41,59)" stroke-width="1.8" stroke-linecap="round" />
-  <path d="M 47 44 Q 50 46 53 44" stroke="rgb(225,29,72)" stroke-width="1.4" stroke-linecap="round" fill="none" />
-  <text x="71" y="35" font-size="11" font-weight="900" fill="rgb(126,34,206)" font-family="sans-serif">Zzz</text>
-</svg>`;
-
-// Scene 23-1: 어제보다 오늘만 더워요 (Thermometer rising)
-export const HOT_TODAY_VS_YESTERDAY_SCENE_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
-  <circle cx="50" cy="50" r="46" fill="rgb(255,237,213)" />
-  <rect x="43" y="21" width="14" height="44" rx="7" fill="rgb(255,255,255)" stroke="rgb(239,68,68)" stroke-width="2.5" />
-  <circle cx="50" cy="69" r="11" fill="rgb(239,68,68)" />
-  <rect x="47" y="32" width="6" height="35" rx="3" fill="rgb(239,68,68)" />
-  <circle cx="27" cy="32" r="8" fill="rgb(250,204,21)" />
-  <path d="M 70 48 L 70 30 M 65 35 L 70 29 L 75 35" stroke="rgb(220,38,38)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-</svg>`;
-
-// Scene 23-2: 사과보다 포도만 달아요 (Sweet Grape vs Apple)
-export const SWEET_GRAPE_SCENE_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
-  <circle cx="50" cy="50" r="46" fill="rgb(250,245,255)" />
-  <circle cx="31" cy="59" r="11" fill="rgb(239,68,68)" />
-  <rect x="30" y="45" width="2" height="6" fill="rgb(120,53,15)" />
-  <circle cx="61" cy="44" r="6" fill="rgb(147,51,234)" />
-  <circle cx="71" cy="44" r="6" fill="rgb(147,51,234)" />
-  <circle cx="56" cy="53" r="6" fill="rgb(168,85,247)" />
-  <circle cx="66" cy="53" r="6" fill="rgb(168,85,247)" />
-  <circle cx="76" cy="53" r="6" fill="rgb(168,85,247)" />
-  <circle cx="61" cy="62" r="6" fill="rgb(147,51,234)" />
-  <circle cx="71" cy="62" r="6" fill="rgb(147,51,234)" />
-  <circle cx="66" cy="71" r="6" fill="rgb(126,34,206)" />
-</svg>`;
-
-// Scene 23-4: 집에 물밖에 없어요 (Open Fridge with only Water)
-export const FRIDGE_ONLY_WATER_SCENE_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
-  <circle cx="50" cy="50" r="46" fill="rgb(224,242,254)" />
-  <rect x="27" y="21" width="46" height="58" rx="6" fill="rgb(255,255,255)" stroke="rgb(59,130,246)" stroke-width="2.5" />
-  <line x1="27" y1="42" x2="73" y2="42" stroke="rgb(147,197,253)" stroke-width="2" />
-  <rect x="44" y="47" width="12" height="23" rx="3" fill="rgb(56,189,248)" stroke="rgb(2,132,199)" stroke-width="1.6" />
-  <rect x="47" y="44" width="6" height="4" rx="1" fill="rgb(2,132,199)" />
-</svg>`;
-
-// Scene 27-4: 선생님에게서 선물을 받아요 (Gift box from teacher)
-export const GIFT_FROM_TEACHER_SCENE_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
-  <circle cx="50" cy="50" r="46" fill="rgb(255,241,242)" />
-  <rect x="28" y="42" width="44" height="34" rx="5" fill="rgb(244,63,94)" />
-  <rect x="25" y="34" width="50" height="10" rx="3" fill="rgb(225,29,72)" />
-  <rect x="46" y="34" width="8" height="42" fill="rgb(253,224,71)" />
-  <circle cx="44" cy="30" r="5" fill="rgb(253,224,71)" />
-  <circle cx="56" cy="30" r="5" fill="rgb(253,224,71)" />
-</svg>`;
-
-// Scene 30-1: 할머니께서 선생님께 전화하세요 (Grandma on phone)
-export const GRANDMA_CALL_TEACHER_SCENE_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
-  <circle cx="50" cy="50" r="46" fill="rgb(254,249,195)" />
-  <circle cx="44" cy="40" r="14" fill="rgb(254,215,170)" />
-  <path d="M 29.2 38 C 28.1 19.6 59.9 19.6 58.8 38 C 53 31 35 31 29.2 38 Z" fill="rgb(203,213,225)" />
-  <path d="M 28 74 C 28 55 60 55 60 74 Z" fill="rgb(236,72,153)" />
-  <rect x="65" y="40" width="14" height="24" rx="3" fill="rgb(51,65,85)" />
-  <rect x="67" y="43" width="10" height="17" rx="1.5" fill="rgb(186,230,253)" />
-  <path d="M 60 35 Q 64 31 68 35" stroke="rgb(59,130,246)" stroke-width="2" fill="none" stroke-linecap="round" />
 </svg>`;
 
 // Scene 7-1: 제가 창문을 열게요 (Opening a sunny window)

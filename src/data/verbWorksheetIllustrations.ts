@@ -22,7 +22,7 @@ export const CHAJAYO_DESK_PENCIL_SVG = `data:image/svg+xml;utf8,<svg xmlns="http
     <!-- Smooth round head -->
     <circle cx="32" cy="21" r="14.5" fill="rgb(254,215,170)" />
     <!-- Hair with soft bangs -->
-    <path d="M 17.3 20 C 17 4.5 47 4.5 46.7 20 C 43 13 38 11.5 32 12.5 C 26 11.5 21 13 17.3 20 Z" fill="rgb(51,65,85)" />
+    <path d="M 17 20.5 A 15 15.6 0 0 1 47 20.5 C 43.5 14 37.5 13 32 14.5 C 26.5 13 20.5 14 17 20.5 Z" fill="rgb(51,65,85)" />
     <!-- Attentive bright eyes looking toward pencil -->
     <circle cx="27.5" cy="21" r="2" fill="rgb(30,41,59)" />
     <circle cx="37.5" cy="21" r="2" fill="rgb(30,41,59)" />
@@ -99,11 +99,12 @@ export const NOLAYO_KIDS_OUTDOOR_SVG = `data:image/svg+xml;utf8,<svg xmlns="http
     <circle cx="30" cy="18" r="2.4" fill="rgb(254,215,170)" />
     <path d="M 8 30 L 3 23" stroke="rgb(59,130,246)" stroke-width="3.8" stroke-linecap="round" />
     <circle cx="2" cy="22" r="2.3" fill="rgb(254,215,170)" />
-    <!-- Body -->
+    <!-- Body & Neck -->
     <path d="M 7 40 C 7 27 23 27 23 40 Z" fill="rgb(59,130,246)" />
+    <rect x="12" y="25" width="6" height="6" rx="2" fill="rgb(254,215,170)" />
     <!-- Smooth Head & Hair -->
     <circle cx="15" cy="17" r="11" fill="rgb(254,215,170)" />
-    <path d="M 3.8 16 C 3.8 4.5 26.2 4.5 26.2 16 C 23 10.5 19 9.5 15 10.5 C 11 9.5 7 10.5 3.8 16 Z" fill="rgb(120,53,15)" />
+    <path d="M 3.5 16.5 A 11.5 12 0 0 1 26.5 16.5 C 23.5 11.5 19 11 15 12.2 C 11 11 6.5 11.5 3.5 16.5 Z" fill="rgb(120,53,15)" />
     <path d="M 9.5 16.5 Q 11.5 14 13.5 16.5" stroke="rgb(30,41,59)" stroke-width="1.4" stroke-linecap="round" fill="none" />
     <path d="M 16.5 16.5 Q 18.5 14 20.5 16.5" stroke="rgb(30,41,59)" stroke-width="1.4" stroke-linecap="round" fill="none" />
     <circle cx="8.5" cy="19.5" r="1.8" fill="rgb(251,113,133)" opacity="0.6" />
@@ -123,14 +124,15 @@ export const NOLAYO_KIDS_OUTDOOR_SVG = `data:image/svg+xml;utf8,<svg xmlns="http
     <circle cx="1" cy="18" r="2.4" fill="rgb(254,215,170)" />
     <path d="M 21 30 L 27 23" stroke="rgb(251,146,60)" stroke-width="3.8" stroke-linecap="round" />
     <circle cx="28" cy="22" r="2.3" fill="rgb(254,215,170)" />
-    <!-- Dress -->
+    <!-- Dress & Neck -->
     <path d="M 8 27 L 22 27 L 26 41 L 4 41 Z" fill="rgb(251,146,60)" />
+    <rect x="12" y="25" width="6" height="6" rx="2" fill="rgb(254,215,170)" />
     <!-- Pigtails -->
     <circle cx="4" cy="13" r="3.6" fill="rgb(51,65,85)" />
     <circle cx="26" cy="13" r="3.6" fill="rgb(51,65,85)" />
     <!-- Smooth Head & Hair -->
     <circle cx="15" cy="17" r="11" fill="rgb(254,215,170)" />
-    <path d="M 3.8 16 C 3.8 4.5 26.2 4.5 26.2 16 C 23 10.5 19 9.5 15 10.5 C 11 9.5 7 10.5 3.8 16 Z" fill="rgb(51,65,85)" />
+    <path d="M 3.5 16.5 A 11.5 12 0 0 1 26.5 16.5 C 23.5 11.5 19 11 15 12.2 C 11 11 6.5 11.5 3.5 16.5 Z" fill="rgb(51,65,85)" />
     <path d="M 9.5 16.5 Q 11.5 14 13.5 16.5" stroke="rgb(30,41,59)" stroke-width="1.4" stroke-linecap="round" fill="none" />
     <path d="M 16.5 16.5 Q 18.5 14 20.5 16.5" stroke="rgb(30,41,59)" stroke-width="1.4" stroke-linecap="round" fill="none" />
     <circle cx="8.5" cy="19.5" r="1.8" fill="rgb(251,113,133)" opacity="0.6" />
@@ -182,7 +184,7 @@ export const DADAYO_DOOR_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w
     <!-- Full crisp round head -->
     <circle cx="17" cy="14" r="11.5" fill="rgb(254,215,170)" />
     <!-- Clean tidy hair with rounded bangs -->
-    <path d="M 5.3 13 C 5.3 0.8 28.7 0.8 28.7 13 C 26 7.5 22 6.5 17 7.5 C 12 6.5 8 7.5 5.3 13 Z" fill="rgb(51,65,85)" />
+    <path d="M 5 13.5 A 12 12.5 0 0 1 29 13.5 C 26 8.5 21.5 7.8 17 9 C 12.5 7.8 8 8.5 5 13.5 Z" fill="rgb(51,65,85)" />
     <!-- Symmetrical cute eyes, rosy cheeks & friendly smile -->
     <circle cx="13.5" cy="14" r="1.6" fill="rgb(30,41,59)" />
     <circle cx="21" cy="14" r="1.6" fill="rgb(30,41,59)" />
@@ -214,16 +216,18 @@ export const IPEOYO_CLOTHES_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://ww
     <circle cx="32" cy="46" r="1.5" fill="rgb(255,255,255)" />
     <circle cx="32" cy="54" r="1.5" fill="rgb(255,255,255)" />
 
+    <!-- Neck connecting head and shirt -->
+    <rect x="28" y="31" width="8" height="8" rx="2.5" fill="rgb(254,215,170)" />
     <!-- Head -->
     <circle cx="32" cy="20" r="14" fill="rgb(254,215,170)" />
-    <!-- Hair -->
-    <path d="M 17.2 18 C 16.1 -0.4 47.9 -0.4 46.8 18 C 46 12 40 8 32 8 C 24 8 18 12 17.2 18 Z" fill="rgb(51,65,85)" />
+    <!-- Hair with soft full bangs -->
+    <path d="M 17.4 19.5 A 14.6 15.2 0 0 1 46.6 19.5 C 43 13.5 37 12.5 32 14 C 27 12.5 21 13.5 17.4 19.5 Z" fill="rgb(51,65,85)" />
     <!-- Cute friendly face -->
-    <circle cx="27" cy="19" r="1.8" fill="rgb(30,41,59)" />
-    <circle cx="37" cy="19" r="1.8" fill="rgb(30,41,59)" />
-    <circle cx="24" cy="23" r="2" fill="rgb(244,114,182)" opacity="0.6" />
-    <circle cx="40" cy="23" r="2" fill="rgb(244,114,182)" opacity="0.6" />
-    <path d="M 29 24 Q 32 27 35 24" stroke="rgb(190,18,60)" stroke-width="1.5" stroke-linecap="round" fill="none" />
+    <circle cx="27" cy="20" r="1.8" fill="rgb(30,41,59)" />
+    <circle cx="37" cy="20" r="1.8" fill="rgb(30,41,59)" />
+    <circle cx="24" cy="23.8" r="2" fill="rgb(244,114,182)" opacity="0.6" />
+    <circle cx="40" cy="23.8" r="2" fill="rgb(244,114,182)" opacity="0.6" />
+    <path d="M 29 24.5 Q 32 27.5 35 24.5" stroke="rgb(190,18,60)" stroke-width="1.5" stroke-linecap="round" fill="none" />
 
     <!-- Arms putting through sleeves -->
     <path d="M 18 38 L 8 48 Q 6 52 10 54" stroke="rgb(59,130,246)" stroke-width="4.5" stroke-linecap="round" fill="none" />
@@ -261,17 +265,19 @@ export const YEOL_EO_YO_WINDOW_SVG = `data:image/svg+xml;utf8,<svg xmlns="http:/
   <!-- Child smiling and pushing windows open -->
   <g transform="translate(24, 28)">
     <!-- Body -->
-    <path d="M 16 54 C 16 42 22 38 26 38 C 30 38 36 42 36 54 Z" fill="rgb(234,88,12)" />
+    <path d="M 16 54 C 16 42 21 38 26 38 C 31 38 36 42 36 54 Z" fill="rgb(234,88,12)" />
+    <!-- Neck -->
+    <rect x="22.8" y="33" width="6.4" height="7.5" rx="2" fill="rgb(254,215,170)" />
     <!-- Head -->
     <circle cx="26" cy="24" r="12" fill="rgb(254,215,170)" />
-    <!-- Hair -->
-    <path d="M 13.2 22 C 12.2 6.3 39.8 6.3 38.8 22 C 38 16 32 12 26 12 C 20 12 14 16 13.2 22 Z" fill="rgb(51,65,85)" />
+    <!-- Hair with soft full bangs -->
+    <path d="M 13.5 23.5 A 12.5 13 0 0 1 38.5 23.5 C 35.5 18 30.5 17.2 26 18.5 C 21.5 17.2 16.5 18 13.5 23.5 Z" fill="rgb(51,65,85)" />
     <!-- Cheerful face -->
-    <circle cx="22" cy="23" r="1.5" fill="rgb(30,41,59)" />
-    <circle cx="30" cy="23" r="1.5" fill="rgb(30,41,59)" />
-    <circle cx="19" cy="26" r="1.8" fill="rgb(251,113,133)" opacity="0.6" />
-    <circle cx="33" cy="26" r="1.8" fill="rgb(251,113,133)" opacity="0.6" />
-    <path d="M 23 27 Q 26 30 29 27" stroke="rgb(190,18,60)" stroke-width="1.3" stroke-linecap="round" fill="none" />
+    <circle cx="22" cy="24" r="1.6" fill="rgb(30,41,59)" />
+    <circle cx="30" cy="24" r="1.6" fill="rgb(30,41,59)" />
+    <circle cx="19" cy="27" r="1.8" fill="rgb(251,113,133)" opacity="0.6" />
+    <circle cx="33" cy="27" r="1.8" fill="rgb(251,113,133)" opacity="0.6" />
+    <path d="M 23 28 Q 26 31 29 28" stroke="rgb(190,18,60)" stroke-width="1.3" stroke-linecap="round" fill="none" />
 
     <!-- Both arms outstretched opening the window -->
     <path d="M 18 42 L 8 36" stroke="rgb(234,88,12)" stroke-width="3.5" stroke-linecap="round" />
@@ -300,17 +306,19 @@ export const GONGBU_HAEYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.
   <!-- Child studying -->
   <g transform="translate(24, 18)">
     <!-- Body in mint sweater -->
-    <path d="M 14 54 C 14 42 22 36 26 36 C 30 36 38 42 38 54 Z" fill="rgb(20,184,166)" />
+    <path d="M 14 54 C 14 42 20 37 26 37 C 32 37 38 42 38 54 Z" fill="rgb(20,184,166)" />
+    <!-- Neck -->
+    <rect x="22.5" y="33" width="7" height="7" rx="2.5" fill="rgb(254,215,170)" />
     <!-- Head -->
     <circle cx="26" cy="22" r="14" fill="rgb(254,215,170)" />
-    <!-- Hair -->
-    <path d="M 11.2 20 C 10.1 1.6 41.9 1.6 40.8 20 C 40 13 34 9 26 9 C 18 9 12 13 11.2 20 Z" fill="rgb(51,65,85)" />
+    <!-- Hair with soft full bangs -->
+    <path d="M 11.4 21.5 A 14.6 15.2 0 0 1 40.6 21.5 C 37 15.5 31 14.5 26 16 C 21 14.5 15 15.5 11.4 21.5 Z" fill="rgb(51,65,85)" />
     <!-- Focused cute face looking down at book -->
-    <circle cx="21" cy="22" r="1.6" fill="rgb(30,41,59)" />
-    <circle cx="31" cy="22" r="1.6" fill="rgb(30,41,59)" />
-    <circle cx="18" cy="26" r="2" fill="rgb(251,113,133)" opacity="0.6" />
-    <circle cx="34" cy="26" r="2" fill="rgb(251,113,133)" opacity="0.6" />
-    <path d="M 23 27 Q 26 30 29 27" stroke="rgb(190,18,60)" stroke-width="1.3" stroke-linecap="round" fill="none" />
+    <circle cx="21" cy="22.5" r="1.7" fill="rgb(30,41,59)" />
+    <circle cx="31" cy="22.5" r="1.7" fill="rgb(30,41,59)" />
+    <circle cx="18" cy="26.2" r="2" fill="rgb(251,113,133)" opacity="0.6" />
+    <circle cx="34" cy="26.2" r="2" fill="rgb(251,113,133)" opacity="0.6" />
+    <path d="M 23 27.5 Q 26 30.5 29 27.5" stroke="rgb(190,18,60)" stroke-width="1.3" stroke-linecap="round" fill="none" />
     <!-- Arms on desk holding pencil -->
     <path d="M 16 46 L 22 56" stroke="rgb(20,184,166)" stroke-width="4" stroke-linecap="round" />
     <path d="M 36 46 L 30 56" stroke="rgb(20,184,166)" stroke-width="4" stroke-linecap="round" />
@@ -347,31 +355,34 @@ export const CHEONGSO_HAEYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://ww
 
   <!-- Child holding broom -->
   <g transform="translate(20, 16)">
-    <!-- Cute cleaning band / hairband -->
-    <path d="M 12 18 Q 24 -8 36 18" stroke="rgb(244,63,94)" stroke-width="3" fill="none" stroke-linecap="round" />
-    <circle cx="12" cy="18" r="3" fill="rgb(244,63,94)" />
-    <!-- Head -->
-    <circle cx="24" cy="22" r="13" fill="rgb(254,215,170)" />
-    <!-- Hair -->
-    <path d="M 10.2 20 C 9.2 2.9 38.8 2.9 37.8 20 C 37 14 31 11 24 11 C 17 11 11 14 10.2 20 Z" fill="rgb(51,65,85)" />
-    <!-- Happy face -->
-    <path d="M 17 21 Q 20 18 23 21" stroke="rgb(30,41,59)" stroke-width="1.4" stroke-linecap="round" fill="none" />
-    <path d="M 25 21 Q 28 18 31 21" stroke="rgb(30,41,59)" stroke-width="1.4" stroke-linecap="round" fill="none" />
-    <circle cx="16" cy="25" r="1.8" fill="rgb(251,113,133)" opacity="0.6" />
-    <circle cx="32" cy="25" r="1.8" fill="rgb(251,113,133)" opacity="0.6" />
-    <path d="M 21 26 Q 24 29 27 26" stroke="rgb(190,18,60)" stroke-width="1.4" stroke-linecap="round" fill="none" />
-
-    <!-- Body in overalls -->
-    <path d="M 14 48 C 14 38 20 34 24 34 C 28 34 34 38 34 48 Z" fill="rgb(59,130,246)" />
     <!-- Legs -->
     <rect x="17" y="48" width="5" height="18" rx="2" fill="rgb(30,64,175)" />
     <rect x="26" y="48" width="5" height="18" rx="2" fill="rgb(30,64,175)" />
     <ellipse cx="19" cy="67" rx="3.5" ry="2" fill="rgb(249,115,22)" />
     <ellipse cx="29" cy="67" rx="3.5" ry="2" fill="rgb(249,115,22)" />
+    <!-- Body in overalls -->
+    <path d="M 14 50 C 14 39 19 35 24 35 C 29 35 34 39 34 50 Z" fill="rgb(59,130,246)" />
+    <!-- Neck -->
+    <rect x="20.8" y="32" width="6.4" height="6.5" rx="2" fill="rgb(254,215,170)" />
+    <!-- Head -->
+    <circle cx="24" cy="22" r="13" fill="rgb(254,215,170)" />
+    <!-- Hair with soft full bangs -->
+    <path d="M 10.5 21.5 A 13.5 14.2 0 0 1 37.5 21.5 C 34.2 15.8 29 14.8 24 16.2 C 19 14.8 13.8 15.8 10.5 21.5 Z" fill="rgb(51,65,85)" />
+    <!-- Cute cleaning headband sitting neatly on hair -->
+    <path d="M 11.5 19 A 13 13.5 0 0 1 36.5 19" stroke="rgb(244,63,94)" stroke-width="2.6" fill="none" stroke-linecap="round" />
+    <circle cx="11.5" cy="19" r="2.4" fill="rgb(244,63,94)" />
+    <!-- Happy face -->
+    <path d="M 17.5 22.5 Q 20 19.5 22.5 22.5" stroke="rgb(30,41,59)" stroke-width="1.5" stroke-linecap="round" fill="none" />
+    <path d="M 25.5 22.5 Q 28 19.5 30.5 22.5" stroke="rgb(30,41,59)" stroke-width="1.5" stroke-linecap="round" fill="none" />
+    <circle cx="16" cy="26" r="1.8" fill="rgb(251,113,133)" opacity="0.6" />
+    <circle cx="32" cy="26" r="1.8" fill="rgb(251,113,133)" opacity="0.6" />
+    <path d="M 21 27 Q 24 30 27 27" stroke="rgb(190,18,60)" stroke-width="1.4" stroke-linecap="round" fill="none" />
 
     <!-- Arms holding broom handle -->
-    <path d="M 16 40 L 28 46" stroke="rgb(254,215,170)" stroke-width="3" stroke-linecap="round" />
-    <path d="M 32 40 L 26 48" stroke="rgb(254,215,170)" stroke-width="3" stroke-linecap="round" />
+    <path d="M 16 40 L 28 45" stroke="rgb(59,130,246)" stroke-width="3.8" stroke-linecap="round" />
+    <circle cx="29" cy="45.5" r="2.4" fill="rgb(254,215,170)" />
+    <path d="M 32 40 L 27 49" stroke="rgb(59,130,246)" stroke-width="3.8" stroke-linecap="round" />
+    <circle cx="26.5" cy="49.5" r="2.4" fill="rgb(254,215,170)" />
   </g>
 
   <!-- Broom sweeping -->
@@ -400,17 +411,24 @@ export const SUKJE_HAEYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w
   <!-- Child doing homework -->
   <g transform="translate(24, 16)">
     <!-- Body in warm pink -->
-    <path d="M 14 54 C 14 42 22 36 26 36 C 30 36 38 42 38 54 Z" fill="rgb(244,114,182)" />
+    <path d="M 14 56 C 14 43 20 37 26 37 C 32 37 38 43 38 56 Z" fill="rgb(244,114,182)" />
+    <!-- Neck -->
+    <rect x="22.5" y="33" width="7" height="7" rx="2.5" fill="rgb(254,215,170)" />
     <!-- Head -->
     <circle cx="26" cy="22" r="14" fill="rgb(254,215,170)" />
-    <!-- Short neat hair -->
-    <path d="M 11.2 20 C 10.1 1.6 41.9 1.6 40.8 20 C 40 13 33 10 26 10 C 19 10 12 13 11.2 20 Z" fill="rgb(51,65,85)" />
+    <!-- Short neat hair with full bangs -->
+    <path d="M 11.4 21.5 A 14.6 15.2 0 0 1 40.6 21.5 C 37 15.5 31 14.5 26 16 C 21 14.5 15 15.5 11.4 21.5 Z" fill="rgb(51,65,85)" />
     <!-- Thoughtful smiling eyes -->
-    <circle cx="21" cy="21" r="1.6" fill="rgb(30,41,59)" />
-    <circle cx="31" cy="21" r="1.6" fill="rgb(30,41,59)" />
-    <circle cx="18" cy="25" r="2" fill="rgb(251,113,133)" opacity="0.6" />
-    <circle cx="34" cy="25" r="2" fill="rgb(251,113,133)" opacity="0.6" />
-    <path d="M 23 26 Q 26 29 29 26" stroke="rgb(190,18,60)" stroke-width="1.3" stroke-linecap="round" fill="none" />
+    <circle cx="21" cy="22" r="1.7" fill="rgb(30,41,59)" />
+    <circle cx="31" cy="22" r="1.7" fill="rgb(30,41,59)" />
+    <circle cx="18" cy="25.8" r="2" fill="rgb(251,113,133)" opacity="0.6" />
+    <circle cx="34" cy="25.8" r="2" fill="rgb(251,113,133)" opacity="0.6" />
+    <path d="M 23 27 Q 26 30 29 27" stroke="rgb(190,18,60)" stroke-width="1.3" stroke-linecap="round" fill="none" />
+    <!-- Arms resting toward notebook & pencil -->
+    <path d="M 16 47 L 12 56" stroke="rgb(244,114,182)" stroke-width="4" stroke-linecap="round" />
+    <circle cx="11.5" cy="57" r="2.6" fill="rgb(254,215,170)" />
+    <path d="M 35 46 L 40 53" stroke="rgb(244,114,182)" stroke-width="4" stroke-linecap="round" />
+    <circle cx="40.5" cy="53.5" r="2.8" fill="rgb(254,215,170)" />
   </g>
 
   <!-- Lined Notebook on table -->
@@ -447,27 +465,27 @@ export const JILMUN_HAEYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.
 
   <!-- Child raising hand -->
   <g transform="translate(26, 14)">
+    <!-- Left arm resting on desk -->
+    <path d="M 15 47 L 10 58" stroke="rgb(249,115,22)" stroke-width="4.2" stroke-linecap="round" />
+    <circle cx="9.5" cy="59" r="2.6" fill="rgb(254,215,170)" />
+    <!-- Right arm raised high! -->
+    <path d="M 32 45 L 42 20" stroke="rgb(249,115,22)" stroke-width="4.6" stroke-linecap="round" />
+    <circle cx="43" cy="18" r="4.2" fill="rgb(254,215,170)" />
+    <path d="M 42.5 15 L 43.5 11" stroke="rgb(254,215,170)" stroke-width="2.4" stroke-linecap="round" />
     <!-- Body in orange shirt -->
-    <path d="M 14 56 C 14 44 20 38 24 38 C 28 38 34 44 34 56 Z" fill="rgb(249,115,22)" />
+    <path d="M 13 60 C 13 46 18 40 24 40 C 30 40 35 46 35 60 Z" fill="rgb(249,115,22)" />
+    <!-- Neck -->
+    <rect x="20.6" y="36" width="6.8" height="7" rx="2.2" fill="rgb(254,215,170)" />
     <!-- Head -->
     <circle cx="24" cy="26" r="13" fill="rgb(254,215,170)" />
-    <!-- Hair -->
-    <path d="M 10.2 24 C 9.2 6.9 38.8 6.9 37.8 24 C 37 17 31 13 24 13 C 17 13 11 17 10.2 24 Z" fill="rgb(51,65,85)" />
+    <!-- Lush full hair with soft bangs -->
+    <path d="M 10.5 25.5 A 13.5 14.2 0 0 1 37.5 25.5 C 34.2 19.8 29 18.8 24 20.2 C 19 18.8 13.8 19.8 10.5 25.5 Z" fill="rgb(51,65,85)" />
     <!-- Bright enthusiastic eyes & smile -->
-    <circle cx="19" cy="26" r="1.6" fill="rgb(30,41,59)" />
-    <circle cx="29" cy="26" r="1.6" fill="rgb(30,41,59)" />
+    <circle cx="19" cy="26.5" r="1.7" fill="rgb(30,41,59)" />
+    <circle cx="29" cy="26.5" r="1.7" fill="rgb(30,41,59)" />
     <circle cx="16" cy="30" r="2" fill="rgb(251,113,133)" opacity="0.6" />
     <circle cx="32" cy="30" r="2" fill="rgb(251,113,133)" opacity="0.6" />
-    <path d="M 21 31 Q 24 35 27 31 Z" fill="rgb(190,18,60)" />
-
-    <!-- Left hand resting on desk -->
-    <path d="M 16 46 L 10 58" stroke="rgb(249,115,22)" stroke-width="3.5" stroke-linecap="round" />
-
-    <!-- Right arm raised high! -->
-    <path d="M 32 44 L 42 20" stroke="rgb(249,115,22)" stroke-width="4.5" stroke-linecap="round" />
-    <!-- Hand with palm open -->
-    <circle cx="43" cy="18" r="4.5" fill="rgb(254,215,170)" />
-    <path d="M 42 16 L 43 11" stroke="rgb(254,215,170)" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M 21 31.2 Q 24 35 27 31.2 Z" fill="rgb(190,18,60)" />
   </g>
 
   <!-- Question mark / lightbulb sparkle near raised hand -->
@@ -496,20 +514,21 @@ export const INSA_HAEYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3
     <!-- Torso bent forward -->
     <g transform="translate(8, 0) rotate(24, 24, 48)">
       <!-- Body in navy jacket -->
-      <path d="M 16 48 C 16 36 22 32 26 32 C 30 32 36 36 36 48 Z" fill="rgb(30,58,138)" />
+      <path d="M 16 48 C 16 36 21 32 26 32 C 31 32 36 36 36 48 Z" fill="rgb(30,58,138)" />
       <!-- Neat collar -->
-      <polygon points="26,34 23,38 29,38" fill="rgb(255,255,255)" />
-
+      <polygon points="26,34 22.5,38.5 29.5,38.5" fill="rgb(255,255,255)" />
+      <!-- Neck -->
+      <rect x="22.8" y="28" width="6.4" height="7" rx="2" fill="rgb(254,215,170)" />
       <!-- Head bowing down -->
       <circle cx="26" cy="18" r="13" fill="rgb(254,215,170)" />
-      <!-- Hair top & back -->
-      <path d="M 12.2 18 C 11.2 -1.7 40.8 -1.7 39.8 18 C 39 12 33 8 26 8 C 19 8 13 12 12.2 18 Z" fill="rgb(51,65,85)" />
+      <!-- Full hair with soft bangs -->
+      <path d="M 12.5 17.5 A 13.5 14.2 0 0 1 39.5 17.5 C 36.2 11.8 31 10.8 26 12.2 C 21 10.8 15.8 11.8 12.5 17.5 Z" fill="rgb(51,65,85)" />
       <!-- Polite smiling eyes (curved happy arcs) -->
-      <path d="M 19 18 Q 22 15 25 18" stroke="rgb(30,41,59)" stroke-width="1.4" stroke-linecap="round" fill="none" />
-      <path d="M 27 18 Q 30 15 33 18" stroke="rgb(30,41,59)" stroke-width="1.4" stroke-linecap="round" fill="none" />
-      <circle cx="17" cy="22" r="1.8" fill="rgb(251,113,133)" opacity="0.6" />
-      <circle cx="34" cy="22" r="1.8" fill="rgb(251,113,133)" opacity="0.6" />
-      <path d="M 23 23 Q 26 25 29 23" stroke="rgb(190,18,60)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+      <path d="M 19 18.8 Q 22 15.8 25 18.8" stroke="rgb(30,41,59)" stroke-width="1.5" stroke-linecap="round" fill="none" />
+      <path d="M 27 18.8 Q 30 15.8 33 18.8" stroke="rgb(30,41,59)" stroke-width="1.5" stroke-linecap="round" fill="none" />
+      <circle cx="17" cy="22.2" r="1.8" fill="rgb(251,113,133)" opacity="0.6" />
+      <circle cx="34.5" cy="22.2" r="1.8" fill="rgb(251,113,133)" opacity="0.6" />
+      <path d="M 23 23.5 Q 26 25.8 29 23.5" stroke="rgb(190,18,60)" stroke-width="1.3" stroke-linecap="round" fill="none" />
 
       <!-- Hands folded politely in front -->
       <path d="M 18 38 L 26 44 L 34 38" stroke="rgb(30,58,138)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -539,21 +558,27 @@ export const ODA_WAYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.o
     <ellipse cx="12" cy="74" rx="4" ry="2.2" fill="rgb(239,68,68)" />
     <ellipse cx="36" cy="72" rx="4" ry="2.2" fill="rgb(239,68,68)" />
     <!-- Body in yellow shirt -->
-    <path d="M 14 54 C 14 38 22 34 26 34 C 30 34 38 38 38 54 Z" fill="rgb(250,204,21)" />
+    <path d="M 14 55 C 14 40 20 35 26 35 C 32 35 38 40 38 55 Z" fill="rgb(250,204,21)" />
+    <!-- Neck -->
+    <rect x="22.5" y="32" width="7" height="6.5" rx="2.5" fill="rgb(254,215,170)" />
     <!-- Face -->
     <circle cx="26" cy="22" r="14" fill="rgb(254,215,170)" />
-    <!-- Hair with cap -->
-    <path d="M 11.2 20 C 10.1 1.6 41.9 1.6 40.8 20 Z" fill="rgb(37,99,235)" />
-    <path d="M 26 12 L 44 14" stroke="rgb(30,58,138)" stroke-width="3" stroke-linecap="round" />
+    <!-- Hair under cap -->
+    <path d="M 11.6 22 A 14.4 14.8 0 0 1 40.4 22 C 37 16.5 31.5 16 26 17 C 20.5 16 15 16.5 11.6 22 Z" fill="rgb(51,65,85)" />
+    <!-- Neat blue baseball cap sitting above eyes -->
+    <path d="M 11.6 17.5 A 14.5 13 0 0 1 40.4 17.5 Z" fill="rgb(37,99,235)" />
+    <path d="M 24 17.2 L 45 18.2" stroke="rgb(30,58,138)" stroke-width="3.2" stroke-linecap="round" />
     <!-- Joyful face walking toward school -->
-    <circle cx="22" cy="22" r="1.8" fill="rgb(30,41,59)" />
-    <circle cx="31" cy="22" r="1.8" fill="rgb(30,41,59)" />
-    <circle cx="18" cy="26" r="2.2" fill="rgb(244,114,182)" opacity="0.7" />
-    <circle cx="34" cy="26" r="2.2" fill="rgb(244,114,182)" opacity="0.7" />
-    <path d="M 23 27 Q 26 31 30 27" stroke="rgb(225,29,72)" stroke-width="1.8" stroke-linecap="round" fill="none" />
+    <circle cx="22" cy="23" r="1.8" fill="rgb(30,41,59)" />
+    <circle cx="31" cy="23" r="1.8" fill="rgb(30,41,59)" />
+    <circle cx="18" cy="26.8" r="2.2" fill="rgb(244,114,182)" opacity="0.7" />
+    <circle cx="34" cy="26.8" r="2.2" fill="rgb(244,114,182)" opacity="0.7" />
+    <path d="M 23 28 Q 26 31.5 30 28" stroke="rgb(225,29,72)" stroke-width="1.8" stroke-linecap="round" fill="none" />
     <!-- Arms swinging -->
-    <path d="M 14 42 L 8 52" stroke="rgb(250,204,21)" stroke-width="4" stroke-linecap="round" />
-    <path d="M 36 42 L 42 50" stroke="rgb(250,204,21)" stroke-width="4" stroke-linecap="round" />
+    <path d="M 15 42 L 9 52" stroke="rgb(250,204,21)" stroke-width="4.2" stroke-linecap="round" />
+    <circle cx="8.5" cy="53" r="2.4" fill="rgb(254,215,170)" />
+    <path d="M 36 42 L 42 50" stroke="rgb(250,204,21)" stroke-width="4.2" stroke-linecap="round" />
+    <circle cx="42.5" cy="51" r="2.4" fill="rgb(254,215,170)" />
   </g>
   <!-- Movement breeze lines -->
   <path d="M 10 38 Q 14 36 18 38" stroke="rgb(245,158,11)" stroke-width="1.6" stroke-linecap="round" fill="none" />
@@ -576,16 +601,18 @@ export const BODA_BWAYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3
   <!-- Child sitting looking up at board -->
   <g transform="translate(32, 42)">
     <!-- Back/side view looking forward -->
-    <path d="M 12 48 C 12 36 18 30 26 30 C 34 30 40 36 40 48 Z" fill="rgb(99,102,241)" />
+    <path d="M 12 48 C 12 36 18 31 26 31 C 34 31 40 36 40 48 Z" fill="rgb(99,102,241)" />
+    <!-- Neck -->
+    <rect x="22.8" y="28" width="6.4" height="6.5" rx="2" fill="rgb(254,215,170)" />
     <!-- Head -->
     <circle cx="26" cy="18" r="13" fill="rgb(254,215,170)" />
-    <!-- Cute short hair -->
-    <path d="M 12.2 18 C 11.2 -1.7 40.8 -1.7 39.8 18 C 39 12 33 8 26 8 C 19 8 13 12 12.2 18 Z" fill="rgb(51,65,85)" />
-    <!-- Big focused sparkle eyes looking up -->
-    <circle cx="31" cy="17" r="2.8" fill="rgb(30,41,59)" />
-    <circle cx="32" cy="16" r="1" fill="rgb(255,255,255)" />
-    <path d="M 28 23 Q 32 25 35 22" stroke="rgb(225,29,72)" stroke-width="1.4" stroke-linecap="round" fill="none" />
-    <circle cx="34" cy="21" r="2" fill="rgb(251,113,133)" opacity="0.6" />
+    <!-- Full side-profile short hair -->
+    <path d="M 12.6 19 A 13.5 14.2 0 0 1 39.2 15.5 C 36 11.5 31 11 26 12.5 C 21 13.5 17 17.5 16.5 23.5 C 13.5 22.5 12.6 20.5 12.6 19 Z" fill="rgb(51,65,85)" />
+    <!-- Big focused sparkle eye looking up at board -->
+    <circle cx="31.5" cy="17.8" r="2.6" fill="rgb(30,41,59)" />
+    <circle cx="32.4" cy="16.9" r="0.9" fill="rgb(255,255,255)" />
+    <path d="M 28.5 23.5 Q 32 25.5 35 22.5" stroke="rgb(225,29,72)" stroke-width="1.4" stroke-linecap="round" fill="none" />
+    <circle cx="34" cy="21.5" r="2" fill="rgb(251,113,133)" opacity="0.6" />
   </g>
   <!-- Focus sight sparkles -->
   <path d="M 68 36 Q 71 36 71 33 Q 71 36 74 36 Q 71 36 71 39 Q 71 36 68 36 Z" fill="rgb(234,179,8)" />
@@ -602,22 +629,24 @@ export const GADA_GAYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.
     <ellipse cx="10" cy="71" rx="4" ry="2.2" fill="rgb(37,99,235)" />
     <ellipse cx="38" cy="69" rx="4" ry="2.2" fill="rgb(37,99,235)" />
     <!-- Torso in mint green hoodie -->
-    <path d="M 14 52 C 14 36 20 32 26 32 C 32 32 38 36 38 52 Z" fill="rgb(52,211,153)" />
+    <path d="M 14 52 C 14 37 20 33 26 33 C 32 33 38 37 38 52 Z" fill="rgb(52,211,153)" />
     <!-- Backpack on back -->
     <rect x="8" y="34" width="8" height="18" rx="3" fill="rgb(249,115,22)" />
+    <!-- Neck -->
+    <rect x="22.8" y="28" width="6.4" height="7" rx="2" fill="rgb(254,215,170)" />
     <!-- Head turned smiling -->
     <circle cx="26" cy="18" r="13" fill="rgb(254,215,170)" />
-    <!-- Hair with cute hairband -->
-    <path d="M 12.2 18 C 11.2 -1.7 40.8 -1.7 39.8 18 C 39 11 33 7 26 7 C 19 7 13 11 12.2 18 Z" fill="rgb(51,65,85)" />
+    <!-- Full hair with soft bangs -->
+    <path d="M 12.5 17.5 A 13.5 14.2 0 0 1 39.5 17.5 C 36.2 11.8 31 10.8 26 12.2 C 21 10.8 15.8 11.8 12.5 17.5 Z" fill="rgb(51,65,85)" />
     <!-- Happy crescent smile & eyes -->
-    <path d="M 19 18 Q 22 15 25 18" stroke="rgb(30,41,59)" stroke-width="1.6" stroke-linecap="round" fill="none" />
-    <path d="M 28 18 Q 31 15 34 18" stroke="rgb(30,41,59)" stroke-width="1.6" stroke-linecap="round" fill="none" />
-    <circle cx="18" cy="22" r="2" fill="rgb(251,113,133)" opacity="0.6" />
-    <circle cx="34" cy="22" r="2" fill="rgb(251,113,133)" opacity="0.6" />
-    <path d="M 23 23 Q 26 27 30 23" stroke="rgb(225,29,72)" stroke-width="1.6" stroke-linecap="round" fill="none" />
+    <path d="M 19 18.8 Q 22 15.8 25 18.8" stroke="rgb(30,41,59)" stroke-width="1.6" stroke-linecap="round" fill="none" />
+    <path d="M 28 18.8 Q 31 15.8 34 18.8" stroke="rgb(30,41,59)" stroke-width="1.6" stroke-linecap="round" fill="none" />
+    <circle cx="18" cy="22.4" r="2" fill="rgb(251,113,133)" opacity="0.6" />
+    <circle cx="34" cy="22.4" r="2" fill="rgb(251,113,133)" opacity="0.6" />
+    <path d="M 23 23.5 Q 26 27 30 23.5" stroke="rgb(225,29,72)" stroke-width="1.6" stroke-linecap="round" fill="none" />
     <!-- Raised waving arm (안녕! 가요!) -->
-    <path d="M 36 38 L 46 22" stroke="rgb(52,211,153)" stroke-width="4.5" stroke-linecap="round" />
-    <circle cx="47" cy="20" r="4.5" fill="rgb(254,215,170)" />
+    <path d="M 35 39 L 46 22" stroke="rgb(52,211,153)" stroke-width="4.5" stroke-linecap="round" />
+    <circle cx="47" cy="20" r="4.2" fill="rgb(254,215,170)" />
     <!-- Wave lines -->
     <path d="M 46 12 Q 49 14 47 16" stroke="rgb(16,185,129)" stroke-width="1.6" stroke-linecap="round" fill="none" />
     <path d="M 50 14 Q 53 16 51 18" stroke="rgb(16,185,129)" stroke-width="1.6" stroke-linecap="round" fill="none" />
@@ -629,22 +658,24 @@ export const APEUDA_APAYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.
   <circle cx="50" cy="50" r="46" fill="rgb(255,241,242)" />
   <g transform="translate(26, 16)">
     <!-- Body in soft blue pajama/shirt -->
-    <path d="M 14 56 C 14 42 20 36 26 36 C 32 36 38 42 38 56 Z" fill="rgb(147,197,253)" />
+    <path d="M 14 56 C 14 43 20 37 26 37 C 32 37 38 43 38 56 Z" fill="rgb(147,197,253)" />
+    <!-- Neck -->
+    <rect x="22.5" y="33" width="7" height="7" rx="2.5" fill="rgb(254,215,170)" />
     <!-- Head -->
     <circle cx="26" cy="22" r="14" fill="rgb(254,215,170)" />
-    <!-- Hair -->
-    <path d="M 11.2 22 C 10.1 0.9 41.9 0.9 40.8 22 C 40 15 33 11 26 11 C 19 11 12 15 11.2 22 Z" fill="rgb(51,65,85)" />
-    <!-- Cooling patch / bandage on forehead -->
-    <rect x="18" y="14" width="16" height="6" rx="2" fill="rgb(191,219,254)" stroke="rgb(96,165,250)" stroke-width="0.8" />
+    <!-- Full hair with soft parted bangs -->
+    <path d="M 11.4 21.5 A 14.6 15.2 0 0 1 40.6 21.5 C 37 15.5 31.5 14 26 15.2 C 20.5 14 15 15.5 11.4 21.5 Z" fill="rgb(51,65,85)" />
+    <!-- Cooling patch on forehead (cleanly between bangs and eyes) -->
+    <rect x="19" y="16.2" width="14" height="5" rx="1.8" fill="rgb(191,219,254)" stroke="rgb(96,165,250)" stroke-width="0.9" />
     <!-- Sick droopy eyes & worried mouth -->
-    <path d="M 18 24 Q 22 26 24 24" stroke="rgb(71,85,105)" stroke-width="1.6" stroke-linecap="round" fill="none" />
-    <path d="M 28 24 Q 30 26 34 24" stroke="rgb(71,85,105)" stroke-width="1.6" stroke-linecap="round" fill="none" />
-    <ellipse cx="18" cy="28" rx="2.2" ry="1.4" fill="rgb(244,114,182)" opacity="0.8" />
-    <ellipse cx="34" cy="28" rx="2.2" ry="1.4" fill="rgb(244,114,182)" opacity="0.8" />
-    <path d="M 23 31 Q 26 29 29 31" stroke="rgb(225,29,72)" stroke-width="1.4" stroke-linecap="round" fill="none" />
+    <path d="M 18 24.5 Q 21 26.5 23.5 24.5" stroke="rgb(71,85,105)" stroke-width="1.6" stroke-linecap="round" fill="none" />
+    <path d="M 28.5 24.5 Q 31 26.5 34 24.5" stroke="rgb(71,85,105)" stroke-width="1.6" stroke-linecap="round" fill="none" />
+    <ellipse cx="18" cy="28.5" rx="2.2" ry="1.4" fill="rgb(244,114,182)" opacity="0.8" />
+    <ellipse cx="34" cy="28.5" rx="2.2" ry="1.4" fill="rgb(244,114,182)" opacity="0.8" />
+    <path d="M 23 31.5 Q 26 29.2 29 31.5" stroke="rgb(225,29,72)" stroke-width="1.5" stroke-linecap="round" fill="none" />
     <!-- Hand holding forehead -->
-    <path d="M 38 46 L 36 28 L 30 22" stroke="rgb(147,197,253)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
-    <circle cx="28" cy="20" r="3.5" fill="rgb(254,215,170)" />
+    <path d="M 37 46 L 39 29 L 33 21" stroke="rgb(147,197,253)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    <circle cx="32" cy="19.5" r="3.2" fill="rgb(254,215,170)" />
   </g>
   <!-- Throbbing pain marks near head -->
   <path d="M 20 28 L 14 24" stroke="rgb(239,68,68)" stroke-width="2" stroke-linecap="round" />
@@ -656,31 +687,52 @@ export const APEUDA_APAYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.
 export const DOPDA_DOWAYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
   <circle cx="50" cy="50" r="46" fill="rgb(254,242,242)" />
   <ellipse cx="50" cy="85" rx="34" ry="4" fill="rgb(254,205,211)" opacity="0.6" />
-  <!-- Fallen friend on left -->
-  <g transform="translate(14, 34)">
-    <circle cx="16" cy="14" r="10" fill="rgb(254,215,170)" />
-    <path d="M 5.2 14 C 4.4 -1.3 27.6 -1.3 26.8 14 Z" fill="rgb(71,85,105)" />
-    <!-- Tear/sweat drop -->
-    <circle cx="23" cy="16" r="1.5" fill="rgb(56,189,248)" />
-    <!-- Body on floor -->
-    <path d="M 12 24 C 12 20 24 20 28 28 L 10 32 Z" fill="rgb(251,146,60)" />
-    <!-- Reaching hand -->
-    <path d="M 24 24 L 38 20" stroke="rgb(251,146,60)" stroke-width="3.5" stroke-linecap="round" />
-  </g>
-  <!-- Helping friend on right standing up -->
-  <g transform="translate(48, 16)">
-    <!-- Body bending down -->
-    <path d="M 14 54 C 14 38 22 34 26 34 C 30 34 38 38 38 54 Z" fill="rgb(34,197,94)" />
+  <!-- Fallen friend on left sitting on ground -->
+  <g transform="translate(12, 36)">
+    <!-- Legs stretched on floor -->
+    <path d="M 18 44 L 34 45" stroke="rgb(71,85,105)" stroke-width="4.5" stroke-linecap="round" />
+    <ellipse cx="35" cy="45" rx="3.2" ry="2" fill="rgb(239,68,68)" />
+    <!-- Body sitting -->
+    <path d="M 8 46 C 8 33 13 28 18 28 C 23 28 28 33 28 46 Z" fill="rgb(251,146,60)" />
+    <!-- Neck -->
+    <rect x="15" y="24" width="6" height="6" rx="2" fill="rgb(254,215,170)" />
     <!-- Head -->
-    <circle cx="26" cy="20" r="12" fill="rgb(254,215,170)" />
-    <path d="M 13.2 20 C 12.2 1.6 39.8 1.6 38.8 20 Z" fill="rgb(51,65,85)" />
-    <!-- Kind smiling face -->
-    <path d="M 20 20 Q 23 18 26 20" stroke="rgb(30,41,59)" stroke-width="1.4" stroke-linecap="round" fill="none" />
-    <path d="M 22 25 Q 25 28 28 25" stroke="rgb(225,29,72)" stroke-width="1.4" stroke-linecap="round" fill="none" />
+    <circle cx="18" cy="15" r="10.5" fill="rgb(254,215,170)" />
+    <!-- Full hair with bangs -->
+    <path d="M 7 14.5 A 11 11.5 0 0 1 29 14.5 C 26 9.8 22 9.2 18 10.4 C 14 9.2 10 9.8 7 14.5 Z" fill="rgb(71,85,105)" />
+    <!-- Surprised/grateful face looking up at helper -->
+    <circle cx="15.5" cy="15.5" r="1.4" fill="rgb(30,41,59)" />
+    <circle cx="22.5" cy="15.5" r="1.4" fill="rgb(30,41,59)" />
+    <circle cx="25.5" cy="17.5" r="1.5" fill="rgb(56,189,248)" />
+    <path d="M 17.5 20 Q 19.5 18.5 21.5 20" stroke="rgb(190,18,60)" stroke-width="1.3" stroke-linecap="round" fill="none" />
+    <!-- Reaching arm up to helper's hand -->
+    <path d="M 24 33 L 39 20" stroke="rgb(251,146,60)" stroke-width="4" stroke-linecap="round" />
+  </g>
+  <!-- Helping friend on right standing and holding hand -->
+  <g transform="translate(48, 18)">
+    <!-- Legs standing -->
+    <rect x="20" y="52" width="4.8" height="14" rx="2" fill="rgb(51,65,85)" />
+    <rect x="27" y="52" width="4.8" height="14" rx="2" fill="rgb(51,65,85)" />
+    <ellipse cx="22" cy="66" rx="3.4" ry="1.8" fill="rgb(30,41,59)" />
+    <ellipse cx="29.5" cy="66" rx="3.4" ry="1.8" fill="rgb(30,41,59)" />
+    <!-- Body in green shirt -->
+    <path d="M 15 54 C 15 39 20 34 26 34 C 32 34 37 39 37 54 Z" fill="rgb(34,197,94)" />
+    <!-- Neck -->
+    <rect x="23" y="29" width="6" height="7" rx="2" fill="rgb(254,215,170)" />
+    <!-- Head -->
+    <circle cx="26" cy="19" r="12" fill="rgb(254,215,170)" />
+    <!-- Full hair with bangs cleanly above eyes -->
+    <path d="M 13.5 18.5 A 12.5 13 0 0 1 38.5 18.5 C 35.5 13 30.5 12.2 26 13.5 C 21.5 12.2 16.5 13 13.5 18.5 Z" fill="rgb(51,65,85)" />
+    <!-- Kind smiling face looking left -->
+    <path d="M 18.5 19.5 Q 20.8 17 23 19.5" stroke="rgb(30,41,59)" stroke-width="1.4" stroke-linecap="round" fill="none" />
+    <path d="M 25.5 19.5 Q 27.8 17 30 19.5" stroke="rgb(30,41,59)" stroke-width="1.4" stroke-linecap="round" fill="none" />
+    <circle cx="17.5" cy="22.5" r="1.7" fill="rgb(251,113,133)" opacity="0.6" />
+    <circle cx="31" cy="22.5" r="1.7" fill="rgb(251,113,133)" opacity="0.6" />
+    <path d="M 21 24 Q 24 27 27 24" stroke="rgb(225,29,72)" stroke-width="1.4" stroke-linecap="round" fill="none" />
     <!-- Reaching arm holding friend's hand -->
-    <path d="M 16 38 L 4 38" stroke="rgb(34,197,94)" stroke-width="4" stroke-linecap="round" />
+    <path d="M 17 40 L 4 38" stroke="rgb(34,197,94)" stroke-width="4.2" stroke-linecap="round" />
     <!-- Clasped hands -->
-    <circle cx="4" cy="38" r="4.5" fill="rgb(254,215,170)" />
+    <circle cx="3.5" cy="38" r="4.2" fill="rgb(254,215,170)" stroke="rgb(234,88,12)" stroke-width="0.9" />
   </g>
   <!-- Heart between them -->
   <path d="M 48 30 C 48 26 44 24 42 27 C 40 24 36 26 36 30 C 36 34 42 38 42 38 C 42 38 48 34 48 30 Z" fill="rgb(239,68,68)" />
@@ -723,28 +775,30 @@ export const JUDA_JWOYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3
 // 5-2. 마셔요 (마시다 -> 마셔요): 컵으로 물을 마시는 모습
 export const MASIDA_MASYEOYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
   <circle cx="50" cy="50" r="46" fill="rgb(240,249,255)" />
-  <g transform="translate(26, 16)">
+  <g transform="translate(24, 16)">
     <!-- Body in mint blue shirt -->
-    <path d="M 14 54 C 14 40 20 34 26 34 C 32 34 38 40 38 54 Z" fill="rgb(56,189,248)" />
-    <!-- Head in side profile drinking -->
+    <path d="M 13 58 C 13 42 19 36 26 36 C 33 36 39 42 39 58 Z" fill="rgb(56,189,248)" />
+    <!-- Neck -->
+    <rect x="22.5" y="31" width="7" height="7.5" rx="2.5" fill="rgb(254,215,170)" />
+    <!-- Head drinking -->
     <circle cx="26" cy="20" r="14" fill="rgb(254,215,170)" />
-    <!-- Hair -->
-    <path d="M 11.2 20 C 10.1 -1.1 41.9 -1.1 40.8 20 C 38 14 32 10 26 10 C 20 10 12 14 11.2 20 Z" fill="rgb(51,65,85)" />
+    <!-- Lush full hair with soft bangs -->
+    <path d="M 11.4 19.5 A 14.6 15.2 0 0 1 40.6 19.5 C 37 13.5 31 12.5 26 14 C 21 12.5 15 13.5 11.4 19.5 Z" fill="rgb(51,65,85)" />
     <!-- Happy closed eyes sipping -->
-    <path d="M 20 20 Q 23 23 26 20" stroke="rgb(30,41,59)" stroke-width="1.8" stroke-linecap="round" fill="none" />
-    <circle cx="16" cy="25" r="2.2" fill="rgb(251,113,133)" opacity="0.6" />
+    <path d="M 19 20.5 Q 22 23.5 25 20.5" stroke="rgb(30,41,59)" stroke-width="1.8" stroke-linecap="round" fill="none" />
+    <path d="M 28 20.5 Q 31 23.5 34 20.5" stroke="rgb(30,41,59)" stroke-width="1.8" stroke-linecap="round" fill="none" />
+    <circle cx="17" cy="25" r="2.2" fill="rgb(251,113,133)" opacity="0.6" />
     <!-- Water Glass Cup held to mouth -->
-    <g transform="translate(28, 16)">
+    <g transform="translate(30, 17)">
       <!-- Cup body -->
-      <path d="M 4 2 L 18 2 L 15 22 L 7 22 Z" fill="rgba(186,230,253,0.7)" stroke="rgb(14,165,233)" stroke-width="1.5" />
+      <path d="M 3 2 L 17 2 L 14.5 21 L 5.5 21 Z" fill="rgba(186,230,253,0.75)" stroke="rgb(14,165,233)" stroke-width="1.5" />
       <!-- Water level -->
-      <path d="M 5 8 L 17 8 L 15 20 L 7 20 Z" fill="rgb(56,189,248)" opacity="0.8" />
-      <!-- Straw or water drops -->
-      <circle cx="10" cy="4" r="1.5" fill="rgb(255,255,255)" />
+      <path d="M 4.2 8 L 15.8 8 L 14.2 19.5 L 5.8 19.5 Z" fill="rgb(56,189,248)" opacity="0.82" />
+      <circle cx="9.5" cy="4.5" r="1.4" fill="rgb(255,255,255)" />
     </g>
-    <!-- Hands holding cup -->
-    <path d="M 22 40 L 32 28" stroke="rgb(56,189,248)" stroke-width="4" stroke-linecap="round" />
-    <circle cx="33" cy="27" r="3.5" fill="rgb(254,215,170)" />
+    <!-- Arm connected cleanly from shoulder to cup -->
+    <path d="M 34 45 L 40 31" stroke="rgb(56,189,248)" stroke-width="4.5" stroke-linecap="round" />
+    <circle cx="40" cy="30" r="3.4" fill="rgb(254,215,170)" stroke="rgb(234,88,12)" stroke-width="0.8" />
   </g>
   <!-- Refreshing water drops -->
   <path d="M 74 36 Q 76 33 78 36 Q 76 39 74 36 Z" fill="rgb(14,165,233)" />
@@ -786,24 +840,27 @@ export const SSEUDA_SSEOYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www
 // 5-4. 들어요 (듣다 -> 들어요): 헤드폰 끼고 음악에 귀를 기울이는 모습
 export const DEUTDA_DEUREOYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
   <circle cx="50" cy="50" r="46" fill="rgb(236,254,255)" />
-  <g transform="translate(26, 16)">
+  <g transform="translate(24, 16)">
     <!-- Torso in purple t-shirt -->
-    <path d="M 14 54 C 14 40 20 34 26 34 C 32 34 38 40 38 54 Z" fill="rgb(139,92,246)" />
+    <path d="M 13 58 C 13 43 19 37 26 37 C 33 37 39 43 39 58 Z" fill="rgb(139,92,246)" />
+    <!-- Neck -->
+    <rect x="22.5" y="33" width="7" height="7" rx="2.5" fill="rgb(254,215,170)" />
     <!-- Head -->
     <circle cx="26" cy="22" r="14" fill="rgb(254,215,170)" />
-    <path d="M 11.2 22 C 10.1 0.9 41.9 0.9 40.8 22 C 40 15 33 11 26 11 C 19 11 12 15 11.2 22 Z" fill="rgb(51,65,85)" />
+    <!-- Lush full hair with soft bangs -->
+    <path d="M 11.4 21.5 A 14.6 15.2 0 0 1 40.6 21.5 C 37 15.5 31 14.5 26 16 C 21 14.5 15 15.5 11.4 21.5 Z" fill="rgb(51,65,85)" />
     <!-- Happy music listening smile -->
-    <circle cx="21" cy="22" r="1.8" fill="rgb(30,41,59)" />
-    <circle cx="31" cy="22" r="1.8" fill="rgb(30,41,59)" />
-    <circle cx="17" cy="26" r="2.2" fill="rgb(251,113,133)" opacity="0.6" />
-    <circle cx="35" cy="26" r="2.2" fill="rgb(251,113,133)" opacity="0.6" />
-    <path d="M 23 27 Q 26 31 29 27" stroke="rgb(225,29,72)" stroke-width="1.6" stroke-linecap="round" fill="none" />
-    <!-- Red headphones over ears -->
-    <path d="M 11 24 C 11 10 41 10 41 24" stroke="rgb(239,68,68)" stroke-width="3" fill="none" stroke-linecap="round" />
-    <rect x="8" y="18" width="6" height="12" rx="3" fill="rgb(239,68,68)" />
-    <rect x="38" y="18" width="6" height="12" rx="3" fill="rgb(239,68,68)" />
-    <rect x="9.5" y="20" width="3" height="8" rx="1.5" fill="rgb(254,202,202)" />
-    <rect x="39.5" y="20" width="3" height="8" rx="1.5" fill="rgb(254,202,202)" />
+    <circle cx="21" cy="22.5" r="1.8" fill="rgb(30,41,59)" />
+    <circle cx="31" cy="22.5" r="1.8" fill="rgb(30,41,59)" />
+    <circle cx="17" cy="26.5" r="2.2" fill="rgb(251,113,133)" opacity="0.6" />
+    <circle cx="35" cy="26.5" r="2.2" fill="rgb(251,113,133)" opacity="0.6" />
+    <path d="M 23 27.5 Q 26 31.2 29 27.5" stroke="rgb(225,29,72)" stroke-width="1.6" stroke-linecap="round" fill="none" />
+    <!-- Red headphones arching cleanly OVER the top of hair -->
+    <path d="M 10.5 22 A 15.5 17 0 0 1 41.5 22" stroke="rgb(239,68,68)" stroke-width="3" fill="none" stroke-linecap="round" />
+    <rect x="7.5" y="18" width="6" height="12" rx="3" fill="rgb(239,68,68)" />
+    <rect x="38.5" y="18" width="6" height="12" rx="3" fill="rgb(239,68,68)" />
+    <rect x="9" y="20" width="3" height="8" rx="1.5" fill="rgb(254,202,202)" />
+    <rect x="40" y="20" width="3" height="8" rx="1.5" fill="rgb(254,202,202)" />
   </g>
   <!-- Musical notes floating -->
   <g transform="translate(14, 18)">
@@ -825,17 +882,22 @@ export const BUREUDA_BULLEOYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://
   <circle cx="50" cy="50" r="46" fill="rgb(255,241,242)" />
   <g transform="translate(24, 16)">
     <!-- Body in bright pink shirt -->
-    <path d="M 14 54 C 14 40 20 34 26 34 C 32 34 38 40 38 54 Z" fill="rgb(244,63,94)" />
+    <path d="M 13 58 C 13 42 19 36 26 36 C 33 36 39 42 39 58 Z" fill="rgb(244,63,94)" />
+    <!-- Neck -->
+    <rect x="22.5" y="31" width="7" height="7.5" rx="2.5" fill="rgb(254,215,170)" />
     <!-- Head singing with open joyful mouth -->
     <circle cx="26" cy="20" r="14" fill="rgb(254,215,170)" />
-    <path d="M 11.2 20 C 10.1 -1.1 41.9 -1.1 40.8 20 Z" fill="rgb(51,65,85)" />
-    <!-- Happy singing eyes -->
-    <path d="M 18 18 Q 21 15 24 18" stroke="rgb(30,41,59)" stroke-width="1.8" stroke-linecap="round" fill="none" />
-    <path d="M 28 18 Q 31 15 34 18" stroke="rgb(30,41,59)" stroke-width="1.8" stroke-linecap="round" fill="none" />
-    <circle cx="16" cy="24" r="2.2" fill="rgb(251,113,133)" opacity="0.6" />
-    <circle cx="36" cy="24" r="2.2" fill="rgb(251,113,133)" opacity="0.6" />
+    <!-- Full lush hair with soft bangs cleanly ABOVE eyes -->
+    <path d="M 11.4 19.5 A 14.6 15.2 0 0 1 40.6 19.5 C 37 13.2 31 12.2 26 13.8 C 21 12.2 15 13.2 11.4 19.5 Z" fill="rgb(51,65,85)" />
+    <!-- Happy singing eyes (clearly visible!) -->
+    <path d="M 18 20.5 Q 21 17.5 24 20.5" stroke="rgb(30,41,59)" stroke-width="1.8" stroke-linecap="round" fill="none" />
+    <path d="M 28 20.5 Q 31 17.5 34 20.5" stroke="rgb(30,41,59)" stroke-width="1.8" stroke-linecap="round" fill="none" />
+    <circle cx="16.5" cy="24.8" r="2.2" fill="rgb(251,113,133)" opacity="0.6" />
+    <circle cx="35.5" cy="24.8" r="2.2" fill="rgb(251,113,133)" opacity="0.6" />
     <!-- Open singing mouth (라라라~) -->
-    <circle cx="26" cy="26" r="3.5" fill="rgb(190,18,60)" />
+    <circle cx="26" cy="26.5" r="3.4" fill="rgb(190,18,60)" />
+    <!-- Arm connected from shoulder to microphone hand -->
+    <path d="M 35 45 L 40 36" stroke="rgb(244,63,94)" stroke-width="4.5" stroke-linecap="round" />
     <!-- Hand holding microphone -->
     <g transform="translate(34, 24) rotate(-20)">
       <!-- Mic handle -->
@@ -843,7 +905,7 @@ export const BUREUDA_BULLEOYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://
       <!-- Mic head -->
       <circle cx="2.5" cy="5" r="4.5" fill="rgb(203,213,225)" stroke="rgb(51,65,85)" stroke-width="1" />
       <!-- Hand gripping mic -->
-      <circle cx="2.5" cy="12" r="3.5" fill="rgb(254,215,170)" />
+      <circle cx="2.5" cy="13" r="3.5" fill="rgb(254,215,170)" stroke="rgb(234,88,12)" stroke-width="0.8" />
     </g>
   </g>
   <!-- Singing musical notes & sparkles -->

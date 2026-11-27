@@ -255,7 +255,7 @@ export const ALAYO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/
     <!-- Smooth Round Head -->
     <circle cx="32" cy="21" r="15" fill="rgb(254,215,170)" />
     <!-- Clean Hair Cap -->
-    <path d="M 16.8 20 C 16.8 3.5 47.2 3.5 47.2 20 C 44 12 38 11 32 12 C 26 11 20 12 16.8 20 Z" fill="rgb(51,65,85)" />
+    <path d="M 16.4 20.5 A 15.6 16.2 0 0 1 47.6 20.5 C 43.8 13.8 37.8 12.8 32 14.4 C 26.2 12.8 20.2 13.8 16.4 20.5 Z" fill="rgb(51,65,85)" />
     <!-- Expressive bright eyes & catchlights -->
     <circle cx="26.5" cy="20.5" r="2.1" fill="rgb(30,41,59)" />
     <circle cx="37.5" cy="20.5" r="2.1" fill="rgb(30,41,59)" />
@@ -1208,19 +1208,21 @@ export const ILGEO_YO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.o
   <path d="M 78 26 L 80 22 L 82 26 L 86 27.5 L 82 29 L 80 33 L 78 29 L 74 27.5 Z" fill="rgb(250,204,21)" />
   <!-- Child Holding Book -->
   <g transform="translate(20, 14)">
+    <!-- Body (drawn behind neck & head) -->
+    <path d="M 13 58 C 13 44 21 39 30 39 C 39 39 47 44 47 58 Z" fill="rgb(249,115,22)" />
+    <!-- Neck -->
+    <rect x="26" y="35" width="8" height="7" rx="2.5" fill="rgb(254,215,170)" />
     <!-- Face -->
-    <circle cx="30" cy="22" r="16" fill="rgb(254,215,170)" />
-    <!-- Hair -->
-    <path d="M 13.2 20 C 11.9 -1.6 48.1 -1.6 46.8 20 C 46 14 40 10 30 10 C 20 10 14 14 13.2 20 Z" fill="rgb(51,65,85)" />
+    <circle cx="30" cy="22" r="15.5" fill="rgb(254,215,170)" />
+    <!-- Full lush hair with soft bangs -->
+    <path d="M 13.9 21.5 A 16.1 16.8 0 0 1 46.1 21.5 C 42 14.8 35.8 13.8 30 15.4 C 24.2 13.8 18 14.8 13.9 21.5 Z" fill="rgb(51,65,85)" />
     <!-- Bright attentive eyes looking down at book -->
-    <circle cx="25" cy="22" r="2.5" fill="rgb(30,41,59)" />
-    <circle cx="35" cy="22" r="2.5" fill="rgb(30,41,59)" />
-    <circle cx="20" cy="26" r="2.5" fill="rgb(244,114,182)" opacity="0.6" />
-    <circle cx="40" cy="26" r="2.5" fill="rgb(244,114,182)" opacity="0.6" />
+    <circle cx="25" cy="22.5" r="2.2" fill="rgb(30,41,59)" />
+    <circle cx="35" cy="22.5" r="2.2" fill="rgb(30,41,59)" />
+    <circle cx="20.5" cy="26.5" r="2.4" fill="rgb(244,114,182)" opacity="0.6" />
+    <circle cx="39.5" cy="26.5" r="2.4" fill="rgb(244,114,182)" opacity="0.6" />
     <!-- Mouth open cheerfully reading aloud -->
-    <ellipse cx="30" cy="29" rx="3.5" ry="4" fill="rgb(190,18,60)" />
-    <!-- Body -->
-    <path d="M 14 54 C 14 42 22 38 30 38 C 38 38 46 42 46 54 Z" fill="rgb(249,115,22)" />
+    <ellipse cx="30" cy="29.5" rx="3.4" ry="3.8" fill="rgb(190,18,60)" />
     <!-- Open Book in hands -->
     <g transform="translate(8, 38)">
       <path d="M 22 24 Q 10 20 0 16 L 2 2 Q 12 6 22 8 Z" fill="rgb(255,255,255)" stroke="rgb(203,213,225)" stroke-width="1.5" />

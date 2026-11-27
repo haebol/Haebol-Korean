@@ -2,15 +2,17 @@ import React, { useState, useMemo } from 'react';
 import { LayoutGrid } from 'lucide-react';
 import { VocabularyItem, SupportedLanguage, LearningTrack, LearningMethod, SUB_MENU_LABELS } from '../types';
 import { UiLanguage, SUBTAB_UI, NAV_UI, MENU_EXTRAS_UI } from '../i18n/uiTranslations';
-import { CHAPTER_LIST, getChapterCircledTitle } from '../data/vocabulary';
+import { VOCABULARY_DATA, CHAPTER_LIST, getChapterCircledTitle } from '../data/vocabulary';
 import { MemoryCardGameSection } from './MemoryCardGameSection';
 import { HangeulBalloonGameSection } from './HangeulBalloonGameSection';
 import { VerbManduCookingGameSection } from './VerbManduCookingGameSection';
 import { ParticleArcadeQuiz, ParticleGameUnitId as ParticleSlingshotUnitId } from './ParticleArcadeQuiz';
-import { HANGEUL_GROUPS } from './HangeulStrokeFlashcardSection';
-import { VERB_UNIT_META, VERB_CARDS_BY_UNIT, VerbUnitType } from './VerbConjugationSection';
+import { HANGEUL_GROUPS } from '../data/hangeulGroupsData';
+import { VERB_UNIT_META, VerbUnitType } from '../data/verbUnitMeta';
+import { VERB_CARDS_BY_UNIT } from '../data/verbCardsData';
 import { CompactUnitSelectButton } from './CompactUnitSelectButton';
 import { DesktopControlBar } from './DesktopControlBar';
+import { DesktopTocSidebar } from './DesktopTocSidebar';
 import { OverviewGridModal, OverviewCardItem } from './OverviewGridModal';
 import { playCutePop } from '../utils/audio';
 import {
@@ -18,6 +20,13 @@ import {
   HallOfFameHeaderButton,
   GameBadgeAndHallOfFameModal,
 } from '../utils/gameBadges';
+import {
+  useAdminCurriculumConfig,
+  getOrderedHangeulMeta,
+  getOrderedChapterMeta,
+  getOrderedVerbMeta,
+  isUnitLocked,
+} from '../utils/adminCurriculumConfig';
 
 export type ParticleGameUnitId = ParticleSlingshotUnitId;
 
@@ -25,7 +34,7 @@ export type GameType = 'kart' | 'balloon' | 'memory';
 
 interface GamesSectionProps {
   track: LearningTrack;
-  vocabulary: VocabularyItem[];
+  vocabulary?: VocabularyItem[];
   lang: SupportedLanguage;
   uiLang?: UiLanguage;
   selectedChapter?: number;
@@ -40,11 +49,17 @@ interface GamesSectionProps {
   activeMethod?: LearningMethod;
   onSelectMethod?: (method: LearningMethod) => void;
   isMenuCollapsed?: boolean;
+  isTocOpen?: boolean;
+  onToggleToc?: () => void;
+  onToggleContinuous?: () => void;
+  onJumpCoverToc?: () => void;
+  isFocusMode?: boolean;
+  onToggleFocusMode?: () => void;
 }
 
 export const GamesSection: React.FC<GamesSectionProps> = ({
   track,
-  vocabulary,
+  vocabulary = VOCABULARY_DATA,
   lang,
   uiLang = 'ko' as UiLanguage,
   selectedChapter = 1,
@@ -58,7 +73,17 @@ export const GamesSection: React.FC<GamesSectionProps> = ({
   activeMethod = 'game',
   onSelectMethod,
   isMenuCollapsed = false,
+  isTocOpen = false,
+  onToggleToc,
+  onToggleContinuous,
+  onJumpCoverToc,
+  isFocusMode = false,
+  onToggleFocusMode,
 }) => {
+  const [adminConfig] = useAdminCurriculumConfig();
+  const orderedHangeulMeta = useMemo(() => getOrderedHangeulMeta(adminConfig), [adminConfig]);
+  const orderedChapterMeta = useMemo(() => getOrderedChapterMeta(adminConfig), [adminConfig]);
+  const orderedVerbMeta = useMemo(() => getOrderedVerbMeta(adminConfig), [adminConfig]);
   const [isOverviewOpen, setIsOverviewOpen] = useState(false);
   const [isHallOfFameOpen, setIsHallOfFameOpen] = useState(false);
   const [localParticleUnit, setLocalParticleUnit] = useState<ParticleGameUnitId>('unit1');
@@ -439,161 +464,125 @@ export const GamesSection: React.FC<GamesSectionProps> = ({
       ? 'border-purple-200/80'
       : 'border-rose-200/70';
 
-  const desktopRightControls = (
+  const desktopCenterUnitControl = (
     <>
       {track === 'hangeul' && (
-        <>
-          <span className="text-xs font-bold text-amber-800 whitespace-nowrap mr-1">
-            {tabUi.gameTabs.balloon}
-          </span>
-          <CompactUnitSelectButton
-            value={selectedHangeulGroupId}
-            onChange={(val) => onSelectHangeulGroupId?.(String(val))}
-            options={HANGEUL_GROUPS.map(g => ({
-              value: g.id,
-              label: `${g.titleKo} (${g.cards.length}자)`,
-            }))}
-            theme="amber"
-            title="한글 게임 단원 선택"
-            ariaLabel="한글 게임 단원 선택"
-            align="right"
-            className="w-[220px] xl:w-[260px]"
-          />
-          <button
-            type="button"
-            onClick={() => {
-              playCutePop();
-              setIsOverviewOpen(true);
-            }}
-            className="h-8 w-8 rounded-sm bg-amber-100 hover:bg-amber-200 text-amber-950 border border-amber-300 cursor-pointer shrink-0 flex items-center justify-center transition-colors"
-            title={navUi.overviewBtn}
-            aria-label={navUi.overviewBtn}
-          >
-            <LayoutGrid className="w-4 h-4 shrink-0" />
-          </button>
-        </>
+        <CompactUnitSelectButton
+          value={selectedHangeulGroupId}
+          onChange={(val) => onSelectHangeulGroupId?.(String(val))}
+          options={orderedHangeulMeta.map(g => ({
+            value: g.id,
+            label: `${g.titleKo} (${g.cardCount}자)`,
+            disabled: isUnitLocked(adminConfig, 'hangeul', g.id),
+            lockedLabel: '준비중',
+          }))}
+          theme="purple"
+          variant="twin"
+          title="한글 게임 단원 선택"
+          ariaLabel="한글 게임 단원 선택"
+          align="left"
+          className="w-full"
+        />
       )}
 
       {track === 'classroom' && (
-        <>
-          <span className="text-xs font-bold text-rose-800 whitespace-nowrap mr-1">
-            {tabUi.gameTabs.memory}
-          </span>
-          <CompactUnitSelectButton
-            value={selectedChapter}
-            onChange={(val) => onSelectChapter?.(Number(val))}
-            options={CHAPTER_LIST.map((ch) => ({
-              value: ch.ch,
-              label: getChapterCircledTitle(ch.ch, lang),
-            }))}
-            theme="rose"
-            title={tabUi.studyControls.unitSelectTitle}
-            ariaLabel={tabUi.studyControls.unitSelectTitle}
-            align="right"
-            className="w-[220px] xl:w-[260px]"
-          />
-          <button
-            type="button"
-            onClick={() => {
-              playCutePop();
-              setIsOverviewOpen(true);
-            }}
-            className="h-8 w-8 rounded-sm bg-rose-100 hover:bg-rose-200 text-rose-950 border border-rose-300 cursor-pointer shrink-0 flex items-center justify-center transition-colors"
-            title={navUi.overviewBtn}
-            aria-label={navUi.overviewBtn}
-          >
-            <LayoutGrid className="w-4 h-4 shrink-0" />
-          </button>
-        </>
+        <CompactUnitSelectButton
+          value={selectedChapter}
+          onChange={(val) => onSelectChapter?.(Number(val))}
+          options={orderedChapterMeta.map((ch) => ({
+            value: ch.ch,
+            label: getChapterCircledTitle(ch.ch, lang),
+            disabled: isUnitLocked(adminConfig, 'classroom', ch.ch),
+            lockedLabel: '준비중',
+          }))}
+          theme="purple"
+          variant="twin"
+          title={tabUi.studyControls.unitSelectTitle}
+          ariaLabel={tabUi.studyControls.unitSelectTitle}
+          align="left"
+          className="w-full"
+        />
       )}
 
       {track === 'verb' && (
-        <>
-          <span className="text-xs font-bold text-purple-800 whitespace-nowrap mr-1">
-            {tabUi.gameTabs.mandu}
-          </span>
-          <CompactUnitSelectButton
-            value={selectedVerbUnit}
-            onChange={(val) => onSelectVerbUnit?.(val as VerbUnitType)}
-            options={VERB_UNIT_META.map((u) => ({
-              value: u.id,
-              label: u.label,
-            }))}
-            theme="purple"
-            title={tabUi.studyControls.unitSelectTitle}
-            ariaLabel={tabUi.studyControls.unitSelectTitle}
-            align="right"
-            className="w-[230px] xl:w-[270px]"
-          />
-          <button
-            type="button"
-            onClick={() => {
-              playCutePop();
-              setIsOverviewOpen(true);
-            }}
-            className="h-8 w-8 rounded-sm bg-purple-100 hover:bg-purple-200 text-purple-950 border border-purple-300 cursor-pointer shrink-0 flex items-center justify-center transition-colors"
-            title={navUi.overviewBtn}
-            aria-label={navUi.overviewBtn}
-          >
-            <LayoutGrid className="w-4 h-4 shrink-0" />
-          </button>
-        </>
+        <CompactUnitSelectButton
+          value={selectedVerbUnit}
+          onChange={(val) => onSelectVerbUnit?.(val as VerbUnitType)}
+          options={orderedVerbMeta.map((u) => ({
+            value: u.id,
+            label: u.label,
+            disabled: isUnitLocked(adminConfig, 'verb', u.id),
+            lockedLabel: '준비중',
+          }))}
+          theme="purple"
+          variant="twin"
+          title={tabUi.studyControls.unitSelectTitle}
+          ariaLabel={tabUi.studyControls.unitSelectTitle}
+          align="left"
+          className="w-full"
+        />
       )}
 
       {track === 'particle' && (
-        <>
-          <span className="text-xs font-bold text-emerald-800 whitespace-nowrap mr-1">
-            {tabUi.gameTabs.slingshot}
-          </span>
-          <CompactUnitSelectButton
-            value={selectedParticleUnit}
-            onChange={(val) => setSelectedParticleUnit(val as ParticleGameUnitId)}
-            options={particleGameUnits.map((u) => ({
-              value: u.id,
-              label: u.label,
-              groupLabel: u.groupLabel || menuExtras.overview.particleGroupLabel,
-            }))}
-            theme="emerald"
-            title={tabUi.studyControls.unitSelectTitle}
-            ariaLabel={tabUi.studyControls.unitSelectTitle}
-            align="right"
-            className="w-[230px] xl:w-[270px]"
-          />
-          <button
-            type="button"
-            onClick={() => {
-              playCutePop();
-              setIsOverviewOpen(true);
-            }}
-            className="h-8 w-8 rounded-sm bg-emerald-100 hover:bg-emerald-200 text-emerald-950 border border-emerald-300 cursor-pointer shrink-0 flex items-center justify-center transition-colors"
-            title={navUi.overviewBtn}
-            aria-label={navUi.overviewBtn}
-          >
-            <LayoutGrid className="w-4 h-4 shrink-0" />
-          </button>
-        </>
+        <CompactUnitSelectButton
+          value={selectedParticleUnit}
+          onChange={(val) => setSelectedParticleUnit(val as ParticleGameUnitId)}
+          options={particleGameUnits.map((u) => ({
+            value: u.id,
+            label: u.label,
+            groupLabel: u.groupLabel || menuExtras.overview.particleGroupLabel,
+          }))}
+          theme="purple"
+          variant="twin"
+          title={tabUi.studyControls.unitSelectTitle}
+          ariaLabel={tabUi.studyControls.unitSelectTitle}
+          align="left"
+          className="w-full"
+        />
       )}
-
-      <HallOfFameHeaderButton uiLang={uiLang} onClick={() => setIsHallOfFameOpen(true)} />
     </>
   );
 
+  const activeTocTitle =
+    track === 'hangeul'
+      ? menuExtras.overview.gameTitles.hangeul
+      : track === 'classroom'
+      ? menuExtras.overview.gameTitles.classroom
+      : track === 'particle'
+      ? menuExtras.overview.gameTitles.particle
+      : menuExtras.overview.gameTitles.verb;
+
+  const activeTocItems =
+    track === 'hangeul'
+      ? hangeulOverviewItems
+      : track === 'classroom'
+      ? classroomOverviewItems
+      : track === 'particle'
+      ? particleOverviewItems
+      : grammarOverviewItems;
+
   return (
     <div className="w-full flex flex-col gap-0 font-korean-gothic">
-      {/* Desktop Layer 2 Learning Control Bar */}
-      {!isMenuCollapsed && onSelectMethod && (
+      {/* Desktop Row 3 Independent Controls (PC lg+ only) */}
+      {!isFocusMode && !isMenuCollapsed && onSelectMethod && (
         <DesktopControlBar
           activeTrack={track}
           activeMethod={activeMethod}
           onSelectMethod={onSelectMethod}
           uiLang={uiLang}
-          rightControls={desktopRightControls}
+          isTocOpen={isTocOpen}
+          onToggleToc={onToggleToc}
+          isContinuousView={false}
+          onToggleContinuous={onToggleContinuous}
+          onJumpCoverToc={onJumpCoverToc}
+          centerUnitControl={desktopCenterUnitControl}
+          onToggleFocusMode={onToggleFocusMode}
         />
       )}
 
       {!isMenuCollapsed && (
       <div
-        className={`lg:hidden sticky top-[80px] sm:top-[90px] z-[35] bg-[#FFF5F8]/95 backdrop-blur-md pb-1 mb-1.5 border-b no-print w-full max-w-4xl mx-auto px-2.5 sm:px-4 select-none ${row5BorderClass}`}
+        className={`lg:hidden sticky top-[66px] sm:top-[74px] z-[35] bg-[#F4F3F8]/95 backdrop-blur-md pb-1 mb-1.5 border-b no-print w-full max-w-4xl mx-auto px-2.5 sm:px-4 select-none ${row5BorderClass}`}
       >
         <div className="flex items-center justify-between gap-2 h-[38px] sm:h-[42px]">
           {/* Left: Track-specific transparent text tab */}
@@ -655,137 +644,89 @@ export const GamesSection: React.FC<GamesSectionProps> = ({
             )}
           </div>
 
-          {/* Right: Single-line Unit Dropdown + [1x1 Overview Grid] */}
-          <div className="flex items-center gap-1 sm:gap-1.5 shrink-0 min-w-0">
+          {/* Right: Compact Single-line Unit Dropdown (Mobile) */}
+          <div className="flex items-center gap-1 shrink-0 min-w-0">
             {track === 'hangeul' && (
-              <>
-                <CompactUnitSelectButton
-                  value={selectedHangeulGroupId}
-                  onChange={(val) => onSelectHangeulGroupId?.(String(val))}
-                  options={HANGEUL_GROUPS.map(g => ({
-                    value: g.id,
-                    label: `${g.titleKo} (${g.cards.length}자)`,
-                  }))}
-                  theme="amber"
-                  title="한글 게임 단원 선택"
-                  ariaLabel="한글 게임 단원 선택"
-                  align="right"
-                  className="w-[155px] xs:w-[195px] sm:w-[260px]"
-                />
-                <button
-                  type="button"
-                  onClick={() => {
-                    playCutePop();
-                    setIsOverviewOpen(true);
-                  }}
-                  className="h-8 sm:h-8.5 w-8 sm:w-8.5 rounded-none bg-amber-100 hover:bg-amber-200 text-amber-950 border border-amber-300 cursor-pointer shrink-0 flex items-center justify-center transition-colors"
-                  title={navUi.overviewBtn}
-                  aria-label={navUi.overviewBtn}
-                >
-                  <LayoutGrid className="w-4 h-4 shrink-0" />
-                </button>
-              </>
+              <CompactUnitSelectButton
+                value={selectedHangeulGroupId}
+                onChange={(val) => onSelectHangeulGroupId?.(String(val))}
+                options={orderedHangeulMeta.map(g => ({
+                  value: g.id,
+                  label: `${g.titleKo} (${g.cardCount}자)`,
+                  disabled: isUnitLocked(adminConfig, 'hangeul', g.id),
+                  lockedLabel: '준비중',
+                }))}
+                theme="amber"
+                title="한글 게임 단원 선택"
+                ariaLabel="한글 게임 단원 선택"
+                align="right"
+                className="w-[155px] xs:w-[175px] sm:w-[225px]"
+              />
             )}
 
             {track === 'classroom' && (
-              <>
-                <CompactUnitSelectButton
-                  value={selectedChapter}
-                  onChange={(val) => onSelectChapter?.(Number(val))}
-                  options={CHAPTER_LIST.map((ch) => ({
-                    value: ch.ch,
-                    label: getChapterCircledTitle(ch.ch, lang),
-                  }))}
-                  theme="rose"
-                  title={tabUi.studyControls.unitSelectTitle}
-                  ariaLabel={tabUi.studyControls.unitSelectTitle}
-                  align="right"
-                  className="w-[155px] xs:w-[195px] sm:w-[260px]"
-                />
-                <button
-                  type="button"
-                  onClick={() => {
-                    playCutePop();
-                    setIsOverviewOpen(true);
-                  }}
-                  className="h-8 sm:h-8.5 w-8 sm:w-8.5 rounded-none bg-rose-100 hover:bg-rose-200 text-rose-950 border border-rose-300 cursor-pointer shrink-0 flex items-center justify-center transition-colors"
-                  title={navUi.overviewBtn}
-                  aria-label={navUi.overviewBtn}
-                >
-                  <LayoutGrid className="w-4 h-4 shrink-0" />
-                </button>
-              </>
+              <CompactUnitSelectButton
+                value={selectedChapter}
+                onChange={(val) => onSelectChapter?.(Number(val))}
+                options={orderedChapterMeta.map((ch) => ({
+                  value: ch.ch,
+                  label: getChapterCircledTitle(ch.ch, lang),
+                  disabled: isUnitLocked(adminConfig, 'classroom', ch.ch),
+                  lockedLabel: '준비중',
+                }))}
+                theme="rose"
+                title={tabUi.studyControls.unitSelectTitle}
+                ariaLabel={tabUi.studyControls.unitSelectTitle}
+                align="right"
+                className="w-[155px] xs:w-[175px] sm:w-[225px]"
+              />
             )}
 
             {track === 'verb' && (
-              <>
-                <CompactUnitSelectButton
-                  value={selectedVerbUnit}
-                  onChange={(val) => onSelectVerbUnit?.(val as VerbUnitType)}
-                  options={VERB_UNIT_META.map((u) => ({
-                    value: u.id,
-                    label: u.label,
-                  }))}
-                  theme="purple"
-                  title={tabUi.studyControls.unitSelectTitle}
-                  ariaLabel={tabUi.studyControls.unitSelectTitle}
-                  align="right"
-                  className="w-[155px] xs:w-[195px] sm:w-[270px]"
-                />
-                <button
-                  type="button"
-                  onClick={() => {
-                    playCutePop();
-                    setIsOverviewOpen(true);
-                  }}
-                  className="h-8 sm:h-8.5 w-8 sm:w-8.5 rounded-none bg-purple-100 hover:bg-purple-200 text-purple-950 border border-purple-300 cursor-pointer shrink-0 flex items-center justify-center transition-colors"
-                  title={navUi.overviewBtn}
-                  aria-label={navUi.overviewBtn}
-                >
-                  <LayoutGrid className="w-4 h-4 shrink-0" />
-                </button>
-              </>
+              <CompactUnitSelectButton
+                value={selectedVerbUnit}
+                onChange={(val) => onSelectVerbUnit?.(val as VerbUnitType)}
+                options={orderedVerbMeta.map((u) => ({
+                  value: u.id,
+                  label: u.label,
+                  disabled: isUnitLocked(adminConfig, 'verb', u.id),
+                  lockedLabel: '준비중',
+                }))}
+                theme="purple"
+                title={tabUi.studyControls.unitSelectTitle}
+                ariaLabel={tabUi.studyControls.unitSelectTitle}
+                align="right"
+                className="w-[155px] xs:w-[175px] sm:w-[225px]"
+              />
             )}
 
             {track === 'particle' && (
-              <>
-                <CompactUnitSelectButton
-                  value={selectedParticleUnit}
-                  onChange={(val) => setSelectedParticleUnit(val as ParticleGameUnitId)}
-                  options={particleGameUnits.map((u) => ({
-                    value: u.id,
-                    label: u.label,
-                    groupLabel: u.groupLabel || menuExtras.overview.particleGroupLabel,
-                  }))}
-                  theme="emerald"
-                  title={tabUi.studyControls.unitSelectTitle}
-                  ariaLabel={tabUi.studyControls.unitSelectTitle}
-                  align="right"
-                  className="w-[155px] xs:w-[195px] sm:w-[270px]"
-                />
-                <button
-                  type="button"
-                  onClick={() => {
-                    playCutePop();
-                    setIsOverviewOpen(true);
-                  }}
-                  className="h-8 sm:h-8.5 w-8 sm:w-8.5 rounded-none bg-emerald-100 hover:bg-emerald-200 text-emerald-950 border border-emerald-300 cursor-pointer shrink-0 flex items-center justify-center transition-colors"
-                  title={navUi.overviewBtn}
-                  aria-label={navUi.overviewBtn}
-                >
-                  <LayoutGrid className="w-4 h-4 shrink-0" />
-                </button>
-              </>
+              <CompactUnitSelectButton
+                value={selectedParticleUnit}
+                onChange={(val) => setSelectedParticleUnit(val as ParticleGameUnitId)}
+                options={particleGameUnits.map((u) => ({
+                  value: u.id,
+                  label: u.label,
+                  groupLabel: u.groupLabel || menuExtras.overview.particleGroupLabel,
+                }))}
+                theme="emerald"
+                title={tabUi.studyControls.unitSelectTitle}
+                ariaLabel={tabUi.studyControls.unitSelectTitle}
+                align="right"
+                className="w-[155px] xs:w-[175px] sm:w-[225px]"
+              />
             )}
-
-            <HallOfFameHeaderButton compact uiLang={uiLang} onClick={() => setIsHallOfFameOpen(true)} />
           </div>
         </div>
       </div>
       )}
 
       {/* Track-specific Game Render */}
-      <div className="w-full max-w-[1600px] mx-auto px-1 sm:px-4">
+      <div
+        className={`w-full mx-auto px-1 sm:px-4 ${
+          isFocusMode ? 'max-w-[1312px]' : 'lg:max-w-[1080px] max-w-[1312px]'
+        }`}
+      >
         {track === 'hangeul' && (
           <HangeulBalloonGameSection
             lang={lang}
@@ -825,6 +766,25 @@ export const GamesSection: React.FC<GamesSectionProps> = ({
           />
         )}
       </div>
+
+      {/* PC PDF-Bookmark TOC Sidebar */}
+      <DesktopTocSidebar
+        isOpen={Boolean(isTocOpen)}
+        onClose={() => onToggleToc?.()}
+        title={activeTocTitle}
+        items={activeTocItems}
+        onSelectItem={(item) => {
+          if (track === 'hangeul') {
+            onSelectHangeulGroupId?.(String(item.id));
+          } else if (track === 'classroom') {
+            onSelectChapter?.(Number(item.id));
+          } else if (track === 'particle') {
+            setSelectedParticleUnit(item.id as ParticleGameUnitId);
+          } else {
+            onSelectVerbUnit?.(item.id as VerbUnitType);
+          }
+        }}
+      />
 
       {/* Overview Modal per Track */}
       {track === 'hangeul' && (

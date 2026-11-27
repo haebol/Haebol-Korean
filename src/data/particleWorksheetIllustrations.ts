@@ -557,27 +557,6 @@ export const EAT_APPLE_SCENE_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://w
   <path d="M 34 56 Q 27 62 29 67" stroke="rgb(254,215,170)" stroke-width="4" stroke-linecap="round" fill="none" />
 </svg>`;
 
-// 7-4. 친구가 공책을 펴요.
-export const OPEN_NOTEBOOK_SCENE_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
-  <circle cx="50" cy="50" r="46" fill="rgb(236,253,245)" />
-  <!-- Desk -->
-  <rect x="16" y="64" width="68" height="18" rx="4" fill="rgb(254,243,199)" stroke="rgb(217,119,6)" stroke-width="1.8" />
-  <!-- Student behind desk -->
-  <path d="M 36 52 C 36 45 64 45 64 52 L 66 64 L 34 64 Z" fill="rgb(59,130,246)" />
-  <rect x="46.5" y="42" width="7" height="5" rx="2" fill="rgb(254,215,170)" />
-  <circle cx="50" cy="30" r="13.5" fill="rgb(254,215,170)" />
-  <path d="M 35.7 29 C 34.6 9.9 65.4 9.9 64.3 29 C 60 21 55 20 50 20 C 45 20 40 21 35.7 29 Z" fill="rgb(92,64,51)" />
-  <circle cx="44.5" cy="30" r="1.9" fill="rgb(30,41,59)" />
-  <circle cx="55.5" cy="30" r="1.9" fill="rgb(30,41,59)" />
-  <path d="M 46.5 35.5 Q 50 38.5 53.5 35.5" stroke="rgb(225,29,72)" stroke-width="1.5" stroke-linecap="round" fill="none" />
-  <!-- Open notebook on desk -->
-  <rect x="30" y="57" width="40" height="18" rx="2" fill="rgb(255,255,255)" stroke="rgb(244,63,94)" stroke-width="2" />
-  <line x1="50" y1="57" x2="50" y2="75" stroke="rgb(244,63,94)" stroke-width="1.8" />
-  <line x1="34" y1="63" x2="46" y2="63" stroke="rgb(148,163,184)" stroke-width="1.3" />
-  <line x1="54" y1="63" x2="66" y2="63" stroke="rgb(148,163,184)" stroke-width="1.3" />
-  <line x1="34" y1="68" x2="45" y2="68" stroke="rgb(148,163,184)" stroke-width="1.3" />
-</svg>`;
-
 // 7-5. 누가 밥을 먹어요?
 export const WHO_EATS_RICE_SCENE_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
   <circle cx="50" cy="50" r="46" fill="rgb(245,243,255)" />
@@ -647,28 +626,6 @@ export const JIP_HOME_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.o
   <circle cx="22" cy="72" r="1.2" fill="rgb(250,204,21)" />
 </svg>`;
 
-// 8-3. 보건실 (보건실에) - 빨간 십자 마크와 침대·구급상자가 있는 깨끗한 보건실
-export const BOGEONSIL_INFIRMARY_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
-  <circle cx="50" cy="50" r="46" fill="rgb(254,242,242)" />
-  <ellipse cx="50" cy="80" rx="30" ry="5" fill="rgba(15,23,42,0.08)" />
-  <!-- Medical Cross Wall Sign -->
-  <circle cx="50" cy="30" r="13" fill="rgb(255,255,255)" stroke="rgb(239,68,68)" stroke-width="2.2" />
-  <rect x="47" y="22" width="6" height="16" rx="1.5" fill="rgb(239,68,68)" />
-  <rect x="42" y="27" width="16" height="6" rx="1.5" fill="rgb(239,68,68)" />
-  <!-- Clean Infirmary Bed -->
-  <line x1="22" y1="52" x2="22" y2="77" stroke="rgb(100,116,139)" stroke-width="3.5" stroke-linecap="round" />
-  <line x1="78" y1="57" x2="78" y2="77" stroke="rgb(100,116,139)" stroke-width="3.5" stroke-linecap="round" />
-  <rect x="22" y="61" width="56" height="8" rx="2" fill="rgb(255,255,255)" stroke="rgb(148,163,184)" stroke-width="1.8" />
-  <!-- Pillow & Mint Blanket -->
-  <rect x="25" y="55" width="14" height="6" rx="3" fill="rgb(224,242,254)" stroke="rgb(56,189,248)" stroke-width="1.4" />
-  <path d="M 41 60 L 76 60 L 76 70 L 41 70 Z" fill="rgb(110,231,183)" stroke="rgb(16,185,129)" stroke-width="1.6" />
-  <!-- First-Aid Bag -->
-  <rect x="57" y="34" width="18" height="13" rx="3" fill="rgb(255,255,255)" stroke="rgb(59,130,246)" stroke-width="1.6" />
-  <path d="M 63 34 L 63 31 L 69 31 L 69 34" fill="none" stroke="rgb(59,130,246)" stroke-width="1.5" />
-  <rect x="65" y="37" width="2.2" height="7" fill="rgb(239,68,68)" />
-  <rect x="62.6" y="39.4" width="7" height="2.2" fill="rgb(239,68,68)" />
-</svg>`;
-
 // 8-4. 아침 (아침에) - 상쾌한 아침 해와 7시 30분 시계
 export const ACHIM_MORNING_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
   <circle cx="50" cy="50" r="46" fill="rgb(224,242,254)" />
@@ -733,29 +690,6 @@ export const GYOSIL_ROOM_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w
   <rect x="27" y="59" width="46" height="6" rx="2" fill="rgb(251,191,36)" stroke="rgb(180,83,9)" stroke-width="1.8" />
   <rect x="35" y="54" width="14" height="5" rx="1" fill="rgb(59,130,246)" />
   <rect x="41" y="69" width="18" height="10" rx="2.5" fill="rgb(245,158,11)" stroke="rgb(180,83,9)" stroke-width="1.5" />
-</svg>`;
-
-// 9-4. 급식실 (급식실에서) - 밥과 국, 반찬이 담긴 학교 급식 식판과 수저
-export const GEUPSIKSIL_CAFETERIA_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
-  <circle cx="50" cy="50" r="46" fill="rgb(254,249,195)" />
-  <ellipse cx="50" cy="79" rx="34" ry="5" fill="rgba(15,23,42,0.08)" />
-  <!-- Stainless School Meal Tray -->
-  <rect x="16" y="28" width="68" height="46" rx="7" fill="rgb(226,232,240)" stroke="rgb(100,116,139)" stroke-width="2.2" />
-  <!-- Top 3 Side Dish Compartments -->
-  <rect x="21" y="33" width="17" height="14" rx="3" fill="rgb(248,250,252)" stroke="rgb(148,163,184)" stroke-width="1.4" />
-  <circle cx="29.5" cy="40" r="4.5" fill="rgb(34,197,94)" />
-  <rect x="41.5" y="33" width="17" height="14" rx="3" fill="rgb(248,250,252)" stroke="rgb(148,163,184)" stroke-width="1.4" />
-  <circle cx="50" cy="40" r="4.5" fill="rgb(239,68,68)" />
-  <rect x="62" y="33" width="17" height="14" rx="3" fill="rgb(248,250,252)" stroke="rgb(148,163,184)" stroke-width="1.4" />
-  <circle cx="70.5" cy="40" r="4.5" fill="rgb(250,204,21)" />
-  <!-- Bottom Rice & Soup Compartments -->
-  <rect x="21" y="51" width="26" height="18" rx="4" fill="rgb(255,255,255)" stroke="rgb(148,163,184)" stroke-width="1.4" />
-  <ellipse cx="34" cy="60" rx="9" ry="5.5" fill="rgb(241,245,249)" stroke="rgb(203,213,225)" stroke-width="1" />
-  <rect x="52" y="51" width="27" height="18" rx="4" fill="rgb(254,243,199)" stroke="rgb(148,163,184)" stroke-width="1.4" />
-  <ellipse cx="65.5" cy="60" rx="9" ry="5.5" fill="rgb(251,146,60)" opacity="0.8" />
-  <!-- Spoon at bottom -->
-  <ellipse cx="35" cy="83" rx="5.5" ry="3" fill="rgb(203,213,225)" stroke="rgb(71,85,105)" stroke-width="1.4" />
-  <line x1="40.5" y1="83" x2="66" y2="83" stroke="rgb(71,85,105)" stroke-width="2.8" stroke-linecap="round" />
 </svg>`;
 
 // 10-5. 우산 (우산도) - 빗방울 속에 활짝 편 알록달록 귀여운 우산
@@ -861,38 +795,6 @@ export const PLAY_PLAYGROUND_SCENE_SVG = `data:image/svg+xml;utf8,<svg xmlns="ht
   <!-- Bouncing Soccer Ball -->
   <circle cx="71" cy="71" r="8.5" fill="rgb(255,255,255)" stroke="rgb(30,41,59)" stroke-width="1.6" />
   <polygon points="71,66.5 74.5,69 73,73 69,73 67.5,69" fill="rgb(30,41,59)" />
-</svg>`;
-
-// 11-5. 선생님도 도서관에서 읽어요.
-export const READ_IN_LIBRARY_SCENE_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
-  <circle cx="50" cy="50" r="46" fill="rgb(245,243,255)" />
-  <!-- Library Bookshelf on Left -->
-  <rect x="16" y="24" width="26" height="52" rx="3" fill="rgb(217,119,6)" stroke="rgb(146,64,14)" stroke-width="1.8" />
-  <rect x="19" y="28" width="20" height="19" fill="rgb(254,243,199)" />
-  <rect x="19" y="51" width="20" height="20" fill="rgb(254,243,199)" />
-  <rect x="20" y="31" width="5" height="16" fill="rgb(239,68,68)" />
-  <rect x="26" y="33" width="5" height="14" fill="rgb(59,130,246)" />
-  <rect x="32" y="30" width="5" height="17" fill="rgb(16,185,129)" />
-  <rect x="21" y="54" width="6" height="17" fill="rgb(168,85,247)" />
-  <rect x="28" y="56" width="9" height="15" fill="rgb(245,158,11)" />
-  <!-- Teacher Reading Book on Right -->
-  <line x1="59" y1="74" x2="58" y2="84" stroke="rgb(51,65,85)" stroke-width="3.6" stroke-linecap="round" />
-  <line x1="68" y1="74" x2="69" y2="84" stroke="rgb(51,65,85)" stroke-width="3.6" stroke-linecap="round" />
-  <ellipse cx="57.5" cy="85.5" rx="3.8" ry="2" fill="rgb(30,41,59)" />
-  <ellipse cx="69.5" cy="85.5" rx="3.8" ry="2" fill="rgb(30,41,59)" />
-  <path d="M 51 53 C 51 46 76 46 76 53 L 77 74 L 50 74 Z" fill="rgb(236,72,153)" />
-  <circle cx="63.5" cy="33" r="12" fill="rgb(254,215,170)" />
-  <circle cx="63.5" cy="20" r="4.5" fill="rgb(30,41,59)" />
-  <path d="M 50.7 32 C 49.7 14.9 77.3 14.9 76.3 32 C 72 25 68 24 63.5 24 C 59 24 55 25 50.7 32 Z" fill="rgb(30,41,59)" />
-  <circle cx="59" cy="33" r="3" fill="none" stroke="rgb(71,85,105)" stroke-width="1.2" />
-  <circle cx="68" cy="33" r="3" fill="none" stroke="rgb(71,85,105)" stroke-width="1.2" />
-  <line x1="62" y1="33" x2="65" y2="33" stroke="rgb(71,85,105)" stroke-width="1.2" />
-  <circle cx="59" cy="33" r="1.2" fill="rgb(30,41,59)" />
-  <circle cx="68" cy="33" r="1.2" fill="rgb(30,41,59)" />
-  <path d="M 60.5 38 Q 63.5 40.5 66.5 38" stroke="rgb(225,29,72)" stroke-width="1.4" stroke-linecap="round" fill="none" />
-  <!-- Open Book held by Teacher -->
-  <path d="M 50 56 L 63.5 59 L 77 56 L 77 69 L 63.5 72 L 50 69 Z" fill="rgb(255,255,255)" stroke="rgb(59,130,246)" stroke-width="1.6" stroke-linejoin="round" />
-  <line x1="63.5" y1="59" x2="63.5" y2="72" stroke="rgb(59,130,246)" stroke-width="1.4" />
 </svg>`;
 
 // 6-3. 무엇 (무엇을 먹어요?) - 덮개 아래 숨겨진 맛있는 음식/선물과 물음표

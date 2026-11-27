@@ -787,7 +787,7 @@ export const BATCHIM_PAGES_DATA: BatchimPageConfig[] = [
   {
     pageNumber: 1,
     circledNumber: '①',
-    title: '✏️ 해볼 한국어 [받침글자] ① ㅁ 받침을 만나요 | Final Consonant ㅁ',
+    title: '✏️ 해볼한국어 [받침글자] ① ㅁ 받침을 만나요 | Final Consonant ㅁ',
     dropdownTitle: '① ㅁ 받침을 만나요 (Final Consonant ㅁ)',
     subTitle: 'ㅁ 받침',
     cards: [
@@ -835,7 +835,7 @@ export const BATCHIM_PAGES_DATA: BatchimPageConfig[] = [
   {
     pageNumber: 2,
     circledNumber: '②',
-    title: '✏️ 해볼 한국어 [받침글자] ② ㅂ 받침을 만나요 | Final Consonant ㅂ',
+    title: '✏️ 해볼한국어 [받침글자] ② ㅂ 받침을 만나요 | Final Consonant ㅂ',
     dropdownTitle: '② ㅂ 받침을 만나요 (Final Consonant ㅂ)',
     subTitle: 'ㅂ 받침',
     cards: [
@@ -883,7 +883,7 @@ export const BATCHIM_PAGES_DATA: BatchimPageConfig[] = [
   {
     pageNumber: 3,
     circledNumber: '③',
-    title: '✏️ 해볼 한국어 [받침글자] ③ ㅇ 받침을 만나요 | Final Consonant ㅇ',
+    title: '✏️ 해볼한국어 [받침글자] ③ ㅇ 받침을 만나요 | Final Consonant ㅇ',
     dropdownTitle: '③ ㅇ 받침을 만나요 (Final Consonant ㅇ)',
     subTitle: 'ㅇ 받침',
     cards: [
@@ -931,7 +931,7 @@ export const BATCHIM_PAGES_DATA: BatchimPageConfig[] = [
   {
     pageNumber: 4,
     circledNumber: '④',
-    title: '✏️ 해볼 한국어 [받침글자] ④ ㄱ 받침을 만나요 | Final Consonant ㄱ',
+    title: '✏️ 해볼한국어 [받침글자] ④ ㄱ 받침을 만나요 | Final Consonant ㄱ',
     dropdownTitle: '④ ㄱ 받침을 만나요 (Final Consonant ㄱ)',
     subTitle: 'ㄱ 받침',
     cards: [
@@ -979,7 +979,7 @@ export const BATCHIM_PAGES_DATA: BatchimPageConfig[] = [
   {
     pageNumber: 5,
     circledNumber: '⑤',
-    title: '✏️ 해볼 한국어 [받침글자] ⑤ ㄴ 받침을 만나요 | Final Consonant ㄴ',
+    title: '✏️ 해볼한국어 [받침글자] ⑤ ㄴ 받침을 만나요 | Final Consonant ㄴ',
     dropdownTitle: '⑤ ㄴ 받침을 만나요 (Final Consonant ㄴ)',
     subTitle: 'ㄴ 받침',
     cards: [
@@ -1027,7 +1027,7 @@ export const BATCHIM_PAGES_DATA: BatchimPageConfig[] = [
   {
     pageNumber: 6,
     circledNumber: '⑥',
-    title: '✏️ 해볼 한국어 [받침글자] ⑥ ㄹ 받침을 만나요 | Final Consonant ㄹ',
+    title: '✏️ 해볼한국어 [받침글자] ⑥ ㄹ 받침을 만나요 | Final Consonant ㄹ',
     dropdownTitle: '⑥ ㄹ 받침을 만나요 (Final Consonant ㄹ)',
     subTitle: 'ㄹ 받침',
     cards: [
@@ -1075,7 +1075,7 @@ export const BATCHIM_PAGES_DATA: BatchimPageConfig[] = [
   {
     pageNumber: 7,
     circledNumber: '⑦',
-    title: '✏️ 해볼 한국어 [받침글자] ⑦ ㄷ 받침을 만나요 | Final Consonant ㄷ',
+    title: '✏️ 해볼한국어 [받침글자] ⑦ ㄷ 받침을 만나요 | Final Consonant ㄷ',
     dropdownTitle: '⑦ ㄷ 받침을 만나요 (Final Consonant ㄷ)',
     subTitle: 'ㄷ 받침',
     cards: [
@@ -1123,7 +1123,7 @@ export const BATCHIM_PAGES_DATA: BatchimPageConfig[] = [
   {
     pageNumber: 8,
     circledNumber: '⑧',
-    title: '✏️ 해볼 한국어 [받침글자] ⑧ ㅂ 가족 (ㅍ) | Sound Family [ㅂ] ㅍ',
+    title: '✏️ 해볼한국어 [받침글자] ⑧ ㅂ 가족 (ㅍ) | Sound Family [ㅂ] ㅍ',
     dropdownTitle: '⑧ ㅂ 가족 (ㅍ) (Sound Family [ㅂ] ㅍ)',
     subTitle: 'ㅂ 가족 (ㅍ)',
     cards: [
@@ -1174,7 +1174,7 @@ export const BATCHIM_PAGES_DATA: BatchimPageConfig[] = [
   {
     pageNumber: 9,
     circledNumber: '⑨',
-    title: '✏️ 해볼 한국어 [받침글자] ⑨ ㄱ 가족 (ㅋ, ㄲ) | Sound Family [ㄱ] ㅋ, ㄲ',
+    title: '✏️ 해볼한국어 [받침글자] ⑨ ㄱ 가족 (ㅋ, ㄲ) | Sound Family [ㄱ] ㅋ, ㄲ',
     dropdownTitle: '⑨ ㄱ 가족 (ㅋ, ㄲ) (Sound Family [ㄱ] ㅋ, ㄲ)',
     subTitle: 'ㄱ 가족 (ㅋ, ㄲ)',
     cards: [
@@ -1226,7 +1226,7 @@ export const BATCHIM_PAGES_DATA: BatchimPageConfig[] = [
   {
     pageNumber: 10,
     circledNumber: '⑩',
-    title: '✏️ 해볼 한국어 [받침글자] ⑩ ㄷ 가족 (ㅅ, ㅆ, ㅈ) | Sound Family [ㄷ] ㅅ, ㅆ, ㅈ',
+    title: '✏️ 해볼한국어 [받침글자] ⑩ ㄷ 가족 (ㅅ, ㅆ, ㅈ) | Sound Family [ㄷ] ㅅ, ㅆ, ㅈ',
     dropdownTitle: '⑩ ㄷ 가족 (ㅅ, ㅆ, ㅈ) (Sound Family [ㄷ] ㅅ, ㅆ, ㅈ)',
     subTitle: 'ㄷ 가족 (ㅅ, ㅆ, ㅈ)',
     cards: [
@@ -1278,7 +1278,7 @@ export const BATCHIM_PAGES_DATA: BatchimPageConfig[] = [
   {
     pageNumber: 11,
     circledNumber: '⑪',
-    title: '✏️ 해볼 한국어 [받침글자] ⑪ ㄷ 가족 (ㅊ, ㅌ, ㅎ) | Sound Family [ㄷ] ㅊ, ㅌ, ㅎ',
+    title: '✏️ 해볼한국어 [받침글자] ⑪ ㄷ 가족 (ㅊ, ㅌ, ㅎ) | Sound Family [ㄷ] ㅊ, ㅌ, ㅎ',
     dropdownTitle: '⑪ ㄷ 가족 (ㅊ, ㅌ, ㅎ) (Sound Family [ㄷ] ㅊ, ㅌ, ㅎ)',
     subTitle: 'ㄷ 가족 (ㅊ, ㅌ, ㅎ)',
     cards: [
@@ -1330,7 +1330,7 @@ export const BATCHIM_PAGES_DATA: BatchimPageConfig[] = [
   {
     pageNumber: 12,
     circledNumber: '⑫',
-    title: '✏️ 해볼 한국어 [겹받침] ① 앞 자음 발음 1 (ㄳ, ㄵ, ㄼ)',
+    title: '✏️ 해볼한국어 [겹받침] ① 앞 자음 발음 1 (ㄳ, ㄵ, ㄼ)',
     dropdownTitle: '⑫ [겹받침] ① 앞 자음 발음 1 (ㄳ, ㄵ, ㄼ)',
     subTitle: '앞 자음 발음 1 (ㄳ, ㄵ, ㄼ)',
     cards: [
@@ -1415,7 +1415,7 @@ export const BATCHIM_PAGES_DATA: BatchimPageConfig[] = [
   {
     pageNumber: 13,
     circledNumber: '⑬',
-    title: '✏️ 해볼 한국어 [겹받침] ② 앞 자음 발음 2 (ㄽ, ㄾ, ㅄ)',
+    title: '✏️ 해볼한국어 [겹받침] ② 앞 자음 발음 2 (ㄽ, ㄾ, ㅄ)',
     dropdownTitle: '⑬ [겹받침] ② 앞 자음 발음 2 (ㄽ, ㄾ, ㅄ)',
     subTitle: '앞 자음 발음 2 (ㄽ, ㄾ, ㅄ)',
     cards: [
@@ -1497,7 +1497,7 @@ export const BATCHIM_PAGES_DATA: BatchimPageConfig[] = [
   {
     pageNumber: 14,
     circledNumber: '⑭',
-    title: '✏️ 해볼 한국어 [겹받침] ③ 뒤 자음 발음 (ㄺ, ㄻ, ㄿ)',
+    title: '✏️ 해볼한국어 [겹받침] ③ 뒤 자음 발음 (ㄺ, ㄻ, ㄿ)',
     dropdownTitle: '⑭ [겹받침] ③ 뒤 자음 발음 (ㄺ, ㄻ, ㄿ)',
     subTitle: '뒤 자음 발음 (ㄺ, ㄻ, ㄿ)',
     cards: [
@@ -1582,7 +1582,7 @@ export const BATCHIM_PAGES_DATA: BatchimPageConfig[] = [
   {
     pageNumber: 15,
     circledNumber: '⑮',
-    title: '✏️ 해볼 한국어 [겹받침] ④ ㅎ이 있는 받침 (ㄶ, ㅀ)',
+    title: '✏️ 해볼한국어 [겹받침] ④ ㅎ이 있는 받침 (ㄶ, ㅀ)',
     dropdownTitle: '⑮ [겹받침] ④ ㅎ이 있는 받침 (ㄶ, ㅀ)',
     subTitle: 'ㅎ이 있는 받침 (ㄶ, ㅀ)',
     cards: [
@@ -1663,14 +1663,6 @@ export const BATCHIM_PAGES_DATA: BatchimPageConfig[] = [
   }
 ];
 
-export const BATCHIM_SHEET_ITEMS = BATCHIM_PAGES_DATA.map((p, idx) => ({
-  id: idx,
-  title: p.dropdownTitle
-}));
-
-// Backwards compatibility export for Page 1 cards
-export const BATCHIM_PAGE_1_CARDS = BATCHIM_PAGES_DATA[0].cards;
-
 // -------------------------------------------------------------
 // Component: BatchimWorksheetPage
 // -------------------------------------------------------------
@@ -1691,7 +1683,7 @@ export const BatchimWorksheetPage: React.FC<BatchimWorksheetPageProps> = ({
 
   return (
     <div
-      className={`print-sheet printable-word-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-700 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '620px' }}
     >
       {/* 1. Header Row (표준 타이틀 & 학년/이름 영역) */}
@@ -2189,7 +2181,7 @@ export const BatchimWorksheetPage: React.FC<BatchimWorksheetPageProps> = ({
       {/* 3. Sheet Footer */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-badasseugi">
         <span className="font-medium">
-          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
+          해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>
@@ -2230,7 +2222,7 @@ export interface BatchimSummaryCopy {
 }
 
 export const DEFAULT_BATCHIM_SUMMARY_COPY: BatchimSummaryCopy = {
-  sheetTitle: '해볼 한국어 [한글 · 받침] ⑯ 한국어 받침 총정리표 | Korean Batchim Master Chart',
+  sheetTitle: '해볼한국어 [한글 · 받침] ⑯ 한국어 받침 총정리표 | Korean Batchim Master Chart',
   totalBadge: '총 27개 받침 → 7개 대표 소리',
   gradeLabel: '학년',
   nameLabel: '이름',
@@ -2261,7 +2253,7 @@ export const DEFAULT_BATCHIM_SUMMARY_COPY: BatchimSummaryCopy = {
     '• 첫소리 ㅇ은 소리 없음[-], 받침 ㅇ은 콧소리[ng]로 구별해 읽어요.',
     '• 받침 뒤에 모음이 오면 받침이 뒤로 이어져 발음돼요 (음악[으막], 꽃이[꼬치])',
   ],
-  footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
+  footerLeft: '해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
   footerRight: '카드 표기: 순번 · 대표 소리 · 로마자 · 받침 가족 · 겹받침 11자',
 };
 
@@ -2401,7 +2393,7 @@ export const BatchimSummaryWorksheetPage: React.FC<{
 
   return (
     <div
-      className={`print-sheet printable-word-sheet batchim-summary-sheet w-full max-w-[1060px] bg-white rounded-xl border-2 border-slate-700 p-2.5 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet batchim-summary-sheet w-full max-w-[1060px] bg-white rounded-xl border-2 border-slate-300 p-2.5 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '660px' }}
     >
       {/* 1. Sheet Header */}

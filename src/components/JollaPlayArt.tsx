@@ -36,7 +36,7 @@ export const JollaComic: React.FC<JollaComicProps> = ({
   return (
     <div className={`relative inline-flex flex-col items-center select-none shrink-0 ${className}`}>
       {speech && (
-        <div className="mb-0.5 px-2 py-0.5 rounded-full bg-white border-[1.8px] border-slate-900 text-[10.5px] font-black text-slate-900 whitespace-nowrap leading-tight shadow-[1.5px_1.5px_0_#0F172A]">
+        <div className="mb-0.5 px-2 py-0.5 rounded-full bg-white/95 border-[1.3px] border-slate-500 text-[10px] font-extrabold text-slate-700 whitespace-nowrap leading-tight shadow-2xs">
           {speech}
         </div>
       )}
@@ -285,38 +285,65 @@ export const JollaComic: React.FC<JollaComicProps> = ({
 };
 
 /**
- * 유아 한글 교재 스타일 초간단 상단 헤더 (텍스트 최소화 + 여백 중심)
+ * 따뜻하고 깔끔한 학습지 헤더 (숨은 졸라한글맨 찾기 감성 통일)
  */
 export const PlaybookHeader: React.FC<{
   chapterTag: string;
   title: string;
-  accentHex: string;
-  tintHex: string;
+  accentHex?: string;
+  tintHex?: string;
+  badgeBgClass?: string;
+  badgeTextClass?: string;
   hint?: string;
-}> = ({ chapterTag, title, accentHex, tintHex, hint }) => (
-  <div className="flex items-center justify-between gap-3 pb-1.5 mb-2 border-b-[2.5px] border-slate-900 shrink-0">
-    <div className="flex items-center gap-2.5 min-w-0">
+  webControls?: React.ReactNode;
+  scoreBadge?: string;
+}> = ({
+  chapterTag,
+  title,
+  accentHex = '#D94A6B',
+  tintHex = '#FFE4E6',
+  badgeBgClass,
+  badgeTextClass,
+  hint,
+  webControls,
+  scoreBadge,
+}) => (
+  <div className="flex items-center justify-between gap-2 pb-1.5 mb-2.5 border-b-[1.5px] border-slate-700 shrink-0 font-korean-gothic">
+    <div className="flex items-center gap-2 min-w-0">
       <ManduMascot size="xs" interactive={false} />
       <span
-        className="px-2 py-0.5 rounded-md text-[12px] font-black text-white shrink-0"
-        style={{ backgroundColor: accentHex }}
+        className={`px-2.5 py-0.5 rounded-lg text-[11.5px] font-black shrink-0 ${
+          badgeBgClass ? `${badgeBgClass} ${badgeTextClass || ''}` : ''
+        }`}
+        style={
+          badgeBgClass
+            ? undefined
+            : { backgroundColor: tintHex, color: accentHex }
+        }
       >
         {chapterTag}
       </span>
-      <h2 className="text-[22px] font-black text-slate-900 tracking-tight leading-none truncate">
+      <h2 className="text-[19px] sm:text-[21px] font-black text-slate-900 tracking-tight leading-none truncate">
         {title}
       </h2>
       {hint && (
-        <span className="text-[12px] font-extrabold text-slate-500 hidden sm:inline truncate">
+        <span className="text-[11.5px] font-semibold text-slate-500 hidden sm:inline truncate">
           · {hint}
         </span>
       )}
     </div>
-    <div
-      className="px-3 py-1 rounded-lg border-2 border-slate-800 text-[13px] font-black text-slate-900 shrink-0"
-      style={{ backgroundColor: tintHex }}
-    >
-      이름: __________
+    <div className="flex items-center gap-2.5 shrink-0">
+      {webControls && (
+        <div className="no-print flex items-center gap-1.5">{webControls}</div>
+      )}
+      <span className="text-[13px] font-bold text-slate-700 whitespace-nowrap">
+        이름: _________
+      </span>
+      {scoreBadge && (
+        <span className="px-2.5 py-0.5 rounded-lg border-[1.5px] border-slate-700 bg-white text-[12px] font-black text-slate-800 whitespace-nowrap">
+          {scoreBadge}
+        </span>
+      )}
     </div>
   </div>
 );

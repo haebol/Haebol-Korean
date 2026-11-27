@@ -28,6 +28,28 @@ const loadImageDimensions = (dataUrl: string): Promise<{ width: number; height: 
     img.src = dataUrl;
   });
 
+async function waitForNodeImagesReady(node: HTMLElement): Promise<void> {
+  const imgs = Array.from(node.querySelectorAll('img'));
+  if (imgs.length === 0) return;
+  const tasks = imgs.map((img) => {
+    if (img.loading === 'lazy') img.loading = 'eager';
+    if (img.complete && img.naturalWidth > 0) {
+      return typeof img.decode === 'function'
+        ? img.decode().catch(() => undefined)
+        : Promise.resolve();
+    }
+    return new Promise<void>((resolve) => {
+      const done = () => resolve();
+      img.addEventListener('load', done, { once: true });
+      img.addEventListener('error', done, { once: true });
+    });
+  });
+  await Promise.race([
+    Promise.allSettled(tasks),
+    new Promise<void>((r) => window.setTimeout(r, 400)),
+  ]);
+}
+
 /**
  * Renders an array of off-screen A4 worksheet DOM elements into a crisp multi-page PDF
  * using cached local .woff2 fonts (avoiding cross-origin CSS stylesheet SecurityError).
@@ -60,15 +82,21 @@ export async function exportNodesToPdf(
 
   for (let i = 0; i < nodes.length; i++) {
     const node = nodes[i];
+    await waitForNodeImagesReady(node);
     await new Promise<void>((resolve) => {
       requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
     });
 
+    const captureW = Math.ceil(Math.max(node.offsetWidth, node.scrollWidth));
+    const captureH = Math.ceil(Math.max(node.offsetHeight, node.scrollHeight));
+
     const dataUrl = await toPng(node, {
-      pixelRatio: nodes.length > 15 ? 1.75 : 2.1,
-      cacheBust: true,
+      pixelRatio: nodes.length > 15 ? 1.85 : 2.15,
+      cacheBust: false,
       fontEmbedCSS,
       backgroundColor: '#ffffff',
+      width: captureW > 0 ? captureW : undefined,
+      height: captureH > 0 ? captureH : undefined,
     });
 
     const { width: pxW, height: pxH } = await loadImageDimensions(dataUrl);
@@ -114,15 +142,21 @@ export async function exportNodesToPngZip(
 
   for (let i = 0; i < items.length; i++) {
     const { node, fileName } = items[i];
+    await waitForNodeImagesReady(node);
     await new Promise<void>((resolve) => {
       requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
     });
 
+    const captureW = Math.ceil(Math.max(node.offsetWidth, node.scrollWidth));
+    const captureH = Math.ceil(Math.max(node.offsetHeight, node.scrollHeight));
+
     const dataUrl = await toPng(node, {
       pixelRatio,
-      cacheBust: true,
+      cacheBust: false,
       fontEmbedCSS,
       backgroundColor: '#ffffff',
+      width: captureW > 0 ? captureW : undefined,
+      height: captureH > 0 ? captureH : undefined,
     });
 
     const base64 = dataUrl.split(',')[1];

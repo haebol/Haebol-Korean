@@ -375,7 +375,7 @@ export const MemoryCardGameSection: React.FC<MemoryCardGameSectionProps> = ({
     <div className="w-full space-y-1 sm:space-y-1.5 max-w-4xl mx-auto font-korean-gothic overflow-x-clip">
       {/* Row 5 Sticky Top Bar */}
       {!hideChapterBar && (
-        <div className="sticky top-[80px] sm:top-[90px] z-[22] bg-[#FFF5F8]/95 backdrop-blur-md pb-1 w-full">
+        <div className="sticky top-[80px] sm:top-[90px] z-[22] bg-[#F4F3F8]/95 lg:bg-[#FFF5F8]/95 backdrop-blur-md pb-1 w-full">
           <div className="relative w-full max-w-md mx-auto">
             <select
               value={activeChapter}
@@ -473,7 +473,7 @@ export const MemoryCardGameSection: React.FC<MemoryCardGameSectionProps> = ({
                       <ManduMascot size="sm" interactive={false} />
                     </div>
                     <span className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] font-black text-white/95 tracking-widest uppercase">
-                      해볼 한국어
+                      해볼한국어
                     </span>
                   </div>
 

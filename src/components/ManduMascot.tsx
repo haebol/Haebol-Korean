@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useId } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { speakKorean, playCutePop } from '../utils/audio';
 
@@ -28,6 +28,10 @@ export const ManduMascot: React.FC<ManduMascotProps> = ({
   onClick,
   interactive = true
 }) => {
+  const uid = useId().replace(/:/g, '');
+  const bodyGradId = `dumplingBodyGrad-${uid}`;
+  const sunGradId = `sunGlowGrad-${uid}`;
+  const blushGradId = `blushGrad-${uid}`;
   const [isWiggling, setIsWiggling] = useState(false);
   const [internalBubble, setInternalBubble] = useState<string | null>(null);
 
@@ -90,7 +94,7 @@ export const ManduMascot: React.FC<ManduMascotProps> = ({
         >
           <defs>
             {/* 3D Dough Gradient */}
-            <radialGradient id="dumplingBodyGrad" cx="45%" cy="40%" r="55%">
+            <radialGradient id={bodyGradId} cx="45%" cy="40%" r="55%">
               <stop offset="0%" stopColor="#FFFFFF" />
               <stop offset="45%" stopColor="#FFF9EB" />
               <stop offset="85%" stopColor="#F6E7C8" />
@@ -98,7 +102,7 @@ export const ManduMascot: React.FC<ManduMascotProps> = ({
             </radialGradient>
 
             {/* Sun Glow Gradient */}
-            <radialGradient id="sunGlowGrad" cx="50%" cy="50%" r="50%">
+            <radialGradient id={sunGradId} cx="50%" cy="50%" r="50%">
               <stop offset="0%" stopColor="#FFF385" />
               <stop offset="45%" stopColor="#FBBF24" />
               <stop offset="90%" stopColor="#F59E0B" />
@@ -106,7 +110,7 @@ export const ManduMascot: React.FC<ManduMascotProps> = ({
             </radialGradient>
 
             {/* Cheek Blush Gradient */}
-            <radialGradient id="blushGrad" cx="50%" cy="50%" r="50%">
+            <radialGradient id={blushGradId} cx="50%" cy="50%" r="50%">
               <stop offset="0%" stopColor="#F87171" stopOpacity="0.8" />
               <stop offset="100%" stopColor="#F87171" stopOpacity="0" />
             </radialGradient>
@@ -118,7 +122,7 @@ export const ManduMascot: React.FC<ManduMascotProps> = ({
           {/* Dumpling Body (Plump, 3D textured bun) */}
           <path
             d="M60 22C42 22 24 34 19 55C14 74 22 96 42 103C54 107 72 107 86 101C102 94 108 72 103 54C97 34 78 22 60 22Z"
-            fill="url(#dumplingBodyGrad)"
+            fill={`url(#${bodyGradId})`}
             stroke="#DDC396"
             strokeWidth="2.5"
             strokeLinejoin="round"
@@ -152,8 +156,8 @@ export const ManduMascot: React.FC<ManduMascotProps> = ({
           />
 
           {/* Blushing Pink Cheeks with cute stitch accents */}
-          <ellipse cx="38" cy="74" rx="9" ry="6" fill="url(#blushGrad)" />
-          <ellipse cx="84" cy="74" rx="9" ry="6" fill="url(#blushGrad)" />
+          <ellipse cx="38" cy="74" rx="9" ry="6" fill={`url(#${blushGradId})`} />
+          <ellipse cx="84" cy="74" rx="9" ry="6" fill={`url(#${blushGradId})`} />
           {/* Cheek markings */}
           <path d="M34 73L36 76 M38 73L40 76 M42 73L44 76" stroke="#EF4444" strokeWidth="1.2" strokeLinecap="round" />
           <path d="M80 73L82 76 M84 73L86 76 M88 73L90 76" stroke="#EF4444" strokeWidth="1.2" strokeLinecap="round" />
@@ -199,7 +203,7 @@ export const ManduMascot: React.FC<ManduMascotProps> = ({
             <path d="M43 65L38 67L41 71Z" fill="#F59E0B" />
 
             {/* Sun Body */}
-            <circle cx="28" cy="80" r="11" fill="url(#sunGlowGrad)" stroke="#D97706" strokeWidth="1.2" />
+            <circle cx="28" cy="80" r="11" fill={`url(#${sunGradId})`} stroke="#D97706" strokeWidth="1.2" />
 
             {/* Sun Happy Smiling Face */}
             <circle cx="24.5" cy="78" r="1.3" fill="#451A03" />

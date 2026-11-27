@@ -892,7 +892,7 @@ export const ParticleWorksheetPage: React.FC<ParticleWorksheetPageProps> = ({
 
   return (
     <div
-      className={`verb-worksheet-page printable-a4-page print:m-0 print:p-1.5 print:shadow-none print:border-none w-full max-w-[1040px] mx-auto bg-white rounded-2xl shadow-md border-2 border-emerald-300 p-2 sm:p-2.5 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
+      className={`verb-worksheet-page printable-a4-page print:m-0 print:p-1.5 print:shadow-none print:border-none w-full max-w-[1040px] mx-auto bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2 sm:p-2.5 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
       style={{ minHeight: '620px' }}
     >
       {/* 1. HEADER ROW */}
@@ -953,16 +953,33 @@ export const ParticleWorksheetPage: React.FC<ParticleWorksheetPageProps> = ({
                       src={item.illustrationSvg}
                       alt={`${item.baseNoun} 일러스트`}
                       className="w-[58px] h-[58px] sm:w-[70px] sm:h-[70px] object-contain drop-shadow-2xs select-none pointer-events-none"
-                      loading="lazy"
+                      loading="eager"
+                      decoding="sync"
                     />
                   </div>
 
-                  {/* 2. 다국어 뜻 번역 (기본 명사 뜻 + 결합형 뜻) */}
-                  <div className="flex flex-col items-center justify-center text-center min-h-[30px] sm:min-h-[34px] shrink-0 gap-0.5 px-0.5">
-                    <span className="text-[11px] sm:text-[12px] font-semibold text-slate-600 leading-tight block truncate max-w-full">
+                  {/* 2. 다국어 뜻 번역 (기본 명사 뜻 + 결합형 뜻 — PDF 잘림/말줄임 방지) */}
+                  <div className="flex flex-col items-center justify-center text-center min-h-[30px] sm:min-h-[34px] shrink-0 gap-0.5 px-0.5 w-full">
+                    <span
+                      className={`${
+                        baseTranslation.length > 22
+                          ? 'text-[9.5px] sm:text-[10px]'
+                          : baseTranslation.length > 15
+                          ? 'text-[10px] sm:text-[11px]'
+                          : 'text-[11px] sm:text-[12px]'
+                      } font-semibold text-slate-600 leading-[1.15] block break-words max-w-full`}
+                    >
                       {baseTranslation}
                     </span>
-                    <span className="text-[11.5px] sm:text-[12.5px] font-black text-emerald-900 leading-tight block truncate max-w-full">
+                    <span
+                      className={`${
+                        combinedTranslation.length > 22
+                          ? 'text-[9.5px] sm:text-[10.5px]'
+                          : combinedTranslation.length > 15
+                          ? 'text-[10.5px] sm:text-[11.5px]'
+                          : 'text-[11.5px] sm:text-[12.5px]'
+                      } font-black text-emerald-900 leading-[1.15] block break-words max-w-full`}
+                    >
                       → {combinedTranslation}
                     </span>
                   </div>
@@ -1115,7 +1132,8 @@ export const ParticleWorksheetPage: React.FC<ParticleWorksheetPageProps> = ({
                     src={row.illustrationSvg}
                     alt={`${row.fullSentence} 일러스트`}
                     className="w-[62px] h-[62px] sm:w-[72px] sm:h-[72px] object-contain drop-shadow-2xs select-none pointer-events-none"
-                    loading="lazy"
+                    loading="eager"
+                    decoding="sync"
                   />
                 </div>
 
@@ -1148,7 +1166,15 @@ export const ParticleWorksheetPage: React.FC<ParticleWorksheetPageProps> = ({
                       </React.Fragment>
                     ))}
                   </div>
-                  <span className="text-[13px] sm:text-[14.5px] font-bold text-slate-600 leading-tight truncate">
+                  <span
+                    className={`${
+                      currentTranslation.length > 42
+                        ? 'text-[11px] sm:text-[12px]'
+                        : currentTranslation.length > 30
+                        ? 'text-[12px] sm:text-[13px]'
+                        : 'text-[13px] sm:text-[14.5px]'
+                    } font-bold text-slate-600 leading-[1.2] break-words`}
+                  >
                     {currentTranslation}
                   </span>
                 </div>
@@ -1219,7 +1245,7 @@ export const ParticleWorksheetPage: React.FC<ParticleWorksheetPageProps> = ({
       {/* 4. SHEET FOOTER */}
       <div className="mt-0.5 pt-0.5 border-t border-emerald-200 flex items-center justify-start text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic font-bold">
         <span>
-          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
+          해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>

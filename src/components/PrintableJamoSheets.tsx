@@ -223,7 +223,7 @@ export const ConsonantsWorksheetPage: React.FC<JamoSheetProps> = ({
 
   return (
     <div
-      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-700 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -235,7 +235,7 @@ export const ConsonantsWorksheetPage: React.FC<JamoSheetProps> = ({
             className="sheet-header-text font-nanum-barun-gothic font-black break-keep"
             style={{ fontFamily: "'NanumBarunGothic', '나눔바른고딕', 'Hakgyoansim Bareondotum', sans-serif", fontWeight: 900 }}
           >
-            해볼 한국어 [한글] ① 자음 쓰기 | Korean Consonant Writing
+            해볼한국어 [한글] ① 자음 쓰기 | Korean Consonant Writing
           </span>
         </div>
         <div className="text-[10.5px] sm:text-[11.5px] font-bold text-slate-700 flex items-center gap-3 sm:gap-5 font-korean-gothic sheet-header-info shrink-0">
@@ -436,7 +436,7 @@ export const ConsonantsWorksheetPage: React.FC<JamoSheetProps> = ({
       {/* 3. Sheet Footer */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-badasseugi">
         <span className="font-medium">
-          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
+          해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>
@@ -456,7 +456,7 @@ export const VowelsWorksheetPage: React.FC<JamoSheetProps> = ({
 
   return (
     <div
-      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-700 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -468,7 +468,7 @@ export const VowelsWorksheetPage: React.FC<JamoSheetProps> = ({
             className="sheet-header-text font-nanum-barun-gothic font-black"
             style={{ fontFamily: "'NanumBarunGothic', '나눔바른고딕', 'Hakgyoansim Bareondotum', sans-serif", fontWeight: 900 }}
           >
-            해볼 한국어 [한글] ② 모음 쓰기 | Korean Vowel Writing
+            해볼한국어 [한글] ② 모음 쓰기 | Korean Vowel Writing
           </span>
         </div>
         <div className="text-[10.5px] sm:text-[11.5px] font-bold text-slate-700 flex items-center gap-3 sm:gap-5 font-korean-gothic sheet-header-info">
@@ -669,7 +669,7 @@ export const VowelsWorksheetPage: React.FC<JamoSheetProps> = ({
       {/* 3. Sheet Footer */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-badasseugi">
         <span className="font-medium">
-          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
+          해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>
@@ -689,7 +689,7 @@ export const ComboTracingWorksheetPage: React.FC<JamoSheetProps> = ({
 
   return (
     <div
-      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-700 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -701,7 +701,7 @@ export const ComboTracingWorksheetPage: React.FC<JamoSheetProps> = ({
             className="sheet-header-text font-nanum-barun-gothic font-black"
             style={{ fontFamily: "'NanumBarunGothic', '나눔바른고딕', 'Hakgyoansim Bareondotum', sans-serif", fontWeight: 900 }}
           >
-            해볼 한국어 [한글] ③ 자음·모음표 따라 쓰기 | Korean Complete the Chart
+            해볼한국어 [한글] ③ 자음·모음표 따라 쓰기 | Korean Complete the Chart
           </span>
         </div>
         <div className="text-[10.5px] sm:text-[11.5px] font-bold text-slate-700 flex items-center gap-3 sm:gap-5 font-korean-gothic sheet-header-info">
@@ -820,7 +820,7 @@ export const ComboTracingWorksheetPage: React.FC<JamoSheetProps> = ({
       {/* 3. Sheet Footer */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-badasseugi">
         <span className="font-medium">
-          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
+          해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>
@@ -840,7 +840,7 @@ export const ComboWorksheetPage: React.FC<JamoSheetProps> = ({
 
   return (
     <div
-      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-700 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -852,7 +852,7 @@ export const ComboWorksheetPage: React.FC<JamoSheetProps> = ({
             className="sheet-header-text font-nanum-barun-gothic font-black"
             style={{ fontFamily: "'NanumBarunGothic', '나눔바른고딕', 'Hakgyoansim Bareondotum', sans-serif", fontWeight: 900 }}
           >
-            해볼 한국어 [한글] ④ 자음·모음표 스스로 쓰기 | Korean Consonant Stroke Order
+            해볼한국어 [한글] ④ 자음·모음표 스스로 쓰기 | Korean Consonant Stroke Order
           </span>
         </div>
         <div className="text-[10.5px] sm:text-[11.5px] font-bold text-slate-700 flex items-center gap-3 sm:gap-5 font-korean-gothic sheet-header-info">
@@ -953,7 +953,7 @@ export const ComboWorksheetPage: React.FC<JamoSheetProps> = ({
       {/* 3. Sheet Footer */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-badasseugi">
         <span className="font-medium">
-          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
+          해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>
@@ -1007,7 +1007,7 @@ export const ConsonantsStrokeSheetBase: React.FC<StrokeSheetBaseProps> = ({
 
   return (
     <div
-      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-700 p-2 sm:p-2.5 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-2.5 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -1163,7 +1163,7 @@ export const ConsonantsStrokeSheetBase: React.FC<StrokeSheetBaseProps> = ({
       {/* 4. Sheet Footer */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-badasseugi shrink-0">
         <span className="font-medium">
-          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
+          해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>
@@ -1263,7 +1263,7 @@ export const ConsonantsStrokeWorksheetPage: React.FC<JamoSheetProps> = (props) =
 
   return (
     <ConsonantsStrokeSheetBase
-      sheetTitle="해볼 한국어 [한글] ⑤ 자음 획순 따라 쓰기 ㄱ~ㄹ | Korean Consonant Stroke Order"
+      sheetTitle="해볼한국어 [한글] ⑤ 자음 획순 따라 쓰기 ㄱ~ㄹ | Korean Consonant Stroke Order"
       items={items}
       columnsCount={4}
       {...props}
@@ -1382,7 +1382,7 @@ export const ConsonantsStrokeWorksheetPage2: React.FC<JamoSheetProps> = (props) 
 
   return (
     <ConsonantsStrokeSheetBase
-      sheetTitle="해볼 한국어 [한글] ⑥ 자음 획순 따라 쓰기 ㅁ~ㅇ | Korean Consonant Stroke Order"
+      sheetTitle="해볼한국어 [한글] ⑥ 자음 획순 따라 쓰기 ㅁ~ㅇ | Korean Consonant Stroke Order"
       items={items}
       columnsCount={4}
       {...props}
@@ -1473,7 +1473,7 @@ export const ConsonantsStrokeWorksheetPage3: React.FC<JamoSheetProps> = (props) 
 
   return (
     <ConsonantsStrokeSheetBase
-      sheetTitle="해볼 한국어 [한글] ⑦ 자음 획순 따라 쓰기 ㅈ~ㅋ | Korean Consonant Stroke Order"
+      sheetTitle="해볼한국어 [한글] ⑦ 자음 획순 따라 쓰기 ㅈ~ㅋ | Korean Consonant Stroke Order"
       items={items}
       columnsCount={3}
       {...props}
@@ -1584,7 +1584,7 @@ export const ConsonantsStrokeWorksheetPage4: React.FC<JamoSheetProps> = (props) 
 
   return (
     <ConsonantsStrokeSheetBase
-      sheetTitle="해볼 한국어 [한글] ⑧ 자음 획순 따라 쓰기 ㅌ~ㅎ | Korean Consonant Stroke Order"
+      sheetTitle="해볼한국어 [한글] ⑧ 자음 획순 따라 쓰기 ㅌ~ㅎ | Korean Consonant Stroke Order"
       items={items}
       columnsCount={3}
       {...props}
@@ -1771,7 +1771,7 @@ export const ConsonantsStrokeWorksheetPage5: React.FC<JamoSheetProps> = (props) 
 
   return (
     <ConsonantsStrokeSheetBase
-      sheetTitle="해볼 한국어 [한글] ⑨ 쌍자음 획순 따라 쓰기 ㄲ~ㅉ | Korean Double Consonant Stroke"
+      sheetTitle="해볼한국어 [한글] ⑨ 쌍자음 획순 따라 쓰기 ㄲ~ㅉ | Korean Double Consonant Stroke"
       items={items}
       columnsCount={5}
       {...props}
@@ -1892,7 +1892,7 @@ export const VowelsStrokeWorksheetPage1: React.FC<JamoSheetProps> = (props) => {
 
   return (
     <ConsonantsStrokeSheetBase
-      sheetTitle="해볼 한국어 [한글] ⑩ 모음 획순 따라 쓰기 ㅏ·ㅑ·ㅓ·ㅕ | Korean Vowel Stroke Order"
+      sheetTitle="해볼한국어 [한글] ⑩ 모음 획순 따라 쓰기 ㅏ·ㅑ·ㅓ·ㅕ | Korean Vowel Stroke Order"
       items={items}
       columnsCount={4}
       {...props}
@@ -2009,7 +2009,7 @@ export const VowelsStrokeWorksheetPage2: React.FC<JamoSheetProps> = (props) => {
 
   return (
     <ConsonantsStrokeSheetBase
-      sheetTitle="해볼 한국어 [한글] ⑪ 모음 획순 따라 쓰기 ㅗ·ㅛ·ㅜ·ㅠ | Korean Vowel Stroke Order"
+      sheetTitle="해볼한국어 [한글] ⑪ 모음 획순 따라 쓰기 ㅗ·ㅛ·ㅜ·ㅠ | Korean Vowel Stroke Order"
       items={items}
       columnsCount={4}
       {...props}
@@ -2076,7 +2076,7 @@ export const VowelsStrokeWorksheetPage3: React.FC<JamoSheetProps> = (props) => {
 
   return (
     <ConsonantsStrokeSheetBase
-      sheetTitle="해볼 한국어 [한글] ⑫ 모음 획순 따라 쓰기 ㅡ·ㅣ·ㅢ | Korean Vowel Stroke Order"
+      sheetTitle="해볼한국어 [한글] ⑫ 모음 획순 따라 쓰기 ㅡ·ㅣ·ㅢ | Korean Vowel Stroke Order"
       items={items}
       columnsCount={3}
       {...props}
@@ -2221,7 +2221,7 @@ export const VowelsStrokeWorksheetPage4: React.FC<JamoSheetProps> = (props) => {
 
   return (
     <ConsonantsStrokeSheetBase
-      sheetTitle="해볼 한국어 [한글] ⑬ 모음 획순 따라 쓰기 ㅐ·ㅒ·ㅔ·ㅖ | Korean Vowel Stroke Order"
+      sheetTitle="해볼한국어 [한글] ⑬ 모음 획순 따라 쓰기 ㅐ·ㅒ·ㅔ·ㅖ | Korean Vowel Stroke Order"
       items={items}
       columnsCount={4}
       {...props}
@@ -2337,7 +2337,7 @@ export const VowelsStrokeWorksheetPage5: React.FC<JamoSheetProps> = (props) => {
 
   return (
     <ConsonantsStrokeSheetBase
-      sheetTitle="해볼 한국어 [한글] ⑭ 모음 획순 따라 쓰기 ㅘ·ㅝ·ㅟ | Korean Vowel Stroke Order"
+      sheetTitle="해볼한국어 [한글] ⑭ 모음 획순 따라 쓰기 ㅘ·ㅝ·ㅟ | Korean Vowel Stroke Order"
       items={items}
       columnsCount={3}
       {...props}
@@ -2467,333 +2467,13 @@ export const VowelsStrokeWorksheetPage6: React.FC<JamoSheetProps> = (props) => {
 
   return (
     <ConsonantsStrokeSheetBase
-      sheetTitle="해볼 한국어 [한글] ⑮ 모음 획순 따라 쓰기 ㅚ·ㅙ·ㅞ | Korean Vowel Stroke Order"
+      sheetTitle="해볼한국어 [한글] ⑮ 모음 획순 따라 쓰기 ㅚ·ㅙ·ㅞ | Korean Vowel Stroke Order"
       items={items}
       columnsCount={3}
       {...props}
     />
   );
 };
-
-// ============================================================================
-// [한글] ⑯~⑲ 대형 4분할 결합 쓰기 학습지 (Large 4-Quadrant Combo Worksheets)
-// 가로 자음 7개 × 세로 모음 5개 (각 35자 대형 결합 격자 & 원문+따라쓰기 구조)
-// ============================================================================
-
-export interface LargeComboConfig {
-  sheetNumber: number; // 16 ~ 23
-  pageNumber: 1 | 2 | 3 | 4; // Quadrant 1: 좌상단, 2: 우상단, 3: 좌하단, 4: 우하단
-  circledSheetNumber: string; // ⑯ ~ ㉓
-  circledNumber: string; // ① ~ ④
-  quadrantName: string; // 좌상단, 우상단, 좌하단, 우하단
-  variant: 'tracing' | 'blank';
-  title: string;
-  subtitle: string;
-  consonants: string[];
-  vowels: string[];
-  rangeText: string;
-}
-
-export const LARGE_COMBO_PAGES_DATA: Record<number, LargeComboConfig> = {
-  // [16~19쪽]: 대형 결합 따라쓰기 (회색 따라쓰기 글자만 존재, 본보기 칸 없음)
-  16: {
-    sheetNumber: 16,
-    pageNumber: 1,
-    circledSheetNumber: '⑯',
-    circledNumber: '①',
-    quadrantName: '좌상단',
-    variant: 'tracing',
-    title: '해볼 한국어 [한글] ⑯ 대형 결합 따라쓰기 ① (ㄱ~ㅅ / ㅏ~ㅡ)',
-    subtitle: '가로 자음(빨강)과 세로 모음(파랑)을 결합하여 소리 내어 읽고 회색 글자를 따라 큰 글씨로 써 보세요.',
-    consonants: ['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅅ'],
-    vowels: ['ㅏ', 'ㅓ', 'ㅗ', 'ㅜ', 'ㅡ'],
-    rangeText: 'ㄱ~ㅅ / ㅏ~ㅡ (좌상단 따라쓰기)'
-  },
-  17: {
-    sheetNumber: 17,
-    pageNumber: 2,
-    circledSheetNumber: '⑰',
-    circledNumber: '②',
-    quadrantName: '우상단',
-    variant: 'tracing',
-    title: '해볼 한국어 [한글] ⑰ 대형 결합 따라쓰기 ② (ㅇ~ㅎ / ㅏ~ㅡ)',
-    subtitle: '가로 자음(빨강)과 세로 모음(파랑)을 결합하여 소리 내어 읽고 회색 글자를 따라 큰 글씨로 써 보세요.',
-    consonants: ['ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'],
-    vowels: ['ㅏ', 'ㅓ', 'ㅗ', 'ㅜ', 'ㅡ'],
-    rangeText: 'ㅇ~ㅎ / ㅏ~ㅡ (우상단 따라쓰기)'
-  },
-  18: {
-    sheetNumber: 18,
-    pageNumber: 3,
-    circledSheetNumber: '⑱',
-    circledNumber: '③',
-    quadrantName: '좌하단',
-    variant: 'tracing',
-    title: '해볼 한국어 [한글] ⑱ 대형 결합 따라쓰기 ③ (ㄱ~ㅅ / ㅑ~ㅣ)',
-    subtitle: '가로 자음(빨강)과 세로 모음(파랑)을 결합하여 소리 내어 읽고 회색 글자를 따라 큰 글씨로 써 보세요.',
-    consonants: ['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅅ'],
-    vowels: ['ㅑ', 'ㅕ', 'ㅛ', 'ㅠ', 'ㅣ'],
-    rangeText: 'ㄱ~ㅅ / ㅑ~ㅣ (좌하단 따라쓰기)'
-  },
-  19: {
-    sheetNumber: 19,
-    pageNumber: 4,
-    circledSheetNumber: '⑲',
-    circledNumber: '④',
-    quadrantName: '우하단',
-    variant: 'tracing',
-    title: '해볼 한국어 [한글] ⑲ 대형 결합 따라쓰기 ④ (ㅇ~ㅎ / ㅑ~ㅣ)',
-    subtitle: '가로 자음(빨강)과 세로 모음(파랑)을 결합하여 소리 내어 읽고 회색 글자를 따라 큰 글씨로 써 보세요.',
-    consonants: ['ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'],
-    vowels: ['ㅑ', 'ㅕ', 'ㅛ', 'ㅠ', 'ㅣ'],
-    rangeText: 'ㅇ~ㅎ / ㅑ~ㅣ (우하단 따라쓰기)'
-  },
-
-  // [20~23쪽]: 대형 결합 스스로 쓰기 (점선 십자선만 있는 빈칸)
-  20: {
-    sheetNumber: 20,
-    pageNumber: 1,
-    circledSheetNumber: '⑳',
-    circledNumber: '①',
-    quadrantName: '좌상단',
-    variant: 'blank',
-    title: '해볼 한국어 [한글] ⑳ 대형 결합 스스로 쓰기 ① (ㄱ~ㅅ / ㅏ~ㅡ)',
-    subtitle: '가로 자음(빨강)과 세로 모음(파랑)을 결합하여 소리 내어 읽고 십자 점선 칸 안에 스스로 써 보세요.',
-    consonants: ['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅅ'],
-    vowels: ['ㅏ', 'ㅓ', 'ㅗ', 'ㅜ', 'ㅡ'],
-    rangeText: 'ㄱ~ㅅ / ㅏ~ㅡ (좌상단 빈칸)'
-  },
-  21: {
-    sheetNumber: 21,
-    pageNumber: 2,
-    circledSheetNumber: '㉑',
-    circledNumber: '②',
-    quadrantName: '우상단',
-    variant: 'blank',
-    title: '해볼 한국어 [한글] ㉑ 대형 결합 스스로 쓰기 ② (ㅇ~ㅎ / ㅏ~ㅡ)',
-    subtitle: '가로 자음(빨강)과 세로 모음(파랑)을 결합하여 소리 내어 읽고 십자 점선 칸 안에 스스로 써 보세요.',
-    consonants: ['ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'],
-    vowels: ['ㅏ', 'ㅓ', 'ㅗ', 'ㅜ', 'ㅡ'],
-    rangeText: 'ㅇ~ㅎ / ㅏ~ㅡ (우상단 빈칸)'
-  },
-  22: {
-    sheetNumber: 22,
-    pageNumber: 3,
-    circledSheetNumber: '㉒',
-    circledNumber: '③',
-    quadrantName: '좌하단',
-    variant: 'blank',
-    title: '해볼 한국어 [한글] ㉒ 대형 결합 스스로 쓰기 ③ (ㄱ~ㅅ / ㅑ~ㅣ)',
-    subtitle: '가로 자음(빨강)과 세로 모음(파랑)을 결합하여 소리 내어 읽고 십자 점선 칸 안에 스스로 써 보세요.',
-    consonants: ['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅅ'],
-    vowels: ['ㅑ', 'ㅕ', 'ㅛ', 'ㅠ', 'ㅣ'],
-    rangeText: 'ㄱ~ㅅ / ㅑ~ㅣ (좌하단 빈칸)'
-  },
-  23: {
-    sheetNumber: 23,
-    pageNumber: 4,
-    circledSheetNumber: '㉓',
-    circledNumber: '④',
-    quadrantName: '우하단',
-    variant: 'blank',
-    title: '해볼 한국어 [한글] ㉓ 대형 결합 스스로 쓰기 ④ (ㅇ~ㅎ / ㅑ~ㅣ)',
-    subtitle: '가로 자음(빨강)과 세로 모음(파랑)을 결합하여 소리 내어 읽고 십자 점선 칸 안에 스스로 써 보세요.',
-    consonants: ['ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'],
-    vowels: ['ㅑ', 'ㅕ', 'ㅛ', 'ㅠ', 'ㅣ'],
-    rangeText: 'ㅇ~ㅎ / ㅑ~ㅣ (우하단 빈칸)'
-  }
-};
-
-export interface LargeComboWorksheetPageProps {
-  sheetNumber?: number; // 16 ~ 23
-  pageNumber?: 1 | 2 | 3 | 4;
-  variant?: 'tracing' | 'blank';
-  interactiveAudio?: boolean;
-  className?: string;
-}
-
-export const LargeComboWorksheetPage: React.FC<LargeComboWorksheetPageProps> = ({
-  sheetNumber,
-  pageNumber = 1,
-  variant,
-  interactiveAudio = true,
-  className = ''
-}) => {
-  // Determine effective sheet number and config
-  const effectiveSheetNumber = sheetNumber
-    ? sheetNumber
-    : (variant === 'blank' ? 19 : 15) + pageNumber;
-
-  const config = LARGE_COMBO_PAGES_DATA[effectiveSheetNumber] || LARGE_COMBO_PAGES_DATA[16];
-  const initialVariant = variant || config.variant;
-  const [currentVariant, setCurrentVariant] = React.useState<'tracing' | 'blank'>(initialVariant);
-
-  React.useEffect(() => {
-    setCurrentVariant(variant || config.variant);
-  }, [variant, config.variant]);
-
-  const handleCharClick = (char: string) => {
-    if (!interactiveAudio) return;
-    playCutePop();
-    speakKorean(char, 0.85);
-  };
-
-  return (
-    <div
-      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-700 p-2 sm:p-2.5 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
-      style={{ minHeight: '620px' }}
-    >
-      {/* 1. Header Row */}
-      <div className="flex items-center justify-between border-b-2 border-slate-700 pb-1 mb-1 text-slate-900 shrink-0">
-        <div className="flex items-center gap-1.5 font-black text-xs sm:text-sm font-badasseugi">
-          <span className="text-base leading-none">{currentVariant === 'tracing' ? '✏️' : '✍️'}</span>
-          <span className="text-slate-900">
-            {config.title}
-          </span>
-          <span className="text-[10px] sm:text-[11px] font-bold text-emerald-800 bg-emerald-100/90 px-2 py-0.5 rounded-full border border-emerald-300 ml-1">
-            {config.rangeText}
-          </span>
-        </div>
-        <div className="text-[10.5px] sm:text-[11.5px] font-bold text-slate-700 flex items-center gap-3 sm:gap-5 font-badasseugi">
-          <span>학년: ________</span>
-          <span>이름: ________________</span>
-        </div>
-      </div>
-
-      {/* 2. Main 8×6 Large Combo Table (각 칸 본보기 없이 오직 십자선과 회색따라쓰기/빈칸만 존재) */}
-      <table className="square-grid-table large-combo-table w-full border-collapse border-[1.5px] border-slate-700 bg-white flex-1 table-fixed">
-        <thead>
-          <tr className="bg-emerald-100/90 text-slate-900 font-extrabold text-[13px] sm:text-sm font-badasseugi">
-            {/* 1열: 빈칸 (절반 너비) */}
-            <th style={{ width: '4.8%', border: '1.5px solid #374151' }} className="py-1 bg-emerald-200/80">
-            </th>
-            {/* 2~8열: 자음 7자 */}
-            {config.consonants.map((c, i) => (
-              <th
-                key={`large-combo-c-${i}`}
-                style={{ width: '13.6%', border: '1.5px solid #374151' }}
-                className={`py-1 bg-emerald-100/90 text-emerald-950 font-black ${
-                  interactiveAudio ? 'cursor-pointer hover:bg-emerald-200' : ''
-                }`}
-                onClick={() => handleCharClick(c)}
-                title={interactiveAudio ? `소리 듣기: ${c}` : undefined}
-              >
-                <span
-                  className="font-badasseugi font-black text-2xl sm:text-3xl leading-none select-none inline-block"
-                  style={{ fontFamily: "'Hakgyoansim Badasseugi', '학교안심 받아쓰기', '학교안심받아쓰기', 'HakgyoansimBadasseugiTTF-L', 'Hakgyoansim Badasseugi TTF L', '학교알림받아쓰기', 'KyoboHand', cursive, sans-serif" }}
-                >
-                  {c}
-                </span>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {config.vowels.map((v, vIdx) => (
-            <tr key={`large-combo-row-${vIdx}`} className="border-b-[1.5px] border-slate-700">
-              {/* 1열: 모음 5자 (절반 너비) */}
-              <td
-                style={{ width: '4.8%', border: '1.5px solid #374151' }}
-                className={`text-center align-middle p-0 bg-emerald-100/80 ${
-                  interactiveAudio ? 'cursor-pointer hover:bg-emerald-200' : ''
-                }`}
-                onClick={() => handleCharClick(v)}
-                title={interactiveAudio ? `소리 듣기: ${v}` : undefined}
-              >
-                <div className="cell-square-box relative w-full h-[28.4mm] flex items-center justify-center">
-                  <span
-                    className="relative z-10 leading-none select-none font-bold font-badasseugi whitespace-nowrap text-emerald-950"
-                    style={{
-                      fontFamily: "'Hakgyoansim Badasseugi', '학교안심 받아쓰기', '학교안심받아쓰기', 'HakgyoansimBadasseugiTTF-L', 'Hakgyoansim Badasseugi TTF L', '학교알림받아쓰기', 'KyoboHand', cursive, sans-serif",
-                      fontWeight: 700,
-                      fontSize: '2.05rem',
-                      lineHeight: 1
-                    }}
-                  >
-                    {v}
-                  </span>
-                </div>
-              </td>
-
-              {/* 2~8열: 결합 글자 7개 (본보기 칸 없이 오직 정사각형 십자점선 칸에 회색글자 또는 빈칸만 존재) */}
-              {config.consonants.map((c, cIdx) => {
-                const syllable = combineHangul(c, v);
-                return (
-                  <td
-                    key={`large-combo-cell-${vIdx}-${cIdx}`}
-                    style={{ width: '13.6%', border: '1.5px solid #374151' }}
-                    className={`text-center align-middle p-0 ${
-                      interactiveAudio ? 'cursor-pointer hover:bg-emerald-50/70' : ''
-                    }`}
-                    onClick={() => handleCharClick(syllable)}
-                    title={interactiveAudio ? `소리 듣기: ${syllable}` : undefined}
-                  >
-                    <div className="cell-square-box relative w-full h-[28.4mm] bg-white flex items-center justify-center overflow-hidden">
-                      {/* 십자 점선 보조선 */}
-                      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 w-full border-t border-dashed border-slate-300 pointer-events-none" />
-                      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 h-full border-l border-dashed border-slate-300 pointer-events-none" />
-
-                      {/* 회색 따라쓰기 글자 (스스로 쓰기 모드일 때는 빈칸) */}
-                      {currentVariant === 'tracing' && (
-                        <span
-                          className="relative z-10 leading-none select-none font-bold font-badasseugi whitespace-nowrap"
-                          style={{
-                            fontFamily: "'Hakgyoansim Badasseugi', '학교안심 받아쓰기', '학교안심받아쓰기', 'HakgyoansimBadasseugiTTF-L', 'Hakgyoansim Badasseugi TTF L', '학교알림받아쓰기', 'KyoboHand', cursive, sans-serif",
-                            fontWeight: 700,
-                            fontSize: '2.85rem',
-                            lineHeight: 1,
-                            color: '#94a3b8'
-                          }}
-                        >
-                          {syllable}
-                        </span>
-                      )}
-                    </div>
-                  </td>
-                );
-              })}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* 4. Sheet Footer */}
-      <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-badasseugi shrink-0">
-        <span className="font-medium">
-          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
-        </span>
-      </div>
-    </div>
-  );
-};
-
-// 16~19: 대형 결합 따라쓰기 편의 컴포넌트
-export const LargeComboWorksheetPage1: React.FC<Omit<LargeComboWorksheetPageProps, 'sheetNumber' | 'pageNumber' | 'variant'>> = (props) => (
-  <LargeComboWorksheetPage sheetNumber={16} {...props} />
-);
-export const LargeComboWorksheetPage2: React.FC<Omit<LargeComboWorksheetPageProps, 'sheetNumber' | 'pageNumber' | 'variant'>> = (props) => (
-  <LargeComboWorksheetPage sheetNumber={17} {...props} />
-);
-export const LargeComboWorksheetPage3: React.FC<Omit<LargeComboWorksheetPageProps, 'sheetNumber' | 'pageNumber' | 'variant'>> = (props) => (
-  <LargeComboWorksheetPage sheetNumber={18} {...props} />
-);
-export const LargeComboWorksheetPage4: React.FC<Omit<LargeComboWorksheetPageProps, 'sheetNumber' | 'pageNumber' | 'variant'>> = (props) => (
-  <LargeComboWorksheetPage sheetNumber={19} {...props} />
-);
-
-// 20~23: 대형 결합 스스로 쓰기(빈칸) 편의 컴포넌트
-export const LargeComboBlankWorksheetPage1: React.FC<Omit<LargeComboWorksheetPageProps, 'sheetNumber' | 'pageNumber' | 'variant'>> = (props) => (
-  <LargeComboWorksheetPage sheetNumber={20} {...props} />
-);
-export const LargeComboBlankWorksheetPage2: React.FC<Omit<LargeComboWorksheetPageProps, 'sheetNumber' | 'pageNumber' | 'variant'>> = (props) => (
-  <LargeComboWorksheetPage sheetNumber={21} {...props} />
-);
-export const LargeComboBlankWorksheetPage3: React.FC<Omit<LargeComboWorksheetPageProps, 'sheetNumber' | 'pageNumber' | 'variant'>> = (props) => (
-  <LargeComboWorksheetPage sheetNumber={22} {...props} />
-);
-export const LargeComboBlankWorksheetPage4: React.FC<Omit<LargeComboWorksheetPageProps, 'sheetNumber' | 'pageNumber' | 'variant'>> = (props) => (
-  <LargeComboWorksheetPage sheetNumber={23} {...props} />
-);
 
 // ============================================================================
 // [자음모음] ⑯ 한국어 자음 총정리 한눈에 보기 (A4 가로 1장 요약 정리표 - 교사용 원판)
@@ -2821,7 +2501,7 @@ export interface ConsonantsSummaryCopy {
 }
 
 export const DEFAULT_CONSONANTS_SUMMARY_COPY: ConsonantsSummaryCopy = {
-  sheetTitle: '해볼 한국어 [한글] ⑯ 한국어 자음 총정리표 | Korean Consonants Master Chart',
+  sheetTitle: '해볼한국어 [한글] ⑯ 한국어 자음 총정리표 | Korean Consonants Master Chart',
   totalBadge: '총 19자 (기본 14 · 쌍자음 5)',
   gradeLabel: '학년',
   nameLabel: '이름',
@@ -2842,7 +2522,7 @@ export const DEFAULT_CONSONANTS_SUMMARY_COPY: ConsonantsSummaryCopy = {
     'ㄱ[g/k] · ㄷ[d/t] · ㅂ[b/p] · ㄹ[r/l]: 앞·뒤 위치에 따라 소리가 조금씩 달라져요.',
     'ㄸ · ㅃ · ㅉ: 받침으로 거의 쓰이지 않아 첫소리 [tt], [pp], [jj]만 익히면 돼요.',
   ],
-  footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
+  footerLeft: '해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
   footerRight: '카드 표기: 순번 · 자음 글자 · 자음 이름 · 발음 로마자 [앞 / 뒤]',
 };
 
@@ -2961,7 +2641,7 @@ export const ConsonantsSummaryWorksheetPage: React.FC<
 
   return (
     <div
-      className={`print-sheet printable-word-sheet printable-jamo-sheet consonants-summary-sheet w-full max-w-[1060px] bg-white rounded-xl border-2 border-slate-700 p-2.5 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet printable-jamo-sheet consonants-summary-sheet w-full max-w-[1060px] bg-white rounded-xl border-2 border-slate-300 p-2.5 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '660px' }}
     >
       <JamoStyleSheet />
@@ -3104,7 +2784,7 @@ export interface VowelsSummaryCopy {
 }
 
 export const DEFAULT_VOWELS_SUMMARY_COPY: VowelsSummaryCopy = {
-  sheetTitle: '해볼 한국어 [한글] ⑰ 한국어 모음 총정리표 | Korean Vowels Master Chart',
+  sheetTitle: '해볼한국어 [한글] ⑰ 한국어 모음 총정리표 | Korean Vowels Master Chart',
   totalBadge: '총 21자 (기본 10 · 복합 11)',
   gradeLabel: '학년',
   nameLabel: '이름',
@@ -3128,7 +2808,7 @@ export const DEFAULT_VOWELS_SUMMARY_COPY: VowelsSummaryCopy = {
     'ㅡ [eu]: 입술을 앞으로 내밀지 말고 옆으로 살짝 당긴 채 발음해요.',
     'ㅢ [ui]: 첫소리(의사 [의]), 조사(나의 [에]), 자음 뒤(희망 [히]) 소리가 달라져요.',
   ],
-  footerLeft: '해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
+  footerLeft: '해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어',
   footerRight: '카드 표기: 순번 · 모음 글자 · 모음 이름 · 발음 로마자',
 };
 
@@ -3245,7 +2925,7 @@ export const VowelsSummaryWorksheetPage: React.FC<
 
   return (
     <div
-      className={`print-sheet printable-word-sheet printable-jamo-sheet vowels-summary-sheet w-full max-w-[1060px] bg-white rounded-xl border-2 border-slate-700 p-2.5 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet printable-jamo-sheet vowels-summary-sheet w-full max-w-[1060px] bg-white rounded-xl border-2 border-slate-300 p-2.5 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '660px' }}
     >
       <JamoStyleSheet />

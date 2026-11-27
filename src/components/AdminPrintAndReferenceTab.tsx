@@ -13,6 +13,10 @@ import {
   AlertCircle,
   CheckCircle2,
   Volume2,
+  Link2,
+  ExternalLink,
+  Check,
+  Trash2,
 } from 'lucide-react';
 import { SUPPORTED_LANGUAGES, SupportedLanguage } from '../types';
 import { CHAPTER_LIST, VOCABULARY_DATA, getChapterCircledTitle } from '../data/vocabulary';
@@ -73,6 +77,8 @@ import { WORDBOOK_SHEET_ITEMS } from '../data/worksheetMeta';
 import { ScaledPreviewFrame, captureNodeToPng } from './AdminCaptureCards';
 import { exportNodesToPdf, exportNodesToPngZip } from '../utils/adminPdfExporter';
 import { playCutePop } from '../utils/audio';
+import { waitForPrintReadiness } from '../utils/printReadiness';
+import { useAdminCurriculumConfig } from '../utils/adminCurriculumConfig';
 
 export type AdminPrintCategory =
   | 'classroom_triple'
@@ -232,6 +238,13 @@ export const ADMIN_PRINT_PORTAL_CSS = `
       margin: 0 !important;
       padding: 0 !important;
       background: #ffffff !important;
+      font-synthesis: none !important;
+      text-rendering: geometricPrecision;
+    }
+    #admin-print-portal-root img,
+    #admin-print-portal-root svg {
+      filter: none !important;
+      -webkit-filter: none !important;
     }
     #admin-print-portal-root .admin-print-sheet-item {
       margin: 0 !important;
@@ -511,6 +524,34 @@ export const ADMIN_PRINT_PORTAL_CSS = `
 export const AdminPrintAndReferenceTab: React.FC<{
   mode: 'print' | 'reference';
 }> = ({ mode }) => {
+  const [adminConfig, updateAdminConfig] = useAdminCurriculumConfig();
+  const [blogUrlDraft, setBlogUrlDraft] = useState<string>(adminConfig.blogBundleUrl || '');
+  const [blogUrlNotice, setBlogUrlNotice] = useState<{ type: 'ok' | 'err'; msg: string } | null>(null);
+
+  useEffect(() => {
+    setBlogUrlDraft(adminConfig.blogBundleUrl || '');
+  }, [adminConfig.blogBundleUrl]);
+
+  const handleSaveBlogUrl = () => {
+    const trimmed = blogUrlDraft.trim();
+    if (trimmed && !/^https?:\/\//i.test(trimmed)) {
+      setBlogUrlNotice({
+        type: 'err',
+        msg: 'https:// 또는 http:// 로 시작하는 전체 블로그 주소를 입력해 주세요.',
+      });
+      return;
+    }
+    playCutePop();
+    updateAdminConfig((prev) => ({ ...prev, blogBundleUrl: trimmed }));
+    setBlogUrlNotice({
+      type: 'ok',
+      msg: trimmed
+        ? '블로그 합본 PDF 주소가 연결되었습니다. 상단 [인쇄] 메뉴에서 바로 확인할 수 있어요.'
+        : '블로그 주소 연결이 해제되었습니다.',
+    });
+    window.setTimeout(() => setBlogUrlNotice(null), 3500);
+  };
+
   // Print Center State
   const [category, setCategory] = useState<AdminPrintCategory>('classroom_triple');
   const [printScope, setPrintScope] = useState<'single' | 'all'>('single');
@@ -1049,7 +1090,7 @@ export const AdminPrintAndReferenceTab: React.FC<{
     wordbookSheetDescriptors,
   ]);
 
-  // Execute native browser printer dialog via dedicated body portal
+  // Execute native browser printer dialog via dedicated body portal (waits for fonts + SVG decoding)
   const triggerPrinterDialog = (sheets: SheetRenderDescriptor[]) => {
     if (!sheets || sheets.length === 0) return;
     playCutePop();
@@ -1057,17 +1098,23 @@ export const AdminPrintAndReferenceTab: React.FC<{
     setPrintSheetsQueue(sheets);
     document.body.classList.add('admin-studio-printing');
 
+    let cleaned = false;
     const cleanup = () => {
+      if (cleaned) return;
+      cleaned = true;
       document.body.classList.remove('admin-studio-printing');
       setPrintSheetsQueue(null);
       window.removeEventListener('afterprint', cleanup);
     };
 
-    window.addEventListener('afterprint', cleanup);
-    setTimeout(() => {
-      window.print();
-      setTimeout(cleanup, 3000);
-    }, 180);
+    window.addEventListener('afterprint', cleanup, { once: true });
+    window.setTimeout(() => {
+      const portalEl = document.getElementById('admin-print-portal-root') || document;
+      void waitForPrintReadiness(portalEl, 1200).then(() => {
+        window.print();
+        window.setTimeout(cleanup, 1500);
+      });
+    }, 120);
   };
 
   // Cleanup body print class on unmount
@@ -1435,16 +1482,101 @@ export const AdminPrintAndReferenceTab: React.FC<{
         /* ADMIN PRINT & PDF CENTER (전체 인쇄 · 3종세트 · PDF저장/프린트)      */
         /* ================================================================== */
         <div className="space-y-4">
+          {/* 0. Blog Bundle PDF Link Manager (Connected to Public Web [인쇄] Menu) */}
+          <section className="bg-amber-50/75 rounded-xl border border-amber-200 p-4 shadow-2xs space-y-2.5">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <Link2 className="w-4 h-4 text-amber-700 shrink-0" />
+                <h3 className="text-xs sm:text-sm font-black text-amber-950">
+                  블로그 전체 합본 PDF 배포 주소 연결 (웹 상단 [인쇄] 메뉴 연동)
+                </h3>
+              </div>
+              <span className="px-2 py-0.5 rounded bg-white border border-amber-200 text-[10.5px] font-black text-amber-800">
+                {adminConfig.blogBundleUrl ? '연결됨' : '미설정 (준비중 안내 표시)'}
+              </span>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+              <input
+                type="url"
+                value={blogUrlDraft}
+                onChange={(e) => {
+                  setBlogUrlDraft(e.target.value);
+                  if (blogUrlNotice) setBlogUrlNotice(null);
+                }}
+                placeholder="예: https://blog.naver.com/해볼한국어_합본글주소"
+                className="flex-1 h-9 px-3 rounded-lg border border-amber-300 bg-white text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#3B1668]"
+              />
+              <div className="flex items-center gap-1.5 shrink-0">
+                <button
+                  type="button"
+                  onClick={handleSaveBlogUrl}
+                  className="h-9 px-3.5 rounded-lg bg-[#3B1668] hover:bg-[#2E1052] text-white text-xs font-black flex items-center gap-1.5 cursor-pointer transition-colors"
+                >
+                  <Check className="w-3.5 h-3.5" />
+                  <span>주소 저장</span>
+                </button>
+                {adminConfig.blogBundleUrl && (
+                  <>
+                    <a
+                      href={adminConfig.blogBundleUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-9 px-3 rounded-lg bg-white hover:bg-amber-100 border border-amber-300 text-amber-950 text-xs font-bold flex items-center gap-1 transition-colors"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>열기</span>
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        playCutePop();
+                        setBlogUrlDraft('');
+                        updateAdminConfig((prev) => ({ ...prev, blogBundleUrl: '' }));
+                        setBlogUrlNotice({ type: 'ok', msg: '블로그 주소 연결이 해제되었습니다.' });
+                        window.setTimeout(() => setBlogUrlNotice(null), 2500);
+                      }}
+                      className="h-9 px-2.5 rounded-lg bg-white hover:bg-rose-50 border border-amber-200 text-slate-500 hover:text-rose-600 text-xs font-bold flex items-center cursor-pointer transition-colors"
+                      title="연결 해제"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
+
+            {blogUrlNotice && (
+              <div
+                className={`text-[11.5px] font-bold flex items-center gap-1.5 ${
+                  blogUrlNotice.type === 'ok' ? 'text-emerald-700' : 'text-rose-600'
+                }`}
+              >
+                {blogUrlNotice.type === 'ok' ? (
+                  <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                ) : (
+                  <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                )}
+                <span>{blogUrlNotice.msg}</span>
+              </div>
+            )}
+
+            <p className="text-[11px] text-amber-900/80 leading-relaxed">
+              웹 일반 방문자에게는 <strong>1장 인쇄 · 10장 묶음 인쇄</strong>만 제공하고, 전 단원 합본 PDF는 블로그로 안내합니다.
+              여기에 저장하면 내 브라우저에서 즉시 확인 가능하며, <strong>모든 방문자에게 영구 적용</strong>하려면 확정된 블로그 주소를 채팅창에 알려주세요.
+            </p>
+          </section>
+
           {/* 1. Category Grid */}
           <section className="bg-white rounded-xl border border-slate-200 p-4 shadow-2xs space-y-3">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
                 <h3 className="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
                   <Printer className="w-4 h-4 text-indigo-600" />
-                  <span>해볼쌤 전용 통합 인쇄 · PDF 저장 센터</span>
+                  <span>해볼쌤 전용 통합 인쇄 · 합본 PDF 생성 센터</span>
                 </h3>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  3종세트·한글·교실한국어·용언·조사·총정리 6종·단어장 4종 모두 PDF 직접 저장과 프린트 인쇄를 지원합니다.
+                  블로그 배포용 전체 합본 PDF·PNG 저장 및 30단원 일괄 프린트는 관리자 전용인 이곳에서 언제든 원클릭으로 생성할 수 있습니다.
                 </p>
               </div>
               <span className="px-2.5 py-1 rounded-md bg-indigo-50 border border-indigo-200 text-indigo-800 text-[11px] font-black">
@@ -2125,6 +2257,7 @@ export const AdminPrintAndReferenceTab: React.FC<{
         <div
           aria-hidden="true"
           ref={offscreenPngRef}
+          className="admin-pdf-capture-node"
           style={{
             position: 'fixed',
             left: '-18000px',
@@ -2158,6 +2291,7 @@ export const AdminPrintAndReferenceTab: React.FC<{
               ref={(el) => {
                 offscreenPngZipRefs.current[idx] = el;
               }}
+              className="admin-pdf-capture-node"
               style={{
                 width: `${sheet.targetWidth}px`,
                 backgroundColor: '#ffffff',
@@ -2188,6 +2322,7 @@ export const AdminPrintAndReferenceTab: React.FC<{
               ref={(el) => {
                 offscreenPdfRefs.current[idx] = el;
               }}
+              className="admin-pdf-capture-node"
               style={{
                 width: `${sheet.targetWidth}px`,
                 backgroundColor: '#ffffff',

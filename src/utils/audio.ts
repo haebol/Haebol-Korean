@@ -570,6 +570,213 @@ if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
   };
 }
 
+const JAMO_CONSONANT_NAMES: Record<string, string> = {
+  'ㄱ': '기역', 'ㄴ': '니은', 'ㄷ': '디귿', 'ㄹ': '리을',
+  'ㅁ': '미음', 'ㅂ': '비읍', 'ㅅ': '시옷', 'ㅇ': '이응',
+  'ㅈ': '지읒', 'ㅊ': '치읓', 'ㅋ': '키읔', 'ㅌ': '티읕',
+  'ㅍ': '피읖', 'ㅎ': '히읗'
+};
+
+const JAMO_VOWEL_PRONUNCIATIONS: Record<string, string> = {
+  'ㅏ': '아', 'ㅓ': '어', 'ㅗ': '오', 'ㅜ': '우', 'ㅡ': '으', 'ㅣ': '이',
+  'ㅑ': '야', 'ㅕ': '여', 'ㅛ': '요', 'ㅠ': '유',
+  'ㅐ': '애', 'ㅔ': '에', 'ㅒ': '얘', 'ㅖ': '예',
+  'ㅘ': '와', 'ㅝ': '워', 'ㅚ': '외', 'ㅟ': '위', 'ㅢ': '의',
+  'ㅙ': '왜', 'ㅞ': '웨'
+};
+
+// 'ㄹ' 받침 어간 + '-다' 동사/형용사는 표준발음법상 [다](예사소리)이지만
+// 모바일 TTS가 [따]로 잘못 된소리 발음하는 경우가 많아 '어간 + 다'로 띄어 예사소리 발음을 유지함
+const RIEUL_DA_VERBS = new Set([
+  '놀다', '알다', '열다', '살다', '울다', '풀다',
+  '날다', '멀다', '만들다', '떠들다', '힘들다',
+  '걸다', '물다', '불다', '길다', '달다', '밀다', '팔다', '갈다', '돌다', '말다',
+  '들다', '줄다'
+]);
+
+// 정확한 단어 단위 표준발음 TTS 치환 테이블 (표시 텍스트는 절대 변경하지 않음)
+const EXACT_WORD_TTS_MAP: Record<string, string> = {
+  // 1) 표준발음법 제24항: 어간 받침 ㄴ(ㄵ), ㅁ(ㄻ) 뒤 어미 첫소리 ㄱ·ㄷ·ㅅ·ㅈ 된소리되기
+  // (주의: 사동 접미사 '-기-'가 붙는 '남기다' 등은 된소리되지 않으므로 제외)
+  '앉다': '안따', '앉고': '안꼬', '앉지': '안찌',
+  '안다': '안따', '안고': '안꼬', '안지': '안찌',
+  '신다': '신따', '신고': '신꼬', '신지': '신찌',
+  '남다': '남따', '남고': '남꼬', '남지': '남찌',
+  '참다': '참따', '참고': '참꼬', '참지': '참찌',
+  '심다': '심따', '심고': '심꼬', '심지': '심찌',
+  '닮다': '담따', '닮고': '담꼬', '닮지': '담찌',
+
+  // 2) 표준발음법 제23항: 받침 ㄱ(ㄲ,ㅋ,ㄳ,ㄺ), ㄷ(ㅅ,ㅆ,ㅈ,ㅊ,ㅌ), ㅂ(ㅍ,ㄼ,ㄿ,ㅄ) 뒤 된소리되기
+  // ㄱ·ㄲ·ㄺ 받침 용언
+  '먹다': '먹따', '먹고': '먹꼬', '먹지': '먹찌',
+  '닦다': '닥따', '닦고': '닥꼬', '닦지': '닥찌',
+  '깎다': '깍따', '깎고': '깍꼬', '깎지': '깍찌',
+  '꺾다': '꺽따', '꺾고': '꺽꼬', '꺾지': '꺽찌',
+  '작다': '작따', '작고': '작꼬', '작지': '작찌',
+  '섞다': '석따', '섞고': '석꼬', '섞지': '석찌',
+  '읽다': '익따', '읽고': '일꼬', '읽지': '익찌',
+
+  // ㄷ·ㅅ·ㅆ·ㅈ 받침 용언
+  '받다': '받따', '받고': '받꼬', '받지': '받찌',
+  '닫다': '닫따', '닫고': '닫꼬', '닫지': '닫찌',
+  '듣다': '듣따', '듣고': '듣꼬', '듣지': '듣찌',
+  '걷다': '걷따', '걷고': '걷꼬', '걷지': '걷찌',
+  '묻다': '묻따', '묻고': '묻꼬', '묻지': '묻찌',
+  '믿다': '믿따', '믿고': '믿꼬', '믿지': '믿찌',
+  '쏟다': '쏟따', '쏟고': '쏟꼬', '쏟지': '쏟찌',
+  '찾다': '찯따', '찾고': '찯꼬', '찾지': '찯찌',
+  '맞다': '맏따', '맞고': '맏꼬', '맞지': '맏찌',
+  '늦다': '늗따', '늦고': '늗꼬', '늦지': '늗찌',
+  '씻다': '씯따', '씻고': '씯꼬', '씻지': '씯찌',
+  '웃다': '욷따', '웃고': '욷꼬', '웃지': '욷찌',
+  '낫다': '낟따', '낫고': '낟꼬', '낫지': '낟찌',
+  '짓다': '짇따', '짓고': '짇꼬', '짓지': '짇찌',
+  '벗다': '벋따', '벗고': '벋꼬', '벗지': '벋찌',
+  '있다': '읻따', '있고': '읻꼬', '있지': '읻찌',
+
+  // ㅂ·ㄼ·ㄿ·ㅄ·ㄾ 받침 용언
+  '입다': '입따', '입고': '입꼬', '입지': '입찌',
+  '돕다': '돕따', '돕고': '돕꼬', '돕지': '돕찌',
+  '잡다': '잡따', '잡고': '잡꼬', '잡지': '잡찌',
+  '접다': '접따', '접고': '접꼬', '접지': '접찌',
+  '춥다': '춥따', '춥고': '춥꼬', '춥지': '춥찌',
+  '덥다': '덥따', '덥고': '덥꼬', '덥지': '덥찌', '덥지만': '덥찌만',
+  '어렵다': '어렵따', '어렵고': '어렵꼬', '어렵지': '어렵찌', '어렵지만': '어렵찌만',
+  '무겁다': '무겁따', '무겁고': '무겁꼬', '무겁지': '무겁찌', '무겁지만': '무겁찌만',
+  '밟다': '밥따', '밟고': '밥꼬', '밟지': '밥찌',
+  '넓다': '널따', '짧다': '짤따', '핥다': '할따',
+  '없다': '업따', '없고': '업꼬', '없지': '업찌',
+  '읊다': '읍따',
+
+  // 3) 표준발음법 제12항: ㅎ(ㄶ, ㅀ) 받침 거센소리되기(격음화) 및 탈락
+  '좋다': '조타', '좋고': '조코', '좋지': '조치', '좋았어요': '조아써요',
+  '까맣다': '까마타',
+  '넣다': '너타', '넣고': '너코', '넣지': '너치', '넣으세요': '너으세요',
+  '놓다': '노타', '놓고': '노코', '놓지': '노치', '놓을': '노을',
+  '그렇다': '그러타', '그렇지만': '그러치만', '어떻게': '어떠케',
+  '많다': '만타', '많지': '만치',
+  '끊다': '끈타', '끊어': '끄너',
+  '싫다': '실타', '싫지': '실치',
+  '잃다': '일타',
+  '뚫다': '뚤타', '뚫어': '뚜러',
+  '급해요': '그패요',
+
+  // 4) 구개음화 · 비음화 · 유음화 · 겹받침 연음 · 기존 세부 발음 보정
+  '붙이다': '부치다', '붙였어요': '부쳐써요', '붙여요': '부쳐요',
+  '끝나다': '끈나다', '끝날': '끈날', '끝났어요': '끈나써요', '끝나고': '끈나고',
+  '앉았어요': '안자써요', '앉아요': '안자요', '앉으세요': '안즈세요',
+  '읽어요': '일거요', '읽으세요': '일그세요',
+  '밟을': '발블',
+  '없어요': '업써요', '없었어요': '업써써요',
+  '있어요': '이써요', '있었어요': '이써써요', '있어': '이써',
+  '맛있어요': '마시써요', '재미있어요': '재미이써요', '재밌어요': '재미써요',
+  '쉽게': '쉽께',
+  '신었어요': '시넏써요', '신었다': '시넏따',
+  '나중에요': '나중엥요', '나중에': '나중엥',
+  '연락해요': '열라캐요', '연락드릴게요': '열락뜨릴께요',
+  '실내화': '실래화',
+  '낱말': '난말',
+  '앞으로': '아프로',
+  '엎드려': '업뜨려',
+  '깎아': '까까',
+  '닦았어요': '다까써요',
+  '섞은': '서끈',
+  '알겠어요': '알게써요', '모르겠어요': '모르게써요',
+
+  // 5) -(으)ㄹ게(요) 된소리되기 (표준발음법 제27항)
+  '그릴게': '그릴께', '도와줄게': '도와줄께', '알려줄게': '알려줄께',
+  '갈게': '갈께', '올게': '올께', '볼게': '볼께', '열게': '열께', '할게': '할께', '줄게': '줄께',
+
+  // 6) 교실한국어 · 조사 어휘 내 된소리 명사
+  '식판': '식빤', '식당': '식땅', '숫자': '숟짜', '박수': '박쑤', '악기': '악끼',
+  '색종이': '색쫑이', '과학실': '과학씰', '신발장': '신발짱', '책과': '책꽈', '걱정': '걱쩡',
+
+  // 7) 한글 겹받침 · 단독 음절 발음 (Pages 12-15)
+  '닭': '닥', '몫': '목', '곬': '골', '삶': '삼', '여덟': '여덜', '덟': '덜',
+  '밖': '박', '숲': '숩',
+  '앉': '안', '많': '만', '끊': '끈', '넓': '널', '짧': '짤',
+  '핥': '할', '싫': '실', '잃': '일', '없': '업', '뚫': '뚤'
+};
+
+// 조사가 붙어 활용되는 대표 된소리/비음화/구개음화 명사 어근 보정
+const SAFE_COMPOUND_TTS_RULES: Array<[RegExp, string]> = [
+  [/학교/g, '학꾜'],
+  [/책상/g, '책쌍'],
+  [/복도/g, '복또'],
+  [/숙제/g, '숙쩨'],
+  [/학생/g, '학쌩'],
+  [/학습지/g, '학씁찌'],
+  [/숟가락/g, '숟까락'],
+  [/젓가락/g, '젇까락'],
+  [/색연필/g, '생년필'],
+  [/초록불/g, '초록뿔'],
+  [/학년/g, '항년'],
+  [/밖에/g, '바께'],
+  [/같이/g, '가치'],
+  [/줄넘기/g, '줄럼끼']
+];
+
+function hasRieulBatchim(char: string): boolean {
+  const code = char.charCodeAt(0);
+  if (code < 0xAC00 || code > 0xD7A3) return false;
+  return (code - 0xAC00) % 28 === 8; // ㄹ 받침
+}
+
+export function normalizeKoreanForTts(text: string): string {
+  // Replace slashes with a pause (comma) so '일 / 하나' is read as '일, 하나' instead of pronouncing '슬래시'
+  let spokenText = text.replace(/\s*\/\s*/g, ', ');
+
+  const trimmed = spokenText.trim();
+  if (JAMO_CONSONANT_NAMES[trimmed]) {
+    return JAMO_CONSONANT_NAMES[trimmed];
+  }
+  if (JAMO_VOWEL_PRONUNCIATIONS[trimmed]) {
+    return JAMO_VOWEL_PRONUNCIATIONS[trimmed];
+  }
+
+  // 1) 다어절 구문 발음 보정 (표준발음법 제23항·제18항·제12항)
+  spokenText = spokenText
+    .replace(/(^|[^가-힣])못(\s+)해요(?=[^가-힣]|$)/g, '$1모태요')
+    .replace(/(^|[^가-힣])못(\s+)던져요(?=[^가-힣]|$)/g, '$1몯$2떤져요')
+    .replace(/(^|[^가-힣])못(\s+)참아요(?=[^가-힣]|$)/g, '$1몯$2차마요')
+    .replace(/(^|[^가-힣])몇(\s+)개/g, '$1멷$2깨')
+    .replace(/(^|[^가-힣])몇(\s+)시/g, '$1멷$2씨')
+    .replace(/(^|[^가-힣])몇(\s+)쪽/g, '$1멷$2쪽')
+    .replace(/(^|[^가-힣])몇(\s+)명/g, '$1면$2명')
+    .replace(/(^|[^가-힣])몇(\s+)학년/g, '$1며탕년')
+    .replace(/(^|[^가-힣])백(\s+)점(?=[^가-힣]|$)/g, '$1백$2쩜')
+    .replace(/(^|[^가-힣])토할(\s+)것(\s+)같아요(?=[^가-힣]|$)/g, '$1토할$2껃$3까타요');
+
+  // 2) 관형사형 '-(으)ㄹ' 뒤 의존명사 '거예요 / 수 / 것' 된소리되기 (표준발음법 제27항)
+  spokenText = spokenText.replace(/([가-힣])(\s+)거예요(?=[^가-힣]|$)/g, (m, prev, sp) =>
+    hasRieulBatchim(prev) ? `${prev}${sp}꺼예요` : m
+  );
+  spokenText = spokenText.replace(/([가-힣])(\s+)수(\s+)(있|없)/g, (m, prev, sp1, sp2, next) =>
+    hasRieulBatchim(prev) ? `${prev}${sp1}쑤${sp2}${next}` : m
+  );
+
+  // 3) 정확한 한글 어절 단위 1-pass 치환 (겹치환·부분문자열 오치환 원천 차단)
+  spokenText = spokenText.replace(/[가-힣]+/g, (word) => {
+    if (RIEUL_DA_VERBS.has(word)) {
+      return `${word.slice(0, -1)} 다`;
+    }
+    if (EXACT_WORD_TTS_MAP[word]) {
+      return EXACT_WORD_TTS_MAP[word];
+    }
+    // 어미 '-(으)ㄹ게요' (올게요, 열게요, 볼게요, 드릴게요, 빌려줄게요 등)는 항상 [께요]
+    if (word.length >= 3 && word.endsWith('게요') && hasRieulBatchim(word[word.length - 3])) {
+      return `${word.slice(0, -2)}께요`;
+    }
+    let adjusted = word;
+    for (const [pattern, replacement] of SAFE_COMPOUND_TTS_RULES) {
+      adjusted = adjusted.replace(pattern, replacement);
+    }
+    return adjusted;
+  });
+
+  return spokenText;
+}
+
 // Speak text using Web Speech API with advanced natural Korean voice
 export function speakKorean(
   text: string,
@@ -588,87 +795,8 @@ export function speakKorean(
     }
     window.speechSynthesis.cancel(); // Cancel current playing
 
-    // Replace slashes with a pause (comma) so '일 / 하나' is read as '일, 하나' instead of pronouncing '슬래시'
-    let spokenText = text.replace(/\s*\/\s*/g, ', ');
-
-    // For single hangul jamo consonants, speak clear pronunciation name for child learning
-    const jamoNames: Record<string, string> = {
-      'ㄱ': '기역', 'ㄴ': '니은', 'ㄷ': '디귿', 'ㄹ': '리을',
-      'ㅁ': '미음', 'ㅂ': '비읍', 'ㅅ': '시옷', 'ㅇ': '이응',
-      'ㅈ': '지읒', 'ㅊ': '치읓', 'ㅋ': '키읔', 'ㅌ': '티읕',
-      'ㅍ': '피읖', 'ㅎ': '히읗'
-    };
-    if (jamoNames[spokenText.trim()]) {
-      spokenText = jamoNames[spokenText.trim()];
-    }
-
-    // For single hangul jamo vowels (ㅏ, ㅓ, ㅗ, ㅜ, etc.), map to full syllable block ('아', '어', '오', '우'...)
-    // because isolated jamo causes TTS engines to glitch or spell-pronounce
-    const vowelPronunciations: Record<string, string> = {
-      'ㅏ': '아', 'ㅓ': '어', 'ㅗ': '오', 'ㅜ': '우', 'ㅡ': '으', 'ㅣ': '이',
-      'ㅑ': '야', 'ㅕ': '여', 'ㅛ': '요', 'ㅠ': '유',
-      'ㅐ': '애', 'ㅔ': '에', 'ㅒ': '얘', 'ㅖ': '예',
-      'ㅘ': '와', 'ㅝ': '워', 'ㅚ': '외', 'ㅟ': '위', 'ㅢ': '의',
-      'ㅙ': '왜', 'ㅞ': '웨'
-    };
-    if (vowelPronunciations[spokenText.trim()]) {
-      spokenText = vowelPronunciations[spokenText.trim()];
-    }
-
-    // Specific pronunciation overrides for Korean TTS
-    // 1. 'ㄹ' 받침 어간 + '-다' 동사/형용사는 표준발음법상 [다](예사소리)이지만 모바일 TTS가 [따]로 잘못 된소리 발음하는 경우가 많아 '어간 + 다'로 띄어 예사소리 발음을 유도함
-    // 2. '앉다' standard pronunciation is [안따] (어간 ㄵ 받침 뒤 된소리), but TTS reads [안다]. Replacing with '안따'.
-    // 3. '신다' standard pronunciation is [신따] (어간 끝 ㄴ 받침 뒤 된소리), but TTS reads [신다]. Replacing with '신따'.
-    // 4. '나중에요' / '나중에': Ensure clear ㅇ 받침 pronunciation [나중엥요], [나중엥] instead of slurred [나주에요]
-    // 5. '신었어요': Pronounce as [시넏써요] instead of incorrect [시녔어요]
-    const rieulDaVerbs = [
-      '놀다', '알다', '열다', '살다', '울다', '풀다',
-      '날다', '멀다', '만들다', '떠들다', '힘들다',
-      '걸다', '물다', '불다', '길다', '달다', '밀다', '팔다', '갈다', '돌다', '말다'
-    ];
-    for (const verb of rieulDaVerbs) {
-      const stem = verb.slice(0, -1);
-      const regex = new RegExp(`(^|[^가-힣])${verb}(?=[^가-힣]|$)`, 'g');
-      spokenText = spokenText.replace(regex, `$1${stem} 다`);
-    }
-    spokenText = spokenText.replace(/(^|[^가-힣])앉다(?=[^가-힣]|$)/g, '$1안따');
-    spokenText = spokenText.replace(/(^|[^가-힣])신다(?=[^가-힣]|$)/g, '$1신따');
-    spokenText = spokenText.replace(/(^|[^가-힣])나중에요(?=[^가-힣]|$)/g, '$1나중엥요');
-    spokenText = spokenText.replace(/(^|[^가-힣])나중에(?=[^가-힣]|$)/g, '$1나중엥');
-    spokenText = spokenText.replace(/(^|[^가-힣])신었어요(?=[^가-힣]|$)/g, '$1시넏써요');
-    spokenText = spokenText.replace(/(^|[^가-힣])신었다(?=[^가-힣]|$)/g, '$1시넏따');
-    // 6. Page 12 뒤 자음 발음 (ㄺ, ㄻ, ㄿ): ㄺ=[ㄱ], ㄻ=[ㅁ], ㄿ=[ㅂ], (예외) ㄺ+ㄱ=[ㄹ]
-    spokenText = spokenText.replace(/(^|[^가-힣])읽다(?=[^가-힣]|$)/g, '$1익따');
-    spokenText = spokenText.replace(/(^|[^가-힣])닮다(?=[^가-힣]|$)/g, '$1담따');
-    spokenText = spokenText.replace(/(^|[^가-힣])읊다(?=[^가-힣]|$)/g, '$1읍따');
-    spokenText = spokenText.replace(/(^|[^가-힣])닭(?=[^가-힣]|$)/g, '$1닥');
-    spokenText = spokenText.replace(/(^|[^가-힣])읽고(?=[^가-힣]|$)/g, '$1일꼬');
-    // 7. Pages 13-15 앞 자음 발음 (ㄳ, ㄵ, ㄶ, ㄼ, ㄾ, ㅀ, ㅄ)
-    spokenText = spokenText.replace(/(^|[^가-힣])몫(?=[^가-힣]|$)/g, '$1목');
-    spokenText = spokenText.replace(/(^|[^가-힣])앉(?=[^가-힣]|$)/g, '$1안');
-    spokenText = spokenText.replace(/(^|[^가-힣])많(?=[^가-힣]|$)/g, '$1만');
-    spokenText = spokenText.replace(/(^|[^가-힣])많다(?=[^가-힣]|$)/g, '$1만타');
-    spokenText = spokenText.replace(/(^|[^가-힣])끊다(?=[^가-힣]|$)/g, '$1끈타');
-    spokenText = spokenText.replace(/(^|[^가-힣])끊어(?=[^가-힣]|$)/g, '$1끄너');
-    spokenText = spokenText.replace(/(^|[^가-힣])끊(?=[^가-힣]|$)/g, '$1끈');
-    spokenText = spokenText.replace(/(^|[^가-힣])넓다(?=[^가-힣]|$)/g, '$1널따');
-    spokenText = spokenText.replace(/(^|[^가-힣])넓(?=[^가-힣]|$)/g, '$1널');
-    spokenText = spokenText.replace(/(^|[^가-힣])짧다(?=[^가-힣]|$)/g, '$1짤따');
-    spokenText = spokenText.replace(/(^|[^가-힣])짧(?=[^가-힣]|$)/g, '$1짤');
-    spokenText = spokenText.replace(/(^|[^가-힣])핥다(?=[^가-힣]|$)/g, '$1할따');
-    spokenText = spokenText.replace(/(^|[^가-힣])핥(?=[^가-힣]|$)/g, '$1할');
-    spokenText = spokenText.replace(/(^|[^가-힣])밟다(?=[^가-힣]|$)/g, '$1밥따');
-    spokenText = spokenText.replace(/(^|[^가-힣])여덟(?=[^가-힣]|$)/g, '$1여덜');
-    spokenText = spokenText.replace(/(^|[^가-힣])덟(?=[^가-힣]|$)/g, '$1덜');
-    spokenText = spokenText.replace(/(^|[^가-힣])싫다(?=[^가-힣]|$)/g, '$1실타');
-    spokenText = spokenText.replace(/(^|[^가-힣])싫(?=[^가-힣]|$)/g, '$1실');
-    spokenText = spokenText.replace(/(^|[^가-힣])잃다(?=[^가-힣]|$)/g, '$1일타');
-    spokenText = spokenText.replace(/(^|[^가-힣])잃(?=[^가-힣]|$)/g, '$1일');
-    spokenText = spokenText.replace(/(^|[^가-힣])없다(?=[^가-힣]|$)/g, '$1업따');
-    spokenText = spokenText.replace(/(^|[^가-힣])없(?=[^가-힣]|$)/g, '$1업');
-    spokenText = spokenText.replace(/(^|[^가-힣])뚫다(?=[^가-힣]|$)/g, '$1뚤타');
-    spokenText = spokenText.replace(/(^|[^가-힣])뚫어(?=[^가-힣]|$)/g, '$1뚜러');
-    spokenText = spokenText.replace(/(^|[^가-힣])뚫(?=[^가-힣]|$)/g, '$1뚤');
+    // Normalize text strictly for Korean TTS pronunciation (displayed text is never modified)
+    const spokenText = normalizeKoreanForTts(text);
 
     const utterance = new SpeechSynthesisUtterance(spokenText);
     utterance.lang = 'ko-KR';
@@ -701,297 +829,6 @@ export function speakKorean(
     console.warn('SpeechSynthesis error:', err);
     if (onEnd) onEnd();
     return false;
-  }
-}
-
-export type SitcomSfxType =
-  | 'slap'
-  | 'kick'
-  | 'drop'
-  | 'roll'
-  | 'squash'
-  | 'thunder'
-  | 'explode'
-  | 'chomp';
-
-export function playCameraShutterSfx(): void {
-  try {
-    const ctx = getAudioContext();
-    if (!ctx) return;
-    const now = ctx.currentTime;
-
-    // Two-stage mechanical shutter snap
-    [0, 0.06].forEach((offset, idx) => {
-      const dur = 0.032;
-      const bufSize = Math.floor(ctx.sampleRate * dur);
-      const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
-      const data = buf.getChannelData(0);
-      for (let i = 0; i < bufSize; i++) {
-        data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufSize * 0.35));
-      }
-      const src = ctx.createBufferSource();
-      src.buffer = buf;
-
-      const hp = ctx.createBiquadFilter();
-      hp.type = 'highpass';
-      hp.frequency.setValueAtTime(idx === 0 ? 1800 : 2400, now + offset);
-
-      const gain = ctx.createGain();
-      gain.gain.setValueAtTime(0.28, now + offset);
-      gain.gain.exponentialRampToValueAtTime(0.005, now + offset + dur);
-
-      src.connect(hp);
-      hp.connect(gain);
-      gain.connect(ctx.destination);
-      src.start(now + offset);
-      src.stop(now + offset + dur + 0.01);
-    });
-
-    // Sparkle ping right after shutter
-    const osc = ctx.createOscillator();
-    const g = ctx.createGain();
-    osc.type = 'triangle';
-    osc.frequency.setValueAtTime(1174.66, now + 0.11); // D6
-    osc.frequency.exponentialRampToValueAtTime(1760, now + 0.24); // A6
-    g.gain.setValueAtTime(0.001, now + 0.11);
-    g.gain.linearRampToValueAtTime(0.18, now + 0.13);
-    g.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
-    osc.connect(g);
-    g.connect(ctx.destination);
-    osc.start(now + 0.11);
-    osc.stop(now + 0.33);
-  } catch {
-    // Ignore audio errors
-  }
-}
-
-export function playSitcomBlunderSfx(sfx: SitcomSfxType): void {
-  try {
-    const ctx = getAudioContext();
-    if (!ctx) return;
-    const now = ctx.currentTime;
-
-    if (sfx === 'kick') {
-      // Swoop -> comic punch -> falling slide whistle
-      const punch = ctx.createOscillator();
-      const punchGain = ctx.createGain();
-      punch.type = 'triangle';
-      punch.frequency.setValueAtTime(190, now);
-      punch.frequency.exponentialRampToValueAtTime(55, now + 0.14);
-      punchGain.gain.setValueAtTime(0.45, now);
-      punchGain.gain.exponentialRampToValueAtTime(0.005, now + 0.15);
-      punch.connect(punchGain);
-      punchGain.connect(ctx.destination);
-      punch.start(now);
-      punch.stop(now + 0.16);
-
-      const whistle = ctx.createOscillator();
-      const wGain = ctx.createGain();
-      whistle.type = 'sine';
-      whistle.frequency.setValueAtTime(980, now + 0.1);
-      whistle.frequency.exponentialRampToValueAtTime(220, now + 0.62);
-      wGain.gain.setValueAtTime(0.001, now + 0.1);
-      wGain.gain.linearRampToValueAtTime(0.22, now + 0.14);
-      wGain.gain.exponentialRampToValueAtTime(0.001, now + 0.64);
-      whistle.connect(wGain);
-      wGain.connect(ctx.destination);
-      whistle.start(now + 0.1);
-      whistle.stop(now + 0.66);
-      return;
-    }
-
-    if (sfx === 'thunder') {
-      // High zap + deep thunder rumble
-      const zap = ctx.createOscillator();
-      const zGain = ctx.createGain();
-      zap.type = 'sawtooth';
-      zap.frequency.setValueAtTime(920, now);
-      zap.frequency.exponentialRampToValueAtTime(140, now + 0.18);
-      zGain.gain.setValueAtTime(0.3, now);
-      zGain.gain.exponentialRampToValueAtTime(0.005, now + 0.2);
-      zap.connect(zGain);
-      zGain.connect(ctx.destination);
-      zap.start(now);
-      zap.stop(now + 0.21);
-
-      const dur = 0.7;
-      const bufSize = Math.floor(ctx.sampleRate * dur);
-      const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
-      const d = buf.getChannelData(0);
-      for (let i = 0; i < bufSize; i++) {
-        d[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufSize * 0.45));
-      }
-      const noise = ctx.createBufferSource();
-      noise.buffer = buf;
-      const lp = ctx.createBiquadFilter();
-      lp.type = 'lowpass';
-      lp.frequency.setValueAtTime(260, now + 0.05);
-      const nGain = ctx.createGain();
-      nGain.gain.setValueAtTime(0.45, now + 0.05);
-      nGain.gain.exponentialRampToValueAtTime(0.005, now + 0.05 + dur);
-      noise.connect(lp);
-      lp.connect(nGain);
-      nGain.connect(ctx.destination);
-      noise.start(now + 0.05);
-      noise.stop(now + 0.06 + dur);
-      return;
-    }
-
-    if (sfx === 'squash') {
-      // Heavy brick drop + low cartoon accordion squish
-      const thud = ctx.createOscillator();
-      const tGain = ctx.createGain();
-      thud.type = 'sine';
-      thud.frequency.setValueAtTime(180, now);
-      thud.frequency.exponentialRampToValueAtTime(48, now + 0.22);
-      tGain.gain.setValueAtTime(0.45, now);
-      tGain.gain.exponentialRampToValueAtTime(0.005, now + 0.24);
-      thud.connect(tGain);
-      tGain.connect(ctx.destination);
-      thud.start(now);
-      thud.stop(now + 0.25);
-
-      const squish = ctx.createOscillator();
-      const sGain = ctx.createGain();
-      squish.type = 'sawtooth';
-      squish.frequency.setValueAtTime(280, now + 0.08);
-      squish.frequency.linearRampToValueAtTime(110, now + 0.38);
-      const lp = ctx.createBiquadFilter();
-      lp.type = 'lowpass';
-      lp.frequency.setValueAtTime(750, now + 0.08);
-      sGain.gain.setValueAtTime(0.2, now + 0.08);
-      sGain.gain.exponentialRampToValueAtTime(0.005, now + 0.4);
-      squish.connect(lp);
-      lp.connect(sGain);
-      sGain.connect(ctx.destination);
-      squish.start(now + 0.08);
-      squish.stop(now + 0.42);
-      return;
-    }
-
-    if (sfx === 'roll') {
-      // Rapid bouncy comic footsteps / rolling hops
-      const freqs = [340, 420, 500, 390, 470, 580];
-      freqs.forEach((f, idx) => {
-        const osc = ctx.createOscillator();
-        const g = ctx.createGain();
-        osc.type = 'sine';
-        const t = now + idx * 0.075;
-        osc.frequency.setValueAtTime(f, t);
-        osc.frequency.exponentialRampToValueAtTime(f * 1.28, t + 0.06);
-        g.gain.setValueAtTime(0.2, t);
-        g.gain.exponentialRampToValueAtTime(0.005, t + 0.065);
-        osc.connect(g);
-        g.connect(ctx.destination);
-        osc.start(t);
-        osc.stop(t + 0.07);
-      });
-      return;
-    }
-
-    if (sfx === 'explode') {
-      // Pop burst + descending sputter
-      const dur = 0.35;
-      const bufSize = Math.floor(ctx.sampleRate * dur);
-      const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
-      const d = buf.getChannelData(0);
-      for (let i = 0; i < bufSize; i++) {
-        d[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufSize * 0.25));
-      }
-      const noise = ctx.createBufferSource();
-      noise.buffer = buf;
-      const bp = ctx.createBiquadFilter();
-      bp.type = 'bandpass';
-      bp.frequency.setValueAtTime(900, now);
-      bp.frequency.exponentialRampToValueAtTime(220, now + dur);
-      const g = ctx.createGain();
-      g.gain.setValueAtTime(0.38, now);
-      g.gain.exponentialRampToValueAtTime(0.005, now + dur);
-      noise.connect(bp);
-      bp.connect(g);
-      g.connect(ctx.destination);
-      noise.start(now);
-      noise.stop(now + dur + 0.01);
-
-      const beep = ctx.createOscillator();
-      const bGain = ctx.createGain();
-      beep.type = 'square';
-      beep.frequency.setValueAtTime(640, now + 0.14);
-      beep.frequency.setValueAtTime(320, now + 0.24);
-      bGain.gain.setValueAtTime(0.14, now + 0.14);
-      bGain.gain.exponentialRampToValueAtTime(0.005, now + 0.38);
-      beep.connect(bGain);
-      bGain.connect(ctx.destination);
-      beep.start(now + 0.14);
-      beep.stop(now + 0.39);
-      return;
-    }
-
-    if (sfx === 'chomp') {
-      // Two snappy cartoon bites
-      [0, 0.18].forEach((offset) => {
-        const osc = ctx.createOscillator();
-        const g = ctx.createGain();
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(420, now + offset);
-        osc.frequency.exponentialRampToValueAtTime(110, now + offset + 0.11);
-        const lp = ctx.createBiquadFilter();
-        lp.type = 'lowpass';
-        lp.frequency.setValueAtTime(1100, now + offset);
-        g.gain.setValueAtTime(0.28, now + offset);
-        g.gain.exponentialRampToValueAtTime(0.005, now + offset + 0.12);
-        osc.connect(lp);
-        lp.connect(g);
-        g.connect(ctx.destination);
-        osc.start(now + offset);
-        osc.stop(now + offset + 0.13);
-      });
-      return;
-    }
-
-    if (sfx === 'drop') {
-      // Slide down + bouncy bonk
-      const slide = ctx.createOscillator();
-      const sGain = ctx.createGain();
-      slide.type = 'sine';
-      slide.frequency.setValueAtTime(780, now);
-      slide.frequency.exponentialRampToValueAtTime(180, now + 0.26);
-      sGain.gain.setValueAtTime(0.26, now);
-      sGain.gain.exponentialRampToValueAtTime(0.005, now + 0.28);
-      slide.connect(sGain);
-      sGain.connect(ctx.destination);
-      slide.start(now);
-      slide.stop(now + 0.29);
-
-      const bonk = ctx.createOscillator();
-      const bGain = ctx.createGain();
-      bonk.type = 'triangle';
-      bonk.frequency.setValueAtTime(220, now + 0.24);
-      bonk.frequency.exponentialRampToValueAtTime(420, now + 0.36);
-      bGain.gain.setValueAtTime(0.25, now + 0.24);
-      bGain.gain.exponentialRampToValueAtTime(0.005, now + 0.4);
-      bonk.connect(bGain);
-      bGain.connect(ctx.destination);
-      bonk.start(now + 0.24);
-      bonk.stop(now + 0.42);
-      return;
-    }
-
-    // Default 'slap': Bandage snap + boing!
-    const snap = ctx.createOscillator();
-    const nGain = ctx.createGain();
-    snap.type = 'triangle';
-    snap.frequency.setValueAtTime(520, now);
-    snap.frequency.exponentialRampToValueAtTime(260, now + 0.08);
-    snap.frequency.exponentialRampToValueAtTime(620, now + 0.26);
-    nGain.gain.setValueAtTime(0.28, now);
-    nGain.gain.exponentialRampToValueAtTime(0.005, now + 0.32);
-    snap.connect(nGain);
-    nGain.connect(ctx.destination);
-    snap.start(now);
-    snap.stop(now + 0.33);
-  } catch {
-    // Ignore audio errors
   }
 }
 

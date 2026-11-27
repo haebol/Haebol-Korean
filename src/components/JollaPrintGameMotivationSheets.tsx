@@ -150,7 +150,7 @@ export const JollaJamoTerritoryBoardSheet: React.FC = () => {
 
   return (
     <div
-      className="chapter-extra-a4-sheet print-sheet printable-a4-page relative w-full max-w-[1040px] bg-white rounded-xl border-[3px] border-slate-800 shadow-md mx-auto flex flex-col justify-between overflow-hidden font-school-base"
+      className="chapter-extra-a4-sheet print-sheet printable-a4-page relative w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 shadow-lg mx-auto flex flex-col justify-between overflow-hidden font-school-base"
       style={{ minHeight: '690px', padding: '16px 22px 14px' }}
     >
       <PrintableSheetHeader
@@ -382,7 +382,7 @@ export const JollaJamoTerritoryBoardSheet: React.FC = () => {
         </div>
       </div>
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
-        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        <span className="font-medium">해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
       </div>
     </div>
   );
@@ -632,7 +632,7 @@ export const JollaConsonantBingoSheet: React.FC = () => {
 
   return (
     <div
-      className="chapter-extra-a4-sheet print-sheet printable-a4-page relative w-full max-w-[1040px] bg-white rounded-xl border-[3px] border-amber-600 shadow-md mx-auto flex flex-col justify-between overflow-hidden font-school-base"
+      className="chapter-extra-a4-sheet print-sheet printable-a4-page relative w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 shadow-lg mx-auto flex flex-col justify-between overflow-hidden font-school-base"
       style={{ minHeight: '690px', padding: '16px 22px 14px' }}
     >
       <PrintableSheetHeader
@@ -708,7 +708,7 @@ export const JollaConsonantBingoSheet: React.FC = () => {
 
       <div className="mt-2 pt-1.5 border-t border-slate-200 flex items-center justify-between text-[11px] font-bold text-slate-600 shrink-0">
         <span className="text-[9.5px] font-medium text-slate-500 font-korean-gothic shrink-0">
-          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
+          해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
         <span className="text-right">
           <strong>규칙:</strong> ① 자음 14자 중 8개를 빈칸에 써요 → ② 부르는 자음을 찾아 큰 소리로 읽고 ○ 표! → ③ 2줄 완성 시 &quot;빙고!&quot;
@@ -724,7 +724,7 @@ export const JollaVowelBingoSheet: React.FC = () => {
 
   return (
     <div
-      className="chapter-extra-a4-sheet print-sheet printable-a4-page relative w-full max-w-[1040px] bg-white rounded-xl border-[3px] border-sky-600 shadow-md mx-auto flex flex-col justify-between overflow-hidden font-school-base"
+      className="chapter-extra-a4-sheet print-sheet printable-a4-page relative w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 shadow-lg mx-auto flex flex-col justify-between overflow-hidden font-school-base"
       style={{ minHeight: '690px', padding: '16px 22px 14px' }}
     >
       <PrintableSheetHeader
@@ -801,7 +801,7 @@ export const JollaVowelBingoSheet: React.FC = () => {
 
       <div className="mt-2 pt-1.5 border-t border-slate-200 flex items-center justify-between text-[11px] font-bold text-slate-600 shrink-0">
         <span className="text-[9.5px] font-medium text-slate-500 font-korean-gothic shrink-0">
-          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
+          해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
         <span className="text-right">
           <strong>규칙:</strong> ① 모음 10자(+ㅐ, ㅔ) 중 8개를 빈칸에 써요 → ② 부르는 모음 소리를 따라 읽고 ○ 표! → ③ 2줄 완성 시 &quot;빙고!&quot;
@@ -855,7 +855,7 @@ export const JollaMountainStampSheet: React.FC = () => {
 
   return (
     <div
-      className="chapter-extra-a4-sheet print-sheet printable-a4-page relative w-full max-w-[1040px] bg-white rounded-xl border-[3px] border-emerald-700 shadow-md mx-auto flex flex-col justify-between overflow-hidden font-school-base"
+      className="chapter-extra-a4-sheet print-sheet printable-a4-page relative w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 shadow-lg mx-auto flex flex-col justify-between overflow-hidden font-school-base"
       style={{ minHeight: '690px', padding: '16px 22px 14px' }}
     >
       <PrintableSheetHeader
@@ -1008,7 +1008,7 @@ export const JollaMountainStampSheet: React.FC = () => {
         ))}
       </div>
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
-        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        <span className="font-medium">해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
       </div>
     </div>
   );
@@ -1024,7 +1024,7 @@ const DICE_ICONS = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
 export const JollaDiceFactorySheet: React.FC = () => {
   return (
     <div
-      className="chapter-extra-a4-sheet print-sheet printable-a4-page relative w-full max-w-[1040px] bg-white rounded-xl border-[3px] border-indigo-700 shadow-md mx-auto flex flex-col justify-between overflow-hidden font-school-base"
+      className="chapter-extra-a4-sheet print-sheet printable-a4-page relative w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 shadow-lg mx-auto flex flex-col justify-between overflow-hidden font-school-base"
       style={{ minHeight: '690px', padding: '16px 22px 14px' }}
     >
       <PrintableSheetHeader
@@ -1150,7 +1150,7 @@ export const JollaDiceFactorySheet: React.FC = () => {
         </div>
       </div>
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
-        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        <span className="font-medium">해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
       </div>
     </div>
   );
@@ -1197,7 +1197,7 @@ export const JollaHeroAwardCouponSheet: React.FC = () => {
 
   return (
     <div
-      className="chapter-extra-a4-sheet print-sheet printable-a4-page relative w-full max-w-[1040px] bg-white rounded-xl border-[3px] border-amber-500 shadow-md mx-auto flex flex-col justify-between overflow-hidden font-school-base"
+      className="chapter-extra-a4-sheet print-sheet printable-a4-page relative w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 shadow-lg mx-auto flex flex-col justify-between overflow-hidden font-school-base"
       style={{ minHeight: '690px', padding: '18px 22px' }}
     >
       <div className="grid grid-cols-12 gap-5 flex-1">
@@ -1262,7 +1262,7 @@ export const JollaHeroAwardCouponSheet: React.FC = () => {
             </div>
             <div className="flex items-center gap-2.5">
               <div className="text-right">
-                <div className="text-xs font-bold text-slate-500">해볼 한국어</div>
+                <div className="text-xs font-bold text-slate-500">해볼한국어</div>
                 <div className="text-base font-black text-slate-900">선생님: ______________</div>
               </div>
               <div className="w-12 h-12 rounded-full border-2 border-dashed border-rose-400 bg-rose-50/50 flex items-center justify-center text-[10px] font-black text-rose-500">
@@ -1324,7 +1324,7 @@ export const JollaHeroAwardCouponSheet: React.FC = () => {
         </div>
       </div>
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
-        <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+        <span className="font-medium">해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
       </div>
     </div>
   );

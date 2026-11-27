@@ -63,7 +63,7 @@ export interface EmergencyCardData {
   }[];
 }
 
-export type LearningTrack = 'hangeul' | 'classroom' | 'verb' | 'particle';
+export type LearningTrack = 'hangeul' | 'classroom' | 'verb' | 'particle' | 'exam' | 'play';
 export type LearningMethod = 'flashcard' | 'worksheet' | 'game';
 export type ActiveTab = 'hangeul' | 'classroom' | 'study' | 'games' | LearningTrack;
 
@@ -101,99 +101,6 @@ export const CIRCLED_NUMBERS: Record<number, string> = {
 };
 
 export const getCircledNumber = (n: number): string => CIRCLED_NUMBERS[n] || `(${n})`;
-
-export interface NavMenuSubLabels {
-  hangeul: string;
-  classroom: string;
-  study: string;
-  games: string;
-  print?: string;
-}
-
-export const NAV_SUB_LABELS: Record<SupportedLanguage, NavMenuSubLabels> = {
-  en: {
-    hangeul: 'Hangeul',
-    classroom: 'Classroom',
-    study: 'Flashcards',
-    games: 'Games',
-    print: 'Print'
-  },
-  vi: {
-    hangeul: 'Bảng chữ cái',
-    classroom: 'Tiếng Hàn lớp',
-    study: 'Thẻ từ vựng',
-    games: 'Trò chơi',
-    print: 'In ấn'
-  },
-  bn: {
-    hangeul: 'বর্ণমালা',
-    classroom: 'শ্রেণিকক্ষ',
-    study: 'শব্দকার্ড',
-    games: 'খেলা',
-    print: 'প্রিন্ট'
-  },
-  zh: {
-    hangeul: '韩文字母',
-    classroom: '课堂韩语',
-    study: '生词卡片',
-    games: '趣味游戏',
-    print: '打印'
-  },
-  ru: {
-    hangeul: 'Хангыль',
-    classroom: 'В классе',
-    study: 'Карточки',
-    games: 'Игры',
-    print: 'Печать'
-  },
-  ja: {
-    hangeul: 'ハングル',
-    classroom: '教室の韓国語',
-    study: '単語カード',
-    games: 'ゲーム',
-    print: '印刷'
-  },
-  mn: {
-    hangeul: 'Хангыль',
-    classroom: 'Ангийн хэл',
-    study: 'Үгийн карт',
-    games: 'Тоглоом',
-    print: 'Хэвлэх'
-  }
-};
-
-export interface TrackNavSubLabels {
-  hangeul: string;
-  classroom: string;
-  verb: string;
-  particle: string;
-}
-
-export const TRACK_NAV_LABELS: Record<SupportedLanguage, TrackNavSubLabels> = {
-  en: { hangeul: 'Letter', classroom: 'Vocab', verb: 'Verb', particle: 'Particle' },
-  vi: { hangeul: 'Chữ cái', classroom: 'Từ vựng', verb: 'Động từ', particle: 'Trợ từ' },
-  bn: { hangeul: 'বর্ণ', classroom: 'শব্দ', verb: 'ক্রিয়া', particle: 'বিভক্তি' },
-  zh: { hangeul: '字母', classroom: '词汇', verb: '谓词', particle: '助词' },
-  ru: { hangeul: 'Буквы', classroom: 'Слова', verb: 'Глагол', particle: 'Частица' },
-  ja: { hangeul: '文字', classroom: '語彙', verb: '用言', particle: '助詞' },
-  mn: { hangeul: 'Үсэг', classroom: 'Үгс', verb: 'Үйл үг', particle: 'Нөхцөл' },
-};
-
-export interface MethodNavSubLabels {
-  flashcard: string;
-  worksheet: string;
-  game: string;
-}
-
-export const METHOD_NAV_LABELS: Record<SupportedLanguage, MethodNavSubLabels> = {
-  en: { flashcard: 'Flashcard', worksheet: 'Worksheet', game: 'Game' },
-  vi: { flashcard: 'Thẻ học', worksheet: 'Phiếu tập', game: 'Trò chơi' },
-  bn: { flashcard: 'ফ্ল্যাশকার্ড', worksheet: 'ওয়ার্কশিট', game: 'খেলা' },
-  zh: { flashcard: '闪卡', worksheet: '练习册', game: '游戏' },
-  ru: { flashcard: 'Карточки', worksheet: 'Листы', game: 'Игра' },
-  ja: { flashcard: 'カード', worksheet: 'プリント', game: 'ゲーム' },
-  mn: { flashcard: 'Карт', worksheet: 'Дасгал', game: 'Тоглоом' },
-};
 
 export interface SubMenuLabels {
   // 1~5: 한글 (Hangeul)

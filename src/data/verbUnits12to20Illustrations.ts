@@ -42,9 +42,12 @@ export const GEIMHADA_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.o
     <path d="M 36 40 L 18 50" stroke="rgb(79,70,229)" stroke-width="4.2" stroke-linecap="round" />
     <circle cx="17" cy="50.5" r="3.2" fill="rgb(254,215,170)" />
 
+    <!-- Neck -->
+    <rect x="21.5" y="31" width="7" height="6.5" rx="2.5" fill="rgb(254,215,170)" />
+
     <!-- Head -->
     <circle cx="25" cy="20" r="13.5" fill="rgb(254,215,170)" />
-    <path d="M 10.7 20 C 9.6 -0.4 40.4 -0.4 39.3 20 C 38.5 13 33 9 25 9 C 17 9 11.5 13 10.7 20 Z" fill="rgb(51,65,85)" />
+    <path d="M 10.9 19.5 A 14.1 14.7 0 0 1 39.1 19.5 C 37.8 14.5 32.2 12.5 25 12.5 C 17.8 12.5 12.2 14.5 10.9 19.5 Z" fill="rgb(51,65,85)" />
     <circle cx="20.5" cy="20.5" r="1.7" fill="rgb(30,41,59)" />
     <circle cx="29.5" cy="20.5" r="1.7" fill="rgb(30,41,59)" />
     <circle cx="21.1" cy="19.8" r="0.6" fill="rgb(255,255,255)" />
@@ -85,9 +88,12 @@ export const JULNEOMGIHADA_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www
     <rect x="51" y="42" width="5" height="9" rx="2" fill="rgb(239,68,68)" />
     <circle cx="49" cy="46" r="3.4" fill="rgb(254,215,170)" />
 
+    <!-- Neck -->
+    <rect x="22.5" y="31" width="7" height="6.5" rx="2.5" fill="rgb(254,215,170)" />
+
     <!-- Head -->
     <circle cx="26" cy="20" r="13.5" fill="rgb(254,215,170)" />
-    <path d="M 11.7 20 C 10.6 -0.4 41.4 -0.4 40.3 20 C 39.5 13 34 9 26 9 C 18 9 12.5 13 11.7 20 Z" fill="rgb(51,65,85)" />
+    <path d="M 11.9 19.5 A 14.1 14.7 0 0 1 40.1 19.5 C 38.8 14.5 33.2 12.5 26 12.5 C 18.8 12.5 13.2 14.5 11.9 19.5 Z" fill="rgb(51,65,85)" />
 
     <!-- Effort / flustered eyes -->
     <path d="M 18 18 L 23 20 L 18 22" stroke="rgb(30,41,59)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
@@ -120,14 +126,18 @@ export const YORIHADA_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.o
     <path d="M 38 42 L 46 47" stroke="rgb(251,146,60)" stroke-width="4" stroke-linecap="round" />
     <circle cx="46.5" cy="47.5" r="3.2" fill="rgb(254,215,170)" />
 
+    <!-- Neck -->
+    <rect x="22.5" y="31.5" width="7" height="6.5" rx="2.5" fill="rgb(254,215,170)" />
+
     <!-- Head + Chef Hat -->
     <circle cx="26" cy="21" r="13" fill="rgb(254,215,170)" />
-    <path d="M 12.2 20 C 11.2 1.6 40.8 1.6 39.8 20 C 39 14 33 10 26 10 C 19 10 13 14 12.2 20 Z" fill="rgb(51,65,85)" />
+    <path d="M 12.4 20.5 A 13.6 14.2 0 0 1 39.6 20.5 C 38.3 15.5 33 13.5 26 13.5 C 19 13.5 13.7 15.5 12.4 20.5 Z" fill="rgb(51,65,85)" />
     <!-- Puffy white chef hat -->
-    <path d="M 16 11 L 36 11 L 34 4 C 31 2 21 2 18 4 Z" fill="rgb(255,255,255)" stroke="rgb(203,213,225)" stroke-width="1" />
-    <circle cx="20" cy="4" r="4" fill="rgb(255,255,255)" />
-    <circle cx="26" cy="2.5" r="4.5" fill="rgb(255,255,255)" />
-    <circle cx="32" cy="4" r="4" fill="rgb(255,255,255)" />
+    <circle cx="20" cy="4.5" r="4" fill="rgb(255,255,255)" stroke="rgb(203,213,225)" stroke-width="0.9" />
+    <circle cx="32" cy="4.5" r="4" fill="rgb(255,255,255)" stroke="rgb(203,213,225)" stroke-width="0.9" />
+    <circle cx="26" cy="3" r="4.5" fill="rgb(255,255,255)" stroke="rgb(203,213,225)" stroke-width="0.9" />
+    <rect x="17" y="4.5" width="18" height="4.5" fill="rgb(255,255,255)" />
+    <rect x="16.5" y="8.5" width="19" height="3.2" rx="1.2" fill="rgb(255,255,255)" stroke="rgb(203,213,225)" stroke-width="0.9" />
 
     <!-- Hesitant eyes & wavy mouth -->
     <circle cx="21.5" cy="21" r="1.6" fill="rgb(30,41,59)" />
@@ -180,8 +190,9 @@ export const UNJEONHADA_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3
     <path d="M 32 41 L 39 33" stroke="rgb(59,130,246)" stroke-width="4" stroke-linecap="round" />
     <circle cx="39.5" cy="32" r="3.2" fill="rgb(254,215,170)" />
 
+    <rect x="18.2" y="30.5" width="6.6" height="6.5" rx="2.5" fill="rgb(254,215,170)" />
     <circle cx="21.5" cy="20" r="13" fill="rgb(254,215,170)" />
-    <path d="M 7.7 20 C 6.7 0.3 36.3 0.3 35.3 20 C 34.5 13 29 9 21.5 9 C 14 9 8.5 13 7.7 20 Z" fill="rgb(51,65,85)" />
+    <path d="M 7.9 19.5 A 13.6 14.2 0 0 1 35.1 19.5 C 33.8 14.5 28.5 12.5 21.5 12.5 C 14.5 12.5 9.2 14.5 7.9 19.5 Z" fill="rgb(51,65,85)" />
     <circle cx="17.5" cy="20.5" r="1.6" fill="rgb(30,41,59)" />
     <circle cx="25.5" cy="20.5" r="1.6" fill="rgb(30,41,59)" />
     <circle cx="14" cy="24" r="2" fill="rgb(244,114,182)" opacity="0.6" />
@@ -227,8 +238,9 @@ export const SHAWEOHADA_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3
     <path d="M 36 41 L 45 34" stroke="rgb(56,189,248)" stroke-width="4" stroke-linecap="round" />
     <circle cx="46" cy="33" r="3.2" fill="rgb(254,215,170)" />
 
+    <rect x="21.5" y="31" width="7" height="6.5" rx="2.5" fill="rgb(254,215,170)" />
     <circle cx="25" cy="20" r="13.5" fill="rgb(254,215,170)" />
-    <path d="M 10.7 20 C 9.6 -0.4 40.4 -0.4 39.3 20 C 38.5 13 33 9 25 9 C 17 9 11.5 13 10.7 20 Z" fill="rgb(120,53,15)" />
+    <path d="M 10.9 19.5 A 14.1 14.7 0 0 1 39.1 19.5 C 37.8 14.5 32.2 12.5 25 12.5 C 17.8 12.5 12.2 14.5 10.9 19.5 Z" fill="rgb(120,53,15)" />
     <circle cx="20.5" cy="20.5" r="1.7" fill="rgb(30,41,59)" />
     <circle cx="29.5" cy="20.5" r="1.7" fill="rgb(30,41,59)" />
     <circle cx="17" cy="24" r="2" fill="rgb(244,114,182)" opacity="0.65" />
@@ -269,9 +281,12 @@ export const BAEUDA_U13_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3
     <rect x="16" y="45" width="20" height="3.8" rx="1" fill="rgb(234,179,8)" />
     <path d="M 24 49 L 22 56 M 28 49 L 30 56" stroke="rgb(202,138,4)" stroke-width="2" stroke-linecap="round" />
 
+    <!-- Neck -->
+    <rect x="22.5" y="30.5" width="7" height="6" rx="2.5" fill="rgb(254,215,170)" />
+
     <!-- Head -->
     <circle cx="26" cy="20" r="13.5" fill="rgb(254,215,170)" />
-    <path d="M 11.7 19 C 10.6 -0.1 41.4 -0.1 40.3 19 C 39.5 13 34 9 26 9 C 18 9 12.5 13 11.7 19 Z" fill="rgb(51,65,85)" />
+    <path d="M 11.9 19.5 A 14.1 14.7 0 0 1 40.1 19.5 C 38.8 14.5 33.2 12.5 26 12.5 C 18.8 12.5 13.2 14.5 11.9 19.5 Z" fill="rgb(51,65,85)" />
     <circle cx="21" cy="20.5" r="1.7" fill="rgb(30,41,59)" />
     <circle cx="31" cy="20.5" r="1.7" fill="rgb(30,41,59)" />
     <circle cx="17" cy="24" r="2.1" fill="rgb(244,114,182)" opacity="0.7" />
@@ -301,9 +316,12 @@ export const SADA_U13_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.o
     <circle cx="52" cy="31" r="4.8" fill="rgb(234,179,8)" stroke="rgb(180,83,9)" stroke-width="1" />
     <text x="49.5" y="33" font-size="5" font-weight="900" fill="rgb(146,64,14)">₩</text>
 
+    <!-- Neck -->
+    <rect x="22.8" y="28" width="6.4" height="6" rx="2.2" fill="rgb(254,215,170)" />
+
     <!-- Head -->
     <circle cx="26" cy="18" r="12.5" fill="rgb(254,215,170)" />
-    <path d="M 12.7 18 C 11.7 -1.1 40.3 -1.1 39.3 18 C 38.5 11 32 8 26 8 C 20 8 13.5 11 12.7 18 Z" fill="rgb(51,65,85)" />
+    <path d="M 12.9 17.5 A 13.1 13.7 0 0 1 39.1 17.5 C 37.8 12.8 32.5 11 26 11 C 19.5 11 14.2 12.8 12.9 17.5 Z" fill="rgb(51,65,85)" />
     <circle cx="21.5" cy="18.5" r="1.6" fill="rgb(30,41,59)" />
     <circle cx="30.5" cy="18.5" r="1.6" fill="rgb(30,41,59)" />
     <circle cx="18" cy="22" r="1.9" fill="rgb(244,114,182)" opacity="0.65" />
@@ -352,9 +370,16 @@ export const YEOHAENGHADA_U13_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://
     <path d="M 36 42 L 49 28" stroke="rgb(14,165,233)" stroke-width="4" stroke-linecap="round" />
     <circle cx="49" cy="27" r="3" fill="rgb(254,215,170)" />
 
+    <!-- Neck -->
+    <rect x="21.8" y="30.5" width="6.4" height="7" rx="2.2" fill="rgb(254,215,170)" />
+
     <circle cx="25" cy="20" r="13" fill="rgb(254,215,170)" />
-    <ellipse cx="25" cy="12" rx="17" ry="4.5" fill="rgb(251,191,36)" />
-    <path d="M 16 12 C 16 4 34 4 34 12 Z" fill="rgb(245,158,11)" />
+    <!-- Hair under straw hat -->
+    <path d="M 11.4 19.5 A 13.6 14.2 0 0 1 38.6 19.5 C 37.3 14.5 32 12.5 25 12.5 C 18 12.5 12.7 14.5 11.4 19.5 Z" fill="rgb(120,53,15)" />
+    <!-- Straw sun hat cleanly above eyes -->
+    <ellipse cx="25" cy="10.5" rx="17" ry="4" fill="rgb(251,191,36)" />
+    <path d="M 16 10.5 C 16 3 34 3 34 10.5 Z" fill="rgb(245,158,11)" />
+    <path d="M 16.3 9.5 Q 25 11 33.7 9.5" stroke="rgb(239,68,68)" stroke-width="1.6" fill="none" stroke-linecap="round" />
     <circle cx="20.5" cy="21" r="1.6" fill="rgb(30,41,59)" />
     <circle cx="29.5" cy="21" r="1.6" fill="rgb(30,41,59)" />
     <circle cx="17" cy="24.5" r="2" fill="rgb(244,114,182)" opacity="0.65" />
@@ -387,9 +412,12 @@ export const JALHADA_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.or
     <circle cx="8" cy="50" r="3.2" fill="rgb(254,215,170)" />
     <circle cx="44" cy="50" r="3.2" fill="rgb(254,215,170)" />
 
+    <!-- Neck -->
+    <rect x="22.5" y="31" width="7" height="6" rx="2.5" fill="rgb(254,215,170)" />
+
     <!-- Head -->
     <circle cx="26" cy="20" r="13.5" fill="rgb(254,215,170)" />
-    <path d="M 11.7 20 C 10.6 -0.4 41.4 -0.4 40.3 20 C 39.5 13 34 9 26 9 C 18 9 12.5 13 11.7 20 Z" fill="rgb(51,65,85)" />
+    <path d="M 11.9 19.5 A 14.1 14.7 0 0 1 40.1 19.5 C 38.8 14.5 33.2 12.5 26 12.5 C 18.8 12.5 13.2 14.5 11.9 19.5 Z" fill="rgb(51,65,85)" />
     <circle cx="21" cy="20.5" r="1.8" fill="rgb(30,41,59)" />
     <circle cx="31" cy="20.5" r="1.8" fill="rgb(30,41,59)" />
     <circle cx="21.7" cy="19.8" r="0.7" fill="rgb(255,255,255)" />
@@ -426,8 +454,9 @@ export const BILLIDA_U19_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w
     <path d="M 33 41 L 47 39" stroke="rgb(168,85,247)" stroke-width="4" stroke-linecap="round" />
     <circle cx="48" cy="39" r="3.2" fill="rgb(254,215,170)" />
 
+    <rect x="18.8" y="29.5" width="6.4" height="6.5" rx="2.2" fill="rgb(254,215,170)" />
     <circle cx="22" cy="19" r="13" fill="rgb(254,215,170)" />
-    <path d="M 8.2 19 C 7.2 -0.7 36.8 -0.7 35.8 19 C 35 12 29 8 22 8 C 15 8 9 12 8.2 19 Z" fill="rgb(51,65,85)" />
+    <path d="M 8.4 18.5 A 13.6 14.2 0 0 1 35.6 18.5 C 34.3 13.5 29 11.5 22 11.5 C 15 11.5 9.7 13.5 8.4 18.5 Z" fill="rgb(51,65,85)" />
     <circle cx="18" cy="19.5" r="1.6" fill="rgb(30,41,59)" />
     <circle cx="26" cy="19.5" r="1.6" fill="rgb(30,41,59)" />
     <circle cx="15" cy="23" r="1.9" fill="rgb(244,114,182)" opacity="0.65" />
@@ -476,8 +505,9 @@ export const UMJIGIDA_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.o
     <path d="M 36 40 L 42 25" stroke="rgb(20,184,166)" stroke-width="4" stroke-linecap="round" />
     <circle cx="42.5" cy="24" r="3.2" fill="rgb(254,215,170)" />
 
+    <rect x="21.8" y="30.5" width="6.4" height="6.5" rx="2.2" fill="rgb(254,215,170)" />
     <circle cx="25" cy="20" r="13" fill="rgb(254,215,170)" />
-    <path d="M 11.2 20 C 10.2 0.3 39.8 0.3 38.8 20 C 38 13 32 9 25 9 C 18 9 12 13 11.2 20 Z" fill="rgb(51,65,85)" />
+    <path d="M 11.4 19.5 A 13.6 14.2 0 0 1 38.6 19.5 C 37.3 14.5 32 12.5 25 12.5 C 18 12.5 12.7 14.5 11.4 19.5 Z" fill="rgb(51,65,85)" />
     <circle cx="20.5" cy="20.5" r="1.6" fill="rgb(30,41,59)" />
     <circle cx="29.5" cy="20.5" r="1.6" fill="rgb(30,41,59)" />
     <circle cx="17" cy="24" r="1.9" fill="rgb(244,114,182)" opacity="0.65" />
@@ -519,9 +549,12 @@ export const BAREUDA_U20_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w
       <line x1="3.8" y1="12" x2="6.2" y2="12" stroke="rgb(255,255,255)" stroke-width="1" />
     </g>
 
+    <!-- Neck -->
+    <rect x="24.5" y="31" width="7" height="7" rx="2.5" fill="rgb(254,215,170)" />
+
     <!-- Head -->
     <circle cx="28" cy="20" r="13.5" fill="rgb(254,215,170)" />
-    <path d="M 13.7 20 C 12.6 -0.4 43.4 -0.4 42.3 20 C 41.5 13 35.5 9 28 9 C 20.5 9 14.5 13 13.7 20 Z" fill="rgb(51,65,85)" />
+    <path d="M 13.9 19.5 A 14.1 14.7 0 0 1 42.1 19.5 C 40.8 14.5 35.2 12.5 28 12.5 C 20.8 12.5 15.2 14.5 13.9 19.5 Z" fill="rgb(51,65,85)" />
     <circle cx="23.5" cy="20.5" r="1.6" fill="rgb(30,41,59)" />
     <circle cx="32.5" cy="20.5" r="1.6" fill="rgb(30,41,59)" />
     <circle cx="20" cy="24" r="2" fill="rgb(244,114,182)" opacity="0.65" />

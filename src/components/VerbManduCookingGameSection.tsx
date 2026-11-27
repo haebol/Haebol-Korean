@@ -18,7 +18,7 @@ import {
   VerbUnitType,
   VerbCardItem,
 } from './VerbConjugationSection';
-import { buildVerbEndingQuestion, VerbEndingQuestion } from './VerbKartQuizSection';
+import { buildVerbEndingQuestion, VerbEndingQuestion } from '../utils/verbConjugationUtils';
 import {
   speakKorean,
   playCutePop,

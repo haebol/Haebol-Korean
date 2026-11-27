@@ -1,6 +1,7 @@
-import { VocabularyItem, getCircledNumber, SupportedLanguage } from '../types';
+import { VocabularyItem, getCircledNumber } from '../types';
 import { VOCAB_CUSTOM_IMAGES, EOMMA_MOM_SVG } from './customVocabImages';
 export { getCircledNumber };
+export { CHAPTER_THEME_TRANSLATIONS, getChapterCircledTitle } from './chapterMeta';
 
 export const VOCABULARY_DATA: VocabularyItem[] = [
   // Chapter 1: 기본 (Basic Expressions)
@@ -364,47 +365,6 @@ export const VOCABULARY_DATA: VocabularyItem[] = [
   { ch: 30, theme: "접속·부사 (Connectors & Adverbs)", icon: "🤲", imageUrl: VOCAB_CUSTOM_IMAGES['많이 주세요'], ko: "많이 주세요", romaja: "Ma-ni ju-se-yo", en: "Give me a lot please", vi: "Cho em nhiều một chút ạ", bn: "বেশি করে দিন", zh: "请多给我一点", ru: "Дайте побольше, пожалуйста", ja: "たくさんください", mn: "Ихээр өгөөрэй", samplePhrase: "맛있는 반찬 많이 주세요!" }
 ];
 
-export const CHAPTER_THEME_TRANSLATIONS: Record<number, { ko: string; trans: Record<SupportedLanguage, string> }> = {
-  1: { ko: "기본", trans: { en: "Basic Expressions", vi: "Câu cơ bản", bn: "মৌলিক কথা", zh: "基础表达", ru: "Базовые фразы", ja: "きほん表現", mn: "Энгийн үг хэллэг" } },
-  2: { ko: "생존", trans: { en: "Survival", vi: "Nhu cầu thiết yếu", bn: "জরুরি কথা", zh: "校园生活必需", ru: "Самое необходимое", ja: "学校生活のことば", mn: "Нэн чухал үгс" } },
-  3: { ko: "건강", trans: { en: "Health", vi: "Sức khỏe", bn: "স্বাস্থ্য", zh: "身体健康", ru: "Здоровье", ja: "健康・からだ", mn: "Эрүүл мэнд" } },
-  4: { ko: "교실", trans: { en: "Classroom", vi: "Lớp học", bn: "শ্রেণিকক্ষ", zh: "教室", ru: "Класс", ja: "教室", mn: "Анги танхим" } },
-  5: { ko: "학습", trans: { en: "Learning", vi: "Học tập", bn: "পড়াশোনা", zh: "学习", ru: "Учёба", ja: "勉強・学習", mn: "Хичээл сурлага" } },
-  6: { ko: "규칙", trans: { en: "Rules", vi: "Nội quy trường", bn: "নিয়ম", zh: "班级规则", ru: "Правила", ja: "学校のルール", mn: "Сургуулийн дүрэм" } },
-  7: { ko: "급식", trans: { en: "Lunch", vi: "Bữa trưa trường", bn: "দুপুরের খাবার", zh: "学校供餐", ru: "Школьный обед", ja: "給食", mn: "Сургуулийн хоол" } },
-  8: { ko: "맛", trans: { en: "Taste", vi: "Mùi vị", bn: "স্বাদ", zh: "口味 / 味道", ru: "Вкус", ja: "味", mn: "Амт" } },
-  9: { ko: "친구", trans: { en: "Friends", vi: "Bạn bè", bn: "বন্ধু", zh: "朋友", ru: "Друзья", ja: "友達", mn: "Найзууд" } },
-  10: { ko: "방과후", trans: { en: "After School", vi: "Sau giờ học", bn: "স্কুলের পরে", zh: "放学后 / 课后", ru: "После уроков", ja: "放課後", mn: "Хичээлийн дараа" } },
-  11: { ko: "국어", trans: { en: "Korean Language", vi: "Tiếng Hàn", bn: "কোরিয়ান ভাষা", zh: "语文 / 韩国语", ru: "Корейский язык", ja: "国語 (韓国語)", mn: "Солонгос хэл" } },
-  12: { ko: "수학", trans: { en: "Math", vi: "Toán học", bn: "গণিত", zh: "数学", ru: "Математика", ja: "算数", mn: "Математик" } },
-  13: { ko: "미술", trans: { en: "Art", vi: "Mỹ thuật", bn: "চারুকলা", zh: "美术", ru: "ИЗО / Рисование", ja: "図工", mn: "Урлаг" } },
-  14: { ko: "체육", trans: { en: "PE / Sports", vi: "Thể dục", bn: "শারীরিক শিক্ষা", zh: "体育", ru: "Физкультура", ja: "体育", mn: "Биеийн тамир" } },
-  15: { ko: "음악", trans: { en: "Music", vi: "Âm nhạc", bn: "সঙ্গীত", zh: "音乐", ru: "Музыка", ja: "音楽", mn: "Хөгжим" } },
-  16: { ko: "안전", trans: { en: "Safety", vi: "An toàn học đường", bn: "নিরাপত্তা", zh: "校园安全", ru: "Безопасность", ja: "安全", mn: "Аюулгүй байдал" } },
-  17: { ko: "일상", trans: { en: "Daily Life", vi: "Sinh hoạt thường ngày", bn: "প্রতিদিনের জীবন", zh: "日常生活", ru: "Повседневная жизнь", ja: "日常", mn: "Өдөр тутмын амьдрал" } },
-  18: { ko: "공간", trans: { en: "Space & Location", vi: "Không gian & Vị trí", bn: "স্থান ও অবস্থান", zh: "空间与位置", ru: "Пространство и место", ja: "ばしょ・空間", mn: "Орон зай ба байршил" } },
-  19: { ko: "시간", trans: { en: "Time", vi: "Thời gian", bn: "সময়", zh: "时间", ru: "Время", ja: "じかん (時間)", mn: "Цаг хугацаа" } },
-  20: { ko: "요일", trans: { en: "Days of the Week", vi: "Các thứ trong tuần", bn: "সপ্তাহের দিনগুলো", zh: "星期与日子", ru: "Дни недели", ja: "ようび (曜日)", mn: "Гарагууд" } },
-  21: { ko: "숫자", trans: { en: "Numbers", vi: "Số đếm", bn: "সংখ্যা", zh: "数字", ru: "Числа и счёт", ja: "かず (数字)", mn: "Тоо" } },
-  22: { ko: "협동", trans: { en: "Cooperation", vi: "Hợp tác & Giúp đỡ", bn: "সহযোগিতা", zh: "合作与友爱", ru: "Сотрудничество и дружба", ja: "きょうりょく (協力)", mn: "Хамтын ажиллагаа" } },
-  23: { ko: "감정", trans: { en: "Emotions", vi: "Cảm xúc & Tâm trạng", bn: "অনুভূতি ও আবেগ", zh: "心情与感受", ru: "Эмоции и чувства", ja: "きもち (気持ち)", mn: "Сэтгэл хөдлөл" } },
-  24: { ko: "색깔", trans: { en: "Colors", vi: "Màu sắc", bn: "রং", zh: "颜色", ru: "Цвета", ja: "いろ (色)", mn: "Өнгө" } },
-  25: { ko: "가족", trans: { en: "Family & Self", vi: "Gia đình & Bản thân", bn: "পরিবার ও পরিচয়", zh: "家庭与自我", ru: "Семья и я", ja: "かぞく (家族)", mn: "Гэр бүл" } },
-  26: { ko: "사람·학교", trans: { en: "People & School", vi: "Con người & Trường học", bn: "মানুষ ও স্কুল", zh: "人物与学校", ru: "Люди и школа", ja: "ひと・学校", mn: "Хүмүүс ба сургууль" } },
-  27: { ko: "교통·길", trans: { en: "Transport & Places", vi: "Giao thông & Đường đi", bn: "যানবাহন ও রাস্তা", zh: "交通与场所", ru: "Транспорт и дорога", ja: "のりもの・道", mn: "Тээвэр ба зам" } },
-  28: { ko: "의문사", trans: { en: "Question Words", vi: "Từ để hỏi", bn: "প্রশ্নবোধক শব্দ", zh: "疑问词", ru: "Вопросительные слова", ja: "ぎもんし (疑問詞)", mn: "Асуух үгс" } },
-  29: { ko: "지시·수량", trans: { en: "Which & How Much", vi: "Chỉ định & Số lượng", bn: "নির্দেশক ও পরিমাণ", zh: "指示与数量", ru: "Указание и количество", ja: "これ・どれ・いくら", mn: "Заах ба хэмжээ" } },
-  30: { ko: "접속·부사", trans: { en: "Connectors & Adverbs", vi: "Từ nối & Trạng từ", bn: "সংযোজক ও ক্রিয়াবিশেষণ", zh: "连词与副词", ru: "Союзы и наречия", ja: "せつぞく・ふくし", mn: "Холбоос ба дайвар үг" } }
-};
-
-export const getChapterCircledTitle = (ch: number, lang: SupportedLanguage): string => {
-  const circled = getCircledNumber(ch);
-  const data = CHAPTER_THEME_TRANSLATIONS[ch];
-  if (!data) return `${circled} ${ch}단원`;
-  const translated = data.trans[lang] || data.trans.en;
-  return `${circled} ${data.ko} (${translated})`;
-};
-
 export const CHAPTER_LIST = Array.from(new Set(VOCABULARY_DATA.map(item => item.ch)))
   .sort((a, b) => a - b)
   .map(ch => {
@@ -418,12 +378,3 @@ export const CHAPTER_LIST = Array.from(new Set(VOCABULARY_DATA.map(item => item.
     itemCount: VOCABULARY_DATA.filter(i => i.ch === ch).length
   };
 });
-
-// Grouped chapters data export for full compatibility
-export const chaptersData = CHAPTER_LIST.map(ch => ({
-  ch: ch.ch,
-  circle: getCircledNumber(ch.ch),
-  theme: ch.theme,
-  words: VOCABULARY_DATA.filter(v => v.ch === ch.ch)
-}));
-

@@ -40,10 +40,10 @@ interface TrackCoverConfig {
   tocFooter: string;
 }
 
-const TRACK_CONFIGS: Record<LearningTrack, TrackCoverConfig> = {
+const TRACK_CONFIGS: Record<'hangeul' | 'classroom' | 'verb' | 'particle', TrackCoverConfig> = {
   hangeul: {
     volLabel: '제1권',
-    spineTitle: '해볼 한국어 · 01 한글',
+    spineTitle: '해볼한국어 · 01 한글',
     koreanTitle: '한글',
     subSeriesLabel: '자음 · 모음 · 기본글자 · 받침',
     tagline: '자음과 모음이 만나 소리가 되고 글자가 되는 원리를 천천히 익혀요.',
@@ -61,7 +61,7 @@ const TRACK_CONFIGS: Record<LearningTrack, TrackCoverConfig> = {
   },
   classroom: {
     volLabel: '제2권',
-    spineTitle: '해볼 한국어 · 02 교실 한국어 (그림카드)',
+    spineTitle: '해볼한국어 · 02 교실 한국어 (그림카드)',
     koreanTitle: '교실 한국어',
     subSeriesLabel: '그림카드 편 · 학교생활 필수 300단어',
     tagline: '교실·급식·쉬는 시간에 매일 쓰는 300단어를 그림과 모국어 뜻으로 익혀요.',
@@ -79,7 +79,7 @@ const TRACK_CONFIGS: Record<LearningTrack, TrackCoverConfig> = {
   },
   verb: {
     volLabel: '제3권',
-    spineTitle: '해볼 한국어 · 03 용언 활용',
+    spineTitle: '해볼한국어 · 03 용언 활용',
     koreanTitle: '용언 활용',
     subSeriesLabel: '현재 · 과거 · 부정 · 연결 30문형',
     tagline: '동사·형용사의 ‘-다’가 짠! 하고 변신하는 규칙을 예문과 함께 익혀요.',
@@ -97,7 +97,7 @@ const TRACK_CONFIGS: Record<LearningTrack, TrackCoverConfig> = {
   },
   particle: {
     volLabel: '제4권',
-    spineTitle: '해볼 한국어 · 04 조사 결합',
+    spineTitle: '해볼한국어 · 04 조사 결합',
     koreanTitle: '조사 결합',
     subSeriesLabel: '조사 결합 22단원 · 문장 만들기 8단원',
     tagline: '받침이 있는지 없는지만 콕! 확인하면 딱 맞는 조사가 저절로 붙어요.',
@@ -119,7 +119,7 @@ const CLASSROOM_VARIANT_CONFIGS: Record<ClassroomCoverVariant, TrackCoverConfig>
   cards: TRACK_CONFIGS.classroom,
   writing: {
     volLabel: '제2권-가',
-    spineTitle: '해볼 한국어 · 02 교실 한국어 (따라쓰기)',
+    spineTitle: '해볼한국어 · 02 교실 한국어 (따라쓰기)',
     koreanTitle: '교실 한국어',
     subSeriesLabel: '따라쓰기 공책 · 학교생활 필수 300단어',
     tagline: '네모 칸에 맞춰 또박또박 따라 쓰며 교실 필수 300단어를 손으로 익혀요.',
@@ -137,7 +137,7 @@ const CLASSROOM_VARIANT_CONFIGS: Record<ClassroomCoverVariant, TrackCoverConfig>
   },
   quiz: {
     volLabel: '제2권-나',
-    spineTitle: '해볼 한국어 · 02 교실 한국어 (받아쓰기)',
+    spineTitle: '해볼한국어 · 02 교실 한국어 (받아쓰기)',
     koreanTitle: '교실 한국어',
     subSeriesLabel: '받아쓰기 공책 · 단원별 10점 실력 점검',
     tagline: '그림과 뜻을 보고 빈칸에 스스로 써 보며 300단어 실력을 쑥쑥 키워요.',
@@ -158,8 +158,13 @@ const CLASSROOM_VARIANT_CONFIGS: Record<ClassroomCoverVariant, TrackCoverConfig>
 const getResolvedConfig = (
   track: LearningTrack,
   classroomVariant: ClassroomCoverVariant = 'cards'
-): TrackCoverConfig =>
-  track === 'classroom' ? CLASSROOM_VARIANT_CONFIGS[classroomVariant] : TRACK_CONFIGS[track];
+): TrackCoverConfig => {
+  if (track === 'classroom') return CLASSROOM_VARIANT_CONFIGS[classroomVariant];
+  if (track === 'hangeul' || track === 'verb' || track === 'particle') {
+    return TRACK_CONFIGS[track];
+  }
+  return CLASSROOM_VARIANT_CONFIGS[classroomVariant];
+};
 
 const getClassroomSamples = () => {
   const targets = ['선생님', '연필', '식판'];
@@ -169,7 +174,7 @@ const getClassroomSamples = () => {
 };
 
 /**
- * 해볼 한국어만의 공책/원고지 감성 미리보기 영역 (AI 카드 배제, 실제 교재 지면 느낌)
+ * 해볼한국어만의 공책/원고지 감성 미리보기 영역 (AI 카드 배제, 실제 교재 지면 느낌)
  */
 const HaebolNotebookPreview: React.FC<{
   track: LearningTrack;
@@ -384,7 +389,7 @@ const HaebolNotebookPreview: React.FC<{
 };
 
 /**
- * A4 가로모드 프린트 전용 챕터 표지 (해볼 한국어 공책·교재 컨셉)
+ * A4 가로모드 프린트 전용 챕터 표지 (해볼한국어 공책·교재 컨셉)
  */
 export const ChapterCoverSheet: React.FC<ChapterSheetProps> = ({
   track,
@@ -395,7 +400,7 @@ export const ChapterCoverSheet: React.FC<ChapterSheetProps> = ({
 
   return (
     <div
-      className="chapter-extra-a4-sheet print-sheet printable-a4-page relative w-full max-w-[1040px] bg-white border-[2.5px] border-slate-800 mx-auto flex overflow-hidden font-school-base"
+      className="chapter-extra-a4-sheet print-sheet printable-a4-page relative w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 shadow-lg mx-auto flex overflow-hidden font-school-base"
       style={{ minHeight: '690px' }}
     >
       {/* 왼쪽 제본 책등(스파인) 여백 스트립 */}
@@ -426,7 +431,7 @@ export const ChapterCoverSheet: React.FC<ChapterSheetProps> = ({
         <div className="flex items-end justify-between pb-2.5 border-b-2 border-slate-800">
           <div className="flex items-baseline gap-2.5">
             <span className="text-[18px] font-black text-slate-900 tracking-tight">
-              해볼 한국어
+              해볼한국어
             </span>
             <span className="text-slate-400 font-bold">|</span>
             <span className="text-[13px] font-black" style={{ color: cfg.accentHex }}>
@@ -486,7 +491,7 @@ export const ChapterCoverSheet: React.FC<ChapterSheetProps> = ({
               </div>
             </div>
 
-            {/* 실제 해볼 한국어 교재 속 미리보기 */}
+            {/* 실제 해볼한국어 교재 속 미리보기 */}
             <HaebolNotebookPreview track={track} classroomVariant={resolvedVariant} />
           </div>
 
@@ -562,7 +567,7 @@ export const ChapterCoverSheet: React.FC<ChapterSheetProps> = ({
         </table>
 
         <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
-          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+          <span className="font-medium">해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
         </div>
       </div>
     </div>
@@ -570,7 +575,7 @@ export const ChapterCoverSheet: React.FC<ChapterSheetProps> = ({
 };
 
 /**
- * A4 가로모드 프린트 전용 챕터 차례 (해볼 한국어 공책 목차 & 공부 기록장)
+ * A4 가로모드 프린트 전용 챕터 차례 (해볼한국어 공책 목차 & 공부 기록장)
  */
 export const ChapterTocSheet: React.FC<ChapterSheetProps> = ({
   track,
@@ -817,7 +822,7 @@ export const ChapterTocSheet: React.FC<ChapterSheetProps> = ({
 
   return (
     <div
-      className="chapter-extra-a4-sheet print-sheet printable-a4-page relative w-full max-w-[1040px] bg-white border-[2.5px] border-slate-800 mx-auto flex overflow-hidden font-school-base"
+      className="chapter-extra-a4-sheet print-sheet printable-a4-page relative w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 shadow-lg mx-auto flex overflow-hidden font-school-base"
       style={{ minHeight: '690px' }}
     >
       {/* 왼쪽 제본 여백 스트립 (표지와 세트로 연결) */}
@@ -847,7 +852,7 @@ export const ChapterTocSheet: React.FC<ChapterSheetProps> = ({
               </h2>
               <span className="text-slate-400 font-bold">|</span>
               <span className="text-[14px] font-black" style={{ color: cfg.accentDarkHex }}>
-                해볼 한국어 {cfg.volLabel} · {cfg.koreanTitle}
+                해볼한국어 {cfg.volLabel} · {cfg.koreanTitle}
                 {track === 'classroom'
                   ? resolvedVariant === 'writing'
                     ? ' (따라쓰기)'
@@ -887,7 +892,7 @@ export const ChapterTocSheet: React.FC<ChapterSheetProps> = ({
         </div>
 
         <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic shrink-0">
-          <span className="font-medium">해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
+          <span className="font-medium">해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어</span>
         </div>
       </div>
     </div>

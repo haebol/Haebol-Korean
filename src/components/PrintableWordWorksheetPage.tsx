@@ -1,8 +1,9 @@
 import React from 'react';
 import { VocabularyItem, SupportedLanguage, getLanguageMeta } from '../types';
-import { WorksheetLanguage } from './PrintWorksheetModal';
 import { speakKorean, playCutePop } from '../utils/audio';
 import { VocabVisual } from './VocabVisual';
+
+export type WorksheetLanguage = SupportedLanguage | 'all';
 
 export interface PrintableWordWorksheetPageProps {
   chapter: { ch: number; circledTitle: string; itemCount?: number };
@@ -102,7 +103,7 @@ export const PrintableWordWorksheetPage: React.FC<PrintableWordWorksheetPageProp
 
   return (
     <div
-      className={`print-sheet printable-word-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-700 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '620px' }}
     >
       {/* 1. Header Row */}
@@ -111,8 +112,8 @@ export const PrintableWordWorksheetPage: React.FC<PrintableWordWorksheetPageProp
           <span className="text-base leading-none shrink-0">🥟</span>
           <span className="break-keep">
             {mode === 'writing'
-              ? `해볼 한국어 [쓰기학습지] ${chapter.circledTitle}`
-              : `해볼 한국어 [테스트지] ${chapter.circledTitle}`}
+              ? `해볼한국어 [쓰기학습지] ${chapter.circledTitle}`
+              : `해볼한국어 [테스트지] ${chapter.circledTitle}`}
           </span>
         </div>
         <div className="text-[10.5px] sm:text-[11.5px] font-bold text-slate-700 flex flex-wrap items-center gap-2 sm:gap-5 font-korean-gothic shrink-0">
@@ -320,7 +321,7 @@ export const PrintableWordWorksheetPage: React.FC<PrintableWordWorksheetPageProp
       {/* 3. Sheet Footer */}
       <div className="mt-1 pt-0.5 border-t border-slate-300 flex items-center justify-between text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic">
         <span className="font-medium">
-          해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
+          해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>
       </div>
     </div>

@@ -76,42 +76,12 @@ import {
   JEOHUI_WE_SVG,
 } from './particleWorksheetIllustrations2';
 import {
-  PARTICLE_UNIT_16_TO_30_META,
   PARTICLE_COLS_16_TO_30,
   PARTICLE_ROWS_16_TO_30,
 } from './particleWorksheetData2';
-
-export type ParticleUnitId =
-  | 'unit1'
-  | 'unit2'
-  | 'unit3'
-  | 'unit4'
-  | 'unit5'
-  | 'unit6'
-  | 'unit7'
-  | 'unit8'
-  | 'unit9'
-  | 'unit10'
-  | 'unit11'
-  | 'unit12'
-  | 'unit13'
-  | 'unit14'
-  | 'unit15'
-  | 'unit16'
-  | 'unit17'
-  | 'unit18'
-  | 'unit19'
-  | 'unit20'
-  | 'unit21'
-  | 'unit22'
-  | 'unit23'
-  | 'unit24'
-  | 'unit25'
-  | 'unit26'
-  | 'unit27'
-  | 'unit28'
-  | 'unit29'
-  | 'unit30';
+import type { ParticleUnitId, ParticleUnitMetaItem } from './particleUnitMeta';
+export type { ParticleUnitId, ParticleUnitMetaItem };
+export { PARTICLE_UNIT_META } from './particleUnitMeta';
 
 export interface ColorSegment {
   text: string;
@@ -145,178 +115,9 @@ export interface ParticleRowsItem {
   illustrationSvg: string;
 }
 
-export interface ParticleUnitMetaItem {
-  id: ParticleUnitId;
-  circled: string;
-  layoutType: 'cols5' | 'rows5';
-  title: string;
-  sheetHeaderTitle: string;
-  grammar: string;
-  tipHeaderTitle: string;
-  keywords: string[];
-}
-
 const C_BASE = '#1E293B';
 const C_PARTICLE = '#E03131';
 const C_IRREGULAR = '#9333EA';
-
-const PARTICLE_UNIT_1_TO_15_META: ParticleUnitMetaItem[] = [
-  {
-    id: 'unit1',
-    circled: '①',
-    layoutType: 'cols5',
-    title: '주제 (은, 는)',
-    sheetHeaderTitle: '해볼 한국어 [조사 결합] ① 주제 (은, 는)',
-    grammar: '-은, -는',
-    tipHeaderTitle: '해볼쌤 팁 | -은, -는',
-    keywords: ['나', '친구', '동생', '선생님', '가방'],
-  },
-  {
-    id: 'unit2',
-    circled: '②',
-    layoutType: 'cols5',
-    title: '소개 (이에요, 예요)',
-    sheetHeaderTitle: '해볼 한국어 [조사 결합] ② 소개 (이에요, 예요)',
-    grammar: '-이에요, -예요',
-    tipHeaderTitle: '해볼쌤 팁 | -이에요, -예요',
-    keywords: ['학생', '연필', '저것', '의자', '지우개'],
-  },
-  {
-    id: 'unit3',
-    circled: '③',
-    layoutType: 'rows5',
-    title: '문장 만들기 1 (은, 는, 이에요, 예요)',
-    sheetHeaderTitle: '해볼 한국어 [조사 결합] ③ 문장 만들기 1 (은, 는, 이에요, 예요)',
-    grammar: '주어 + 신분 문장',
-    tipHeaderTitle: '해볼쌤 팁 | [주어+은/는] + [명사+이에요/예요]',
-    keywords: ['나는 남자예요', '너는 여자예요', '친구는 학생이에요'],
-  },
-  {
-    id: 'unit4',
-    circled: '④',
-    layoutType: 'cols5',
-    title: '주격 (이, 가)',
-    sheetHeaderTitle: '해볼 한국어 [조사 결합] ④ 주격 (이, 가)',
-    grammar: '-이, -가',
-    tipHeaderTitle: '해볼쌤 팁 | -이, -가',
-    keywords: ['물', '책', '약', '배', '비누'],
-  },
-  {
-    id: 'unit5',
-    circled: '⑤',
-    layoutType: 'cols5',
-    title: '주격 ★ (내가, 네가, 제가, 누가, 이게)',
-    sheetHeaderTitle: '해볼 한국어 [조사 결합] ⑤ 주격 ★ (내가, 네가, 제가, 누가, 이게)',
-    grammar: '-이, -가 ★',
-    tipHeaderTitle: '해볼쌤 팁 | -이, -가 ★ (변화형)',
-    keywords: ['나(내가)', '너(네가)', '저(제가)', '누구(누가)', '이것(이게)'],
-  },
-  {
-    id: 'unit6',
-    circled: '⑥',
-    layoutType: 'cols5',
-    title: '목적격 (을, 를)',
-    sheetHeaderTitle: '해볼 한국어 [조사 결합] ⑥ 목적격 (을, 를)',
-    grammar: '-을, -를',
-    tipHeaderTitle: '해볼쌤 팁 | -을, -를',
-    keywords: ['밥', '손', '무엇', '우유', '사과'],
-  },
-  {
-    id: 'unit7',
-    circled: '⑦',
-    layoutType: 'rows5',
-    title: '문장 만들기 2 (이, 가, 을, 를)',
-    sheetHeaderTitle: '해볼 한국어 [조사 결합] ⑦ 문장 만들기 2 (이, 가, 을, 를)',
-    grammar: '3어절 문장 완성',
-    tipHeaderTitle: '해볼쌤 팁 | [주어] + [목적어] + [동사]',
-    keywords: ['제가 창문을 열게요', '내가 그림을 그릴게', '누가 노래를 불러요'],
-  },
-  {
-    id: 'unit8',
-    circled: '⑧',
-    layoutType: 'cols5',
-    title: '장소·시간 (에)',
-    sheetHeaderTitle: '해볼 한국어 [조사 결합] ⑧ 장소·시간 (에)',
-    grammar: '-에',
-    tipHeaderTitle: '해볼쌤 팁 | -에',
-    keywords: ['여기', '집', '어디', '아침', '점심'],
-  },
-  {
-    id: 'unit9',
-    circled: '⑨',
-    layoutType: 'cols5',
-    title: '동작 장소 (에서)',
-    sheetHeaderTitle: '해볼 한국어 [조사 결합] ⑨ 동작 장소 (에서)',
-    grammar: '-에서',
-    tipHeaderTitle: '해볼쌤 팁 | -에서',
-    keywords: ['교실', '운동장', '도서관', '어느 나라', '거기'],
-  },
-  {
-    id: 'unit10',
-    circled: '⑩',
-    layoutType: 'cols5',
-    title: '추가 (도)',
-    sheetHeaderTitle: '해볼 한국어 [조사 결합] ⑩ 추가 (도)',
-    grammar: '-도',
-    tipHeaderTitle: '해볼쌤 팁 | -도',
-    keywords: ['저희', '친구', '물', '사과', '우산'],
-  },
-  {
-    id: 'unit11',
-    circled: '⑪',
-    layoutType: 'rows5',
-    title: '문장 만들기 3 (에, 에서, 도)',
-    sheetHeaderTitle: '해볼 한국어 [조사 결합] ⑪ 문장 만들기 3 (에, 에서, 도)',
-    grammar: '장소·시간·추가 문장',
-    tipHeaderTitle: '해볼쌤 팁 | [시간/추가] + [장소+에/에서] + [동사]',
-    keywords: ['나도 학교에 가요', '점심에 운동장에서 놀아요', '집에서 사과도 먹어요'],
-  },
-  {
-    id: 'unit12',
-    circled: '⑫',
-    layoutType: 'cols5',
-    title: '나열·동반 (와, 과, 하고, 이랑, 랑)',
-    sheetHeaderTitle: '해볼 한국어 [조사 결합] ⑫ 나열·동반 (와, 과, 하고, 이랑, 랑)',
-    grammar: '-와, -과, -하고, -이랑, -랑',
-    tipHeaderTitle: '해볼쌤 팁 | -와, -과, -하고, -이랑, -랑',
-    keywords: ['엄마', '우유', '연필', '책', '친구'],
-  },
-  {
-    id: 'unit13',
-    circled: '⑬',
-    layoutType: 'cols5',
-    title: '방향·수단 (으로, 로)',
-    sheetHeaderTitle: '해볼 한국어 [조사 결합] ⑬ 방향·수단 (으로, 로)',
-    grammar: '-으로, -로',
-    tipHeaderTitle: '해볼쌤 팁 | -으로, -로',
-    keywords: ['학교', '운동장', '연필', '버스', '숟가락'],
-  },
-  {
-    id: 'unit14',
-    circled: '⑭',
-    layoutType: 'cols5',
-    title: '행동 대상 (에게, 한테)',
-    sheetHeaderTitle: '해볼 한국어 [조사 결합] ⑭ 행동 대상 (에게, 한테)',
-    grammar: '-에게, -한테',
-    tipHeaderTitle: '해볼쌤 팁 | -에게, -한테',
-    keywords: ['짝꿍', '친구', '동생', '우리', '누구'],
-  },
-  {
-    id: 'unit15',
-    circled: '⑮',
-    layoutType: 'rows5',
-    title: '문장 만들기 4 (와, 과, 하고, 이랑, 랑, 으로, 로, 에게, 한테)',
-    sheetHeaderTitle: '해볼 한국어 [조사 결합] ⑮ 문장 만들기 4 (와, 과, 하고, 이랑, 랑, 으로, 로, 에게, 한테)',
-    grammar: '동반·수단·대상 문장',
-    tipHeaderTitle: '해볼쌤 팁 | [동반] + [방향/수단/대상] + [동사]',
-    keywords: ['친구랑 운동장으로 가요', '동생이랑 기차로 가요', '책과 공책으로 공부해요'],
-  },
-];
-
-export const PARTICLE_UNIT_META: ParticleUnitMetaItem[] = [
-  ...PARTICLE_UNIT_1_TO_15_META,
-  ...PARTICLE_UNIT_16_TO_30_META,
-];
 
 // 1단원: 주어 + 은/는
 export const PARTICLE_UNIT_1_ITEMS: ParticleColsItem[] = [

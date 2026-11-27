@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Volume2, CheckCircle2, Eye, RotateCcw, Printer } from 'lucide-react';
+import { Volume2, CheckCircle2, Eye, RotateCcw } from 'lucide-react';
 import { SupportedLanguage } from '../types';
 import { ManduMascot } from './ManduMascot';
 import { speakKorean, playCutePop, playSuccessChime } from '../utils/audio';
@@ -153,7 +153,7 @@ const buildSentenceQuestion = (id: number, spec: QuestionPickSpec): VerbExamQues
 
 /**
  * 용언 활용 5단원씩 묶어 섞은 종합 ( / ) 쪽지시험 — 총 6강 (60문항)
- * 100% 해볼 한국어 기존 용언 데이터(1~30단원)와 예문·일러스트만 사용
+ * 100% 해볼한국어 기존 용언 데이터(1~30단원)와 예문·일러스트만 사용
  */
 export const VERB_EXAM_LESSONS: VerbExamLesson[] = [
   // ① 1~5단원 종합 (현재형)
@@ -163,7 +163,7 @@ export const VERB_EXAM_LESSONS: VerbExamLesson[] = [
     lessonNo: 1,
     circledNo: '①',
     rangeLabel: '1~5단원',
-    headerTitle: '해볼 한국어 [용언 시험] ① 1~5단원 종합 (현재형)',
+    headerTitle: '해볼한국어 [용언 시험] ① 1~5단원 종합 (현재형)',
     subtitle: '현재형 -아요 · -어요 · -해요 · 불규칙/축약(★) 혼합 평가',
     dropdownLabel: '① 1강 · 1~5단원 종합 (현재형)',
     previewMain: '현재형',
@@ -191,7 +191,7 @@ export const VERB_EXAM_LESSONS: VerbExamLesson[] = [
     lessonNo: 2,
     circledNo: '②',
     rangeLabel: '6~10단원',
-    headerTitle: '해볼 한국어 [용언 시험] ② 6~10단원 종합 (과거형)',
+    headerTitle: '해볼한국어 [용언 시험] ② 6~10단원 종합 (과거형)',
     subtitle: '과거형 -았어요 · -었어요 · -했어요 · 불규칙/축약(★) 혼합 평가',
     dropdownLabel: '② 2강 · 6~10단원 종합 (과거형)',
     previewMain: '과거형',
@@ -219,7 +219,7 @@ export const VERB_EXAM_LESSONS: VerbExamLesson[] = [
     lessonNo: 3,
     circledNo: '③',
     rangeLabel: '11~15단원',
-    headerTitle: '해볼 한국어 [용언 시험] ③ 11~15단원 종합 (부정·희망·진행·요청)',
+    headerTitle: '해볼한국어 [용언 시험] ③ 11~15단원 종합 (부정·희망·진행·요청)',
     subtitle: '안/못 · -고 싶어요 · -고 있어요 · -(으)세요 혼합 평가',
     dropdownLabel: '③ 3강 · 11~15단원 종합 (부정~요청)',
     previewMain: '부정~요청',
@@ -247,7 +247,7 @@ export const VERB_EXAM_LESSONS: VerbExamLesson[] = [
     lessonNo: 4,
     circledNo: '④',
     rangeLabel: '16~20단원',
-    headerTitle: '해볼 한국어 [용언 시험] ④ 16~20단원 종합 (금지·미래·부탁·허락·의무)',
+    headerTitle: '해볼한국어 [용언 시험] ④ 16~20단원 종합 (금지·미래·부탁·허락·의무)',
     subtitle: '-지 마세요 · -(으)ㄹ 거예요 · -아/어/해 주세요 · 돼요 혼합 평가',
     dropdownLabel: '④ 4강 · 16~20단원 종합 (금지~의무)',
     previewMain: '금지~의무',
@@ -275,7 +275,7 @@ export const VERB_EXAM_LESSONS: VerbExamLesson[] = [
     lessonNo: 5,
     circledNo: '⑤',
     rangeLabel: '21~25단원',
-    headerTitle: '해볼 한국어 [용언 시험] ⑤ 21~25단원 종합 (능력·제안·나열·대조·이유)',
+    headerTitle: '해볼한국어 [용언 시험] ⑤ 21~25단원 종합 (능력·제안·나열·대조·이유)',
     subtitle: '-(으)ㄹ 수 있어요 · -(으)ㄹ까요? · -고 · -지만 · -아/어/해서 혼합 평가',
     dropdownLabel: '⑤ 5강 · 21~25단원 종합 (능력~이유)',
     previewMain: '능력~이유',
@@ -303,7 +303,7 @@ export const VERB_EXAM_LESSONS: VerbExamLesson[] = [
     lessonNo: 6,
     circledNo: '⑥',
     rangeLabel: '26~30단원',
-    headerTitle: '해볼 한국어 [용언 시험] ⑥ 26~30단원 종합 (조건·시간·목적·순서·경험)',
+    headerTitle: '해볼한국어 [용언 시험] ⑥ 26~30단원 종합 (조건·시간·목적·순서·경험)',
     subtitle: '-(으)면 · -(으)ㄹ 때 · -(으)러 가요 · -기 전에/-(으)ㄴ 후에 · -아/어/해 봤어요',
     dropdownLabel: '⑥ 6강 · 26~30단원 종합 (조건~경험)',
     previewMain: '조건~경험',
@@ -447,59 +447,9 @@ export const VerbExamSheet: React.FC<VerbExamSheetProps> = ({
 
   return (
     <div className="w-full max-w-[1040px] mx-auto flex flex-col">
-      {/* Web-only compact bar OUTSIDE the paper sheet so the worksheet itself stays 100% pure */}
-      <div className="no-print w-full flex flex-wrap items-center justify-between gap-2 mb-1.5 px-1">
-        <span className="text-xs font-extrabold text-slate-700 font-korean-gothic">
-          {lesson.lessonNo} / {VERB_EXAM_LESSONS.length} · {lesson.rangeLabel} 종합 쪽지시험
-        </span>
-        <div className="flex items-center gap-1.5">
-          <button
-            type="button"
-            onClick={handleGrade}
-            className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#5B21B6] hover:bg-[#4C1D95] text-white text-xs font-bold cursor-pointer transition-colors"
-          >
-            <CheckCircle2 className="w-3.5 h-3.5" />
-            채점하기
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              playCutePop();
-              setShowAnswerKey((v) => !v);
-            }}
-            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded text-xs font-bold border cursor-pointer transition-colors ${
-              showAnswerKey
-                ? 'bg-rose-50 border-rose-400 text-rose-700'
-                : 'bg-white border-slate-300 text-slate-700 hover:bg-slate-50'
-            }`}
-          >
-            <Eye className="w-3.5 h-3.5" />
-            {showAnswerKey ? '정답 숨기기' : '정답 보기'}
-          </button>
-          <button
-            type="button"
-            onClick={handleReset}
-            className="inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-bold bg-white border border-slate-300 text-slate-600 hover:bg-slate-50 cursor-pointer"
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-            초기화
-          </button>
-          {onPrintSingle && (
-            <button
-              type="button"
-              onClick={onPrintSingle}
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-white hover:bg-purple-50 text-slate-800 border border-slate-300 text-xs font-bold cursor-pointer"
-            >
-              <Printer className="w-3.5 h-3.5 text-purple-700" />
-              이 시험지 1장 인쇄
-            </button>
-          )}
-        </div>
-      </div>
-
       {/* Authentic Haebol Korean A4 Landscape Worksheet Sheet */}
       <div
-        className="verb-worksheet-page chapter-extra-a4-sheet print-sheet printable-a4-page print:m-0 print:p-2 print:shadow-none print:border-none w-full bg-white rounded-2xl shadow-md border-2 border-slate-300 p-2.5 sm:p-3 text-slate-900 flex flex-col justify-between font-korean-gothic"
+        className="verb-worksheet-page chapter-extra-a4-sheet print-sheet printable-a4-page print:m-0 print:p-2 print:shadow-none print:border-none w-full bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2.5 sm:p-3 text-slate-900 flex flex-col justify-between font-korean-gothic"
         style={{ minHeight: '620px' }}
       >
         {/* 1. HEADER ROW — exact VerbConjugationWorksheetPage & PrintableWordWorksheetPage style */}
@@ -511,7 +461,40 @@ export const VerbExamSheet: React.FC<VerbExamSheetProps> = ({
             </h1>
           </div>
 
-          <div className="text-[11px] sm:text-xs font-extrabold text-slate-800 flex items-center gap-3 sm:gap-5 font-korean-gothic shrink-0">
+          <div className="text-[11px] sm:text-xs font-extrabold text-slate-800 flex items-center gap-2.5 sm:gap-4 font-korean-gothic shrink-0">
+            <div className="no-print flex items-center gap-1">
+              <button
+                type="button"
+                onClick={handleGrade}
+                className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-md bg-purple-50 hover:bg-purple-100 border border-purple-300 text-purple-800 text-[11px] font-bold cursor-pointer transition-colors"
+              >
+                <CheckCircle2 className="w-3 h-3" />
+                채점
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  playCutePop();
+                  setShowAnswerKey((v) => !v);
+                }}
+                className={`inline-flex items-center gap-0.5 px-2 py-0.5 rounded-md text-[11px] font-bold border cursor-pointer transition-colors ${
+                  showAnswerKey
+                    ? 'bg-rose-100 border-rose-400 text-rose-800'
+                    : 'bg-slate-50 border-slate-300 text-slate-700 hover:bg-slate-100'
+                }`}
+              >
+                <Eye className="w-3 h-3" />
+                {showAnswerKey ? '숨김' : '정답'}
+              </button>
+              <button
+                type="button"
+                onClick={handleReset}
+                className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md text-[11px] font-bold bg-slate-50 border border-slate-300 text-slate-600 hover:bg-slate-100 cursor-pointer"
+                title="초기화"
+              >
+                <RotateCcw className="w-3 h-3" />
+              </button>
+            </div>
             <span>학년: ________</span>
             <span>이름: ______________</span>
             <span>점수: {isGraded ? ` ${correctCount} ` : '____'} / 10</span>
@@ -597,7 +580,8 @@ export const VerbExamSheet: React.FC<VerbExamSheetProps> = ({
                         src={leftQ.illustrationSvg}
                         alt={`${leftQ.baseWord} 그림`}
                         className="w-11 h-11 object-contain mx-auto select-none pointer-events-none"
-                        loading="lazy"
+                        loading="eager"
+                        decoding="sync"
                       />
                     )}
                   </td>
@@ -712,7 +696,7 @@ export const VerbExamSheet: React.FC<VerbExamSheetProps> = ({
         {/* 3. BOTTOM NOTE & FOOTER — exact VerbConjugationWorksheetPage footer */}
         <div className="mt-2 pt-1.5 border-t border-slate-300 flex items-center justify-between gap-2 text-[9.5px] sm:text-[10px] text-slate-500 font-korean-gothic font-bold">
           <span className="shrink-0">
-            해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어 · {lesson.rangeLabel} 종합 ({lesson.lessonNo}/6)
+            해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어 · {lesson.rangeLabel} 종합 ({lesson.lessonNo}/6)
           </span>
           <span className="text-[10px] text-slate-600 truncate">
             {showAnswerKey

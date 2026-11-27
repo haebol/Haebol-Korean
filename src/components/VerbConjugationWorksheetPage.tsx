@@ -1229,38 +1229,38 @@ export const VerbConjugationWorksheetPage: React.FC<VerbConjugationWorksheetPage
 
   const getUnitTitle = () => {
     switch (unit) {
-      case 'unit30': return '해볼 한국어 [용언 활용] ㉚ 경험 (-아 봤어요, -어 봤어요, -해 봤어요)';
-      case 'unit29': return '해볼 한국어 [용언 활용] ㉙ 순서 (-기 전에, -ㄴ 후에, -은 후에)';
-      case 'unit28': return '해볼 한국어 [용언 활용] ㉘ 목적 (-러 가요, -으러 가요 / -러 와요, -으러 와요)';
-      case 'unit27': return '해볼 한국어 [용언 활용] ㉗ 시간 (-ㄹ 때, -을 때)';
-      case 'unit26': return '해볼 한국어 [용언 활용] ㉖ 조건 (-면, -으면)';
-      case 'unit25': return '해볼 한국어 [용언 활용] ㉕ 이유 (-아서, -어서, -해서)';
-      case 'unit24': return '해볼 한국어 [용언 활용] ㉔ 대조 (-지만)';
-      case 'unit23': return '해볼 한국어 [용언 활용] ㉓ 나열 (-고)';
-      case 'unit22': return '해볼 한국어 [용언 활용] ㉒ 제안 (-ㄹ까요?, -을까요?)';
-      case 'unit21': return '해볼 한국어 [용언 활용] ㉑ 능력 (-ㄹ(을) 수 있어요, -ㄹ(을) 수 없어요)';
-      case 'unit20': return '해볼 한국어 [용언 활용] ⑳ 의무 (-아야 돼요, -어야 돼요, -해야 돼요)';
-      case 'unit19': return '해볼 한국어 [용언 활용] ⑲ 허락 (-아도 돼요?, -어도 돼요?, -해도 돼요?)';
-      case 'unit18': return '해볼 한국어 [용언 활용] ⑱ 부탁 (-아 주세요, -어 주세요, -해 주세요)';
-      case 'unit17': return '해볼 한국어 [용언 활용] ⑰ 미래 (-ㄹ 거예요, -을 거예요)';
-      case 'unit16': return '해볼 한국어 [용언 활용] ⑯ 금지 (-지 마세요)';
-      case 'unit15': return '해볼 한국어 [용언 활용] ⑮ 요청 (-세요, -으세요)';
-      case 'unit14': return '해볼 한국어 [용언 활용] ⑭ 진행 (-고 있어요)';
-      case 'unit13': return '해볼 한국어 [용언 활용] ⑬ 희망 (-고 싶어요)';
-      case 'unit12': return '해볼 한국어 [용언 활용] ⑫ 부정2 ([명사] 안 해요, [명사] 못 해요)';
-      case 'unit11': return `해볼 한국어 [용언 활용] ${VERB_UNIT_11_DATA.title[lang] || VERB_UNIT_11_DATA.title.ko}`;
-      case 'unit10': return '해볼 한국어 [용언 활용] ⑩ 과거형 (-었어요 ★)';
-      case 'unit9': return '해볼 한국어 [용언 활용] ⑨ 과거형 (-았어요 ★)';
-      case 'unit8': return '해볼 한국어 [용언 활용] ⑧ 과거형 (-했어요)';
-      case 'unit7': return '해볼 한국어 [용언 활용] ⑦ 과거형 (-었어요)';
-      case 'unit6': return '해볼 한국어 [용언 활용] ⑥ 과거형 (-았어요)';
-      case 'unit5': return '해볼 한국어 [용언 활용] ⑤ 현재형 (-어요 ★)';
-      case 'unit4': return '해볼 한국어 [용언 활용] ④ 현재형 (-아요 ★)';
-      case 'unit3': return '해볼 한국어 [용언 활용] ③ 현재형 (-해요)';
-      case 'unit2': return '해볼 한국어 [용언 활용] ② 현재형 (-어요)';
+      case 'unit30': return '해볼한국어 [용언 활용] ㉚ 경험 (-아 봤어요, -어 봤어요, -해 봤어요)';
+      case 'unit29': return '해볼한국어 [용언 활용] ㉙ 순서 (-기 전에, -ㄴ 후에, -은 후에)';
+      case 'unit28': return '해볼한국어 [용언 활용] ㉘ 목적 (-러 가요, -으러 가요 / -러 와요, -으러 와요)';
+      case 'unit27': return '해볼한국어 [용언 활용] ㉗ 시간 (-ㄹ 때, -을 때)';
+      case 'unit26': return '해볼한국어 [용언 활용] ㉖ 조건 (-면, -으면)';
+      case 'unit25': return '해볼한국어 [용언 활용] ㉕ 이유 (-아서, -어서, -해서)';
+      case 'unit24': return '해볼한국어 [용언 활용] ㉔ 대조 (-지만)';
+      case 'unit23': return '해볼한국어 [용언 활용] ㉓ 나열 (-고)';
+      case 'unit22': return '해볼한국어 [용언 활용] ㉒ 제안 (-ㄹ까요?, -을까요?)';
+      case 'unit21': return '해볼한국어 [용언 활용] ㉑ 능력 (-ㄹ(을) 수 있어요, -ㄹ(을) 수 없어요)';
+      case 'unit20': return '해볼한국어 [용언 활용] ⑳ 의무 (-아야 돼요, -어야 돼요, -해야 돼요)';
+      case 'unit19': return '해볼한국어 [용언 활용] ⑲ 허락 (-아도 돼요?, -어도 돼요?, -해도 돼요?)';
+      case 'unit18': return '해볼한국어 [용언 활용] ⑱ 부탁 (-아 주세요, -어 주세요, -해 주세요)';
+      case 'unit17': return '해볼한국어 [용언 활용] ⑰ 미래 (-ㄹ 거예요, -을 거예요)';
+      case 'unit16': return '해볼한국어 [용언 활용] ⑯ 금지 (-지 마세요)';
+      case 'unit15': return '해볼한국어 [용언 활용] ⑮ 요청 (-세요, -으세요)';
+      case 'unit14': return '해볼한국어 [용언 활용] ⑭ 진행 (-고 있어요)';
+      case 'unit13': return '해볼한국어 [용언 활용] ⑬ 희망 (-고 싶어요)';
+      case 'unit12': return '해볼한국어 [용언 활용] ⑫ 부정2 ([명사] 안 해요, [명사] 못 해요)';
+      case 'unit11': return `해볼한국어 [용언 활용] ${VERB_UNIT_11_DATA.title[lang] || VERB_UNIT_11_DATA.title.ko}`;
+      case 'unit10': return '해볼한국어 [용언 활용] ⑩ 과거형 (-었어요 ★)';
+      case 'unit9': return '해볼한국어 [용언 활용] ⑨ 과거형 (-았어요 ★)';
+      case 'unit8': return '해볼한국어 [용언 활용] ⑧ 과거형 (-했어요)';
+      case 'unit7': return '해볼한국어 [용언 활용] ⑦ 과거형 (-었어요)';
+      case 'unit6': return '해볼한국어 [용언 활용] ⑥ 과거형 (-았어요)';
+      case 'unit5': return '해볼한국어 [용언 활용] ⑤ 현재형 (-어요 ★)';
+      case 'unit4': return '해볼한국어 [용언 활용] ④ 현재형 (-아요 ★)';
+      case 'unit3': return '해볼한국어 [용언 활용] ③ 현재형 (-해요)';
+      case 'unit2': return '해볼한국어 [용언 활용] ② 현재형 (-어요)';
       case 'unit1':
       default:
-        return '해볼 한국어 [용언 활용] ① 현재형 (-아요)';
+        return '해볼한국어 [용언 활용] ① 현재형 (-아요)';
     }
   };
 
@@ -1269,7 +1269,7 @@ export const VerbConjugationWorksheetPage: React.FC<VerbConjugationWorksheetPage
       className={
         renderOnly
           ? `w-full bg-white rounded-2xl border-2 border-purple-200 p-5 sm:p-6 text-slate-900 font-korean-gothic select-none ${className}`
-          : `verb-worksheet-page printable-a4-page print:m-0 print:p-1.5 print:shadow-none print:border-none w-full max-w-[1040px] mx-auto bg-white rounded-2xl shadow-md border-2 border-slate-300 p-2 sm:p-2.5 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`
+          : `verb-worksheet-page printable-a4-page print:m-0 print:p-1.5 print:shadow-none print:border-none w-full max-w-[1040px] mx-auto bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2 sm:p-2.5 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`
       }
       style={renderOnly ? undefined : { minHeight: '620px' }}
     >
@@ -1342,16 +1342,33 @@ export const VerbConjugationWorksheetPage: React.FC<VerbConjugationWorksheetPage
                     src={item.illustrationSvg}
                     alt={`${item.baseWord} 일러스트`}
                     className="w-[58px] h-[58px] sm:w-[70px] sm:h-[70px] object-contain drop-shadow-2xs select-none pointer-events-none"
-                    loading="lazy"
+                    loading="eager"
+                    decoding="sync"
                   />
                 </div>
 
-                {/* 2. 다국어 뜻 번역 (기본형 뜻 + 활용형 뜻) */}
-                <div className="flex flex-col items-center justify-center text-center min-h-[30px] sm:min-h-[34px] shrink-0 gap-0.5 px-0.5">
-                  <span className="text-[11px] sm:text-[12px] font-semibold text-slate-600 leading-tight block truncate max-w-full">
+                {/* 2. 다국어 뜻 번역 (기본형 뜻 + 활용형 뜻 — PDF 잘림/말줄임 방지) */}
+                <div className="flex flex-col items-center justify-center text-center min-h-[30px] sm:min-h-[34px] shrink-0 gap-0.5 px-0.5 w-full">
+                  <span
+                    className={`${
+                      currentTranslation.length > 22
+                        ? 'text-[9.5px] sm:text-[10px]'
+                        : currentTranslation.length > 15
+                        ? 'text-[10px] sm:text-[11px]'
+                        : 'text-[11px] sm:text-[12px]'
+                    } font-semibold text-slate-600 leading-[1.15] block break-words max-w-full`}
+                  >
                     {currentTranslation}
                   </span>
-                  <span className="text-[11.5px] sm:text-[12.5px] font-black text-purple-900 leading-tight block truncate max-w-full">
+                  <span
+                    className={`${
+                      conjugatedTranslation.length > 22
+                        ? 'text-[9.5px] sm:text-[10.5px]'
+                        : conjugatedTranslation.length > 15
+                        ? 'text-[10.5px] sm:text-[11.5px]'
+                        : 'text-[11.5px] sm:text-[12.5px]'
+                    } font-black text-purple-900 leading-[1.15] block break-words max-w-full`}
+                  >
                     → {conjugatedTranslation}
                   </span>
                 </div>
@@ -1363,7 +1380,7 @@ export const VerbConjugationWorksheetPage: React.FC<VerbConjugationWorksheetPage
                     {(() => {
                       const baseParts = getBaseWordParts(item.baseWord, unit);
                       return (
-                        <div className={`${baseWordClass} font-black leading-[1.12] flex items-baseline tracking-normal flex-wrap break-keep`}>
+                        <div className={`${baseWordClass} font-black leading-[1.12] flex items-baseline tracking-normal whitespace-nowrap`}>
                           <span
                             style={{
                               fontFamily: "'Hakgyoansim Badasseugi', '학교안심 받아쓰기', '학교알림받아쓰기', 'KyoboHand', sans-serif",
@@ -1389,7 +1406,7 @@ export const VerbConjugationWorksheetPage: React.FC<VerbConjugationWorksheetPage
                     })()}
 
                     {/* 활용형 단어 */}
-                    <div className={`${conjWordClass} font-black leading-[1.12] flex items-baseline tracking-normal flex-wrap break-keep`}>
+                    <div className={`${conjWordClass} font-black leading-[1.12] flex items-baseline tracking-normal whitespace-nowrap`}>
                       {getOptionBCharMapping(item.baseWord, item.conjugatedWord, unit).map((charInfo, charIdx) => (
                         <span
                           key={charIdx}
@@ -1494,7 +1511,7 @@ export const VerbConjugationWorksheetPage: React.FC<VerbConjugationWorksheetPage
             <div className={renderOnly ? 'flex items-center gap-2 pb-2 mb-1 border-b border-purple-200 text-slate-900' : 'flex items-center gap-1.5 text-slate-900'}>
               <span className={renderOnly ? 'text-xl' : 'text-sm sm:text-base'}>😎</span>
               <span className={renderOnly ? 'font-black text-lg text-slate-950 tracking-tight' : 'font-black text-[15px] sm:text-[16px] text-slate-950 tracking-tight'}>
-                {renderOnly ? `${getUnitTitle().replace('해볼 한국어 [용언 활용] ', '')} · 탐정 찬스` : '탐정 찬스'}
+                {renderOnly ? `${getUnitTitle().replace('해볼한국어 [용언 활용] ', '')} · 탐정 찬스` : '탐정 찬스'}
               </span>
             </div>
 
@@ -2227,7 +2244,7 @@ export const VerbConjugationWorksheetPage: React.FC<VerbConjugationWorksheetPage
       {!renderOnly && (
         <div className="mt-0.5 pt-0.5 border-t border-slate-300 flex items-center justify-start text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic font-bold">
           <span>
-            해볼 한국어 haebol.com | 다국어로 배우는 쉬운 한국어
+            해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어
           </span>
         </div>
       )}
