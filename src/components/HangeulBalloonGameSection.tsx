@@ -1233,9 +1233,9 @@ export const HangeulBalloonGameSection: React.FC<HangeulBalloonGameSectionProps>
   };
 
   return (
-    <div className="w-full space-y-1 sm:space-y-1.5 max-w-4xl mx-auto font-korean-gothic overflow-x-clip">
+    <div className="w-full space-y-1 sm:space-y-1.5 max-w-4xl lg:max-w-full mx-auto font-korean-gothic overflow-x-clip">
       {!hideGroupBar && (
-        <div className="sticky top-[80px] sm:top-[90px] z-[22] bg-[#F4F3F8]/95 lg:bg-[#FFF5F8]/95 backdrop-blur-md pb-1 w-full">
+        <div className="sticky top-[80px] sm:top-[90px] z-[22] bg-[#F4F5F7]/95 backdrop-blur-md pb-1 w-full">
           <div className="relative w-full max-w-md mx-auto">
             <select
               value={activeGroupId}

@@ -598,7 +598,7 @@ export const VerbManduCookingGameSection: React.FC<VerbManduCookingGameSectionPr
   const multiplierLabel = streak >= 3 ? '×2 FEVER' : streak === 2 ? '×1.5 COMBO' : null;
 
   return (
-    <div className="w-full max-w-4xl mx-auto font-korean-gothic select-none">
+    <div className="w-full max-w-4xl lg:max-w-full mx-auto font-korean-gothic select-none">
       {/* MAIN KITCHEN STAGE (모든 점수·게이지를 플레이박스 내부에 컴팩트하게 배치) */}
       <div
         className={`relative h-[400px] sm:h-[500px] rounded-lg bg-[#FAF7FF] ${

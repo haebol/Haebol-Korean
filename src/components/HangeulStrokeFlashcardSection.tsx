@@ -547,7 +547,7 @@ export const HangeulStrokeFlashcardSection: React.FC<HangeulStrokeFlashcardSecti
     <div className="w-full flex flex-col items-center select-none font-korean-gothic pb-0 sm:pb-1">
       {/* Row 5 Top Bar (Mobile Only when desktop control bar is active): 소제목(한글기초) + [1x1 단원드롭] [1x1 그리드] */}
       {!isMenuCollapsed && (
-        <div className={`${hideDesktopUnitBar ? 'lg:hidden' : ''} sticky top-[66px] sm:top-[74px] lg:static z-[28] bg-[#F4F3F8]/95 lg:bg-[#FFF5F8]/95 backdrop-blur-md pb-1 mb-1.5 border-b border-amber-200/80 no-print -mx-1 w-[calc(100%+0.5rem)] sm:mx-auto sm:w-full max-w-3xl px-2.5 sm:px-4 select-none`}>
+        <div className={`${hideDesktopUnitBar ? 'lg:hidden' : ''} sticky top-[66px] sm:top-[74px] lg:static z-[28] bg-[#F4F5F7]/95 backdrop-blur-md pb-1 mb-1.5 border-b border-amber-200/80 no-print -mx-1 w-[calc(100%+0.5rem)] sm:mx-auto sm:w-full max-w-3xl px-2.5 sm:px-4 select-none`}>
         <div className="flex items-center justify-between gap-2 h-[38px] sm:h-[42px]">
           <div className="flex items-center gap-3.5 sm:gap-6 min-w-0 overflow-x-auto no-scrollbar">
             <button
@@ -581,8 +581,8 @@ export const HangeulStrokeFlashcardSection: React.FC<HangeulStrokeFlashcardSecti
         </div>
       )}
 
-      {/* 2. Main Flashcard Container: 모바일 화면 꽉 차게 확장 (px-1 sm:px-4), PC에서 확대 */}
-      <div className="w-full max-w-full sm:max-w-3xl lg:max-w-[960px] flex justify-center px-1 sm:px-4 mx-auto">
+      {/* 2. Main Flashcard Container: 모바일 화면 꽉 차게 확장 (px-1 sm:px-4), PC에서 max-w-5xl 좌우 끝선 정렬 */}
+      <div className="w-full max-w-full sm:max-w-3xl lg:max-w-full flex justify-center px-1 sm:px-4 lg:px-0 mx-auto">
         <div className="w-full">
           <div
             onClick={handleCardClick}

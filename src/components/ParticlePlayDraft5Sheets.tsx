@@ -126,8 +126,8 @@ const ParticleRockLiftSheet: React.FC<{
           chapterTag="조사 놀이 ①"
           title="끙차! 받침 바위 들기 대회"
           hint="받침이 있으면 🪨 바위, 없으면 🎈 풍선에 동그라미 ○!"
-          accentHex="#065F46"
-          tintHex="#D1FAE5"
+          accentHex="#265A20"
+          tintHex="#E7F4E2"
           webControls={
             <button
               type="button"
@@ -144,11 +144,11 @@ const ParticleRockLiftSheet: React.FC<{
 
         {/* 상단 규칙 배너 */}
         <div className="grid grid-cols-2 gap-3.5 mb-2 shrink-0">
-          <div className="rounded-2xl border-[1.5px] border-emerald-200 bg-emerald-50/70 px-4 py-1.5 flex items-center justify-center gap-3.5">
-            <JollaComic pose="heavy" size={50} color="#059669" speech="무거워!!" />
+          <div className="rounded-2xl border-[1.5px] border-[#C3E0B8] bg-[#F3FAF0]/85 px-4 py-1.5 flex items-center justify-center gap-3.5">
+            <JollaComic pose="heavy" size={50} color="#448E3A" speech="무거워!!" />
             <div>
               <div className="text-[16.5px] font-black text-slate-800">🪨 받침 있어!</div>
-              <div className="text-[18px] font-black text-emerald-700">은 · 이 · 이에요</div>
+              <div className="text-[18px] font-black text-[#2F6F27]">은 · 이 · 이에요</div>
             </div>
           </div>
           <div className="rounded-2xl border-[1.5px] border-amber-200 bg-amber-50/70 px-4 py-1.5 flex items-center justify-center gap-3.5">
@@ -194,9 +194,9 @@ const ParticleRockLiftSheet: React.FC<{
                     className={`rounded-xl border-[1.5px] py-1.5 text-center text-[17px] font-black cursor-pointer select-none transition-colors ${
                       sel === 'rock'
                         ? card.hasBatchim
-                          ? 'bg-emerald-100 border-emerald-400 text-emerald-900'
+                          ? 'bg-[#E7F4E2] border-[#69B35C] text-[#214A1C]'
                           : 'bg-rose-100 border-rose-400 text-rose-800'
-                        : 'bg-slate-50 border-slate-300 text-slate-800 hover:border-emerald-400'
+                        : 'bg-slate-50 border-slate-300 text-slate-800 hover:border-[#69B35C]'
                     }`}
                   >
                     🪨 {card.rock}
@@ -269,8 +269,8 @@ const ParticleSeesawSheet: React.FC<{
           chapterTag="조사 놀이 ②"
           title="끼익끼익! 놀이터 시소 균형 맞추기"
           hint="알맞은 조사를 써 넣고 시소를 똑바로 맞춰 주세요!"
-          accentHex="#065F46"
-          tintHex="#D1FAE5"
+          accentHex="#265A20"
+          tintHex="#E7F4E2"
           webControls={
             <button
               type="button"
@@ -299,7 +299,7 @@ const ParticleSeesawSheet: React.FC<{
               >
                 <div className="absolute inset-0 opacity-30 pointer-events-none" style={DOT_GRID_STYLE} />
 
-                <span className="relative z-10 self-start px-2.5 py-0.5 rounded-lg bg-emerald-100 text-emerald-800 text-[12px] font-black">
+                <span className="relative z-10 self-start px-2.5 py-0.5 rounded-lg bg-[#E7F4E2] text-[#265A20] text-[12px] font-black">
                   시소 {idx + 1}
                 </span>
 
@@ -325,7 +325,7 @@ const ParticleSeesawSheet: React.FC<{
                       <div
                         className={`w-[100px] h-[50px] rounded-xl border-[1.5px] border-dashed flex items-center justify-center text-[22px] font-black ${
                           isBalanced
-                            ? 'bg-emerald-100 border-emerald-500 text-emerald-900'
+                            ? 'bg-[#E7F4E2] border-[#69B35C] text-[#214A1C]'
                             : 'bg-white border-slate-400 text-slate-400'
                         }`}
                       >
@@ -334,7 +334,7 @@ const ParticleSeesawSheet: React.FC<{
                       <JollaComic
                         pose={isBalanced ? 'cheer' : 'cling'}
                         size={46}
-                        color={isBalanced ? '#059669' : '#E11D48'}
+                        color={isBalanced ? '#448E3A' : '#E11D48'}
                         speech={isBalanced ? '똑바로!' : '기울어!'}
                       />
                     </div>
@@ -359,10 +359,10 @@ const ParticleSeesawSheet: React.FC<{
                         onKeyDown={(e) => e.key === 'Enter' && pick(sw.noun, opt, sw.answer, sw.full)}
                         className={`px-6 py-1 rounded-full border-[1.5px] text-[19px] font-black cursor-pointer select-none transition-all hover:scale-105 ${
                           isRight
-                            ? 'bg-emerald-100 border-emerald-500 text-emerald-900'
+                            ? 'bg-[#E7F4E2] border-[#69B35C] text-[#214A1C]'
                             : isWrong
                             ? 'bg-rose-100 border-rose-400 text-rose-800'
-                            : 'bg-white border-slate-400 text-slate-800 hover:border-emerald-400'
+                            : 'bg-white border-slate-400 text-slate-800 hover:border-[#69B35C]'
                         }`}
                       >
                         {opt}
@@ -434,9 +434,9 @@ const ROCKETS = [
     endGood: '아기예요',
     endOpts: ['아기이에요', '아기예요'],
     full: '동생은 아기예요.',
-    color: '#34D399',
-    bg: '#ECFDF5',
-    border: '#6EE7B7',
+    color: '#69B35C',
+    bg: '#F3FAF0',
+    border: '#84C678',
   },
 ];
 
@@ -470,8 +470,8 @@ const ParticleRocketLaunchSheet: React.FC<{
           chapterTag="조사 놀이 ③"
           title="슈웅~! 문장 로켓 발사대"
           hint="알맞은 연료 글자에 동그라미 ○ 치고 로켓을 발사해요!"
-          accentHex="#065F46"
-          tintHex="#D1FAE5"
+          accentHex="#265A20"
+          tintHex="#E7F4E2"
           webControls={
             <button
               type="button"
@@ -551,7 +551,7 @@ const ParticleRocketLaunchSheet: React.FC<{
                           className={`py-1.5 rounded-xl border-[1.5px] text-center text-[20px] font-black cursor-pointer select-none transition-colors ${
                             sel
                               ? op === r.pGood
-                                ? 'bg-emerald-100 border-emerald-400 text-emerald-900'
+                                ? 'bg-[#E7F4E2] border-[#69B35C] text-[#214A1C]'
                                 : 'bg-rose-100 border-rose-400 text-rose-800'
                               : 'bg-[#FFFDF7] border-slate-300 text-slate-800 hover:border-amber-400'
                           }`}
@@ -576,7 +576,7 @@ const ParticleRocketLaunchSheet: React.FC<{
                           className={`py-1.5 rounded-xl border-[1.5px] text-center text-[18px] font-black cursor-pointer select-none transition-colors ${
                             sel
                               ? op === r.endGood
-                                ? 'bg-emerald-100 border-emerald-400 text-emerald-900'
+                                ? 'bg-[#E7F4E2] border-[#69B35C] text-[#214A1C]'
                                 : 'bg-rose-100 border-rose-400 text-rose-800'
                               : 'bg-sky-50/50 border-slate-300 text-slate-800 hover:border-sky-400'
                           }`}
@@ -655,8 +655,8 @@ const ParticleUfoCatchSheet: React.FC<{
           chapterTag="조사 놀이 ④"
           title="으악! 외계인 글자 UFO 잡기"
           hint="가짜 외계인 글자에 큰 X표, 진짜 한국어에 동그라미 ○!"
-          accentHex="#065F46"
-          tintHex="#D1FAE5"
+          accentHex="#265A20"
+          tintHex="#E7F4E2"
           scoreBadge={`잡음: ${caughtCount > 0 ? caughtCount : ' '} / 5`}
           webControls={
             <button
@@ -691,7 +691,7 @@ const ParticleUfoCatchSheet: React.FC<{
                 <div key={u.noun} className="flex flex-col items-center">
                   <div className="relative w-full flex flex-col items-center">
                     <svg viewBox="0 0 160 88" className="w-[144px] h-[78px]">
-                      <polygon points="48,66 112,66 144,88 16,88" fill="#D1FAE5" opacity="0.6" />
+                      <polygon points="48,66 112,66 144,88 16,88" fill="#E7F4E2" opacity="0.65" />
                       <path
                         d="M 46 44 A 34 28 0 0 1 114 44 Z"
                         fill="#E0F2FE"
@@ -703,7 +703,7 @@ const ParticleUfoCatchSheet: React.FC<{
                         cy="50"
                         rx="64"
                         ry="18"
-                        fill="#A7F3D0"
+                        fill="#C3E0B8"
                         stroke="#475569"
                         strokeWidth="2.2"
                       />
@@ -716,7 +716,7 @@ const ParticleUfoCatchSheet: React.FC<{
                     </div>
                   </div>
 
-                  <div className="w-full rounded-2xl border-[1.5px] border-emerald-300 bg-white/95 p-2.5 flex flex-col items-center gap-2 shadow-2xs -mt-1">
+                  <div className="w-full rounded-2xl border-[1.5px] border-[#84C678] bg-white/95 p-2.5 flex flex-col items-center gap-2 shadow-2xs -mt-1">
                     <img
                       src={item.illustrationSvg}
                       alt={u.noun}
@@ -736,8 +736,8 @@ const ParticleUfoCatchSheet: React.FC<{
                           isCaught && ch.isAlien
                             ? 'bg-rose-100 border-rose-400 text-rose-700 line-through'
                             : isCaught && !ch.isAlien
-                            ? 'bg-emerald-100 border-emerald-400 text-emerald-900'
-                            : 'bg-[#FFFDF8] border-slate-300 text-slate-800 hover:border-emerald-400'
+                            ? 'bg-[#E7F4E2] border-[#69B35C] text-[#214A1C]'
+                            : 'bg-[#FFFDF8] border-slate-300 text-slate-800 hover:border-[#69B35C]'
                         }`}
                       >
                         {ch.text}
@@ -753,9 +753,9 @@ const ParticleUfoCatchSheet: React.FC<{
 
           {/* 땅 위 졸라맨 + 힌트 배너 */}
           <div className="relative z-10 flex items-center justify-around pt-1">
-            <JollaComic pose="net" size={58} color="#059669" speech="가짜 잡아라!" />
-            <div className="px-4 py-1.5 rounded-xl bg-white border-[1.5px] border-emerald-300 text-[15px] font-black text-slate-700 shadow-2xs">
-              ★ <span className="text-emerald-700">내가 · 네가 · 제가 · 누가 · 이게</span> 만 진짜 지구 말!
+            <JollaComic pose="net" size={58} color="#448E3A" speech="가짜 잡아라!" />
+            <div className="px-4 py-1.5 rounded-xl bg-white border-[1.5px] border-[#84C678] text-[15px] font-black text-slate-700 shadow-2xs">
+              ★ <span className="text-[#2F6F27]">내가 · 네가 · 제가 · 누가 · 이게</span> 만 진짜 지구 말!
             </div>
             <ManduMascot size="sm" mood="cheer" interactive={false} />
           </div>
@@ -825,8 +825,8 @@ const ParticleFartBalloonSheet: React.FC<{
           chapterTag="조사 놀이 ⑤"
           title="뻥~! 방귀 풍선 피해서 구름성 가기"
           hint="틀린 방귀 풍선 4개는 X표로 뻥! 진짜 풍선 6개만 예쁘게 색칠!"
-          accentHex="#065F46"
-          tintHex="#D1FAE5"
+          accentHex="#265A20"
+          tintHex="#E7F4E2"
           webControls={
             <button
               type="button"
@@ -847,7 +847,7 @@ const ParticleFartBalloonSheet: React.FC<{
           <div className="absolute inset-0 opacity-30 pointer-events-none" style={DOT_GRID_STYLE} />
 
           <div className="relative z-10 flex items-center justify-between px-3">
-            <JollaComic pose="float" size={48} color="#059669" speech="구름성 가자!" />
+            <JollaComic pose="float" size={48} color="#448E3A" speech="구름성 가자!" />
             <div className="px-5 py-1 rounded-full bg-white border-[1.5px] border-sky-300 shadow-2xs flex items-center gap-2">
               <ManduMascot size="xs" mood="cheer" interactive={false} />
               <span className="text-[18px] font-black text-sky-800">🏰 반짝반짝 구름성 ☁️</span>
@@ -875,8 +875,8 @@ const ParticleFartBalloonSheet: React.FC<{
                       isPopped
                         ? 'bg-rose-50 border-dashed border-rose-400'
                         : isColored
-                        ? 'bg-emerald-100 border-emerald-400'
-                        : 'bg-white border-sky-300 hover:border-emerald-400'
+                        ? 'bg-[#E7F4E2] border-[#69B35C]'
+                        : 'bg-white border-sky-300 hover:border-[#69B35C]'
                     }`}
                   >
                     <span
@@ -892,7 +892,7 @@ const ParticleFartBalloonSheet: React.FC<{
                       </span>
                     )}
                     {isColored && (
-                      <span className="mt-1 text-[12px] font-black text-emerald-700">
+                      <span className="mt-1 text-[12px] font-black text-[#2F6F27]">
                         ★ 진짜!
                       </span>
                     )}
@@ -905,7 +905,7 @@ const ParticleFartBalloonSheet: React.FC<{
           </div>
 
           <div className="relative z-10 flex items-center justify-center gap-4 text-[13px] font-bold text-slate-700">
-            <span className="px-3 py-0.5 rounded-full bg-white border border-emerald-300 text-emerald-800">
+            <span className="px-3 py-0.5 rounded-full bg-white border border-[#84C678] text-[#265A20]">
               ✅ 진짜 풍선: 6개 색칠!
             </span>
             <span className="px-3 py-0.5 rounded-full bg-rose-50 border border-rose-300 text-rose-700">

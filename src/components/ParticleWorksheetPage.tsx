@@ -855,9 +855,9 @@ export const ParticleWorksheetPage: React.FC<ParticleWorksheetPageProps> = ({
     return (
       <div
         style={{ fontFamily: "'NanumBarunGothic', 'NanumSquare', 'Pretendard', sans-serif" }}
-        className={`w-full bg-white rounded-2xl border-2 border-emerald-300 p-5 sm:p-6 text-slate-900 select-none ${className}`}
+        className={`w-full bg-white rounded-2xl border-2 border-[#84C678] p-5 sm:p-6 text-slate-900 select-none ${className}`}
       >
-        <div className="flex items-center gap-2 pb-2.5 mb-3 border-b border-emerald-200">
+        <div className="flex items-center gap-2 pb-2.5 mb-3 border-b border-[#C3E0B8]">
           <span className="text-xl">😎</span>
           <span className="font-black text-lg text-slate-950 tracking-tight">
             탐정 찬스 · {unitMeta.circled} {unitMeta.title}
@@ -875,9 +875,9 @@ export const ParticleWorksheetPage: React.FC<ParticleWorksheetPageProps> = ({
     return (
       <div
         style={{ fontFamily: "'NanumBarunGothic', 'NanumSquare', 'Pretendard', sans-serif" }}
-        className={`w-full bg-white rounded-2xl border-2 border-emerald-300 p-5 sm:p-6 text-slate-900 select-none ${className}`}
+        className={`w-full bg-white rounded-2xl border-2 border-[#84C678] p-5 sm:p-6 text-slate-900 select-none ${className}`}
       >
-        <div className="flex items-center gap-2.5 pb-3 mb-3.5 border-b border-emerald-200">
+        <div className="flex items-center gap-2.5 pb-3 mb-3.5 border-b border-[#C3E0B8]">
           <ManduMascot size="xs" interactive={false} />
           <span className="font-black text-lg text-slate-950 tracking-tight">
             {unitMeta.tipHeaderTitle}
@@ -896,10 +896,10 @@ export const ParticleWorksheetPage: React.FC<ParticleWorksheetPageProps> = ({
       style={{ minHeight: '620px' }}
     >
       {/* 1. HEADER ROW */}
-      <div className="flex flex-wrap items-center justify-between gap-1.5 border-b-2 border-emerald-600 pb-0.5 mb-1 text-slate-900 shrink-0">
+      <div className="flex flex-wrap items-center justify-between gap-1.5 border-b-2 border-[#448E3A] pb-0.5 mb-1 text-slate-900 shrink-0">
         <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
           <ManduMascot size="xs" interactive={false} />
-          <h1 className="text-xs sm:text-sm md:text-base font-black text-emerald-950 font-korean-gothic tracking-tight break-keep">
+          <h1 className="text-xs sm:text-sm md:text-base font-black text-[#214A1C] font-korean-gothic tracking-tight break-keep">
             {unitMeta.sheetHeaderTitle}
           </h1>
         </div>
@@ -926,20 +926,20 @@ export const ParticleWorksheetPage: React.FC<ParticleWorksheetPageProps> = ({
               <div
                 key={item.id}
                 onClick={() => handleColItemClick(item)}
-                className={`relative border-2 border-dashed border-emerald-300 hover:border-emerald-400 bg-white rounded-xl p-2 sm:p-2.5 pb-4 sm:pb-5 flex flex-col transition-all group ${
+                className={`relative border-2 border-dashed border-[#84C678] hover:border-[#69B35C] bg-white rounded-xl p-2 sm:p-2.5 pb-4 sm:pb-5 flex flex-col transition-all group ${
                   interactiveAudio
-                    ? 'cursor-pointer hover:shadow-md hover:bg-emerald-50/20 active:scale-[0.99]'
+                    ? 'cursor-pointer hover:shadow-md hover:bg-[#F3FAF0]/45 active:scale-[0.99]'
                     : ''
                 }`}
                 title={interactiveAudio ? `클릭하여 발음 듣기: "${item.baseNoun}, ${item.combinedWord}"` : undefined}
               >
                 {/* Badge */}
                 <div className="flex items-center justify-between mb-1 shrink-0">
-                  <span className="bg-emerald-100 text-emerald-950 px-1.5 py-0.2 rounded font-black text-[9.5px] sm:text-[10px] font-korean-gothic border border-emerald-200 shadow-2xs">
+                  <span className="bg-[#E7F4E2] text-[#214A1C] px-1.5 py-0.2 rounded font-black text-[9.5px] sm:text-[10px] font-korean-gothic border border-[#C3E0B8] shadow-2xs">
                     {item.badge}
                   </span>
                   {interactiveAudio && (
-                    <span className="text-[9px] text-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity font-bold">
+                    <span className="text-[9px] text-[#448E3A] opacity-0 group-hover:opacity-100 transition-opacity font-bold">
                       🔊
                     </span>
                   )}
@@ -978,7 +978,7 @@ export const ParticleWorksheetPage: React.FC<ParticleWorksheetPageProps> = ({
                           : combinedTranslation.length > 15
                           ? 'text-[10.5px] sm:text-[11.5px]'
                           : 'text-[11.5px] sm:text-[12.5px]'
-                      } font-black text-emerald-900 leading-[1.15] block break-words max-w-full`}
+                      } font-black text-[#265A20] leading-[1.15] block break-words max-w-full`}
                     >
                       → {combinedTranslation}
                     </span>
@@ -1107,20 +1107,20 @@ export const ParticleWorksheetPage: React.FC<ParticleWorksheetPageProps> = ({
               <div
                 key={row.id}
                 onClick={() => handleRowItemClick(row)}
-                className={`relative border-2 border-dashed border-emerald-300 hover:border-emerald-400 bg-white rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 flex items-center gap-3 sm:gap-4 transition-all group ${
+                className={`relative border-2 border-dashed border-[#84C678] hover:border-[#69B35C] bg-white rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 flex items-center gap-3 sm:gap-4 transition-all group ${
                   interactiveAudio
-                    ? 'cursor-pointer hover:shadow-md hover:bg-emerald-50/20 active:scale-[0.995]'
+                    ? 'cursor-pointer hover:shadow-md hover:bg-[#F3FAF0]/45 active:scale-[0.995]'
                     : ''
                 }`}
                 title={interactiveAudio ? `클릭하여 문장 듣기: "${row.fullSentence}"` : undefined}
               >
                 {/* Badge + Audio Icon (문장번호 크기 기존 유지) */}
                 <div className="w-[40px] sm:w-[44px] shrink-0 flex flex-col items-center justify-center gap-0.5">
-                  <span className="bg-emerald-100 text-emerald-950 px-1.5 py-0.2 rounded font-black text-[9.5px] sm:text-[10.5px] font-korean-gothic border border-emerald-200 shadow-2xs">
+                  <span className="bg-[#E7F4E2] text-[#214A1C] px-1.5 py-0.2 rounded font-black text-[9.5px] sm:text-[10.5px] font-korean-gothic border border-[#C3E0B8] shadow-2xs">
                     {row.badge}
                   </span>
                   {interactiveAudio && (
-                    <span className="text-[10px] text-emerald-600 opacity-30 group-hover:opacity-100 transition-opacity font-bold">
+                    <span className="text-[10px] text-[#448E3A] opacity-30 group-hover:opacity-100 transition-opacity font-bold">
                       🔊
                     </span>
                   )}
@@ -1208,14 +1208,14 @@ export const ParticleWorksheetPage: React.FC<ParticleWorksheetPageProps> = ({
           style={{
             fontFamily: "'NanumBarunGothic', 'NanumSquare', 'Pretendard', sans-serif",
           }}
-          className="w-full pt-2.5 pb-2 sm:pt-3 sm:pb-2.5 border-t-2 border-emerald-600 shrink-0 select-none"
+          className="w-full pt-2.5 pb-2 sm:pt-3 sm:pb-2.5 border-t-2 border-[#448E3A] shrink-0 select-none"
         >
           <div className="verb-tips-grid grid grid-cols-[15fr_33fr] print:grid-cols-[15fr_33fr] gap-2.5 sm:gap-3.5 items-stretch">
             {/* [왼쪽 영역: 탐정 찬스] */}
-            <div className="border-r border-emerald-200 pb-0 pr-2.5 sm:pr-3 flex flex-col justify-start gap-1 min-w-0">
+            <div className="border-r border-[#C3E0B8] pb-0 pr-2.5 sm:pr-3 flex flex-col justify-start gap-1 min-w-0">
               <div className="flex items-center gap-1.5 text-slate-900">
                 <span className="text-sm sm:text-base">😎</span>
-                <span className="font-black text-[15px] sm:text-[16px] text-emerald-950 tracking-tight">
+                <span className="font-black text-[15px] sm:text-[16px] text-[#214A1C] tracking-tight">
                   탐정 찬스
                 </span>
               </div>
@@ -1229,7 +1229,7 @@ export const ParticleWorksheetPage: React.FC<ParticleWorksheetPageProps> = ({
             <div className="pl-1 sm:pl-2 flex flex-col justify-start gap-1 min-w-0">
               <div className="flex items-center gap-1.5 text-slate-900">
                 <ManduMascot size="xs" interactive={false} />
-                <span className="font-black text-[15px] sm:text-[16px] text-emerald-950 tracking-tight">
+                <span className="font-black text-[15px] sm:text-[16px] text-[#214A1C] tracking-tight">
                   {unitMeta.tipHeaderTitle}
                 </span>
               </div>
@@ -1243,7 +1243,7 @@ export const ParticleWorksheetPage: React.FC<ParticleWorksheetPageProps> = ({
       )}
 
       {/* 4. SHEET FOOTER */}
-      <div className="mt-0.5 pt-0.5 border-t border-emerald-200 flex items-center justify-start text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic font-bold">
+      <div className="mt-0.5 pt-0.5 border-t border-[#C3E0B8] flex items-center justify-start text-[9px] sm:text-[9.5px] text-slate-500 font-korean-gothic font-bold">
         <span>
           해볼한국어 haebol.com | 다국어로 배우는 쉬운 한국어
         </span>

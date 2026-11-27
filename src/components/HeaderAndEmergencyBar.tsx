@@ -73,6 +73,7 @@ export const HeaderAndEmergencyBar: React.FC<HeaderAndEmergencyBarProps> = ({
   uiLang = 'ko' as UiLanguage,
   activeTrack,
   onSelectTrack,
+  activeMethod = 'flashcard',
   onLanguageChange,
   onSelectEmergencyCard,
   onOpenVoiceModal,
@@ -409,247 +410,268 @@ export const HeaderAndEmergencyBar: React.FC<HeaderAndEmergencyBarProps> = ({
     );
 
   return (
-    <header className="relative z-40 w-full bg-[#3B1668] lg:bg-transparent border-b border-white/15 lg:border-b-0 shadow-2xs lg:shadow-none lg:px-4 lg:pt-2.5 no-print select-none font-korean-gothic">
+    <header className="relative z-40 w-full bg-[#3B1668] lg:bg-transparent border-b border-white/15 lg:border-b-0 shadow-2xs lg:shadow-none no-print select-none font-korean-gothic">
       {/* ===================================================================== */}
-      {/* DESKTOP (lg+): Twin '해볼 수학' Row 1 + Row 2 Unified Purple Card      */}
+      {/* DESKTOP (lg+): Unified Twin Card (Row 1 + Row 2) with Dynamic Width   */}
+      {/* Flashcard/Game: 928px | Worksheet: 1040px                             */}
       {/* ===================================================================== */}
-      <div className="hidden lg:block w-full max-w-[1080px] mx-auto rounded-2xl bg-white border border-purple-200/85 shadow-[0_2px_12px_rgba(59,22,104,0.08)]">
-        {/* ROW 1: Solid Deep Purple Top Bar */}
-        <div className="w-full px-4 h-[56px] flex items-center justify-between gap-3 bg-[#3B1668] text-white rounded-t-2xl">
-          {/* Left: Mandu Logo + '해볼 한국어' + 4 Main Tracks (한글, 교실한국어, 용언, 조사) */}
-          <div className="flex items-center gap-2.5 min-w-0">
-            <button
-              type="button"
-              onClick={handleBrandClick}
-              onDoubleClick={handleBrandDoubleClick}
-              onPointerDown={handleBrandPointerDown}
-              onPointerUp={clearBrandLongPress}
-              onPointerLeave={clearBrandLongPress}
-              onPointerCancel={clearBrandLongPress}
-              className="flex items-center gap-2 select-none cursor-pointer group text-left border-0 bg-transparent p-0 transition-transform active:scale-95 shrink-0"
-              title={ui.brandTitle}
-            >
-              <ManduMascot size="xs" interactive={false} />
-              <h1 className="text-[19px] font-black text-white font-korean-gothic tracking-tight leading-none whitespace-nowrap group-hover:text-purple-100 transition-colors">
-                {ui.brandTitle}
-              </h1>
-            </button>
+      <div className="hidden lg:block w-full px-4 pt-2">
+        <div
+          className={`w-full ${
+            activeMethod === 'worksheet' ? 'max-w-[1040px]' : 'max-w-[928px]'
+          } mx-auto rounded-lg bg-white border border-purple-200/85 shadow-[0_2px_10px_rgba(59,22,104,0.08)]`}
+        >
+          {/* ROW 1: Solid Deep Purple Top Bar (height h-[56px] preserved) */}
+          <div className="w-full px-4 h-[56px] flex items-center justify-between gap-2.5 bg-[#3B1668] text-white rounded-t-lg">
+            {/* Left: Mandu Logo + '해볼 한국어' + 4 Main Tracks (한글, 교실한국어, 용언, 조사) */}
+            <div className="flex items-center gap-2 min-w-0">
+              <button
+                type="button"
+                onClick={handleBrandClick}
+                onDoubleClick={handleBrandDoubleClick}
+                onPointerDown={handleBrandPointerDown}
+                onPointerUp={clearBrandLongPress}
+                onPointerLeave={clearBrandLongPress}
+                onPointerCancel={clearBrandLongPress}
+                className="flex items-center gap-2 select-none cursor-pointer group text-left border-0 bg-transparent p-0 transition-transform active:scale-95 shrink-0"
+                title={ui.brandTitle}
+              >
+                <ManduMascot size="xs" interactive={false} />
+                <h1 className="text-[19px] font-black text-white font-korean-gothic tracking-tight leading-none whitespace-nowrap group-hover:text-purple-100 transition-colors">
+                  {ui.brandTitle}
+                </h1>
+              </button>
 
-            <div className="h-5 w-px bg-white/20 shrink-0 mx-0.5" aria-hidden="true" />
+              <div className="h-5 w-px bg-white/20 shrink-0 mx-0.5" aria-hidden="true" />
 
-            <nav aria-label="대분류 영역 선택" className="flex items-center gap-1 shrink-0">
-              {trackTabs.map(tab => {
-                const isActive = activeTrack === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    onClick={() => {
-                      playCutePop();
-                      onSelectTrack(tab.id);
-                    }}
-                    className={`h-[34px] px-3.5 rounded-lg flex items-center justify-center whitespace-nowrap shrink-0 cursor-pointer transition-all text-[14px] tracking-tight ${
-                      isActive
-                        ? 'bg-white/20 text-white font-black ring-1 ring-white/30 shadow-2xs'
-                        : 'text-purple-100/85 hover:text-white hover:bg-white/10 font-bold'
+              <nav aria-label="대분류 영역 선택" className="flex items-center gap-1 shrink-0">
+                {trackTabs.map(tab => {
+                  const isActive = activeTrack === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      onClick={() => {
+                        playCutePop();
+                        onSelectTrack(tab.id);
+                      }}
+                      className={`h-[34px] px-3 rounded-md flex items-center justify-center whitespace-nowrap shrink-0 cursor-pointer transition-all text-[14px] tracking-tight ${
+                        isActive
+                          ? 'bg-white/20 text-white font-black ring-1 ring-white/30 shadow-2xs'
+                          : 'text-purple-100/85 hover:text-white hover:bg-white/10 font-bold'
+                      }`}
+                      title={uiLang === 'ko' ? tab.label : `${tab.label} (${tab.koLabel})`}
+                    >
+                      <span>{tab.label}</span>
+                    </button>
+                  );
+                })}
+              </nav>
+            </div>
+
+            {/* Right: 4 Emergency Icons + [KR 한국어 ∨] Language Dropdown + White [인쇄] Button */}
+            <div className="flex items-center gap-2 shrink-0">
+              <div className="flex items-center gap-1" aria-label="Emergency Quick Cards">
+                {renderEmergencyButtons('desktop')}
+              </div>
+
+              <div className="h-5 w-px bg-white/20 shrink-0" aria-hidden="true" />
+
+              {/* Compact Language Selector matching 해볼 수학 top-right selector */}
+              <div className="relative shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setIsLangOpen(prev => !prev)}
+                  className="h-[36px] px-2.5 rounded-md bg-white/14 hover:bg-white/22 active:scale-[0.98] text-white flex items-center gap-1.5 transition-all focus:outline-none cursor-pointer border border-white/22 whitespace-nowrap"
+                  aria-label={ui.myLangTitle}
+                  aria-expanded={isLangOpen}
+                  title={`${ui.myLangTitle} · ${ui.dropdownHeader}`}
+                >
+                  <span className="text-[14px] leading-none shrink-0" aria-hidden="true">🌐</span>
+                  <span className="text-[13.5px] leading-none shrink-0">{selectedLangObj.flag}</span>
+                  <span className="px-1.5 py-[2px] rounded-[4px] border border-yellow-300 bg-yellow-300/15 text-[12.5px] font-black text-yellow-100 leading-tight whitespace-nowrap">
+                    {selectedLangObj.nativeName}
+                  </span>
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 text-purple-100 transition-transform shrink-0 ${
+                      isLangOpen ? 'rotate-180' : ''
                     }`}
-                    title={uiLang === 'ko' ? tab.label : `${tab.label} (${tab.koLabel})`}
+                  />
+                </button>
+
+                {renderLangDropdownPopover()}
+              </div>
+
+              {/* White Rounded-Rect [인쇄 ∨] Popover Trigger */}
+              <div className="relative shrink-0">
+                <button
+                  type="button"
+                  onClick={() => {
+                    playCutePop();
+                    setIsLangOpen(false);
+                    setIsPrintMenuOpen((prev) => !prev);
+                  }}
+                  className="h-[36px] px-3 rounded-md bg-white hover:bg-purple-50 active:scale-95 text-[#2E1052] text-[13.5px] font-black flex items-center gap-1.5 whitespace-nowrap shrink-0 shadow-xs transition-all cursor-pointer border border-white"
+                  title="학습지 인쇄 메뉴 (1장 · 10장 묶음)"
+                  aria-label="인쇄 메뉴 열기"
+                  aria-expanded={isPrintMenuOpen}
+                >
+                  <Printer className="w-4 h-4 text-[#3B1668] shrink-0" />
+                  <span>인쇄</span>
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 text-[#3B1668]/75 transition-transform shrink-0 ${
+                      isPrintMenuOpen ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+
+                {renderPrintMenuPopover()}
+              </div>
+            </div>
+          </div>
+
+          {/* ROW 2: Single-Row Lavender Pill Bar — Evenly Distributed Left-to-Right (No Wrapping) */}
+          <div className="w-full px-2.5 py-2 bg-white rounded-b-lg">
+            <nav
+              aria-label="세부 학습 메뉴"
+              className="w-full h-[40px] px-4 rounded-full bg-[#F3EFFA] border border-purple-200/80 flex items-center justify-between flex-nowrap whitespace-nowrap gap-1.5"
+            >
+              {(() => {
+                const primaryTabs = desktopRow2Tabs.filter((item) => item.group !== 'worksheet');
+                const worksheetTabs = desktopRow2Tabs.filter((item) => item.group === 'worksheet');
+
+                const renderWorksheetButton = (item: DesktopRow2TabItem) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    disabled={item.locked}
+                    onClick={() => {
+                      if (item.locked) return;
+                      playCutePop();
+                      item.onClick();
+                    }}
+                    title={item.locked ? '준비 중입니다 (곧 공개 예정)' : item.label}
+                    className={`h-[30px] px-3 rounded-full text-[13.5px] tracking-tight whitespace-nowrap shrink-0 inline-flex items-center justify-center gap-1 transition-all ${
+                      item.locked
+                        ? 'text-slate-400 font-semibold cursor-not-allowed opacity-75'
+                        : item.isActive
+                        ? 'bg-[#3B1668] text-white font-black shadow-xs cursor-pointer'
+                        : 'text-[#3A2259] hover:text-[#3B1668] hover:bg-purple-200/55 font-bold cursor-pointer'
+                    }`}
                   >
-                    <span>{tab.label}</span>
+                    {item.locked && <Lock className="w-3 h-3 shrink-0" />}
+                    <span>{item.label}</span>
                   </button>
                 );
-              })}
-            </nav>
-          </div>
 
-          {/* Right: 4 Emergency Icons + [KR 한국어 ∨] Language Dropdown + White [인쇄] Button */}
-          <div className="flex items-center gap-2 shrink-0">
-            <div className="flex items-center gap-1" aria-label="Emergency Quick Cards">
-              {renderEmergencyButtons('desktop')}
-            </div>
-
-            <div className="h-5 w-px bg-white/20 shrink-0" aria-hidden="true" />
-
-            {/* Compact Language Selector matching 해볼 수학 top-right selector */}
-            <div className="relative shrink-0">
-              <button
-                type="button"
-                onClick={() => setIsLangOpen(prev => !prev)}
-                className="h-[36px] px-2.5 rounded-lg bg-white/14 hover:bg-white/22 active:scale-[0.98] text-white flex items-center gap-1.5 transition-all focus:outline-none cursor-pointer border border-white/22 whitespace-nowrap"
-                aria-label={ui.myLangTitle}
-                aria-expanded={isLangOpen}
-                title={`${ui.myLangTitle} · ${ui.dropdownHeader}`}
-              >
-                <span className="text-[14px] leading-none shrink-0" aria-hidden="true">🌐</span>
-                <span className="text-[13.5px] leading-none shrink-0">{selectedLangObj.flag}</span>
-                <span className="px-1.5 py-[2px] rounded-[4px] border border-yellow-300 bg-yellow-300/15 text-[12.5px] font-black text-yellow-100 leading-tight whitespace-nowrap">
-                  {selectedLangObj.nativeName}
-                </span>
-                <ChevronDown
-                  className={`w-3.5 h-3.5 text-purple-100 transition-transform shrink-0 ${
-                    isLangOpen ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-
-              {renderLangDropdownPopover()}
-            </div>
-
-            {/* White Rounded-Rect [인쇄 ∨] Popover Trigger */}
-            <div className="relative shrink-0">
-              <button
-                type="button"
-                onClick={() => {
-                  playCutePop();
-                  setIsLangOpen(false);
-                  setIsPrintMenuOpen((prev) => !prev);
-                }}
-                className="h-[36px] px-3 rounded-lg bg-white hover:bg-purple-50 active:scale-95 text-[#2E1052] text-[13.5px] font-black flex items-center gap-1.5 whitespace-nowrap shrink-0 shadow-xs transition-all cursor-pointer border border-white"
-                title="학습지 인쇄 메뉴 (1장 · 10장 묶음)"
-                aria-label="인쇄 메뉴 열기"
-                aria-expanded={isPrintMenuOpen}
-              >
-                <Printer className="w-4 h-4 text-[#3B1668] shrink-0" />
-                <span>인쇄</span>
-                <ChevronDown
-                  className={`w-3.5 h-3.5 text-[#3B1668]/75 transition-transform shrink-0 ${
-                    isPrintMenuOpen ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-
-              {renderPrintMenuPopover()}
-            </div>
-          </div>
-        </div>
-
-        {/* ROW 2: Single-Row Lavender Pill Bar — [1. 플래시카드] [2. 게임] | (3. 학습지 ▸) [하위 메뉴들] ... [졸라맨] */}
-        <div className="w-full px-3 py-2 bg-white rounded-b-2xl">
-          <div className="w-full min-h-[42px] px-3 py-1 rounded-full bg-[#F3EFFA] border border-purple-200/80 flex items-center justify-between gap-2">
-            {(() => {
-              const primaryTabs = desktopRow2Tabs.filter((item) => item.group !== 'worksheet');
-              const worksheetTabs = desktopRow2Tabs.filter((item) => item.group === 'worksheet');
-
-              return (
-                <nav
-                  aria-label="세부 학습 메뉴"
-                  className="flex items-center flex-1 justify-center gap-1.5 xl:gap-2 min-w-0"
-                >
-                  <div className="flex items-center gap-1 xl:gap-1.5 shrink-0">
-                    {primaryTabs.map((item) => (
-                      <button
-                        key={item.id}
-                        type="button"
-                        disabled={item.locked}
-                        onClick={() => {
-                          if (item.locked) return;
-                          playCutePop();
-                          item.onClick();
-                        }}
-                        title={item.locked ? '준비 중입니다 (곧 공개 예정)' : item.label}
-                        className={`h-[32px] px-3.5 rounded-full text-[13.5px] tracking-tight whitespace-nowrap shrink-0 inline-flex items-center justify-center gap-1 transition-all ${
-                          item.locked
-                            ? 'text-slate-400 font-semibold cursor-not-allowed opacity-75'
-                            : item.isActive
-                            ? 'bg-[#3B1668] text-white font-black shadow-xs cursor-pointer'
-                            : 'text-[#3A2259] hover:text-[#3B1668] hover:bg-purple-200/55 font-bold cursor-pointer'
-                        }`}
-                      >
-                        {item.locked && <Lock className="w-3 h-3 shrink-0" />}
-                        <span>{item.label}</span>
-                      </button>
-                    ))}
-                  </div>
-
-                  {worksheetTabs.length > 0 && (
-                    <>
-                      <span
-                        className="w-px h-4 bg-purple-300/80 mx-1.5 xl:mx-2.5 shrink-0"
-                        aria-hidden="true"
-                      />
-                      <div
-                        role="group"
-                        aria-label="3. 학습지 하위 메뉴"
-                        className="flex items-center gap-1 shrink-0"
-                      >
-                        <span
-                          className="h-[25px] px-2.5 mr-0.5 rounded-full bg-purple-200/65 text-[#5B2E91] text-[12px] font-extrabold tracking-tight whitespace-nowrap select-none pointer-events-none inline-flex items-center gap-1 shrink-0"
-                          aria-hidden="true"
+                return (
+                  <>
+                    {primaryTabs.map((item, idx) => (
+                      <React.Fragment key={item.id}>
+                        {idx > 0 && (
+                          <span
+                            className="w-px h-3.5 bg-purple-300/80 shrink-0"
+                            aria-hidden="true"
+                          />
+                        )}
+                        <button
+                          type="button"
+                          disabled={item.locked}
+                          onClick={() => {
+                            if (item.locked) return;
+                            playCutePop();
+                            item.onClick();
+                          }}
+                          title={item.locked ? '준비 중입니다 (곧 공개 예정)' : item.label}
+                          className={`h-[30px] px-3.5 rounded-full text-[13.5px] tracking-tight whitespace-nowrap shrink-0 inline-flex items-center justify-center gap-1 transition-all ${
+                            item.locked
+                              ? 'text-slate-400 font-semibold cursor-not-allowed opacity-75'
+                              : item.isActive
+                              ? 'bg-[#3B1668] text-white font-black shadow-xs cursor-pointer'
+                              : 'text-[#3A2259] hover:text-[#3B1668] hover:bg-purple-200/55 font-bold cursor-pointer'
+                          }`}
                         >
-                          <span>3. 학습지</span>
-                          <span className="text-[10px] opacity-80 leading-none">▸</span>
-                        </span>
-                        <div className="flex items-center gap-0.5 xl:gap-1">
-                          {worksheetTabs.map((item) => (
-                            <button
-                              key={item.id}
-                              type="button"
-                              disabled={item.locked}
-                              onClick={() => {
-                                if (item.locked) return;
-                                playCutePop();
-                                item.onClick();
-                              }}
-                              title={item.locked ? '준비 중입니다 (곧 공개 예정)' : item.label}
-                              className={`h-[30px] px-3 rounded-full text-[13.5px] tracking-tight whitespace-nowrap shrink-0 inline-flex items-center justify-center gap-1 transition-all ${
-                                item.locked
-                                  ? 'text-slate-400 font-semibold cursor-not-allowed opacity-75'
-                                  : item.isActive
-                                  ? 'bg-[#3B1668] text-white font-black shadow-xs cursor-pointer'
-                                  : 'text-[#3A2259] hover:text-[#3B1668] hover:bg-purple-200/55 font-bold cursor-pointer'
-                              }`}
-                            >
-                              {item.locked && <Lock className="w-3 h-3 shrink-0" />}
-                              <span>{item.label}</span>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </nav>
-              );
-            })()}
+                          {item.locked && <Lock className="w-3 h-3 shrink-0" />}
+                          <span>{item.label}</span>
+                        </button>
+                      </React.Fragment>
+                    ))}
 
-            {/* Stickman Icon moved from Row 1 to Far Right End of Row 2 */}
-            {onOpenStickmanBonus && (
-              <button
-                type="button"
-                onClick={() => {
-                  playCutePop();
-                  onOpenStickmanBonus();
-                }}
-                className="mr-1 w-8 h-8 rounded-full hover:bg-purple-200/60 border-0 bg-transparent cursor-pointer focus:outline-none transition-transform hover:scale-110 active:scale-95 shrink-0 flex items-center justify-center"
-                title={stickmanTitle}
-                aria-label={stickmanTitle}
-              >
-                <svg
-                  viewBox="-26 -60 52 114"
-                  className="w-[17px] h-[28px] block"
-                  aria-hidden="true"
-                >
-                  <circle cx="0" cy="-38" r="18" fill="#FFFFFF" stroke="#3B1668" strokeWidth="4" />
-                  <circle cx="-6" cy="-41" r="2.6" fill="#3B1668" />
-                  <circle cx="6" cy="-41" r="2.6" fill="#3B1668" />
-                  <path
-                    d="M-6 -32 Q0 -26 6 -32"
-                    fill="none"
-                    stroke="#3B1668"
-                    strokeWidth="2.6"
-                    strokeLinecap="round"
-                  />
-                  <line x1="0" y1="-20" x2="0" y2="16" stroke="#3B1668" strokeWidth="5.5" strokeLinecap="round" />
-                  <line x1="0" y1="-10" x2="-16" y2="6" stroke="#3B1668" strokeWidth="4.5" strokeLinecap="round" />
-                  <g transform="translate(0, -10)">
-                    <g className="stickman-arm-wave">
-                      <line x1="0" y1="0" x2="0" y2="23" stroke="#3B1668" strokeWidth="4.5" strokeLinecap="round" />
-                    </g>
-                  </g>
-                  <line x1="0" y1="16" x2="-11" y2="48" stroke="#3B1668" strokeWidth="5.5" strokeLinecap="round" />
-                  <line x1="0" y1="16" x2="11" y2="48" stroke="#3B1668" strokeWidth="5.5" strokeLinecap="round" />
-                </svg>
-              </button>
-            )}
+                    {worksheetTabs.length > 0 && (
+                      <>
+                        <span
+                          className="w-px h-3.5 bg-purple-300/80 shrink-0"
+                          aria-hidden="true"
+                        />
+                        <span className="inline-flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+                          <span
+                            className="text-xs text-slate-500 font-bold tracking-tight whitespace-nowrap select-none pointer-events-none shrink-0"
+                            aria-hidden="true"
+                          >
+                            3. 학습지 :
+                          </span>
+                          {renderWorksheetButton(worksheetTabs[0])}
+                        </span>
+                        {worksheetTabs.slice(1).map((item) => (
+                          <React.Fragment key={item.id}>
+                            <span
+                              className="w-px h-3.5 bg-purple-300/75 shrink-0"
+                              aria-hidden="true"
+                            />
+                            {renderWorksheetButton(item)}
+                          </React.Fragment>
+                        ))}
+                      </>
+                    )}
+
+                    {onOpenStickmanBonus && (
+                      <>
+                        <span
+                          className="w-px h-3.5 bg-purple-300/80 shrink-0"
+                          aria-hidden="true"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => {
+                            playCutePop();
+                            onOpenStickmanBonus();
+                          }}
+                          className="w-8 h-8 rounded-full hover:bg-purple-200/60 border-0 bg-transparent cursor-pointer focus:outline-none transition-transform hover:scale-110 active:scale-95 shrink-0 flex items-center justify-center"
+                          title={stickmanTitle}
+                          aria-label={stickmanTitle}
+                        >
+                          <svg
+                            viewBox="-26 -60 52 114"
+                            className="w-[17px] h-[28px] block"
+                            aria-hidden="true"
+                          >
+                            <circle cx="0" cy="-38" r="18" fill="#FFFFFF" stroke="#3B1668" strokeWidth="4" />
+                            <circle cx="-6" cy="-41" r="2.6" fill="#3B1668" />
+                            <circle cx="6" cy="-41" r="2.6" fill="#3B1668" />
+                            <path
+                              d="M-6 -32 Q0 -26 6 -32"
+                              fill="none"
+                              stroke="#3B1668"
+                              strokeWidth="2.6"
+                              strokeLinecap="round"
+                            />
+                            <line x1="0" y1="-20" x2="0" y2="16" stroke="#3B1668" strokeWidth="5.5" strokeLinecap="round" />
+                            <line x1="0" y1="-10" x2="-16" y2="6" stroke="#3B1668" strokeWidth="4.5" strokeLinecap="round" />
+                            <g transform="translate(0, -10)">
+                              <g className="stickman-arm-wave">
+                                <line x1="0" y1="0" x2="0" y2="23" stroke="#3B1668" strokeWidth="4.5" strokeLinecap="round" />
+                              </g>
+                            </g>
+                            <line x1="0" y1="16" x2="-11" y2="48" stroke="#3B1668" strokeWidth="5.5" strokeLinecap="round" />
+                            <line x1="0" y1="16" x2="11" y2="48" stroke="#3B1668" strokeWidth="5.5" strokeLinecap="round" />
+                          </svg>
+                        </button>
+                      </>
+                    )}
+                  </>
+                );
+              })()}
+            </nav>
           </div>
         </div>
       </div>

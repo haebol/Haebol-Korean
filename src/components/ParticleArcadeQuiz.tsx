@@ -556,13 +556,13 @@ function getWrongRuleHighlight(
 // ===== 에메랄드 파스텔 마스코트 배지 & 별빛 헬퍼 =====
 const PastelMascotBadge: React.FC<{ isCorrect: boolean; children: React.ReactNode }> = ({ isCorrect, children }) => (
   <g>
-    <circle cx="0" cy="4" r="56" fill={isCorrect ? '#D1FAE5' : '#FFFFFF'} opacity="0.92" />
+    <circle cx="0" cy="4" r="56" fill={isCorrect ? '#E7F4E2' : '#FFFFFF'} opacity="0.92" />
     <circle
       cx="0"
       cy="4"
       r="56"
       fill="none"
-      stroke={isCorrect ? '#10B981' : '#6EE7B7'}
+      stroke={isCorrect ? '#448E3A' : '#84C678'}
       strokeWidth={isCorrect ? '3.5' : '2.5'}
     />
     <circle
@@ -570,16 +570,16 @@ const PastelMascotBadge: React.FC<{ isCorrect: boolean; children: React.ReactNod
       cy="4"
       r="49"
       fill="none"
-      stroke={isCorrect ? '#34D399' : '#A7F3D0'}
+      stroke={isCorrect ? '#69B35C' : '#C3E0B8'}
       strokeWidth="1.5"
       strokeDasharray="4 4"
     />
     {isCorrect && (
       <g>
-        <path d="M-58 -36 L-54 -44 L-50 -36 L-42 -32 L-50 -28 L-54 -20 L-58 -28 L-66 -32 Z" fill="#34D399" />
-        <path d="M54 -40 L57 -46 L60 -40 L66 -37 L60 -34 L57 -28 L54 -34 L48 -37 Z" fill="#10B981" />
-        <circle cx="62" cy="18" r="4" fill="#6EE7B7" />
-        <circle cx="-62" cy="24" r="3.5" fill="#A7F3D0" />
+        <path d="M-58 -36 L-54 -44 L-50 -36 L-42 -32 L-50 -28 L-54 -20 L-58 -28 L-66 -32 Z" fill="#69B35C" />
+        <path d="M54 -40 L57 -46 L60 -40 L66 -37 L60 -34 L57 -28 L54 -34 L48 -37 Z" fill="#448E3A" />
+        <circle cx="62" cy="18" r="4" fill="#84C678" />
+        <circle cx="-62" cy="24" r="3.5" fill="#C3E0B8" />
       </g>
     )}
     {children}
@@ -596,7 +596,7 @@ const StickmanPlayer: React.FC<{ face: FaceMode; running: boolean; animTime: num
   const arm = running ? Math.cos(animTime * 22) * 18 : 0;
   return (
     <g>
-      <ellipse cx="0" cy="50" rx="18" ry="4.5" fill="#059669" opacity="0.18" />
+      <ellipse cx="0" cy="50" rx="18" ry="4.5" fill="#448E3A" opacity="0.18" />
       <circle cx="0" cy="-38" r="18" fill="#FFFFFF" stroke="#1E293B" strokeWidth="3.5" />
       {face === 'happy' && (
         <g>
@@ -3121,10 +3121,10 @@ export const ParticleArcadeQuiz = ({
       : '30단원';
 
   return (
-    <div className="w-full max-w-4xl mx-auto font-korean-gothic select-none">
+    <div className="w-full max-w-4xl lg:max-w-full mx-auto font-korean-gothic select-none">
       <div
-        className={`relative h-[400px] sm:h-[500px] rounded-lg border-2 border-emerald-200 shadow-md ${
-          isAnyCorrect ? 'bg-[#CCFBF1]' : 'bg-[#D8FAEC]'
+        className={`relative h-[400px] sm:h-[500px] rounded-lg border-2 border-[#84C678] shadow-md ${
+          isAnyCorrect ? 'bg-[#E2F3DC]' : 'bg-[#EDF7E9]'
         } overflow-hidden flex flex-col justify-between`}
         style={{
           transform:
@@ -3137,7 +3137,7 @@ export const ParticleArcadeQuiz = ({
         <div className="relative z-20 w-full shrink-0 px-2 sm:px-4 pt-1.5 sm:pt-2.5 pb-0.5">
           <div className="w-full grid grid-cols-[1fr_auto_1fr] items-start gap-1.5 sm:gap-4 px-1 pt-0 sm:pt-0.5">
             <div className="flex justify-start pt-0.5 sm:pt-1 pointer-events-none">
-              <p className="font-badasseugi text-xs sm:text-sm font-bold text-emerald-950 leading-snug text-left break-keep -rotate-3 origin-center select-none">
+              <p className="font-badasseugi text-xs sm:text-sm font-bold text-[#214A1C] leading-snug text-left break-keep -rotate-3 origin-center select-none">
                 알맞은 조사를 골라요
               </p>
             </div>
@@ -3148,7 +3148,7 @@ export const ParticleArcadeQuiz = ({
             />
 
             <div className="flex justify-end pt-0.5 sm:pt-1 pointer-events-none">
-              <p className="font-badasseugi text-xs sm:text-sm font-bold text-emerald-900 leading-snug text-right break-keep rotate-3 origin-center select-none">
+              <p className="font-badasseugi text-xs sm:text-sm font-bold text-[#265A20] leading-snug text-right break-keep rotate-3 origin-center select-none">
                 버튼을 꾹 눌렀다 떼요
               </p>
             </div>
@@ -3161,8 +3161,8 @@ export const ParticleArcadeQuiz = ({
           className="relative w-full flex-1 min-h-0 overflow-hidden"
           style={{
             background: isAnyCorrect
-              ? 'linear-gradient(to bottom, #CCFBF1 0%, #ECFDF5 68%, #6EE7B7 100%)'
-              : 'linear-gradient(to bottom, #D8FAEC 0%, #ECFEF6 68%, #6EE7B7 100%)',
+              ? 'linear-gradient(to bottom, #E2F3DC 0%, #F3FAF0 68%, #A9D89E 100%)'
+              : 'linear-gradient(to bottom, #EDF7E9 0%, #F7FCF5 68%, #A9D89E 100%)',
           }}
         >
           <svg
@@ -3177,26 +3177,26 @@ export const ParticleArcadeQuiz = ({
           >
             <defs>
               <linearGradient id="abSkyDefault" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#D8FAEC" />
-                <stop offset="55%" stopColor="#ECFEF6" />
-                <stop offset="100%" stopColor="#F9FFFC" />
+                <stop offset="0%" stopColor="#EDF7E9" />
+                <stop offset="55%" stopColor="#F7FCF5" />
+                <stop offset="100%" stopColor="#FCFDFB" />
               </linearGradient>
               <linearGradient id="abSkyWin" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#CCFBF1" />
-                <stop offset="58%" stopColor="#ECFDF5" />
+                <stop offset="0%" stopColor="#E2F3DC" />
+                <stop offset="58%" stopColor="#F3FAF0" />
                 <stop offset="100%" stopColor="#FEF9C3" />
               </linearGradient>
               <linearGradient id="mintHillFront" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#86EFAC" stopOpacity="0.65" />
-                <stop offset="35%" stopColor="#A7F3D0" />
-                <stop offset="100%" stopColor="#6EE7B7" />
+                <stop offset="0%" stopColor="#B8E0AD" stopOpacity="0.72" />
+                <stop offset="35%" stopColor="#C8E6BF" />
+                <stop offset="100%" stopColor="#9ED192" />
               </linearGradient>
               <filter id="boardShadow" x="-8%" y="-12%" width="116%" height="132%">
-                <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#10B981" floodOpacity="0.14" />
+                <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#448E3A" floodOpacity="0.14" />
               </filter>
             </defs>
 
-            {/* 1. 화사한 에메랄드·민트 파스텔 하늘 (상단 끝까지 이음새 없이 풀 블리드) */}
+            {/* 1. 산뜻한 연두 파스텔 하늘 (상단 끝까지 이음새 없이 풀 블리드) */}
             <rect
               x="-220"
               y={viewMinY - 160}
@@ -3206,11 +3206,11 @@ export const ParticleArcadeQuiz = ({
             />
 
             {/* 하늘 반짝임 별빛 포인트 */}
-            <g fill="#6EE7B7" opacity="0.45">
+            <g fill="#84C678" opacity="0.45">
               <path d={`M120 ${viewMinY + 38} L123 ${viewMinY + 46} L131 ${viewMinY + 49} L123 ${viewMinY + 52} L120 ${viewMinY + 60} L117 ${viewMinY + 52} L109 ${viewMinY + 49} L117 ${viewMinY + 46} Z`} />
               <path d={`M895 ${viewMinY + 34} L897.5 ${viewMinY + 40} L903.5 ${viewMinY + 42.5} L897.5 ${viewMinY + 45} L895 ${viewMinY + 51} L892.5 ${viewMinY + 45} L886.5 ${viewMinY + 42.5} L892.5 ${viewMinY + 40} Z`} />
-              <circle cx="290" cy={viewMinY + 36} r="3" fill="#A7F3D0" />
-              <circle cx="780" cy={Math.round(boardY + (240 - boardY) * 0.48)} r="3.5" fill="#A7F3D0" />
+              <circle cx="290" cy={viewMinY + 36} r="3" fill="#C3E0B8" />
+              <circle cx="780" cy={Math.round(boardY + (240 - boardY) * 0.48)} r="3.5" fill="#C3E0B8" />
             </g>
 
             {/* 2. 몽글몽글 파스텔 구름 (확장된 하늘 전체에 고르게 배치) */}
@@ -3235,21 +3235,21 @@ export const ParticleArcadeQuiz = ({
               </g>
             </g>
 
-            {/* 3. 먼 파스텔 민트 언덕 (레이어 1) */}
+            {/* 3. 먼 파스텔 연두 언덕 (레이어 1) */}
             <path
               d="M-220 296 Q155 242 320 284 Q490 238 670 282 Q845 240 1220 278 L1220 440 L-220 440 Z"
-              fill="#D1FAE5"
-              opacity="0.82"
+              fill="#E2F3DC"
+              opacity="0.86"
             />
 
-            {/* 4. 중간 부드러운 곡선 민트 언덕 (레이어 2) */}
+            {/* 4. 중간 부드러운 곡선 연두 언덕 (레이어 2) */}
             <path
               d="M-220 322 Q190 276 380 316 Q585 274 785 316 Q905 292 1220 308 L1220 440 L-220 440 Z"
-              fill="#A7F3D0"
-              opacity="0.72"
+              fill="#CCE8C3"
+              opacity="0.78"
             />
 
-            {/* 5. 포근한 앞쪽 에메랄드 민트 잔디 언덕 바닥 */}
+            {/* 5. 포근한 앞쪽 연초록 잔디 언덕 바닥 */}
             <path
               d="M-220 352 Q240 334 495 348 Q755 362 1220 344 L1220 440 L-220 440 Z"
               fill="url(#mintHillFront)"
@@ -3257,22 +3257,22 @@ export const ParticleArcadeQuiz = ({
             <path
               d="M-220 352 Q240 334 495 348 Q755 362 1220 344"
               fill="none"
-              stroke="#6EE7B7"
+              stroke="#84C678"
               strokeWidth="3.5"
               strokeLinecap="round"
             />
             {/* 언덕 위 아기자기한 파스텔 꽃·풀잎 장식 */}
             <g opacity="0.85">
               <circle cx="72" cy="376" r="4" fill="#FFFFFF" />
-              <circle cx="72" cy="376" r="1.6" fill="#34D399" />
+              <circle cx="72" cy="376" r="1.6" fill="#69B35C" />
               <circle cx="295" cy="382" r="4.2" fill="#FFFFFF" />
-              <circle cx="295" cy="382" r="1.7" fill="#34D399" />
+              <circle cx="295" cy="382" r="1.7" fill="#69B35C" />
               <circle cx="640" cy="378" r="4" fill="#FFFFFF" />
-              <circle cx="640" cy="378" r="1.6" fill="#10B981" />
+              <circle cx="640" cy="378" r="1.6" fill="#448E3A" />
               <circle cx="912" cy="370" r="4.2" fill="#FFFFFF" />
-              <circle cx="912" cy="370" r="1.7" fill="#34D399" />
-              <path d="M442 370 Q445 359 450 368 Q455 358 458 370" fill="none" stroke="#34D399" strokeWidth="2.4" strokeLinecap="round" />
-              <path d="M775 376 Q778 365 783 374 Q788 364 791 376" fill="none" stroke="#34D399" strokeWidth="2.4" strokeLinecap="round" />
+              <circle cx="912" cy="370" r="1.7" fill="#69B35C" />
+              <path d="M442 370 Q445 359 450 368 Q455 358 458 370" fill="none" stroke="#5CA850" strokeWidth="2.4" strokeLinecap="round" />
+              <path d="M775 376 Q778 365 783 374 Q788 364 791 376" fill="none" stroke="#5CA850" strokeWidth="2.4" strokeLinecap="round" />
             </g>
 
             {/* 목표 문장 보드 (하늘 배경 내 동적 최상단 배치) */}
@@ -3291,7 +3291,7 @@ export const ParticleArcadeQuiz = ({
                         height="112"
                         rx="24"
                         fill="#FFFFFF"
-                        stroke={endCorrect ? '#10B981' : outcome ? '#FB7185' : '#6EE7B7'}
+                        stroke={endCorrect ? '#448E3A' : outcome ? '#FB7185' : '#84C678'}
                         strokeWidth="4.5"
                       />
                       <text
@@ -3330,8 +3330,8 @@ export const ParticleArcadeQuiz = ({
                           width="152"
                           height="80"
                           rx="18"
-                          fill={endCorrect ? '#D1FAE5' : outcome ? '#FFE4E6' : '#ECFDF5'}
-                          stroke={endCorrect ? '#059669' : outcome ? '#FB7185' : '#34D399'}
+                          fill={endCorrect ? '#E7F4E2' : outcome ? '#FFE4E6' : '#F3FAF0'}
+                          stroke={endCorrect ? '#448E3A' : outcome ? '#FB7185' : '#84C678'}
                           strokeWidth="3.5"
                         />
                         <text
@@ -3340,7 +3340,7 @@ export const ParticleArcadeQuiz = ({
                           textAnchor="middle"
                           fontSize={outcome ? (String(outcome).length > 2 ? 38 : 48) : 52}
                           fontWeight="900"
-                          fill={endCorrect ? '#047857' : outcome ? '#E11D48' : '#10B981'}
+                          fill={endCorrect ? '#265A20' : outcome ? '#E11D48' : '#448E3A'}
                         >
                           {outcome ? outcome : '?'}
                         </text>
@@ -3358,7 +3358,7 @@ export const ParticleArcadeQuiz = ({
                   height="112"
                   rx="24"
                   fill="#FFFFFF"
-                  stroke={stdItem.isCorrect ? '#10B981' : outcome ? '#FB7185' : '#6EE7B7'}
+                  stroke={stdItem.isCorrect ? '#448E3A' : outcome ? '#FB7185' : '#84C678'}
                   strokeWidth="4.5"
                 />
                 {stdItem.transformedHead ? (
@@ -3373,12 +3373,12 @@ export const ParticleArcadeQuiz = ({
                         width="116"
                         height="80"
                         rx="18"
-                        fill="#ECFDF5"
-                        stroke="#10B981"
+                        fill="#F3FAF0"
+                        stroke="#69B35C"
                         strokeWidth="3.5"
                       />
                       <text x="0" y="21" textAnchor="middle" fontSize="50" fontWeight="900">
-                        <tspan fill="#059669">{stdItem.transformedHead}</tspan>
+                        <tspan fill="#357A2C">{stdItem.transformedHead}</tspan>
                         {stdItem.transformedTail ? <tspan fill="#E11D48">{stdItem.transformedTail}</tspan> : null}
                       </text>
                     </g>
@@ -3433,8 +3433,8 @@ export const ParticleArcadeQuiz = ({
                         width="100"
                         height="80"
                         rx="18"
-                        fill={stdItem.isCorrect ? '#D1FAE5' : outcome ? '#FFE4E6' : '#ECFDF5'}
-                        stroke={stdItem.isCorrect ? '#059669' : outcome ? '#FB7185' : '#34D399'}
+                        fill={stdItem.isCorrect ? '#E7F4E2' : outcome ? '#FFE4E6' : '#F3FAF0'}
+                        stroke={stdItem.isCorrect ? '#448E3A' : outcome ? '#FB7185' : '#84C678'}
                         strokeWidth="3.5"
                       />
                       <text
@@ -3443,7 +3443,7 @@ export const ParticleArcadeQuiz = ({
                         textAnchor="middle"
                         fontSize={outcome ? (String(outcome).length >= 3 ? 30 : String(outcome).length === 2 ? 40 : 52) : 54}
                         fontWeight="900"
-                        fill={stdItem.isCorrect ? '#047857' : outcome ? '#E11D48' : '#10B981'}
+                        fill={stdItem.isCorrect ? '#265A20' : outcome ? '#E11D48' : '#448E3A'}
                       >
                         {outcome ? outcome : '?'}
                       </text>
@@ -3497,7 +3497,7 @@ export const ParticleArcadeQuiz = ({
                       cy="0"
                       r={24 + impactAge * 68}
                       fill="none"
-                      stroke="#34D399"
+                      stroke="#69B35C"
                       strokeWidth="4"
                     />
                     <circle
@@ -3505,7 +3505,7 @@ export const ParticleArcadeQuiz = ({
                       cy="0"
                       r={14 + impactAge * 44}
                       fill="none"
-                      stroke="#A7F3D0"
+                      stroke="#C3E0B8"
                       strokeWidth="3"
                     />
                     {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, idx) => {
@@ -3517,7 +3517,7 @@ export const ParticleArcadeQuiz = ({
                         <g key={deg} transform={`translate(${sx}, ${sy}) scale(${idx % 2 === 0 ? 1.05 : 0.8})`}>
                           <path
                             d="M0 -9 L2.5 -2.5 L9 0 L2.5 2.5 L0 9 L-2.5 2.5 L-9 0 L-2.5 -2.5 Z"
-                            fill={idx % 2 === 0 ? '#10B981' : '#6EE7B7'}
+                            fill={idx % 2 === 0 ? '#448E3A' : '#84C678'}
                             stroke="#FFFFFF"
                             strokeWidth="1"
                           />
@@ -3574,7 +3574,7 @@ export const ParticleArcadeQuiz = ({
 
 
             {phase === 'missed' && missKind === 'short' && missLandingPos && (
-              <text x={missLandingPos.x} y="286" textAnchor="middle" fontSize="22" fontWeight="900" fill="#0F766E" stroke="#FFFFFF" strokeWidth="5" style={{ paintOrder: 'stroke fill' }}>
+              <text x={missLandingPos.x} y="286" textAnchor="middle" fontSize="22" fontWeight="900" fill="#2F6F27" stroke="#FFFFFF" strokeWidth="5" style={{ paintOrder: 'stroke fill' }}>
                 {gameUi.weakBanner}
               </text>
             )}
@@ -3584,7 +3584,7 @@ export const ParticleArcadeQuiz = ({
               </text>
             )}
 
-            {/* 새총 직접 조준 영역만 touch-action: none 적용 (나머지 하늘·민트 배경은 상하 터치 스크롤 허용) */}
+            {/* 새총 직접 조준 영역만 touch-action: none 적용 (나머지 하늘·연두 배경은 상하 터치 스크롤 허용) */}
             <rect
               x="0"
               y="125"
@@ -3597,14 +3597,14 @@ export const ParticleArcadeQuiz = ({
               }}
             />
 
-            {/* 새총 & 반짝이는 에메랄드·민트 조준 궤적 */}
+            {/* 새총 & 반짝이는 연초록 조준 궤적 */}
             <g style={{ touchAction: 'none' }}>
               {aimDots.map((d, i) =>
                 i % 3 === 0 ? (
                   <g key={i} transform={`translate(${d.x}, ${d.y}) scale(${Math.max(0.55, 1.05 - i * 0.04)})`} opacity={Math.max(0.28, 0.94 - i * 0.06)}>
                     <path
                       d="M0 -8 L2.2 -2.2 L8 0 L2.2 2.2 L0 8 L-2.2 2.2 L-8 0 L-2.2 -2.2 Z"
-                      fill="#10B981"
+                      fill="#448E3A"
                       stroke="#FFFFFF"
                       strokeWidth="1.2"
                     />
@@ -3615,7 +3615,7 @@ export const ParticleArcadeQuiz = ({
                     cx={d.x}
                     cy={d.y}
                     r={Math.max(3, 6.2 - i * 0.32)}
-                    fill={i % 2 === 1 ? '#34D399' : '#A7F3D0'}
+                    fill={i % 2 === 1 ? '#69B35C' : '#C3E0B8'}
                     stroke="#FFFFFF"
                     strokeWidth="1.8"
                     opacity={Math.max(0.28, 0.92 - i * 0.06)}
@@ -3624,7 +3624,7 @@ export const ParticleArcadeQuiz = ({
               )}
 
               {/* 새총 발판 그림자 */}
-              <ellipse cx={SLING_X} cy="354" rx="26" ry="7" fill="#10B981" opacity="0.24" />
+              <ellipse cx={SLING_X} cy="354" rx="26" ry="7" fill="#448E3A" opacity="0.22" />
 
               {/* 뒤쪽 새총 가지 (따뜻한 라이트 우드 + 다크 네이비 외곽선) */}
               <path
@@ -3643,13 +3643,13 @@ export const ParticleArcadeQuiz = ({
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              {/* 뒤쪽 에메랄드 고무줄 */}
+              {/* 뒤쪽 연초록 고무줄 */}
               <line
                 x1={SLING_X + 22}
                 y1="260"
                 x2={effectivePull ? SLING_X + effectivePull.dx : SLING_X}
                 y2={effectivePull ? SLING_Y + effectivePull.dy : SLING_Y}
-                stroke="#059669"
+                stroke="#357A2C"
                 strokeWidth="5.5"
                 strokeLinecap="round"
               />
@@ -3678,12 +3678,12 @@ export const ParticleArcadeQuiz = ({
                 y1="260"
                 x2={effectivePull ? SLING_X + effectivePull.dx : SLING_X}
                 y2={effectivePull ? SLING_Y + effectivePull.dy : SLING_Y}
-                stroke="#34D399"
+                stroke="#69B35C"
                 strokeWidth="5.5"
                 strokeLinecap="round"
               />
 
-              {/* 앞쪽 새총 손잡이 & 가지 (따뜻한 라이트 우드 + 에메랄드 포인트 밴드) */}
+              {/* 앞쪽 새총 손잡이 & 가지 (따뜻한 라이트 우드 + 연초록 포인트 밴드) */}
               <path
                 d={`M ${SLING_X} 352 L ${SLING_X} 290 Q ${SLING_X - 10} 276 ${SLING_X - 18} 260`}
                 fill="none"
@@ -3700,17 +3700,17 @@ export const ParticleArcadeQuiz = ({
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              {/* 에메랄드 포인트 그립 & 가지 밴드 */}
-              <rect x={SLING_X - 7} y="310" width="14" height="32" rx="6" fill="#10B981" stroke="#1E293B" strokeWidth="2.5" />
-              <line x1={SLING_X - 4} y1="319" x2={SLING_X + 4} y2="319" stroke="#A7F3D0" strokeWidth="2" strokeLinecap="round" />
-              <line x1={SLING_X - 4} y1="328" x2={SLING_X + 4} y2="328" stroke="#A7F3D0" strokeWidth="2" strokeLinecap="round" />
-              <circle cx={SLING_X - 18} cy="260" r="6" fill="#34D399" stroke="#1E293B" strokeWidth="2.5" />
-              <circle cx={SLING_X + 22} cy="260" r="6" fill="#10B981" stroke="#1E293B" strokeWidth="2.5" />
+              {/* 연초록 포인트 그립 & 가지 밴드 */}
+              <rect x={SLING_X - 7} y="310" width="14" height="32" rx="6" fill="#448E3A" stroke="#1E293B" strokeWidth="2.5" />
+              <line x1={SLING_X - 4} y1="319" x2={SLING_X + 4} y2="319" stroke="#C3E0B8" strokeWidth="2" strokeLinecap="round" />
+              <line x1={SLING_X - 4} y1="328" x2={SLING_X + 4} y2="328" stroke="#C3E0B8" strokeWidth="2" strokeLinecap="round" />
+              <circle cx={SLING_X - 18} cy="260" r="6" fill="#69B35C" stroke="#1E293B" strokeWidth="2.5" />
+              <circle cx={SLING_X + 22} cy="260" r="6" fill="#448E3A" stroke="#1E293B" strokeWidth="2.5" />
             </g>
 
             {phase === 'flying' && (
               <g transform={`translate(${flightRef.current.x}, ${flightRef.current.y})`}>
-                {/* 기본 반짝이는 에메랄드·민트 별빛 궤적 */}
+                {/* 기본 반짝이는 연초록 별빛 궤적 */}
                 {[18, 36, 54, 72].map((dist, idx) => {
                   const tx = -flightUx * dist + Math.sin(animTime * 26 + idx * 1.5) * (idx + 1) * 1.9;
                   const ty = -flightUy * dist + Math.cos(animTime * 22 + idx * 1.7) * (idx + 1) * 1.9;
@@ -3718,7 +3718,7 @@ export const ParticleArcadeQuiz = ({
                     <g key={dist} transform={`translate(${tx}, ${ty}) scale(${Math.max(0.55, 1.1 - idx * 0.14)})`} opacity={0.85 - idx * 0.16}>
                       <path
                         d="M0 -10 L2.6 -2.6 L10 0 L2.6 2.6 L0 10 L-2.6 2.6 L-10 0 L-2.6 -2.6 Z"
-                        fill="#10B981"
+                        fill="#448E3A"
                         stroke="#FFFFFF"
                         strokeWidth="1.2"
                       />
@@ -3729,7 +3729,7 @@ export const ParticleArcadeQuiz = ({
                       cx={tx}
                       cy={ty}
                       r={Math.max(4, 11 - idx * 2)}
-                      fill={comboStreak >= 2 ? '#34D399' : '#6EE7B7'}
+                      fill={comboStreak >= 2 ? '#69B35C' : '#84C678'}
                       opacity={0.78 - idx * 0.16}
                     />
                   );
@@ -3740,7 +3740,7 @@ export const ParticleArcadeQuiz = ({
                     cy="0"
                     r={flightRef.current.particle.length > 1 ? 39 : 36}
                     fill="none"
-                    stroke="#34D399"
+                    stroke="#69B35C"
                     strokeWidth="4.5"
                     strokeDasharray="8 6"
                     opacity="0.82"
@@ -3783,7 +3783,7 @@ export const ParticleArcadeQuiz = ({
         </div>
 
         {/* 동일 통합 박스 하단 조작부: 아이콘 간소화된 발사 모드 토글 + 분홍 게이지 바 + 후추통 선택지 */}
-        <div className="shrink-0 relative z-20 bg-gradient-to-b from-[#F4FDF9] to-[#E6FAF0] border-t-2 border-emerald-200 px-2 sm:px-5 pt-1.5 sm:pt-2 pb-2 sm:pb-2.5 flex flex-col gap-1.5">
+        <div className="shrink-0 relative z-20 bg-gradient-to-b from-[#F5FAF2] to-[#EAF5E6] border-t-2 border-[#C3E0B8] px-2 sm:px-5 pt-1.5 sm:pt-2 pb-2 sm:pb-2.5 flex flex-col gap-1.5">
           {/* 간소화 모드 토글 + 파워 게이지 바 한 줄 배치 (플레이박스 확장 없음) */}
           <div
             className={`${
@@ -3797,7 +3797,7 @@ export const ParticleArcadeQuiz = ({
             } w-full mx-auto flex items-center gap-2`}
           >
             <div
-              className="inline-flex items-center rounded-md border border-emerald-300 bg-white overflow-hidden shrink-0 shadow-2xs"
+              className="inline-flex items-center rounded-md border border-[#84C678] bg-white overflow-hidden shrink-0 shadow-2xs"
               role="group"
               aria-label="발사 방식 선택"
             >
@@ -3809,8 +3809,8 @@ export const ParticleArcadeQuiz = ({
                 }}
                 className={`px-2 py-0.5 text-[11px] sm:text-xs font-black flex items-center gap-1 transition-colors cursor-pointer whitespace-nowrap ${
                   controlMode === 'arcade'
-                    ? 'bg-emerald-600 text-white'
-                    : 'bg-transparent text-slate-700 hover:bg-emerald-50'
+                    ? 'bg-[#448E3A] text-white'
+                    : 'bg-transparent text-slate-700 hover:bg-[#F3FAF0]'
                 }`}
                 title="꾹 누르기"
               >
@@ -3826,10 +3826,10 @@ export const ParticleArcadeQuiz = ({
                   setChargePower(0);
                   setControlMode('easy');
                 }}
-                className={`px-2 py-0.5 text-[11px] sm:text-xs font-black border-l border-emerald-200 flex items-center gap-1 transition-colors cursor-pointer whitespace-nowrap ${
+                className={`px-2 py-0.5 text-[11px] sm:text-xs font-black border-l border-[#C3E0B8] flex items-center gap-1 transition-colors cursor-pointer whitespace-nowrap ${
                   controlMode === 'easy'
-                    ? 'bg-emerald-600 text-white'
-                    : 'bg-transparent text-slate-700 hover:bg-emerald-50'
+                    ? 'bg-[#448E3A] text-white'
+                    : 'bg-transparent text-slate-700 hover:bg-[#F3FAF0]'
                 }`}
                 title="원터치 발사"
               >
@@ -3839,7 +3839,7 @@ export const ParticleArcadeQuiz = ({
             </div>
 
             {controlMode === 'arcade' ? (
-              <div className="relative flex-1 h-3.5 sm:h-4 rounded-full bg-white/95 border-2 border-emerald-300 overflow-hidden shadow-inner">
+              <div className="relative flex-1 h-3.5 sm:h-4 rounded-full bg-white/95 border-2 border-[#84C678] overflow-hidden shadow-inner">
                 <div
                   className="absolute top-0 bottom-0 bg-pink-300/85 border-x-2 border-pink-500"
                   style={{ left: `${SWEET_MIN * 100}%`, width: `${(SWEET_MAX - SWEET_MIN) * 100}%` }}
@@ -3849,12 +3849,12 @@ export const ParticleArcadeQuiz = ({
                   className="h-full rounded-l-full"
                   style={{
                     width: `${chargePower * 100}%`,
-                    backgroundColor: chargePower < SWEET_MIN ? '#34D399' : chargePower <= SWEET_MAX ? '#EC4899' : '#FB7185',
+                    backgroundColor: chargePower < SWEET_MIN ? '#69B35C' : chargePower <= SWEET_MAX ? '#EC4899' : '#FB7185',
                   }}
                 />
               </div>
             ) : (
-              <span className="text-[11px] sm:text-xs font-bold text-emerald-800 truncate">
+              <span className="text-[11px] sm:text-xs font-bold text-[#265A20] truncate">
                 조사를 한 번 누르면 바로 명중 구간으로 날아가요!
               </span>
             )}
@@ -3886,7 +3886,7 @@ export const ParticleArcadeQuiz = ({
                   }}
                   onPointerUp={() => releaseChargingButton(btn.particle)}
                   onPointerCancel={() => releaseChargingButton(btn.particle)}
-                  className={`relative ${shapeClass} flex items-center justify-center overflow-hidden transition-transform cursor-pointer touch-none select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500`}
+                  className={`relative ${shapeClass} flex items-center justify-center overflow-hidden transition-transform cursor-pointer touch-none select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5CA850]`}
                   style={{
                     backgroundColor: btn.bgHex,
                     border: '2.5px solid #1E293B',
@@ -3931,10 +3931,10 @@ export const ParticleArcadeQuiz = ({
 
       {/* 단원 클리어 팝업: 뷰포트 중앙에 상하 스크롤 없이 크게 띄우기 */}
       {phase === 'cleared' && (
-        <div className="fixed inset-0 z-[120] flex items-center justify-center bg-emerald-950/45 backdrop-blur-xs p-4">
-          <div className="w-full max-w-md rounded-3xl border-4 border-emerald-300 bg-white px-6 py-7 sm:px-8 sm:py-8 shadow-2xl text-center space-y-5">
+        <div className="fixed inset-0 z-[120] flex items-center justify-center bg-[#214A1C]/45 backdrop-blur-xs p-4">
+          <div className="w-full max-w-md rounded-3xl border-4 border-[#84C678] bg-white px-6 py-7 sm:px-8 sm:py-8 shadow-2xl text-center space-y-5">
             {clearBadgeOutcome ? (
-              <div className="w-18 h-18 mx-auto rounded-full bg-emerald-50 border-3 border-emerald-400 flex items-center justify-center shadow-xs p-2">
+              <div className="w-18 h-18 mx-auto rounded-full bg-[#F3FAF0] border-3 border-[#69B35C] flex items-center justify-center shadow-xs p-2">
                 <BulletBadgeGraphic tier={clearBadgeOutcome.tier} className="w-13 h-13" />
               </div>
             ) : (
@@ -3963,7 +3963,7 @@ export const ParticleArcadeQuiz = ({
                         ? '👑 금색 총알'
                         : clearBadgeOutcome.tier === 'silver'
                         ? '🥈 은색 총알'
-                        : '🌿 민트 총알'
+                        : '🌿 연두 총알'
                     } 뱃지 획득! (실수 ${totalMissesInUnit}회)`
                   : earnedStars === 3
                   ? '한 번에 모든 조사를 정확히 맞혔어요!'
@@ -3981,14 +3981,14 @@ export const ParticleArcadeQuiz = ({
               })()}
             </div>
 
-            <div className="grid grid-cols-3 gap-2 bg-emerald-50 border border-emerald-200 rounded-2xl p-3.5 sm:p-4">
+            <div className="grid grid-cols-3 gap-2 bg-[#F3FAF0] border border-[#C3E0B8] rounded-2xl p-3.5 sm:p-4">
               <div className="min-w-0 px-0.5">
                 <div className="text-xs font-bold text-slate-500 break-keep">첫 시도 명중</div>
-                <div className="text-lg sm:text-xl font-black text-emerald-800 tabular-nums mt-0.5">
+                <div className="text-lg sm:text-xl font-black text-[#265A20] tabular-nums mt-0.5">
                   {firstTryCount}/{totalQuestions}
                 </div>
               </div>
-              <div className="min-w-0 px-0.5 border-x border-emerald-200">
+              <div className="min-w-0 px-0.5 border-x border-[#C3E0B8]">
                 <div className="text-xs font-bold text-slate-500 break-keep">실수</div>
                 <div className="text-lg sm:text-xl font-black text-rose-600 tabular-nums mt-0.5">
                   {totalMissesInUnit}회
@@ -4014,7 +4014,7 @@ export const ParticleArcadeQuiz = ({
                 <button
                   type="button"
                   onClick={() => onSelectUnit(nextUnitTarget)}
-                  className="flex-1 min-w-0 min-h-[46px] px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm sm:text-base font-black cursor-pointer shadow-sm leading-snug break-keep whitespace-normal text-center"
+                  className="flex-1 min-w-0 min-h-[46px] px-4 py-2.5 rounded-xl bg-[#448E3A] hover:bg-[#357A2C] text-white text-sm sm:text-base font-black cursor-pointer shadow-sm leading-snug break-keep whitespace-normal text-center"
                 >
                   {nextUnitBtnLabel}
                 </button>

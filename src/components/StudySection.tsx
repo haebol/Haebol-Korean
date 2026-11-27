@@ -1707,7 +1707,7 @@ export const StudySection: React.FC<StudySectionProps> = ({
             playCutePop();
             setIsCustomLangOpen((prev) => !prev);
           }}
-          className="h-[40px] px-2.5 rounded-lg bg-[#441A75] hover:bg-[#52208E] text-white flex items-center gap-1.5 transition-all cursor-pointer border border-[#6328A6] shadow-2xs"
+          className="h-[38px] px-2.5 rounded-md bg-[#441A75] hover:bg-[#52208E] text-white flex items-center gap-1.5 transition-all cursor-pointer border border-[#6328A6] shadow-2xs"
           title={tabUi.studyControls.pickLangsTitle}
           aria-expanded={isCustomLangOpen}
         >
@@ -2937,11 +2937,11 @@ export const StudySection: React.FC<StudySectionProps> = ({
       <div
         className={`lg:hidden no-print sticky top-[66px] sm:top-[74px] ${
           isCustomLangOpen ? 'z-[35]' : 'z-[24]'
-        } w-full bg-[#F4F3F8]/95 backdrop-blur-md pb-1 mb-1.5 select-none font-korean-gothic border-b ${
+        } w-full bg-[#F4F5F7]/95 backdrop-blur-md pb-1 mb-1.5 select-none font-korean-gothic border-b ${
           sectionType === 'hangeul'
             ? 'border-amber-200/80'
             : sectionType === 'particle'
-            ? 'border-emerald-200/80'
+            ? 'border-[#C3E0B8]'
             : sectionType === 'verb'
             ? 'border-purple-200/80'
             : 'border-rose-200/80'
@@ -3135,13 +3135,13 @@ export const StudySection: React.FC<StudySectionProps> = ({
                     }}
                     className={`relative py-1.5 px-0.5 sm:px-1 bg-transparent border-0 cursor-pointer flex items-center gap-1 whitespace-nowrap text-[11px] xs:text-[12.5px] sm:text-[14.5px] transition-colors ${
                       studyMode === 'particle' && particleSubMode === 'combination'
-                        ? "text-emerald-950 font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-emerald-600"
-                        : 'text-slate-500 hover:text-emerald-950 font-semibold'
+                        ? "text-[#214A1C] font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-[#5CA850]"
+                        : 'text-slate-500 hover:text-[#214A1C] font-semibold'
                     }`}
                     title={`${tabUi.studyTabs.particle} (${isKoUi ? subLabels.particle : '조사 결합'})`}
                   >
                     <span>{tabUi.studyTabs.particle}</span>
-                    <span className="hidden xl:inline text-[11px] font-bold text-emerald-700/85">
+                    <span className="hidden xl:inline text-[11px] font-bold text-[#2F6F27]/85">
                       [{isKoUi ? subLabels.particle : '조사 결합'}]
                     </span>
                   </button>
@@ -3157,8 +3157,8 @@ export const StudySection: React.FC<StudySectionProps> = ({
                     }}
                     className={`relative py-1.5 px-0.5 sm:px-1 bg-transparent border-0 cursor-pointer flex items-center gap-1 whitespace-nowrap text-[11px] xs:text-[12.5px] sm:text-[14.5px] transition-colors ${
                       studyMode === 'particle' && particleSubMode === 'sentence'
-                        ? "text-emerald-950 font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-emerald-600"
-                        : 'text-slate-500 hover:text-emerald-950 font-semibold'
+                        ? "text-[#214A1C] font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-[#5CA850]"
+                        : 'text-slate-500 hover:text-[#214A1C] font-semibold'
                     }`}
                     title={menuExtras.particleSentenceTab}
                   >
@@ -3176,8 +3176,8 @@ export const StudySection: React.FC<StudySectionProps> = ({
                       isExamPlayLocked
                         ? 'text-slate-400 opacity-60 cursor-not-allowed font-semibold'
                         : studyMode === 'particleExam'
-                        ? "text-emerald-950 font-black cursor-pointer after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-emerald-600"
-                        : 'text-slate-500 hover:text-emerald-950 font-semibold cursor-pointer'
+                        ? "text-[#214A1C] font-black cursor-pointer after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-[#5CA850]"
+                        : 'text-slate-500 hover:text-[#214A1C] font-semibold cursor-pointer'
                     }`}
                     title={isExamPlayLocked ? '준비 중입니다 (곧 공개 예정)' : '조사 종합 시험 6강'}
                   >
@@ -3196,8 +3196,8 @@ export const StudySection: React.FC<StudySectionProps> = ({
                       isExamPlayLocked
                         ? 'text-slate-400 opacity-60 cursor-not-allowed font-semibold'
                         : studyMode === 'particlePlay'
-                        ? "text-emerald-950 font-black cursor-pointer after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-emerald-600"
-                        : 'text-slate-500 hover:text-emerald-950 font-semibold cursor-pointer'
+                        ? "text-[#214A1C] font-black cursor-pointer after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-[#5CA850]"
+                        : 'text-slate-500 hover:text-[#214A1C] font-semibold cursor-pointer'
                     }`}
                     title={isExamPlayLocked ? '준비 중입니다 (곧 공개 예정)' : '조사 놀이 학습지 초안 5종 (1강)'}
                   >
@@ -3764,8 +3764,8 @@ export const StudySection: React.FC<StudySectionProps> = ({
                     : 'bg-white hover:bg-purple-50 text-purple-800 border-purple-300'
                   : sectionType === 'particle'
                   ? effectiveViewMode === 'continuous'
-                    ? 'bg-emerald-100 hover:bg-emerald-200 text-emerald-950 border-emerald-300'
-                    : 'bg-white hover:bg-emerald-50 text-emerald-800 border-emerald-300'
+                    ? 'bg-[#E7F4E2] hover:bg-[#DCEFD5] text-[#214A1C] border-[#84C678]'
+                    : 'bg-white hover:bg-[#F3FAF0] text-[#265A20] border-[#84C678]'
                   : effectiveViewMode === 'continuous'
                   ? 'bg-rose-100 hover:bg-rose-200 text-rose-900 border-rose-300'
                   : 'bg-white hover:bg-rose-50 text-rose-800 border-rose-300';
@@ -3798,9 +3798,10 @@ export const StudySection: React.FC<StudySectionProps> = ({
       )}
 
       {/* Main Worksheet Container (평소 1장 보기 시 현재 1장만 DOM 마운트 · 인쇄 시 요청 범위만 마운트해 메모리/속도 최적화) */}
+      <div className="w-full px-1 sm:px-4">
       <div
-        className={`study-worksheets-container w-full mx-auto flex flex-col items-center space-y-3 sm:space-y-8 px-1 sm:px-4 ${
-          isFocusMode ? 'max-w-[1600px]' : 'lg:max-w-[1080px] max-w-[1600px]'
+        className={`study-worksheets-container w-full mx-auto flex flex-col items-center space-y-3 sm:space-y-8 ${
+          isFocusMode ? 'max-w-[1600px]' : 'lg:max-w-[1040px] max-w-[1600px]'
         }`}
       >
         {(() => {
@@ -4622,7 +4623,7 @@ export const StudySection: React.FC<StudySectionProps> = ({
               : sectionType === 'verb'
               ? 'bg-white hover:bg-purple-50 active:scale-95 text-purple-950 border-purple-200 shadow-2xs cursor-pointer'
               : sectionType === 'particle'
-              ? 'bg-white hover:bg-emerald-50 active:scale-95 text-emerald-950 border-emerald-200 shadow-2xs cursor-pointer'
+              ? 'bg-white hover:bg-[#F3FAF0] active:scale-95 text-[#214A1C] border-[#C3E0B8] shadow-2xs cursor-pointer'
               : 'bg-white hover:bg-rose-50 active:scale-95 text-rose-900 border-rose-200 shadow-2xs cursor-pointer';
 
           const indicatorColorClass =
@@ -4631,7 +4632,7 @@ export const StudySection: React.FC<StudySectionProps> = ({
               : sectionType === 'verb'
               ? 'text-purple-900/80'
               : sectionType === 'particle'
-              ? 'text-emerald-900/80'
+              ? 'text-[#265A20]/80'
               : 'text-rose-800/80';
 
           return (
@@ -4816,6 +4817,7 @@ export const StudySection: React.FC<StudySectionProps> = ({
             </div>
           );
         })()}
+      </div>
       </div>
 
       {/* Floating Scroll-to-Top Button Only (모아보기 플로팅 버튼 제거됨) */}

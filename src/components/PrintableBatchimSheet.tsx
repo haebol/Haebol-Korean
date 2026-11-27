@@ -1683,7 +1683,7 @@ export const BatchimWorksheetPage: React.FC<BatchimWorksheetPageProps> = ({
 
   return (
     <div
-      className={`print-sheet printable-word-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '620px' }}
     >
       {/* 1. Header Row (표준 타이틀 & 학년/이름 영역) */}
@@ -2393,7 +2393,7 @@ export const BatchimSummaryWorksheetPage: React.FC<{
 
   return (
     <div
-      className={`print-sheet printable-word-sheet batchim-summary-sheet w-full max-w-[1060px] bg-white rounded-xl border-2 border-slate-300 p-2.5 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet batchim-summary-sheet w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-2.5 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '660px' }}
     >
       {/* 1. Sheet Header */}

@@ -177,7 +177,7 @@ export const VerbSummaryWorksheetPage: React.FC<{
 
   return (
     <div
-      className={`verb-worksheet-page verb-summary-sheet printable-a4-page print:m-0 print:p-2.5 print:shadow-none w-full max-w-[1060px] mx-auto bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2.5 sm:p-3 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
+      className={`verb-worksheet-page verb-summary-sheet printable-a4-page print:m-0 print:p-2.5 print:shadow-none w-full max-w-[1040px] mx-auto bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2.5 sm:p-3 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
       style={{ minHeight: '680px' }}
     >
       {/* 1. Sheet Header */}
@@ -511,11 +511,11 @@ const PARTICLE_CAT_STYLE: Record<
   { border: string; topBg: string; topText: string; mainText: string; hover: string }
 > = {
   case: {
-    border: 'border-emerald-300',
-    topBg: 'bg-emerald-50 border-b border-emerald-200',
-    topText: 'text-emerald-900',
-    mainText: 'text-emerald-950',
-    hover: 'hover:border-emerald-500 hover:bg-emerald-50/30',
+    border: 'border-[#84C678]',
+    topBg: 'bg-[#F3FAF0] border-b border-[#C3E0B8]',
+    topText: 'text-[#265A20]',
+    mainText: 'text-[#214A1C]',
+    hover: 'hover:border-[#448E3A] hover:bg-[#F3FAF0]/40',
   },
   place: {
     border: 'border-teal-300',
@@ -583,25 +583,25 @@ export const ParticleSummaryWorksheetPage: React.FC<{
 
   return (
     <div
-      className={`verb-worksheet-page particle-summary-sheet printable-a4-page print:m-0 print:p-2.5 print:shadow-none w-full max-w-[1060px] mx-auto bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2.5 sm:p-3 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
+      className={`verb-worksheet-page particle-summary-sheet printable-a4-page print:m-0 print:p-2.5 print:shadow-none w-full max-w-[1040px] mx-auto bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2.5 sm:p-3 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
       style={{ minHeight: '680px' }}
     >
       {/* 1. Sheet Header */}
-      <div className="flex flex-nowrap items-center justify-between gap-x-2.5 border-b-2 border-emerald-600 pb-1.5 mb-2 text-slate-900 shrink-0">
+      <div className="flex flex-nowrap items-center justify-between gap-x-2.5 border-b-2 border-[#448E3A] pb-1.5 mb-2 text-slate-900 shrink-0">
         <div className="flex items-center gap-1.5 min-w-0 flex-1 overflow-x-hidden overflow-y-visible py-0.5">
           <span className="text-base leading-none shrink-0">🥟</span>
           <h1
-            className="text-[12px] sm:text-[13px] font-bold text-emerald-950 tracking-normal whitespace-nowrap leading-normal"
+            className="text-[12px] sm:text-[13px] font-bold text-[#214A1C] tracking-normal whitespace-nowrap leading-normal"
             style={{ fontFamily: FONT_TITLE, fontWeight: 700, letterSpacing: '0' }}
           >
             {copy.sheetTitle}{' '}
-            <span className="inline-block px-1.5 py-0.5 ml-1 rounded bg-emerald-100 text-emerald-900 text-[10px] font-bold align-middle">
+            <span className="inline-block px-1.5 py-0.5 ml-1 rounded bg-[#E7F4E2] text-[#214A1C] text-[10px] font-bold align-middle">
               {pageBadge}
             </span>
           </h1>
         </div>
         <div className="text-[10px] sm:text-[10.5px] font-bold text-slate-700 flex flex-nowrap items-center gap-x-2.5 whitespace-nowrap shrink-0 leading-normal">
-          <span className="text-emerald-700 font-bold whitespace-nowrap">{copy.totalBadge}</span>
+          <span className="text-[#2F6F27] font-bold whitespace-nowrap">{copy.totalBadge}</span>
           <span className="whitespace-nowrap">{copy.gradeLabel}: _____</span>
           <span className="whitespace-nowrap">{copy.nameLabel}: __________</span>
         </div>
@@ -612,14 +612,14 @@ export const ParticleSummaryWorksheetPage: React.FC<{
         <div className="flex flex-col gap-2 flex-1">
           <div className="flex flex-nowrap items-center justify-between gap-x-2 shrink-0 leading-normal">
             <div className="flex flex-nowrap items-center gap-1.5 text-[12px] sm:text-[12.5px] font-black text-slate-900 min-w-0">
-              <span className="w-5 h-5 rounded-md bg-emerald-600 text-white text-[11px] font-black flex items-center justify-center shrink-0">
+              <span className="w-5 h-5 rounded-md bg-[#448E3A] text-white text-[11px] font-black flex items-center justify-center shrink-0">
                 1
               </span>
               <span className="whitespace-nowrap">{copy.sec1Title}</span>
               <span className="text-[10px] font-bold text-slate-500 whitespace-nowrap">{copy.sec1Sub}</span>
             </div>
             <div className="flex flex-nowrap items-center gap-x-1.5 text-[9px] sm:text-[9.5px] font-bold text-slate-600 whitespace-nowrap shrink-0">
-              <span className="text-emerald-800">{copy.catLegend[0]}</span>
+              <span className="text-[#265A20]">{copy.catLegend[0]}</span>
               <span className="text-slate-300">·</span>
               <span className="text-teal-800">{copy.catLegend[1]}</span>
               <span className="text-slate-300">·</span>
@@ -684,15 +684,15 @@ export const ParticleSummaryWorksheetPage: React.FC<{
         /* PAGE 2: 받침 O/X 짝꿍 조사 표 & 변신·주의 4대 핵심 정리 */
         <div className="summary-particle-bottom grid grid-cols-[50fr_50fr] print:grid-cols-[50fr_50fr] gap-3 items-stretch flex-1">
           {/* Left: 받침 유무 짝꿍 조사 표 (1열 7행 — 넓은 폭으로 말줄임 0%) */}
-          <div className="rounded-xl border-[1.5px] border-emerald-300 bg-[#F4FDF9] p-3 flex flex-col justify-between gap-2 min-w-0">
+          <div className="rounded-xl border-[1.5px] border-[#84C678] bg-[#F3FAF0] p-3 flex flex-col justify-between gap-2 min-w-0">
             <div className="flex flex-nowrap items-center justify-between gap-x-2 shrink-0 leading-normal">
-              <div className="flex items-center gap-2 text-[12px] font-black text-emerald-950 min-w-0">
-                <span className="w-5.5 h-5.5 rounded-md bg-emerald-600 text-white text-[11px] font-black flex items-center justify-center shrink-0">
+              <div className="flex items-center gap-2 text-[12px] font-black text-[#214A1C] min-w-0">
+                <span className="w-5.5 h-5.5 rounded-md bg-[#448E3A] text-white text-[11px] font-black flex items-center justify-center shrink-0">
                   2
                 </span>
                 <span className="whitespace-nowrap">{copy.sec2Title}</span>
               </div>
-              <span className="text-[9.5px] font-black text-emerald-800 bg-white border border-emerald-200 rounded-md px-2 py-0.5 whitespace-nowrap shrink-0">
+              <span className="text-[9.5px] font-black text-[#265A20] bg-white border border-[#C3E0B8] rounded-md px-2 py-0.5 whitespace-nowrap shrink-0">
                 {copy.sec2Hint}
               </span>
             </div>
@@ -702,11 +702,11 @@ export const ParticleSummaryWorksheetPage: React.FC<{
                 <div
                   key={idx}
                   onClick={() => handleSpeak(pair.audio)}
-                  className={`rounded-lg bg-white border border-emerald-200 px-3 py-2 flex flex-wrap items-center justify-between gap-x-2 gap-y-1 shadow-2xs min-w-0 ${
-                    interactiveAudio ? 'cursor-pointer hover:bg-emerald-50/70 hover:border-emerald-400 transition-colors' : ''
+                  className={`rounded-lg bg-white border border-[#C3E0B8] px-3 py-2 flex flex-wrap items-center justify-between gap-x-2 gap-y-1 shadow-2xs min-w-0 ${
+                    interactiveAudio ? 'cursor-pointer hover:bg-[#F3FAF0]/80 hover:border-[#69B35C] transition-colors' : ''
                   }`}
                 >
-                  <span className="text-[11.5px] font-black text-emerald-950 break-words">
+                  <span className="text-[11.5px] font-black text-[#214A1C] break-words">
                     {pair.role}
                   </span>
                   <span className="text-[11.5px] font-bold text-slate-800 flex flex-wrap items-center gap-x-2 gap-y-0.5">
@@ -723,7 +723,7 @@ export const ParticleSummaryWorksheetPage: React.FC<{
               ))}
             </div>
 
-            <div className="rounded-lg bg-emerald-100/85 border border-dashed border-emerald-400 px-3 py-2 text-center text-[11px] leading-snug font-black text-emerald-950 break-words shrink-0">
+            <div className="rounded-lg bg-[#E7F4E2] border border-dashed border-[#84C678] px-3 py-2 text-center text-[11px] leading-snug font-black text-[#214A1C] break-words shrink-0">
               {copy.fixedListText}
             </div>
           </div>
@@ -763,7 +763,7 @@ export const ParticleSummaryWorksheetPage: React.FC<{
       )}
 
       {/* 4. Sheet Footer */}
-      <div className="mt-2 pt-1.5 border-t border-emerald-200 flex flex-wrap items-center justify-between gap-x-3 gap-y-0.5 text-[9.5px] text-slate-500 shrink-0">
+      <div className="mt-2 pt-1.5 border-t border-[#C3E0B8] flex flex-wrap items-center justify-between gap-x-3 gap-y-0.5 text-[9.5px] text-slate-500 shrink-0">
         <span className="font-bold break-words">{copy.footerLeft}</span>
         <span className="font-bold text-slate-400 break-words">
           {copy.footerRight} ({pageBadge})
@@ -961,7 +961,7 @@ export const ClassroomSummaryWorksheetPage: React.FC<{
 
   return (
     <div
-      className={`print-sheet printable-word-sheet classroom-summary-sheet w-full max-w-[1060px] bg-white rounded-xl border-2 border-slate-300 p-2.5 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg font-korean-gothic select-none ${className}`}
+      className={`print-sheet printable-word-sheet classroom-summary-sheet w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-2.5 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg font-korean-gothic select-none ${className}`}
       style={{ minHeight: '690px' }}
     >
       {/* 1. Sheet Header */}
@@ -1092,7 +1092,7 @@ export const VerbSummaryCompactWorksheetPage: React.FC<{
 
   return (
     <div
-      className={`verb-worksheet-page verb-summary-sheet verb-summary-compact-sheet printable-a4-page print:m-0 print:p-2 print:shadow-none w-full max-w-[990px] mx-auto bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2 sm:p-2.5 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
+      className={`verb-worksheet-page verb-summary-sheet verb-summary-compact-sheet printable-a4-page print:m-0 print:p-2 print:shadow-none w-full max-w-[1040px] mx-auto bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2 sm:p-2.5 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
       style={{ minHeight: '620px' }}
     >
       {/* Header */}
@@ -1305,22 +1305,22 @@ export const ParticleSummaryCompactWorksheetPage: React.FC<{
 
   return (
     <div
-      className={`verb-worksheet-page particle-summary-sheet particle-summary-compact-sheet printable-a4-page print:m-0 print:p-2 print:shadow-none w-full max-w-[990px] mx-auto bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2 sm:p-2.5 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
+      className={`verb-worksheet-page particle-summary-sheet particle-summary-compact-sheet printable-a4-page print:m-0 print:p-2 print:shadow-none w-full max-w-[1040px] mx-auto bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2 sm:p-2.5 text-slate-900 flex flex-col justify-between font-korean-gothic select-none ${className}`}
       style={{ minHeight: '620px' }}
     >
       {/* Header */}
-      <div className="flex flex-nowrap items-center justify-between gap-2 border-b-2 border-emerald-600 pb-1 mb-1.5 text-slate-900 shrink-0">
+      <div className="flex flex-nowrap items-center justify-between gap-2 border-b-2 border-[#448E3A] pb-1 mb-1.5 text-slate-900 shrink-0">
         <div className="flex items-center gap-1.5 min-w-0 flex-1 overflow-hidden">
           <span className="text-sm leading-none shrink-0">🥟</span>
           <h1
-            className="text-xs sm:text-[13px] font-bold text-emerald-950 tracking-tight whitespace-nowrap"
+            className="text-xs sm:text-[13px] font-bold text-[#214A1C] tracking-tight whitespace-nowrap"
             style={{ fontFamily: FONT_TITLE, fontWeight: 700 }}
           >
             {copy.sheetTitle}
           </h1>
         </div>
         <div className="text-[10px] font-bold text-slate-700 flex flex-nowrap items-center gap-2.5 whitespace-nowrap shrink-0">
-          <span className="text-emerald-700 font-bold">{copy.totalBadge}</span>
+          <span className="text-[#2F6F27] font-bold">{copy.totalBadge}</span>
           <span>{copy.gradeLabel}: _____</span>
           <span>{copy.nameLabel}: __________</span>
         </div>
@@ -1330,14 +1330,14 @@ export const ParticleSummaryCompactWorksheetPage: React.FC<{
       <div className="flex flex-col gap-1 shrink-0">
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-1.5 text-[11px] font-black text-slate-900 min-w-0">
-            <span className="w-4 h-4 rounded bg-emerald-600 text-white text-[9.5px] font-black flex items-center justify-center shrink-0">
+            <span className="w-4 h-4 rounded bg-[#448E3A] text-white text-[9.5px] font-black flex items-center justify-center shrink-0">
               1
             </span>
             <span className="truncate">{copy.sec1Title}</span>
             <span className="text-[9px] font-bold text-slate-400 truncate">{copy.sec1Sub}</span>
           </div>
           <div className="flex items-center gap-1 text-[8.5px] font-bold text-slate-600 shrink-0">
-            <span className="text-emerald-800">{copy.catLegend[0]}</span>·
+            <span className="text-[#265A20]">{copy.catLegend[0]}</span>·
             <span className="text-teal-800">{copy.catLegend[1]}</span>·
             <span className="text-sky-800">{copy.catLegend[2]}</span>·
             <span className="text-amber-800">{copy.catLegend[3]}</span>·
@@ -1387,15 +1387,15 @@ export const ParticleSummaryCompactWorksheetPage: React.FC<{
       {/* Bottom Compact Section 2 & 3 */}
       <div className="summary-particle-compact-bottom grid grid-cols-[52fr_48fr] print:grid-cols-[52fr_48fr] gap-2 mt-1.5 flex-1 items-stretch">
         {/* Batchim O/X pairs */}
-        <div className="rounded-lg border border-emerald-300 bg-[#F4FDF9] p-1.5 flex flex-col justify-between gap-1 min-w-0">
+        <div className="rounded-lg border border-[#84C678] bg-[#F3FAF0] p-1.5 flex flex-col justify-between gap-1 min-w-0">
           <div className="flex items-center justify-between gap-1">
-            <div className="flex items-center gap-1 text-[10px] font-black text-emerald-950 min-w-0">
-              <span className="w-4 h-4 rounded bg-emerald-600 text-white text-[9px] font-black flex items-center justify-center shrink-0">
+            <div className="flex items-center gap-1 text-[10px] font-black text-[#214A1C] min-w-0">
+              <span className="w-4 h-4 rounded bg-[#448E3A] text-white text-[9px] font-black flex items-center justify-center shrink-0">
                 2
               </span>
               <span className="truncate">{copy.sec2Title}</span>
             </div>
-            <span className="text-[8px] font-black text-emerald-800 bg-white border border-emerald-200 rounded px-1.5 py-0.5 shrink-0">
+            <span className="text-[8px] font-black text-[#265A20] bg-white border border-[#C3E0B8] rounded px-1.5 py-0.5 shrink-0">
               {copy.sec2Hint}
             </span>
           </div>
@@ -1404,18 +1404,18 @@ export const ParticleSummaryCompactWorksheetPage: React.FC<{
               <div
                 key={idx}
                 onClick={() => handleSpeak(pair.audio)}
-                className={`rounded bg-white border border-emerald-200 px-1.5 py-0.5 flex items-center justify-between gap-1 min-w-0 ${
-                  interactiveAudio ? 'cursor-pointer hover:bg-emerald-50/70' : ''
+                className={`rounded bg-white border border-[#C3E0B8] px-1.5 py-0.5 flex items-center justify-between gap-1 min-w-0 ${
+                  interactiveAudio ? 'cursor-pointer hover:bg-[#F3FAF0]/80' : ''
                 }`}
               >
-                <span className="text-[8px] font-black text-emerald-950 truncate">{pair.role}</span>
+                <span className="text-[8px] font-black text-[#214A1C] truncate">{pair.role}</span>
                 <span className="text-[8px] font-bold text-slate-800 shrink-0">
                   <b className="text-amber-800">{oLbl}</b> {pair.oForm} / <b className="text-rose-700">{pair.xLabel}</b> {pair.xForm}
                 </span>
               </div>
             ))}
           </div>
-          <div className="rounded bg-emerald-100/80 border border-dashed border-emerald-400 px-1.5 py-0.5 text-center text-[8px] font-black text-emerald-950 truncate">
+          <div className="rounded bg-[#E7F4E2] border border-dashed border-[#84C678] px-1.5 py-0.5 text-center text-[8px] font-black text-[#214A1C] truncate">
             {copy.fixedListText}
           </div>
         </div>
@@ -1446,7 +1446,7 @@ export const ParticleSummaryCompactWorksheetPage: React.FC<{
       </div>
 
       {/* Footer */}
-      <div className="mt-1 pt-1 border-t border-emerald-200 flex items-center justify-between text-[8.5px] text-slate-500 shrink-0">
+      <div className="mt-1 pt-1 border-t border-[#C3E0B8] flex items-center justify-between text-[8.5px] text-slate-500 shrink-0">
         <span className="font-bold">{copy.footerLeft}</span>
         <span className="font-bold text-slate-400">{copy.footerRight} (압축 1쪽)</span>
       </div>
@@ -1513,7 +1513,7 @@ export const ClassroomSummaryCompactWorksheetPage: React.FC<{
 
   return (
     <div
-      className={`print-sheet printable-word-sheet classroom-summary-sheet classroom-summary-compact-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-2.5 text-slate-800 flex flex-col justify-between shadow-lg font-korean-gothic select-none ${className}`}
+      className={`print-sheet printable-word-sheet classroom-summary-sheet classroom-summary-compact-sheet w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-2.5 text-slate-800 flex flex-col justify-between shadow-lg font-korean-gothic select-none ${className}`}
       style={{ minHeight: '620px' }}
     >
       {/* Header */}

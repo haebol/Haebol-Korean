@@ -27,7 +27,7 @@ export const PrintableWorksheetPage: React.FC<PrintableWorksheetPageProps> = ({
 
   return (
     <div
-      className={`printable-a4-page w-full max-w-[990px] bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2 sm:p-2.5 text-slate-800 flex flex-col justify-between transition-shadow ${className}`}
+      className={`printable-a4-page w-full max-w-[1040px] bg-white rounded-xl shadow-lg border-2 border-slate-300 p-2 sm:p-2.5 text-slate-800 flex flex-col justify-between transition-shadow ${className}`}
       style={{ minHeight: '620px' }}
     >
       {/* Sheet Top Header: 2. 최상단 "해볼한국어 <그림카드>", 3. "학년: ________ 이름: ________________" (날짜 삭제) */}

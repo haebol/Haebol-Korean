@@ -392,8 +392,8 @@ export const StudyTabSection: React.FC<StudyTabSectionProps> = ({
       {/* Mobile Only Row 5: 용언 / 조사 플래시카드 전용 */}
       {!isMenuCollapsed && (activeTrack === 'verb' || activeTrack === 'particle') && (
         <div
-          className={`lg:hidden sticky top-[66px] sm:top-[74px] z-[28] bg-[#F4F3F8]/95 backdrop-blur-md pb-1 mb-1.5 border-b no-print w-full max-w-3xl mx-auto px-2.5 sm:px-4 select-none ${
-            activeTrack === 'particle' ? 'border-emerald-200/80' : 'border-purple-200/80'
+          className={`lg:hidden sticky top-[66px] sm:top-[74px] z-[28] bg-[#F4F5F7]/95 backdrop-blur-md pb-1 mb-1.5 border-b no-print w-full max-w-3xl mx-auto px-2.5 sm:px-4 select-none ${
+            activeTrack === 'particle' ? 'border-[#C3E0B8]' : 'border-purple-200/80'
           }`}
         >
           <div className="flex items-center justify-between gap-2 h-[38px] sm:h-[42px]">
@@ -421,13 +421,13 @@ export const StudyTabSection: React.FC<StudyTabSectionProps> = ({
                     }}
                     className={`relative py-1.5 px-1 bg-transparent border-0 cursor-pointer flex items-center gap-1 whitespace-nowrap text-[13px] sm:text-[14.5px] transition-colors ${
                       !isParticleSentenceMode
-                        ? "text-emerald-950 font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-emerald-600"
-                        : 'text-slate-500 hover:text-emerald-950 font-bold'
+                        ? "text-[#214A1C] font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-[#5CA850]"
+                        : 'text-slate-500 hover:text-[#214A1C] font-bold'
                     }`}
                     title={`${tabUi.flashcardTabs.particle} (${isKoUi ? subLabels.particle : '조사 결합'})`}
                   >
                     <span>{tabUi.flashcardTabs.particle}</span>
-                    <span className="hidden md:inline text-[11px] font-bold text-emerald-700/85">
+                    <span className="hidden md:inline text-[11px] font-bold text-[#448E3A]/85">
                       [{isKoUi ? subLabels.particle : '조사 결합'}]
                     </span>
                   </button>
@@ -442,8 +442,8 @@ export const StudyTabSection: React.FC<StudyTabSectionProps> = ({
                     }}
                     className={`relative py-1.5 px-1 bg-transparent border-0 cursor-pointer flex items-center gap-1 whitespace-nowrap text-[13px] sm:text-[14.5px] transition-colors ${
                       isParticleSentenceMode
-                        ? "text-emerald-950 font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-emerald-600"
-                        : 'text-slate-500 hover:text-emerald-950 font-bold'
+                        ? "text-[#214A1C] font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-[#5CA850]"
+                        : 'text-slate-500 hover:text-[#214A1C] font-bold'
                     }`}
                     title={menuExtras.particleSentenceTab}
                   >
@@ -494,11 +494,12 @@ export const StudyTabSection: React.FC<StudyTabSectionProps> = ({
       )}
 
       {/* Track별 플래시카드 본문 */}
-      <div
-        className={`w-full mx-auto px-1 sm:px-4 ${
-          isFocusMode ? 'max-w-[1600px]' : 'lg:max-w-[1080px] max-w-[1600px]'
-        }`}
-      >
+      <div className="w-full px-1 sm:px-4">
+        <div
+          className={`w-full mx-auto ${
+            isFocusMode ? 'max-w-[1600px]' : 'lg:max-w-[928px] max-w-[1600px]'
+          }`}
+        >
         {isActiveUnitLocked ? (
           <div className="w-full max-w-3xl mx-auto my-6 bg-white rounded-xl border border-slate-200 px-6 py-16 text-center space-y-3">
             <div className="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto">
@@ -569,6 +570,7 @@ export const StudyTabSection: React.FC<StudyTabSectionProps> = ({
         )}
         </>
         )}
+        </div>
       </div>
 
       {/* PC PDF-Bookmark TOC Sidebar */}

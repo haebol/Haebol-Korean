@@ -104,16 +104,16 @@ const THEME_STYLES: Record<OverviewThemeColor, {
     chipBg: 'bg-sky-50 text-sky-900 border-sky-200',
   },
   emerald: {
-    headerBg: 'from-emerald-50 to-emerald-100/80 border-emerald-200',
-    headerText: 'text-emerald-950',
-    badgeBg: 'bg-emerald-600 text-white',
-    cardBorder: 'border-emerald-200 hover:border-emerald-400',
-    cardActiveBorder: 'border-emerald-600 ring-2 ring-emerald-400/70',
-    cardActiveBg: 'bg-emerald-50/70',
-    miniBarBg: 'bg-emerald-100/90 border-b border-emerald-200',
-    miniBarText: 'text-emerald-950',
-    previewMainText: 'text-emerald-900',
-    chipBg: 'bg-emerald-50 text-emerald-900 border-emerald-200',
+    headerBg: 'from-[#F3FAF0] to-[#E7F4E2] border-[#C3E0B8]',
+    headerText: 'text-[#214A1C]',
+    badgeBg: 'bg-[#448E3A] text-white',
+    cardBorder: 'border-[#C3E0B8] hover:border-[#84C678]',
+    cardActiveBorder: 'border-[#448E3A] ring-2 ring-[#84C678]/70',
+    cardActiveBg: 'bg-[#F3FAF0]/80',
+    miniBarBg: 'bg-[#E7F4E2] border-b border-[#C3E0B8]',
+    miniBarText: 'text-[#214A1C]',
+    previewMainText: 'text-[#265A20]',
+    chipBg: 'bg-[#F3FAF0] text-[#214A1C] border-[#C3E0B8]',
   },
 };
 
@@ -318,7 +318,7 @@ export const OverviewGridModal: React.FC<OverviewGridModalProps> = ({
             )}
 
             {/* Thumbnail Grid Body */}
-            <div className="flex-1 overflow-y-auto p-3 sm:p-5 bg-[#FFF8FA] space-y-5">
+            <div className="flex-1 overflow-y-auto p-3 sm:p-5 bg-[#F4F5F7] space-y-5">
               {groupLabels.length > 1 && selectedGroup === 'ALL' ? (
                 groupLabels.map((lbl) => {
                   const groupItems = items.filter((it) => it.groupLabel === lbl);

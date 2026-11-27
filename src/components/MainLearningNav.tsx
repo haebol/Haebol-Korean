@@ -82,9 +82,9 @@ export const MainLearningNav: React.FC<MainLearningNavProps> = ({
       id: 'particle',
       ko: trackPrimary.particle,
       koDesc: koUi.tracks.particle,
-      activeClass: 'text-emerald-950 font-black bg-emerald-50/80',
-      inactiveClass: 'text-slate-700 hover:text-emerald-800 hover:bg-emerald-50/40 font-bold',
-      underlineClass: 'bg-emerald-500',
+      activeClass: 'text-[#214A1C] font-black bg-[#E9F5E4]/80',
+      inactiveClass: 'text-slate-700 hover:text-[#357A2C] hover:bg-[#F3FAF0]/60 font-bold',
+      underlineClass: 'bg-[#69B35C]',
     },
   ];
 
@@ -100,7 +100,7 @@ export const MainLearningNav: React.FC<MainLearningNavProps> = ({
   ];
 
   return (
-    <div className={`lg:hidden sticky top-0 ${isLangOpen ? 'z-50' : 'z-30'} w-full bg-[#F4F3F8]/95 backdrop-blur-md no-print select-none font-korean-gothic`}>
+    <div className={`lg:hidden sticky top-0 ${isLangOpen ? 'z-50' : 'z-30'} w-full bg-[#F4F5F7]/95 backdrop-blur-md no-print select-none font-korean-gothic`}>
       {/* Mobile Row 2 (Top-Level Mode Switcher): [플래시카드 | 학습지 | 게임] + [🌐 Flag] */}
       <nav aria-label="학습 방법 선택" className="border-b border-[#5B2399]/35 bg-[#4A1C80]">
         <div className="flex items-center w-full h-[32px] sm:h-[36px] gap-1 sm:gap-2 px-1.5 sm:px-3 py-1">

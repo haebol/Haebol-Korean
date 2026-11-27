@@ -85,7 +85,7 @@ export const PrintableWordbookSheet: React.FC<PrintableWordbookSheetProps> = ({
 
   return (
     <div
-      className={`print-sheet printable-word-sheet printable-wordbook-page w-full max-w-[1060px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-2.5 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet printable-wordbook-page w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-2.5 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '700px' }}
     >
       {/* 1. Header Row */}

@@ -103,7 +103,7 @@ export const PrintableWordWorksheetPage: React.FC<PrintableWordWorksheetPageProp
 
   return (
     <div
-      className={`print-sheet printable-word-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '620px' }}
     >
       {/* 1. Header Row */}

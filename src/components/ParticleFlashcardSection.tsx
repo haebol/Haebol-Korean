@@ -1098,7 +1098,7 @@ export const ParticleFlashcardSection: React.FC<ParticleFlashcardSectionProps> =
                   isCovered ? 'opacity-0' : 'opacity-100'
                 }`}
               >
-                <span className="inline-flex items-center justify-center min-w-[42px] sm:min-w-[52px] h-[38px] sm:h-[46px] px-2 border-2 border-dashed border-emerald-300 rounded-md bg-emerald-50 text-emerald-700 font-black text-lg sm:text-xl font-korean-gothic">
+                <span className="inline-flex items-center justify-center min-w-[42px] sm:min-w-[52px] h-[38px] sm:h-[46px] px-2 border-2 border-dashed border-[#84C678] rounded-md bg-[#F3FAF0] text-[#3B8232] font-black text-lg sm:text-xl font-korean-gothic">
                   + ?
                 </span>
               </div>
@@ -1172,13 +1172,13 @@ export const ParticleFlashcardSection: React.FC<ParticleFlashcardSectionProps> =
                   {bIdx > 0 && (
                     <span
                       className={`font-black text-base sm:text-lg font-korean-gothic transition-colors ${
-                        isCovered ? 'text-emerald-600' : 'text-slate-400'
+                        isCovered ? 'text-[#448E3A]' : 'text-slate-400'
                       }`}
                     >
                       +
                     </span>
                   )}
-                  <div className="inline-flex items-center bg-white px-2 sm:px-3 py-1.5 sm:py-2 shadow-2xs border border-emerald-200 select-none whitespace-nowrap">
+                  <div className="inline-flex items-center bg-white px-2 sm:px-3 py-1.5 sm:py-2 shadow-2xs border border-[#C3E0B8] select-none whitespace-nowrap">
                     <div
                       style={{
                         fontFamily: FONT_HAND,
@@ -1236,13 +1236,13 @@ export const ParticleFlashcardSection: React.FC<ParticleFlashcardSectionProps> =
                 {bIdx > 0 && (
                   <span
                     className={`font-black text-base sm:text-lg font-korean-gothic transition-colors ${
-                      isCovered ? 'text-emerald-600' : 'text-slate-400'
+                      isCovered ? 'text-[#448E3A]' : 'text-slate-400'
                     }`}
                   >
                     +
                   </span>
                 )}
-                <div className="inline-flex items-center bg-white px-2 sm:px-3 py-1.5 sm:py-2 shadow-2xs border border-emerald-200 select-none whitespace-nowrap">
+                <div className="inline-flex items-center bg-white px-2 sm:px-3 py-1.5 sm:py-2 shadow-2xs border border-[#C3E0B8] select-none whitespace-nowrap">
                   {/* Noun (or Verb if 1 segment) */}
                   <div
                     style={{
@@ -1298,7 +1298,7 @@ export const ParticleFlashcardSection: React.FC<ParticleFlashcardSectionProps> =
                       <span
                         className={`absolute inset-y-0 left-0.5 right-0 my-auto inline-flex items-center justify-center ${
                           isThreeBlocks ? 'h-[30px] sm:h-[34px] text-sm sm:text-base' : 'h-[34px] sm:h-[40px] text-base sm:text-lg'
-                        } px-1.5 border-2 border-dashed border-emerald-300 rounded-md bg-emerald-50 text-emerald-700 font-black font-korean-gothic transition-opacity duration-150 ${
+                        } px-1.5 border-2 border-dashed border-[#84C678] rounded-md bg-[#F3FAF0] text-[#3B8232] font-black font-korean-gothic transition-opacity duration-150 ${
                           isCovered ? 'opacity-0' : 'opacity-100'
                         }`}
                       >
@@ -1340,16 +1340,16 @@ export const ParticleFlashcardSection: React.FC<ParticleFlashcardSectionProps> =
   };
 
   return (
-    <div className="w-full max-w-[1312px] mx-auto px-1 sm:px-4 space-y-1 sm:space-y-1.5 font-korean-gothic">
+    <div className="w-full max-w-[1312px] lg:max-w-full mx-auto px-1 sm:px-4 lg:px-0 space-y-1 sm:space-y-1.5 font-korean-gothic">
       {/* Main Flashcard Display Area */}
-      <div className="w-full max-w-full sm:max-w-3xl lg:max-w-[960px] flex justify-center px-1 sm:px-4 font-korean-gothic mx-auto">
+      <div className="w-full max-w-full sm:max-w-3xl lg:max-w-full flex justify-center px-1 sm:px-4 lg:px-0 font-korean-gothic mx-auto">
         <div className="w-full">
           <div
             onClick={handleCardClick}
-            className="relative min-h-[400px] sm:min-h-[460px] lg:min-h-[520px] w-full rounded-lg pt-3 sm:pt-5 px-3 sm:px-6 pb-2 sm:pb-5 shadow-lg border-2 sm:border-4 border-emerald-300 flex flex-col justify-between transition-shadow hover:shadow-xl bg-gradient-to-b from-emerald-50 via-[#F4FDF9] to-emerald-100/60 cursor-pointer select-none overflow-hidden"
+            className="relative min-h-[400px] sm:min-h-[460px] lg:min-h-[520px] w-full rounded-lg pt-3 sm:pt-5 px-3 sm:px-6 pb-2 sm:pb-5 shadow-lg border-2 sm:border-4 border-[#84C678] flex flex-col justify-between transition-shadow hover:shadow-xl bg-gradient-to-b from-[#F3FAF0] via-[#F9FDF7] to-[#E9F5E4]/75 cursor-pointer select-none overflow-hidden"
           >
             {/* Top-Left Guide Text */}
-            <div className="absolute top-4 sm:top-5 left-4 sm:left-5 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-emerald-100/95 border border-emerald-200 text-emerald-950 text-[11px] sm:text-xs font-black pointer-events-none shadow-xs">
+            <div className="absolute top-4 sm:top-5 left-4 sm:left-5 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-[#E7F4E2]/95 border border-[#C3E0B8] text-[#214A1C] text-[11px] sm:text-xs font-black pointer-events-none shadow-xs">
               <span>{fcUiLabels.clickWordGuide}</span>
             </div>
 
@@ -1378,12 +1378,12 @@ export const ParticleFlashcardSection: React.FC<ParticleFlashcardSectionProps> =
                 className={`w-9 h-9 sm:w-10 sm:h-10 rounded-md flex flex-col items-center justify-center transition-all cursor-pointer shadow-2xs border ${
                   showHint
                     ? 'bg-amber-300 text-amber-950 border-amber-400 ring-2 ring-amber-300'
-                    : 'bg-white/90 hover:bg-emerald-100 text-emerald-950 border-emerald-200'
+                    : 'bg-white/90 hover:bg-[#E7F4E2] text-[#214A1C] border-[#C3E0B8]'
                 } active:scale-95`}
                 title={fcUiLabels.hintTitle}
                 aria-label={fcUiLabels.hint}
               >
-                <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-700" />
+                <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#448E3A]" />
                 <span className="text-[9px] sm:text-[10px] font-black leading-none mt-0.5">
                   {fcUiLabels.hint}
                 </span>
@@ -1412,8 +1412,8 @@ export const ParticleFlashcardSection: React.FC<ParticleFlashcardSectionProps> =
               <div
                 className={`mt-3 sm:mt-4 px-3.5 py-0.5 text-sm sm:text-base font-bold rounded-sm border shadow-xs tracking-wide transition-colors duration-300 ${
                   !isRowUnit && isCovered
-                    ? 'bg-teal-100/95 text-teal-950 border-teal-300'
-                    : 'bg-emerald-100/95 text-emerald-950 border-emerald-200'
+                    ? 'bg-[#DCEFD5] text-[#1D4219] border-[#84C678]'
+                    : 'bg-[#E7F4E2]/95 text-[#214A1C] border-[#C3E0B8]'
                 }`}
               >
                 [{currentMeaning}]
@@ -1424,9 +1424,9 @@ export const ParticleFlashcardSection: React.FC<ParticleFlashcardSectionProps> =
                 type="button"
                 onClick={(e) => handleSentenceSpeak(e, fullSentenceText)}
                 title={fcUiLabels.listenSentence}
-                className="mt-3.5 sm:mt-4.5 px-4 py-2 bg-white/95 hover:bg-emerald-50 rounded-md border border-emerald-200 shadow-sm max-w-md w-full flex items-center justify-center gap-2 cursor-pointer transition-colors"
+                className="mt-3.5 sm:mt-4.5 px-4 py-2 bg-white/95 hover:bg-[#F3FAF0] rounded-md border border-[#C3E0B8] shadow-sm max-w-md w-full flex items-center justify-center gap-2 cursor-pointer transition-colors"
               >
-                <Volume2 className="w-4 h-4 text-emerald-700 shrink-0" />
+                <Volume2 className="w-4 h-4 text-[#448E3A] shrink-0" />
                 <p
                   style={{
                     fontFamily: FONT_HAND,
@@ -1459,7 +1459,7 @@ export const ParticleFlashcardSection: React.FC<ParticleFlashcardSectionProps> =
                   ) : (
                     <>
                       "{currentColCard.sentencePrefix}
-                      <span className="font-black text-emerald-800">
+                      <span className="font-black text-[#2F6F27]">
                         {currentColCard.sentenceHighlight}
                       </span>
                       {selectedUnit === 'unit21' ? (
@@ -1484,20 +1484,20 @@ export const ParticleFlashcardSection: React.FC<ParticleFlashcardSectionProps> =
                   e.stopPropagation();
                   handlePrev();
                 }}
-                className="h-20 sm:h-24 w-12 sm:w-15 rounded-md bg-transparent hover:bg-emerald-500/10 active:scale-95 border-2 border-emerald-300 shadow-none flex items-center justify-center text-slate-800 cursor-pointer transition-all hover:border-emerald-400"
+                className="h-20 sm:h-24 w-12 sm:w-15 rounded-md bg-transparent hover:bg-[#84C678]/15 active:scale-95 border-2 border-[#84C678] shadow-none flex items-center justify-center text-slate-800 cursor-pointer transition-all hover:border-[#69B35C]"
                 title={commonUi.prevCard}
                 aria-label={commonUi.prevCard}
               >
-                <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 text-emerald-700" />
+                <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 text-[#448E3A]" />
               </button>
               <button
                 type="button"
                 onClick={handlePrevUnit}
-                className="h-10 sm:h-12 w-12 sm:w-15 rounded-md bg-transparent hover:bg-emerald-500/10 active:scale-95 border-2 border-emerald-300 shadow-none flex items-center justify-center text-slate-800 cursor-pointer transition-all hover:border-emerald-400"
+                className="h-10 sm:h-12 w-12 sm:w-15 rounded-md bg-transparent hover:bg-[#84C678]/15 active:scale-95 border-2 border-[#84C678] shadow-none flex items-center justify-center text-slate-800 cursor-pointer transition-all hover:border-[#69B35C]"
                 title={commonUi.prevUnit}
                 aria-label={commonUi.prevUnit}
               >
-                <ChevronsLeft className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-700" />
+                <ChevronsLeft className="w-5 h-5 sm:w-6 sm:h-6 text-[#448E3A]" />
               </button>
             </div>
 
@@ -1509,20 +1509,20 @@ export const ParticleFlashcardSection: React.FC<ParticleFlashcardSectionProps> =
                   e.stopPropagation();
                   handleNext();
                 }}
-                className="h-20 sm:h-24 w-12 sm:w-15 rounded-md bg-transparent hover:bg-emerald-500/10 active:scale-95 border-2 border-emerald-300 shadow-none flex items-center justify-center text-slate-800 cursor-pointer transition-all hover:border-emerald-400"
+                className="h-20 sm:h-24 w-12 sm:w-15 rounded-md bg-transparent hover:bg-[#84C678]/15 active:scale-95 border-2 border-[#84C678] shadow-none flex items-center justify-center text-slate-800 cursor-pointer transition-all hover:border-[#69B35C]"
                 title={commonUi.nextCard}
                 aria-label={commonUi.nextCard}
               >
-                <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 text-emerald-700" />
+                <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 text-[#448E3A]" />
               </button>
               <button
                 type="button"
                 onClick={handleNextUnit}
-                className="h-10 sm:h-12 w-12 sm:w-15 rounded-md bg-transparent hover:bg-emerald-500/10 active:scale-95 border-2 border-emerald-300 shadow-none flex items-center justify-center text-slate-800 cursor-pointer transition-all hover:border-emerald-400"
+                className="h-10 sm:h-12 w-12 sm:w-15 rounded-md bg-transparent hover:bg-[#84C678]/15 active:scale-95 border-2 border-[#84C678] shadow-none flex items-center justify-center text-slate-800 cursor-pointer transition-all hover:border-[#69B35C]"
                 title={commonUi.nextUnit}
                 aria-label={commonUi.nextUnit}
               >
-                <ChevronsRight className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-700" />
+                <ChevronsRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#448E3A]" />
               </button>
             </div>
           </div>
@@ -1545,7 +1545,7 @@ export const ParticleFlashcardSection: React.FC<ParticleFlashcardSectionProps> =
               exit={{ opacity: 0, scale: 0.9, y: 8 }}
               transition={{ type: 'spring', stiffness: 450, damping: 28 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-lg bg-white rounded-lg p-6 sm:p-7 shadow-2xl border-2 border-emerald-300 text-left"
+              className="relative w-full max-w-lg bg-white rounded-lg p-6 sm:p-7 shadow-2xl border-2 border-[#84C678] text-left"
             >
               <button
                 type="button"

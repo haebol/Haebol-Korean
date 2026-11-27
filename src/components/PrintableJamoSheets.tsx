@@ -223,7 +223,7 @@ export const ConsonantsWorksheetPage: React.FC<JamoSheetProps> = ({
 
   return (
     <div
-      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -456,7 +456,7 @@ export const VowelsWorksheetPage: React.FC<JamoSheetProps> = ({
 
   return (
     <div
-      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -689,7 +689,7 @@ export const ComboTracingWorksheetPage: React.FC<JamoSheetProps> = ({
 
   return (
     <div
-      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -840,7 +840,7 @@ export const ComboWorksheetPage: React.FC<JamoSheetProps> = ({
 
   return (
     <div
-      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -1007,7 +1007,7 @@ export const ConsonantsStrokeSheetBase: React.FC<StrokeSheetBaseProps> = ({
 
   return (
     <div
-      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-2.5 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-2 sm:p-2.5 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -2641,7 +2641,7 @@ export const ConsonantsSummaryWorksheetPage: React.FC<
 
   return (
     <div
-      className={`print-sheet printable-word-sheet printable-jamo-sheet consonants-summary-sheet w-full max-w-[1060px] bg-white rounded-xl border-2 border-slate-300 p-2.5 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet printable-jamo-sheet consonants-summary-sheet w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-2.5 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '660px' }}
     >
       <JamoStyleSheet />
@@ -2925,7 +2925,7 @@ export const VowelsSummaryWorksheetPage: React.FC<
 
   return (
     <div
-      className={`print-sheet printable-word-sheet printable-jamo-sheet vowels-summary-sheet w-full max-w-[1060px] bg-white rounded-xl border-2 border-slate-300 p-2.5 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
+      className={`print-sheet printable-word-sheet printable-jamo-sheet vowels-summary-sheet w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-2.5 sm:p-3 text-slate-800 flex flex-col justify-between shadow-lg ${className}`}
       style={{ minHeight: '660px' }}
     >
       <JamoStyleSheet />

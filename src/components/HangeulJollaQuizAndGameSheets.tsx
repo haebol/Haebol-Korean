@@ -333,7 +333,7 @@ export const JollaHiddenLettersSheet: React.FC = () => {
 
   return (
     <div
-      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
+      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -564,7 +564,7 @@ export const JollaTerritoryGameSheet: React.FC = () => {
 
   return (
     <div
-      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
+      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -812,7 +812,7 @@ export const JollaMazeGameSheet: React.FC = () => {
 
   return (
     <div
-      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
+      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />
@@ -1115,7 +1115,7 @@ export const JollaBingoGameSheet: React.FC = () => {
 
   return (
     <div
-      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[990px] bg-white rounded-xl border-2 border-slate-300 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
+      className="print-sheet printable-word-sheet printable-jamo-sheet w-full max-w-[1040px] bg-white rounded-xl border-2 border-slate-300 p-3 sm:p-4 text-slate-900 flex flex-col justify-between shadow-lg"
       style={{ minHeight: '620px' }}
     >
       <JamoStyleSheet />

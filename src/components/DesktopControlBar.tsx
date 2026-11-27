@@ -45,6 +45,7 @@ interface DesktopControlBarProps {
 
 export const DesktopControlBar: React.FC<DesktopControlBarProps> = ({
   activeTrack,
+  activeMethod = 'flashcard',
   isTocOpen = false,
   onToggleToc,
   isContinuousView = false,
@@ -83,20 +84,22 @@ export const DesktopControlBar: React.FC<DesktopControlBarProps> = ({
     }, 2400);
   };
 
+  const pcWidthClass = activeMethod === 'worksheet' ? 'max-w-[1040px]' : 'max-w-[928px]';
+
   const baseBtnClass =
-    'h-[40px] px-3 rounded-lg border text-[13px] font-extrabold inline-flex items-center justify-center gap-1.5 whitespace-nowrap shrink-0 transition-all shadow-2xs';
+    'h-[38px] px-3.5 rounded-md border text-[13px] font-extrabold inline-flex items-center justify-center gap-1.5 whitespace-nowrap shrink-0 transition-all shadow-2xs';
   const idleBtnClass =
-    'bg-white hover:bg-purple-50 text-[#2E1052] border-purple-200/95 hover:border-purple-300 cursor-pointer active:scale-[0.98]';
+    'bg-white hover:bg-purple-50 text-[#2E1052] border-purple-200/90 hover:border-purple-300 cursor-pointer active:scale-[0.98]';
   const activeBtnClass =
     'bg-[#3B1668] hover:bg-[#491C80] text-white border-[#3B1668] cursor-pointer active:scale-[0.98] shadow-xs';
   const disabledBtnClass =
     'bg-white/75 text-slate-400 border-purple-100 cursor-not-allowed opacity-70';
 
   return (
-    <div className="hidden lg:block w-full px-4 mt-2.5 mb-3 no-print select-none font-korean-gothic">
-      <div className="relative w-full max-w-[1080px] mx-auto flex items-center gap-2">
-        {/* Left 3 Independent Rounded Action Buttons (4-char uniform spec) */}
-        <div className="flex items-center gap-1.5 shrink-0">
+    <div className="hidden lg:block w-full px-4 mt-1.5 mb-2 no-print select-none font-korean-gothic">
+      <div className={`relative w-full ${pcWidthClass} mx-auto flex items-center gap-1`}>
+        {/* Left 3 Crisp Rectangular Action Buttons */}
+        <div className="flex items-center gap-1 shrink-0">
           {/* 1. [메뉴펼치기] */}
           <button
             type="button"
@@ -113,10 +116,10 @@ export const DesktopControlBar: React.FC<DesktopControlBarProps> = ({
             ) : (
               <PanelLeftOpen className="w-4 h-4 shrink-0 text-[#5B21B6]" />
             )}
-            <span>메뉴펼치기</span>
+            <span>메뉴 펼치기</span>
           </button>
 
-          {/* 2. [연속보기] */}
+          {/* 2. [연속 보기] */}
           <button
             type="button"
             onClick={() => {
@@ -134,7 +137,7 @@ export const DesktopControlBar: React.FC<DesktopControlBarProps> = ({
             <Rows3
               className={`w-4 h-4 shrink-0 ${isContinuousView ? 'text-white' : 'text-[#5B21B6]'}`}
             />
-            <span>연속보기</span>
+            <span>연속 보기</span>
           </button>
 
           {/* 3. [표지·차례] */}
@@ -161,13 +164,13 @@ export const DesktopControlBar: React.FC<DesktopControlBarProps> = ({
         </div>
 
         {/* Center Unit Dropdown (+ Conditional [내 언어 골라담기] right next to it ONLY on Classroom Worksheet) */}
-        <div className="flex-1 min-w-0 flex items-center gap-1.5">
+        <div className="flex-1 min-w-0 flex items-center gap-1">
           <div className="flex-1 min-w-0">{centerUnitControl}</div>
           {extraAfterCenter && <div className="shrink-0">{extraAfterCenter}</div>}
         </div>
 
-        {/* Right 2 Independent Rounded Action Buttons ([단어장], [집중]) */}
-        <div className="flex items-center gap-1.5 shrink-0">
+        {/* Right 2 Crisp Rectangular Action Buttons ([단어장], [집중]) */}
+        <div className="flex items-center gap-1 shrink-0">
           {/* 1. [단어장] */}
           {wordbookUrl ? (
             <a
@@ -175,7 +178,7 @@ export const DesktopControlBar: React.FC<DesktopControlBarProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => playCutePop()}
-              className={`${baseBtnClass} ${idleBtnClass} px-3.5 no-underline`}
+              className={`${baseBtnClass} ${idleBtnClass} px-4 no-underline`}
               title="네이버 블로그 단어장 포스팅 새 창으로 열기"
             >
               <BookMarked className="w-4 h-4 shrink-0 text-[#5B21B6]" />
@@ -185,7 +188,7 @@ export const DesktopControlBar: React.FC<DesktopControlBarProps> = ({
             <button
               type="button"
               onClick={handleEmptyWordbookClick}
-              className={`${baseBtnClass} ${idleBtnClass} px-3.5`}
+              className={`${baseBtnClass} ${idleBtnClass} px-4`}
               title="단어장 블로그 주소 준비 중"
             >
               <BookMarked className="w-4 h-4 shrink-0 text-[#5B21B6]" />
@@ -200,7 +203,7 @@ export const DesktopControlBar: React.FC<DesktopControlBarProps> = ({
               playCutePop();
               onToggleFocusMode?.();
             }}
-            className={`${baseBtnClass} ${idleBtnClass} px-3.5`}
+            className={`${baseBtnClass} ${idleBtnClass} px-4`}
             title="상단 메뉴를 접고 풀스크린 집중 모드로 보기"
           >
             <Maximize2 className="w-3.5 h-3.5 shrink-0 text-[#5B21B6]" />

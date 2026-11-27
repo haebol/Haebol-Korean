@@ -459,7 +459,7 @@ export const GamesSection: React.FC<GamesSectionProps> = ({
     track === 'hangeul'
       ? 'border-amber-200/80'
       : track === 'particle'
-      ? 'border-emerald-200/80'
+      ? 'border-[#C3E0B8]'
       : track === 'verb'
       ? 'border-purple-200/80'
       : 'border-rose-200/70';
@@ -582,7 +582,7 @@ export const GamesSection: React.FC<GamesSectionProps> = ({
 
       {!isMenuCollapsed && (
       <div
-        className={`lg:hidden sticky top-[66px] sm:top-[74px] z-[35] bg-[#F4F3F8]/95 backdrop-blur-md pb-1 mb-1.5 border-b no-print w-full max-w-4xl mx-auto px-2.5 sm:px-4 select-none ${row5BorderClass}`}
+        className={`lg:hidden sticky top-[66px] sm:top-[74px] z-[35] bg-[#F4F5F7]/95 backdrop-blur-md pb-1 mb-1.5 border-b no-print w-full max-w-4xl mx-auto px-2.5 sm:px-4 select-none ${row5BorderClass}`}
       >
         <div className="flex items-center justify-between gap-2 h-[38px] sm:h-[42px]">
           {/* Left: Track-specific transparent text tab */}
@@ -633,11 +633,11 @@ export const GamesSection: React.FC<GamesSectionProps> = ({
               <button
                 type="button"
                 onClick={() => playCutePop()}
-                className="relative py-1.5 px-1 bg-transparent border-0 cursor-pointer flex items-center gap-1 whitespace-nowrap text-[13px] sm:text-[14.5px] text-emerald-950 font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-emerald-600"
+                className="relative py-1.5 px-1 bg-transparent border-0 cursor-pointer flex items-center gap-1 whitespace-nowrap text-[13px] sm:text-[14.5px] text-[#214A1C] font-black after:content-[''] after:absolute after:bottom-0 after:left-0.5 after:right-0.5 after:h-[2.5px] after:bg-[#5CA850]"
                 title={`${tabUi.gameTabs.slingshot} (${isKoUi ? subLabels.particle : '새총게임'})`}
               >
                 <span>{tabUi.gameTabs.slingshot}</span>
-                <span className="hidden md:inline text-[11px] font-bold text-emerald-700/85">
+                <span className="hidden md:inline text-[11px] font-bold text-[#2F6F27]/85">
                   [{isKoUi ? subLabels.particle : '새총게임'}]
                 </span>
               </button>
@@ -722,11 +722,12 @@ export const GamesSection: React.FC<GamesSectionProps> = ({
       )}
 
       {/* Track-specific Game Render */}
-      <div
-        className={`w-full mx-auto px-1 sm:px-4 ${
-          isFocusMode ? 'max-w-[1312px]' : 'lg:max-w-[1080px] max-w-[1312px]'
-        }`}
-      >
+      <div className="w-full px-1 sm:px-4">
+        <div
+          className={`w-full mx-auto ${
+            isFocusMode ? 'max-w-[1312px]' : 'lg:max-w-[928px] max-w-[1312px]'
+          }`}
+        >
         {track === 'hangeul' && (
           <HangeulBalloonGameSection
             lang={lang}
@@ -765,6 +766,7 @@ export const GamesSection: React.FC<GamesSectionProps> = ({
             onSelectUnit={(u) => setSelectedParticleUnit(u)}
           />
         )}
+        </div>
       </div>
 
       {/* PC PDF-Bookmark TOC Sidebar */}

@@ -194,7 +194,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
     : theme === 'purple'
     ? 'bg-white text-purple-950 border-purple-300'
     : theme === 'emerald'
-    ? 'bg-white text-emerald-950 border-emerald-300'
+    ? 'bg-white text-[#214A1C] border-[#84C678]'
     : 'bg-white text-rose-950 border-rose-300';
 
   const hoverBgClasses = isTwin
@@ -204,7 +204,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
     : theme === 'purple'
     ? 'hover:bg-purple-50'
     : theme === 'emerald'
-    ? 'hover:bg-emerald-50'
+    ? 'hover:bg-[#F3FAF0]'
     : 'hover:bg-rose-50';
 
   const dividerThemeClasses = isTwin
@@ -214,7 +214,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
     : theme === 'purple'
     ? 'border-purple-200'
     : theme === 'emerald'
-    ? 'border-emerald-200'
+    ? 'border-[#C3E0B8]'
     : 'border-rose-200';
 
   const badgeThemeClasses = isTwin
@@ -224,7 +224,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
     : theme === 'purple'
     ? 'bg-purple-50/70 border-purple-300/80 text-purple-950'
     : theme === 'emerald'
-    ? 'bg-emerald-50/70 border-emerald-300/80 text-emerald-950'
+    ? 'bg-[#F3FAF0] border-[#84C678]/80 text-[#214A1C]'
     : 'bg-rose-50/70 border-rose-300/80 text-rose-950';
 
   const triggerThemeClasses = `${outerThemeClasses} ${hoverBgClasses}`;
@@ -236,7 +236,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
     : theme === 'purple'
     ? 'text-purple-700'
     : theme === 'emerald'
-    ? 'text-emerald-700'
+    ? 'text-[#448E3A]'
     : 'text-rose-600';
 
   const panelBorderClasses = isTwin
@@ -246,7 +246,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
     : theme === 'purple'
     ? 'border-purple-400'
     : theme === 'emerald'
-    ? 'border-emerald-400'
+    ? 'border-[#69B35C]'
     : 'border-rose-400';
 
   const activeItemClasses = isTwin
@@ -256,7 +256,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
     : theme === 'purple'
     ? 'bg-purple-100/90 text-purple-950 font-black'
     : theme === 'emerald'
-    ? 'bg-emerald-100/90 text-emerald-950 font-black'
+    ? 'bg-[#E7F4E2] text-[#214A1C] font-black'
     : 'bg-rose-100/90 text-rose-950 font-black';
 
   const hoverItemClasses = isTwin
@@ -266,7 +266,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
     : theme === 'purple'
     ? 'hover:bg-purple-50 text-slate-800'
     : theme === 'emerald'
-    ? 'hover:bg-emerald-50 text-slate-800'
+    ? 'hover:bg-[#F3FAF0] text-slate-800'
     : 'hover:bg-rose-50 text-slate-800';
 
   const gridOuterBorder = isTwin
@@ -276,7 +276,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
     : theme === 'purple'
     ? 'border-purple-200'
     : theme === 'emerald'
-    ? 'border-emerald-200'
+    ? 'border-[#C3E0B8]'
     : 'border-rose-200';
   const gridSearchFocus = isTwin
     ? 'focus-within:border-purple-400'
@@ -285,7 +285,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
     : theme === 'purple'
     ? 'focus-within:border-purple-400'
     : theme === 'emerald'
-    ? 'focus-within:border-emerald-400'
+    ? 'focus-within:border-[#69B35C]'
     : 'focus-within:border-rose-300';
   const gridTileActive = isTwin
     ? 'bg-purple-100 border-[#3B1668] text-[#2E1052] font-black shadow-2xs ring-1 ring-[#3B1668]/20'
@@ -294,7 +294,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
     : theme === 'purple'
     ? 'bg-purple-100 border-purple-700 text-purple-950 font-black shadow-2xs ring-1 ring-purple-700/20'
     : theme === 'emerald'
-    ? 'bg-emerald-100 border-emerald-700 text-emerald-950 font-black shadow-2xs ring-1 ring-emerald-700/20'
+    ? 'bg-[#E7F4E2] border-[#448E3A] text-[#214A1C] font-black shadow-2xs ring-1 ring-[#448E3A]/20'
     : 'bg-[#FDECE4] border-[#5C3A31] text-[#3B1D16] font-black shadow-2xs ring-1 ring-[#5C3A31]/20';
   const gridTileInactive = isTwin
     ? 'bg-[#FDFBFF] hover:bg-purple-50 border-purple-200/85 hover:border-purple-300 text-slate-700 hover:text-[#2E1052] font-bold'
@@ -303,7 +303,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
     : theme === 'purple'
     ? 'bg-[#FDFBFF] hover:bg-purple-50 border-purple-200/85 hover:border-purple-300 text-slate-700 hover:text-purple-950 font-bold'
     : theme === 'emerald'
-    ? 'bg-[#F7FDFB] hover:bg-emerald-50 border-emerald-200/85 hover:border-emerald-300 text-slate-700 hover:text-emerald-950 font-bold'
+    ? 'bg-[#F9FCF8] hover:bg-[#F3FAF0] border-[#C3E0B8]/85 hover:border-[#84C678] text-slate-700 hover:text-[#214A1C] font-bold'
     : 'bg-[#FFFBFB] hover:bg-rose-50 border-rose-200/85 hover:border-rose-300 text-slate-700 hover:text-rose-950 font-bold';
   const gridFooterClasses =
     theme === 'amber'
@@ -311,7 +311,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
       : theme === 'purple'
       ? 'border-purple-200 bg-purple-50/75 hover:bg-purple-100/80 text-purple-950'
       : theme === 'emerald'
-      ? 'border-emerald-200 bg-emerald-50/75 hover:bg-emerald-100/80 text-emerald-950'
+      ? 'border-[#C3E0B8] bg-[#F3FAF0]/85 hover:bg-[#E7F4E2] text-[#214A1C]'
       : 'border-rose-200 bg-rose-50/75 hover:bg-rose-100/80 text-rose-950';
 
   const listboxPortal =
@@ -524,7 +524,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
       ) : (
         <div
           className={`w-full ${
-            isTwin ? 'h-[40px] rounded-lg' : 'h-8 sm:h-8.5 rounded-none'
+            isTwin ? 'h-[38px] rounded-md' : 'h-8 sm:h-8.5 rounded-none'
           } border flex items-stretch overflow-hidden ${outerThemeClasses}`}
         >
           {/* Left Prev Unit Button */}
@@ -535,7 +535,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
             aria-label="이전 단원"
             title={hasPrev ? `이전: ${options[prevEnabledIndex].label}` : '첫 번째 단원'}
             className={`${
-              isTwin ? 'w-[38px]' : 'w-5.5 sm:w-7'
+              isTwin ? 'w-[34px]' : 'w-5.5 sm:w-7'
             } h-full shrink-0 flex items-center justify-center border-r transition-colors focus:outline-none ${dividerThemeClasses} ${
               hasPrev
                 ? `cursor-pointer ${hoverBgClasses} ${chevronColor}`
@@ -557,7 +557,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
             aria-haspopup="listbox"
             title={fullTooltip}
             className={`flex-1 min-w-0 h-full ${
-              isTwin ? 'px-3.5 gap-2' : 'px-1.5 sm:px-2 gap-1'
+              isTwin ? 'px-3 gap-2' : 'px-1.5 sm:px-2 gap-1'
             } flex items-center justify-between cursor-pointer transition-colors focus:outline-none whitespace-nowrap overflow-hidden ${hoverBgClasses}`}
           >
             <span
@@ -570,7 +570,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
             <span className="flex items-center gap-1.5 shrink-0">
               {isTwin && totalCount > 0 && (
                 <span
-                  className={`px-2 py-1 rounded-md text-[11.5px] font-extrabold border leading-none tabular-nums tracking-tight ${badgeThemeClasses}`}
+                  className={`px-2 py-0.5 rounded-sm text-[11.5px] font-extrabold border leading-none tabular-nums tracking-tight ${badgeThemeClasses}`}
                 >
                   {currentIndex + 1}/{totalCount}
                 </span>
@@ -593,7 +593,7 @@ export const CompactUnitSelectButton: React.FC<CompactUnitSelectButtonProps> = (
             aria-label="다음 단원"
             title={hasNext ? `다음: ${options[nextEnabledIndex].label}` : '마지막 단원'}
             className={`${
-              isTwin ? 'w-[38px]' : 'w-5.5 sm:w-7'
+              isTwin ? 'w-[34px]' : 'w-5.5 sm:w-7'
             } h-full shrink-0 flex items-center justify-center border-l transition-colors focus:outline-none ${dividerThemeClasses} ${
               hasNext
                 ? `cursor-pointer ${hoverBgClasses} ${chevronColor}`

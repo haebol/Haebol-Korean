@@ -632,7 +632,7 @@ export default function App() {
   const selectedParticleUnitIndex = PARTICLE_UNIT_META.findIndex(u => u.id === selectedParticleUnit);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F4F3F8] lg:bg-[#FFF5F8] text-slate-800 font-sans">
+    <div className="min-h-screen flex flex-col bg-[#F4F5F7] text-slate-800 font-sans">
       {showLegacyDomainBanner && (
         <div className="no-print bg-rose-600 text-white px-3 py-2 text-center text-xs sm:text-sm font-bold flex flex-wrap items-center justify-center gap-2">
           <span>해볼한국어 주소가 새 도메인(haebol.com)으로 이사했습니다.</span>
@@ -806,11 +806,15 @@ export default function App() {
 
       {/* Footer */}
       <footer
-        className={`mt-2 sm:mt-8 border-t border-[#E4E1EE] lg:border-pink-200/80 bg-[#F4F3F8] lg:bg-[#FFF5F8] py-2.5 sm:py-4 px-3 sm:px-4 text-center no-print ${
+        className={`mt-2 sm:mt-8 border-t border-slate-200/90 bg-[#F4F5F7] py-2.5 sm:py-4 px-3 sm:px-4 text-center no-print ${
           isFocusMode ? 'lg:hidden' : ''
         }`}
       >
-        <div className="max-w-[1080px] mx-auto flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-[11px] sm:text-sm text-[#3B1668]">
+        <div
+          className={`w-full ${
+            activeMethod === 'worksheet' ? 'lg:max-w-[1040px]' : 'lg:max-w-[928px]'
+          } mx-auto flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-[11px] sm:text-sm text-[#3B1668]`}
+        >
           <div className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-0.5">
             <span className="font-bold text-rose-950 font-korean-gothic">해볼한국어</span>
             <span className="font-semibold text-[#3B1668]">haebol.com</span>

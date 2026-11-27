@@ -332,16 +332,16 @@ export const ParticleExamSheet: React.FC<ParticleExamSheetProps> = ({
     }
     if (isGraded) {
       if (isChosen && isCorrectOpt) {
-        return 'border-2 border-emerald-600 bg-emerald-50 text-emerald-900 rounded-full';
+        return 'border-2 border-[#448E3A] bg-[#F3FAF0] text-[#214A1C] rounded-full';
       }
       if (isChosen && !isCorrectOpt) {
         return 'border-2 border-rose-600 bg-rose-50 text-rose-700 line-through rounded-full';
       }
       if (!isChosen && isCorrectOpt) {
-        return 'border-2 border-dashed border-emerald-600 text-emerald-800 rounded-full';
+        return 'border-2 border-dashed border-[#448E3A] text-[#265A20] rounded-full';
       }
     } else if (isChosen) {
-      return 'border-2 border-emerald-700 bg-emerald-50 text-slate-950 rounded-full';
+      return 'border-2 border-[#357A2C] bg-[#F3FAF0] text-slate-950 rounded-full';
     }
     return 'border-2 border-transparent hover:border-slate-400 rounded-full text-slate-950';
   };
@@ -418,7 +418,7 @@ export const ParticleExamSheet: React.FC<ParticleExamSheetProps> = ({
               <button
                 type="button"
                 onClick={handleGrade}
-                className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-md bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 text-[11px] font-bold cursor-pointer transition-colors"
+                className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-md bg-[#F3FAF0] hover:bg-[#E7F4E2] border border-[#84C678] text-[#265A20] text-[11px] font-bold cursor-pointer transition-colors"
               >
                 <CheckCircle2 className="w-3 h-3" />
                 채점
@@ -468,38 +468,38 @@ export const ParticleExamSheet: React.FC<ParticleExamSheetProps> = ({
             <tr className="text-slate-950 font-black text-[11px] sm:text-xs">
               <th
                 style={{ border: '1.5px solid #334155' }}
-                className="bg-emerald-50/80 py-1.5 text-center"
+                className="bg-[#EEF7EA] py-1.5 text-center"
               >
                 번호
               </th>
               <th
                 style={{ border: '1.5px solid #334155' }}
-                className="bg-emerald-50/80 py-1.5 text-center"
+                className="bg-[#EEF7EA] py-1.5 text-center"
               >
                 그림
               </th>
               <th
                 style={{ border: '1.5px solid #334155' }}
-                className="bg-emerald-50/80 py-1.5 text-center"
+                className="bg-[#EEF7EA] py-1.5 text-center"
               >
                 명사
               </th>
               <th
                 style={{ border: '1.5px solid #334155' }}
-                className="bg-emerald-50/80 py-1.5 px-1.5 text-center"
+                className="bg-[#EEF7EA] py-1.5 px-1.5 text-center"
               >
                 {lesson.leftColHeader}
               </th>
               <th style={{ border: 'none' }} className="bg-white p-0" aria-hidden="true" />
               <th
                 style={{ border: '1.5px solid #334155' }}
-                className="bg-emerald-50/80 py-1.5 text-center"
+                className="bg-[#EEF7EA] py-1.5 text-center"
               >
                 번호
               </th>
               <th
                 style={{ border: '1.5px solid #334155' }}
-                className="bg-emerald-50/80 py-1.5 px-2 text-center"
+                className="bg-[#EEF7EA] py-1.5 px-2 text-center"
               >
                 {lesson.rightColHeader}
               </th>
@@ -565,7 +565,7 @@ export const ParticleExamSheet: React.FC<ParticleExamSheetProps> = ({
                         {isGraded && leftUser && (
                           <span
                             className={`text-xs font-black ${
-                              leftUser === leftQ.answer ? 'text-emerald-700' : 'text-rose-600'
+                              leftUser === leftQ.answer ? 'text-[#357A2C]' : 'text-rose-600'
                             }`}
                           >
                             {leftUser === leftQ.answer ? '○' : '×'}
@@ -620,7 +620,7 @@ export const ParticleExamSheet: React.FC<ParticleExamSheetProps> = ({
                         {isGraded && rightUser && (
                           <span
                             className={`text-xs font-black ${
-                              rightUser === rightQ.answer ? 'text-emerald-700' : 'text-rose-600'
+                              rightUser === rightQ.answer ? 'text-[#357A2C]' : 'text-rose-600'
                             }`}
                           >
                             {rightUser === rightQ.answer ? '○' : '×'}

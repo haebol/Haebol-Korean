@@ -290,10 +290,10 @@ export const FlashcardSection: React.FC<FlashcardSectionProps> = ({
 
   return (
     <>
-      <div className="w-full max-w-[1312px] mx-auto px-1 sm:px-4 space-y-1 sm:space-y-1.5 font-korean-gothic no-print">
+      <div className="w-full max-w-[1312px] lg:max-w-full mx-auto px-1 sm:px-4 lg:px-0 space-y-1 sm:space-y-1.5 font-korean-gothic no-print">
         {/* Row 5 Top Bar (Mobile Only when desktop control bar is active): 소제목(교실어휘) + [1x1 단원드롭] [1x1 그리드] */}
         {!isMenuCollapsed && (
-          <div className={`${hideDesktopUnitBar ? 'lg:hidden' : ''} sticky top-[66px] sm:top-[74px] lg:static z-[28] bg-[#F4F3F8]/95 lg:bg-[#FFF5F8]/95 backdrop-blur-md pb-1 mb-1.5 border-b border-rose-200/80 no-print -mx-2 w-[calc(100%+1rem)] sm:mx-auto sm:w-full max-w-3xl px-3 sm:px-4 select-none`}>
+          <div className={`${hideDesktopUnitBar ? 'lg:hidden' : ''} sticky top-[66px] sm:top-[74px] lg:static z-[28] bg-[#F4F5F7]/95 backdrop-blur-md pb-1 mb-1.5 border-b border-rose-200/80 no-print -mx-2 w-[calc(100%+1rem)] sm:mx-auto sm:w-full max-w-3xl px-3 sm:px-4 select-none`}>
           <div className="flex items-center justify-between gap-2 h-[38px] sm:h-[42px]">
             <div className="flex items-center gap-3.5 sm:gap-6 min-w-0 overflow-x-auto no-scrollbar">
               <button
@@ -335,7 +335,7 @@ export const FlashcardSection: React.FC<FlashcardSectionProps> = ({
         </div>
       ) : (
         /* Main Flashcard Container: 조사·용언 플래시카드와 동일 규격 */
-        <div className="w-full max-w-full sm:max-w-3xl lg:max-w-[960px] flex justify-center px-1 sm:px-4 font-korean-gothic mx-auto">
+        <div className="w-full max-w-full sm:max-w-3xl lg:max-w-full flex justify-center px-1 sm:px-4 lg:px-0 font-korean-gothic mx-auto">
           <div className="w-full">
             <div
               onClick={handleToggleExpand}

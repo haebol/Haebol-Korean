@@ -317,10 +317,10 @@ export const VerbConjugationSection: React.FC<VerbConjugationSectionProps> = ({
   );
 
   return (
-    <div className="w-full max-w-[1312px] mx-auto px-1 sm:px-4 space-y-1 sm:space-y-1.5 font-korean-gothic">
+    <div className="w-full max-w-[1312px] lg:max-w-full mx-auto px-1 sm:px-4 lg:px-0 space-y-1 sm:space-y-1.5 font-korean-gothic">
       {/* Row 5 Sticky Top Bar: Unit Dropdown + 모아보기 */}
       {!hideStickyUnitBar && (
-        <div className="no-print sticky top-[80px] sm:top-[90px] z-[22] bg-[#F4F3F8]/95 lg:bg-[#FFF5F8]/95 backdrop-blur-md pb-1 w-full">
+        <div className="no-print sticky top-[80px] sm:top-[90px] z-[22] bg-[#F4F5F7]/95 backdrop-blur-md pb-1 w-full">
           <div className="flex items-center justify-center gap-1.5 w-full max-w-md mx-auto">
             <div className="relative flex-1 min-w-0">
               <select
@@ -354,7 +354,7 @@ export const VerbConjugationSection: React.FC<VerbConjugationSectionProps> = ({
       )}
 
       {/* 2. Main Flashcard Display Area: 모바일 화면 꽉 차게 확장, PC에서 확대 */}
-      <div className="w-full max-w-full sm:max-w-3xl lg:max-w-[960px] flex justify-center px-1 sm:px-4 font-korean-gothic mx-auto">
+      <div className="w-full max-w-full sm:max-w-3xl lg:max-w-full flex justify-center px-1 sm:px-4 lg:px-0 font-korean-gothic mx-auto">
         <div className="w-full">
           <div
             onClick={handleCardClick}
